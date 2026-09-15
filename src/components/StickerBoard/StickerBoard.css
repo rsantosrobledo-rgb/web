@@ -1,0 +1,155 @@
+/* ========================================================
+   StickerBoard — Transition from Escorzo Hero to Editorial Showcase
+   ======================================================== */
+
+.board {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #FAF8F5;
+  user-select: none;
+}
+
+/* ========================================================
+   HERO TITLE: Centered over seated person
+   ======================================================== */
+.board__hero-title-wrap {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform, opacity;
+  transition: opacity 0.2s ease-out;
+}
+
+.board__hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.board__hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.1vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: #000000;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+/* Scroll Discovery Cue */
+.board__scroll-cue {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #111111;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+  animation: floatCue 2s infinite ease-in-out;
+}
+
+.board__scroll-cue:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.board__scroll-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.board__scroll-arrow {
+  animation: arrowNudge 1.6s infinite ease-in-out;
+}
+
+@keyframes floatCue {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes arrowNudge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+/* ========================================================
+   ESCORZO ENTITY — Fixed bottom foreground
+   Matches reference: head at ~65.6vh, wooden chair rail at ~86vh
+   ======================================================== */
+.board__entity {
+  position: absolute;
+  top: 61vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.board__entity-img {
+  height: 110vh;
+  width: auto;
+  max-width: none !important;
+  display: block;
+}
+
+
+
+/* ========================================================
+   EDITORIAL WRAPPER
+   Holds the EditorialShowcase component and allows natural scrolling
+   ======================================================== */
+.board__editorial-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 5;
+  will-change: transform, opacity;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Subtle custom scrollbar */
+.board__editorial-wrap::-webkit-scrollbar {
+  width: 5px;
+}
+.board__editorial-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+.board__editorial-wrap::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.14);
+  border-radius: 999px;
+}

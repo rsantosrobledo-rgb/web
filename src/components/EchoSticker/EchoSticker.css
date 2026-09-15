@@ -1,0 +1,16 @@
+.echo-sticker {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  will-change: transform, opacity, filter;
+  transition: opacity 0.2s ease-out;
+}
+
+.echo-sticker__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.04));
+}

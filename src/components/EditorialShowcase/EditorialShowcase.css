@@ -1,0 +1,630 @@
+/* ========================================================
+   EDITORIAL SHOWCASE CSS
+   5 Rows, minimal interlineado, increased font size,
+   exclusively Futura typography, horizontal Title-Sticker overlap.
+   ======================================================== */
+
+.editorial {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FAF8F5;
+  color: #111111;
+  padding: 1.5vh 2vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Background delicate grain texture */
+.editorial::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* ---------- Main Editorial Typography Canvas ---------- */
+.editorial__canvas {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  row-gap: 0; /* INTERLINEADO A CERO */
+  position: relative;
+  z-index: 5;
+  overflow: visible; /* Permite que los glifos y trazos se extiendan verticalmente sin recortarse */
+}
+
+/* Each line stacked with 0 interlineado */
+.editorial__line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  line-height: 0.68; /* Interlineado a 0 */
+  text-align: center;
+  box-sizing: border-box;
+  overflow: visible; /* NO RECORTA LAS LETRAS: permite que las letras y stickers solapen de forma natural */
+  position: relative;
+}
+
+/* Line statuses: Active, Exiting (sliding to left), and Idle (waiting on right) */
+.editorial__line--active {
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.editorial__line--exiting {
+  transform: translate3d(-150vw, 0, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
+}
+
+.editorial__line--idle {
+  transform: translate3d(140vw, 0, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: none !important;
+}
+
+/* Header line for MY WORK, ABOUT ME & CONTACT — Chosen title ALWAYS in the center */
+.editorial__line--header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 50;
+  overflow: visible;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+/* ==========================================================================
+   Project Open: Canvas Clears
+   - Each row disappears towards the side it is drifting
+   - Header titles move up and disappear
+   ========================================================================== */
+.editorial__canvas--project-open .editorial__line--header {
+  transform: translate3d(0, -180px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.editorial__canvas--project-open .editorial__line--drift-left {
+  transform: translate3d(-150vw, 0, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
+}
+
+.editorial__canvas--project-open .editorial__line--drift-right {
+  transform: translate3d(150vw, 0, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
+}
+
+.editorial__header-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  gap: clamp(70px, 10vw, 160px);
+  width: max-content;
+  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial__header-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Section Headings: "MY WORK" and "ABOUT ME" — Same massive size as projects (x1.2), uppercase, bold */
+.editorial__heading {
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(5.8rem, 9.1vw, 10.8rem); /* Zoomed x1.2, same exact size as projects */
+  font-weight: 800; /* Bold / Negrita */
+  letter-spacing: 0.04em;
+  color: #111111;
+  text-transform: uppercase; /* Mayúscula */
+  line-height: 0.68; /* Interlineado a 0 */
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.editorial__heading--active {
+  opacity: 1;
+  cursor: default;
+}
+
+.editorial__heading--inactive {
+  opacity: 0.35;
+  cursor: pointer;
+}
+
+.editorial__heading--inactive:hover {
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+
+/* Marquee Track: Infinite seamless loop */
+.editorial__track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  width: max-content;
+  pointer-events: auto;
+}
+
+.editorial__track-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3.2vw, 54px);
+  padding-right: clamp(20px, 3.2vw, 54px);
+  flex-shrink: 0;
+}
+
+/* Continuous slow smooth loop drifting in opposite directions (halved speed = 90s) */
+.editorial__line--drift-left .editorial__track {
+  animation: marquee-drift-left 90s linear infinite;
+}
+
+.editorial__line--drift-right .editorial__track {
+  animation: marquee-drift-right 90s linear infinite;
+}
+
+/* Pause gliding on hover for effortless clicking & elevate hovered line above adjacent overlaps */
+.editorial__line:hover {
+  z-index: 20;
+}
+
+.editorial__line:hover .editorial__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-drift-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+}
+
+@keyframes marquee-drift-right {
+  0% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ---------- Bio Section (Appears when ABOUT ME is active) ---------- */
+.editorial__bio {
+  position: absolute;
+  top: 19vh;
+  left: 0;
+  right: 0;
+  bottom: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw;
+  z-index: 45;
+  pointer-events: none;
+}
+
+.editorial__bio--active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.editorial__bio--exiting {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-150vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.editorial__bio--idle {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(120vw, 0, 0);
+  transition: none;
+}
+
+.editorial__bio-inner {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2.8vh, 32px);
+}
+
+.editorial__bio-text {
+  font-family: 'Jost', 'Futura Light', 'Futura', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 1.75vw, 1.75rem); /* Todas las letras tienen exactamente el mismo tamaño */
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+}
+
+.editorial__bio-text strong {
+  font-family: 'Jost', 'Futura', sans-serif;
+  font-weight: 400; /* Regular auténtico, sin bold */
+  color: #000000;
+}
+
+.editorial__bio-actions {
+  display: flex;
+  align-items: center;
+  margin-top: clamp(6px, 1.2vh, 16px);
+}
+
+.editorial__bio-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #111111;
+  color: #FAF8F5;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+
+.editorial__bio-back-btn:hover {
+  background: #000000;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.editorial__bio-back-arrow {
+  font-size: 1.25em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.editorial__bio-back-btn:hover .editorial__bio-back-arrow {
+  transform: translateX(-4px);
+}
+
+/* ---------- Contact Section (Appears when CONTACT is active) ---------- */
+.editorial__contact {
+  position: absolute;
+  top: 19vh;
+  left: 0;
+  right: 0;
+  bottom: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw;
+  z-index: 45;
+  pointer-events: none;
+}
+
+.editorial__contact--active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.editorial__contact--exiting {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-150vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.editorial__contact--idle {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(120vw, 0, 0);
+  transition: none;
+}
+
+.editorial__contact-inner {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3.5vh, 36px);
+}
+
+.editorial__contact-intro {
+  font-family: 'Jost', 'Futura Light', 'Futura', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 1.75vw, 1.75rem);
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  max-width: 820px;
+}
+
+.editorial__contact-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+  width: 100%;
+}
+
+.editorial__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 20px 24px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #111111;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.editorial__contact-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.22);
+  background: #ffffff;
+}
+
+.editorial__contact-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #111111;
+  color: #FAF8F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.editorial__contact-item:hover .editorial__contact-icon-box {
+  background: #000000;
+  transform: scale(1.08);
+}
+
+.editorial__contact-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.editorial__contact-label {
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #777777;
+  text-transform: uppercase;
+}
+
+.editorial__contact-value {
+  font-family: 'Jost', 'Futura', sans-serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: -0.01em;
+}
+
+.editorial__contact-arrow {
+  font-size: 1.4rem;
+  color: #888888;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.editorial__contact-item:hover .editorial__contact-arrow {
+  transform: translate(3px, -3px);
+  color: #000000;
+}
+
+.editorial__contact-actions {
+  display: flex;
+  align-items: center;
+  margin-top: clamp(4px, 1vh, 12px);
+}
+
+/* Editorial Title Typography — EXCLUSIVELY FUTURA LIGHT (NOT BOLD), UNIFORM FONT SIZE ACROSS ALL PROJECTS (x1.2) */
+.editorial__title {
+  font-family: 'Jost', 'Futura Light', 'Futura-Light', sans-serif;
+  font-size: clamp(5.8rem, 9.1vw, 10.8rem); /* Zoomed x1.2 across all projects */
+  font-weight: 300; /* Strictly Futura Light, NOT bold */
+  line-height: 0.68; /* Interlineado a 0 */
+  color: #111111;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    letter-spacing 0.22s ease,
+    transform 0.2s ease;
+}
+
+/* Hover effects */
+.editorial__item:hover {
+  z-index: 25;
+}
+
+.editorial__item:hover .editorial__title {
+  color: #000000;
+  letter-spacing: -0.015em;
+}
+
+.editorial__item:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Sticker Box (Horizontally Overlapping Right Edge of Title) ---------- */
+.editorial__sticker-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition:
+    transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.26s ease;
+  will-change: transform, filter;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+}
+
+.editorial__item:hover .editorial__sticker-box {
+  filter: drop-shadow(0 20px 32px rgba(0, 0, 0, 0.26)) brightness(1.05);
+  z-index: 30;
+}
+
+/* Die-cut sticker image (scaled x1.2) */
+.editorial__sticker-img {
+  display: block;
+  height: auto;
+  max-height: clamp(102px, 14.4vh, 180px);
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 900px) {
+  .editorial {
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 4vw 30px;
+    overflow-y: auto;
+  }
+
+  .editorial__canvas {
+    height: auto;
+    gap: 16px;
+  }
+
+  .editorial__line {
+    flex: none;
+    flex-wrap: wrap;
+    row-gap: 12px;
+    column-gap: 12px;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+
+  .editorial__title,
+  .editorial__line--2 .editorial__title,
+  .editorial__line--4 .editorial__title,
+  .editorial__line--5 .editorial__title {
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+    line-height: 0.9;
+  }
+}
+
+/* ========================================================
+   EDITORIAL SHOWCASE FOOTER
+   "RODRIGO SANTOS - CREATIVE DIRECTION" in small
+   ======================================================== */
+.editorial__footer {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.editorial__footer-text {
+  font-family: var(--font-body, 'Jost', sans-serif);
+  font-size: clamp(0.68rem, 0.78vw, 0.8rem);
+  letter-spacing: 0.22em;
+  color: rgba(17, 17, 17, 0.52);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.editorial__footer-name {
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+.editorial__footer-sep {
+  opacity: 0.45;
+  margin: 0 6px;
+  font-weight: 300;
+}
+
+.editorial__footer-sub {
+  font-weight: 300;
+  letter-spacing: 0.18em;
+}
+
+/* Hide footer cleanly when a project is open */
+.editorial__canvas--project-open ~ .editorial__footer {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+  pointer-events: none;
+}
+
