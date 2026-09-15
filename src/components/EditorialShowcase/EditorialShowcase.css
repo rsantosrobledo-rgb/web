@@ -97,7 +97,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 0;
+  margin-bottom: clamp(28px, 4.2vh, 56px);
   position: relative;
   z-index: 50;
   overflow: visible;
@@ -260,7 +260,7 @@
 /* ---------- Bio Section (Appears when ABOUT ME is active) ---------- */
 .editorial__bio {
   position: absolute;
-  top: 19vh;
+  top: 22vh;
   left: 0;
   right: 0;
   bottom: 2vh;
@@ -366,7 +366,7 @@
 /* ---------- Contact Section (Appears when CONTACT is active) ---------- */
 .editorial__contact {
   position: absolute;
-  top: 19vh;
+  top: 22vh;
   left: 0;
   right: 0;
   bottom: 2vh;
