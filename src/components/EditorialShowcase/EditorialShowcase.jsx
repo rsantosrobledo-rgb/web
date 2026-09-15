@@ -75,6 +75,25 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
   // Dynamic rows calculated directly from each project's `row` definition
   const editorialRows = useMemo(() => getEditorialRows(projects), [projects])
 
+  // Navigation indices for directional arrows
+  const currentIndex = SECTIONS.findIndex((s) => s.id === currentView)
+  const prevSection = currentIndex > 0 ? SECTIONS[currentIndex - 1] : null
+  const nextSection = currentIndex < SECTIONS.length - 1 ? SECTIONS[currentIndex + 1] : null
+
+  // Arrow key navigation between sections
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (activeProject) return
+      if (e.key === 'ArrowLeft' && prevSection) {
+        navigateTo(prevSection.id)
+      } else if (e.key === 'ArrowRight' && nextSection) {
+        navigateTo(nextSection.id)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [prevSection, nextSection, activeProject])
+
   // Measure and center the active section title precisely at 50vw
   const updateCenterPosition = useCallback(() => {
     const activeEl = titleRefs.current[currentView]
@@ -232,6 +251,23 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
       <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''} ${isExitingToHome ? 'editorial__canvas--exit-up' : ''}`}>
         {/* Row 0: Section Title Header with selected title ALWAYS centered, previous and next visible, no overlap, strictly non-looping */}
         <div className="editorial__line editorial__line--header">
+          {/* Left Directional Arrow at the extreme over texts */}
+          <button
+            type="button"
+            className={`editorial__nav-arrow editorial__nav-arrow--prev ${
+              !prevSection || activeProject || isExitingToHome ? 'editorial__nav-arrow--hidden' : ''
+            }`}
+            onClick={() => prevSection && navigateTo(prevSection.id)}
+            aria-label={prevSection ? `Go to ${prevSection.label}` : 'Previous section'}
+            title={prevSection ? `Go to ${prevSection.label}` : ''}
+            id="editorial-nav-prev"
+            disabled={!prevSection || !!activeProject || isExitingToHome}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </button>
+
           <div
             className="editorial__header-track"
             style={{
@@ -261,6 +297,23 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
               )
             })}
           </div>
+
+          {/* Right Directional Arrow at the extreme over texts */}
+          <button
+            type="button"
+            className={`editorial__nav-arrow editorial__nav-arrow--next ${
+              !nextSection || activeProject || isExitingToHome ? 'editorial__nav-arrow--hidden' : ''
+            }`}
+            onClick={() => nextSection && navigateTo(nextSection.id)}
+            aria-label={nextSection ? `Go to ${nextSection.label}` : 'Next section'}
+            title={nextSection ? `Go to ${nextSection.label}` : ''}
+            id="editorial-nav-next"
+            disabled={!nextSection || !!activeProject || isExitingToHome}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
 
         {/* Bio Section: Appears when ABOUT ME is active */}
