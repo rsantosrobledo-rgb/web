@@ -334,4 +334,11 @@
     white-space: nowrap;
     line-height: 1.1;
   }
+
+  /* Silueta frontal y trasera ajustadas exactamente al asiento y suelo de las sillas en móvil */
+  .intro__entity--front,
+  .intro__entity--back {
+    top: 37vh;
+    height: 39vh;
+  }
 }
