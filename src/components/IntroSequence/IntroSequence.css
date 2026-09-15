@@ -102,10 +102,12 @@
 .intro__text {
   position: absolute;
   z-index: 10;
-  top: 22%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+  width: 92vw;
+  max-width: 900px;
   opacity: 0;
   animation: introTextIn 0.8s var(--ease-out) 0.3s both;
   transition: opacity 0.3s ease;
@@ -125,9 +127,9 @@
 
 .intro__heading {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(1.4rem, 6.4vw, 5.5rem);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: #fff;
   white-space: nowrap;
