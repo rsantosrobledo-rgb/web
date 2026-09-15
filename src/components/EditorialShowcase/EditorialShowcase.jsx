@@ -4,18 +4,18 @@ import './EditorialShowcase.css'
 
 // Stickers styled to overlap the typography directly, exactly like physical cutouts in the reference photo (scaled x1.2)
 const STICKER_CONFIGS = {
-  1: { rotate: -4, hoverRotate: -2, width: 'clamp(96px, 8.2vw, 162px)', overlap: '-14px' },  // Decoding Culture
-  4: { rotate: 6, hoverRotate: 3, width: 'clamp(90px, 7.4vw, 150px)', overlap: '-12px' },    // 5W Summit
-  3: { rotate: -4, hoverRotate: -2, width: 'clamp(96px, 8.2vw, 162px)', overlap: '-14px' },  // Christmas Tales
-  6: { rotate: 5, hoverRotate: 2, width: 'clamp(102px, 8.4vw, 166px)', overlap: '-14px' },   // That's Noise
-  7: { rotate: -4, hoverRotate: -2, width: 'clamp(96px, 7.9vw, 156px)', overlap: '-14px' },  // Helios Factory
-  2: { rotate: 5, hoverRotate: 2, width: 'clamp(102px, 8.4vw, 168px)', overlap: '-14px' },   // Ameba Studios
-  5: { rotate: -5, hoverRotate: -2, width: 'clamp(86px, 7.0vw, 138px)', overlap: '-12px' },   // AI Desert
-  8: { rotate: 6, hoverRotate: 3, width: 'clamp(82px, 6.6vw, 132px)', overlap: '-12px' },    // Equal Voice
-  9: { rotate: -4, hoverRotate: -1, width: 'clamp(86px, 7.0vw, 138px)', overlap: '-12px' },  // Siever Core
-  10: { rotate: 5, hoverRotate: 2, width: 'clamp(82px, 6.6vw, 132px)', overlap: '-12px' },   // Mach Club
-  11: { rotate: 0, hoverRotate: 0, width: 'clamp(86px, 7.0vw, 142px)', overlap: '-12px' },   // Awake Sound
-  12: { rotate: 6, hoverRotate: 3, width: 'clamp(82px, 6.6vw, 134px)', overlap: '-12px' },   // Hybrid Lab
+  1: { rotate: -4, hoverRotate: -2, width: 'clamp(115px, 9.8vw, 194px)', overlap: '-14px' },  // Decoding Culture
+  4: { rotate: 6, hoverRotate: 3, width: 'clamp(108px, 8.9vw, 180px)', overlap: '-12px' },    // 5W Summit
+  3: { rotate: -4, hoverRotate: -2, width: 'clamp(115px, 9.8vw, 194px)', overlap: '-14px' },  // Christmas Tales
+  6: { rotate: 5, hoverRotate: 2, width: 'clamp(122px, 10.1vw, 200px)', overlap: '-14px' },   // That's Noise
+  7: { rotate: -4, hoverRotate: -2, width: 'clamp(115px, 9.5vw, 187px)', overlap: '-14px' },  // Helios Factory
+  2: { rotate: 5, hoverRotate: 2, width: 'clamp(122px, 10.1vw, 202px)', overlap: '-14px' },   // Ameba Studios
+  5: { rotate: -5, hoverRotate: -2, width: 'clamp(103px, 8.4vw, 166px)', overlap: '-12px' },   // AI Desert
+  8: { rotate: 6, hoverRotate: 3, width: 'clamp(98px, 7.9vw, 158px)', overlap: '-12px' },     // Equal Voice
+  9: { rotate: -4, hoverRotate: -1, width: 'clamp(103px, 8.4vw, 166px)', overlap: '-12px' },   // Siever Core
+  10: { rotate: 5, hoverRotate: 2, width: 'clamp(98px, 7.9vw, 158px)', overlap: '-12px' },    // Mach Club
+  11: { rotate: 0, hoverRotate: 0, width: 'clamp(103px, 8.4vw, 170px)', overlap: '-12px' },   // Awake Sound
+  12: { rotate: 6, hoverRotate: 3, width: 'clamp(98px, 7.9vw, 161px)', overlap: '-12px' },    // Hybrid Lab
 }
 
 // Exactly 5 balanced rows filling the screen with 0 interlineado
@@ -160,7 +160,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
     const config = STICKER_CONFIGS[id] || {
       rotate: 0,
       hoverRotate: 0,
-      width: '144px',
+      width: '173px',
       overlap: '-14px',
     }
 

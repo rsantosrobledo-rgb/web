@@ -565,7 +565,7 @@
 .editorial__sticker-img {
   display: block;
   height: auto;
-  max-height: clamp(102px, 14.4vh, 180px);
+  max-height: clamp(122px, 17.3vh, 216px);
   object-fit: contain;
   user-select: none;
   pointer-events: none;
@@ -641,8 +641,8 @@
   }
 
   .editorial__sticker-img {
-    max-height: clamp(42px, 6.5vh, 60px) !important;
-    max-width: clamp(52px, 14vw, 78px) !important;
+    max-height: clamp(50px, 7.8vh, 72px) !important;
+    max-width: clamp(62px, 16.8vw, 94px) !important;
     width: auto !important;
   }
 
