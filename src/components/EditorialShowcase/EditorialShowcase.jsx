@@ -38,9 +38,13 @@ const SECTIONS = [
 
 export default function EditorialShowcase({ projects, onSelectProject, onReturnToHero }) {
   const [hoveredId, setHoveredId] = useState(null)
-  const [currentView, setCurrentView] = useState('work') // 'work' | 'about' | 'contact'
+  const [currentView, setCurrentView] = useState('work') // 'home' | 'work' | 'about' | 'contact'
   const [activeProject, setActiveProject] = useState(null)
   const [trackOffset, setTrackOffset] = useState(0)
+  const [isExitingToHome, setIsExitingToHome] = useState(false)
+  const homeTimerRef = useRef(null)
+  const homeResetTimerRef = useRef(null)
+
   const [sectionStatus, setSectionStatus] = useState({
     work: 'active',
     about: 'idle',
@@ -71,17 +75,51 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
     return () => window.removeEventListener('resize', updateCenterPosition)
   }, [updateCenterPosition])
 
+  useEffect(() => {
+    return () => {
+      if (homeTimerRef.current) clearTimeout(homeTimerRef.current)
+      if (homeResetTimerRef.current) clearTimeout(homeResetTimerRef.current)
+    }
+  }, [])
+
   const navigateTo = (targetId) => {
+    if (isExitingToHome) return
+
     if (targetId === 'home') {
-      if (onReturnToHero) onReturnToHero()
-      if (currentView !== 'work') {
+      if (currentView === 'home') return
+
+      const prevView = currentView
+      setCurrentView('home')
+
+      // Slide previous view out smoothly:
+      // If coming from 'work', work exits to the right (since home is to the left)
+      // If coming from 'about' or 'contact', they exit normally
+      setSectionStatus({
+        work: prevView === 'work' ? 'exiting-right' : 'idle',
+        about: prevView === 'about' ? 'exiting' : 'idle',
+        contact: prevView === 'contact' ? 'exiting' : 'idle',
+      })
+
+      // 1. Once HOME is centered (slide animation takes ~750ms),
+      // it disappears gliding upwards, while the home screen appears:
+      if (homeTimerRef.current) clearTimeout(homeTimerRef.current)
+      homeTimerRef.current = setTimeout(() => {
+        setIsExitingToHome(true)
+        if (onReturnToHero) onReturnToHero()
+      }, 750)
+
+      // 2. Once smoothly settled back on home hero screen, reset showcase state to work:
+      if (homeResetTimerRef.current) clearTimeout(homeResetTimerRef.current)
+      homeResetTimerRef.current = setTimeout(() => {
+        setIsExitingToHome(false)
         setCurrentView('work')
         setSectionStatus({
           work: 'active',
           about: 'idle',
           contact: 'idle',
         })
-      }
+      }, 1800)
+
       return
     }
 
@@ -170,7 +208,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
   return (
     <section className="editorial" id="editorial-showcase" aria-label="Project Portfolio">
       {/* 5 packed typography lines + Center Header spanning with 0 interlineado */}
-      <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''}`}>
+      <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''} ${isExitingToHome ? 'editorial__canvas--exit-up' : ''}`}>
         {/* Row 0: Section Title Header with selected title ALWAYS centered, previous and next visible, no overlap, strictly non-looping */}
         <div className="editorial__line editorial__line--header">
           <div

@@ -77,6 +77,13 @@
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
 }
 
+.editorial__line--exiting-right {
+  transform: translate3d(150vw, 0, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
+}
+
 .editorial__line--idle {
   transform: translate3d(140vw, 0, 0) !important;
   opacity: 0 !important;
@@ -121,6 +128,23 @@
   opacity: 0 !important;
   pointer-events: none !important;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
+}
+
+/* ==========================================================================
+   Exit to Home:
+   Once HOME is centered, header glides upwards and disappears while home appears
+   ========================================================================== */
+.editorial__canvas--exit-up .editorial__line--header {
+  transform: translate3d(0, -180px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease !important;
+}
+
+.editorial__canvas--exit-up ~ .editorial__footer {
+  transform: translateX(-50%) translateY(20px) !important;
+  opacity: 0 !important;
+  transition: transform 0.6s ease, opacity 0.5s ease !important;
 }
 
 .editorial__header-track {
