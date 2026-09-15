@@ -106,69 +106,64 @@
 
 /* ========================================================
    DIRECTIONAL NAVIGATION ARROWS
-   Positioned at the left and right extremes directly over the texts
+   Elongated minimalist arrows positioned directly ABOVE the titles
+   at the left and right extremes, without circular background.
    ======================================================== */
 .editorial__nav-arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: calc(100% + clamp(10px, 2vh, 26px));
   z-index: 100;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(44px, 3.8vw, 56px);
-  height: clamp(44px, 3.8vw, 56px);
-  border-radius: 50%;
-  background: rgba(250, 248, 245, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(17, 17, 17, 0.14);
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   color: #111111;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 8px 6px;
+  opacity: 0.85;
   transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.2s ease,
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
     color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    opacity 0.3s ease;
+    opacity 0.2s ease;
   user-select: none;
 }
 
 .editorial__nav-arrow--prev {
-  left: clamp(14px, 2.2vw, 36px);
+  left: clamp(20px, 3.2vw, 56px);
 }
 
 .editorial__nav-arrow--next {
-  right: clamp(14px, 2.2vw, 36px);
+  right: clamp(20px, 3.2vw, 56px);
 }
 
 .editorial__nav-arrow:hover:not(:disabled) {
-  background: #111111;
-  color: #FAF8F5;
-  border-color: #111111;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  opacity: 1;
+  color: #000000;
 }
 
 .editorial__nav-arrow--prev:hover:not(:disabled) {
-  transform: translateY(-50%) translateX(-4px) scale(1.05);
+  transform: translateX(-8px);
 }
 
 .editorial__nav-arrow--next:hover:not(:disabled) {
-  transform: translateY(-50%) translateX(4px) scale(1.05);
+  transform: translateX(8px);
 }
 
 .editorial__nav-arrow:active:not(:disabled) {
-  transform: translateY(-50%) scale(0.94);
+  transform: scale(0.92);
 }
 
 .editorial__nav-arrow:disabled,
 .editorial__nav-arrow--hidden {
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-50%) scale(0.8);
+  transform: scale(0.8);
 }
 
 /* ==========================================================================
@@ -688,16 +683,21 @@
 
   /* Mobile directional navigation arrows */
   .editorial__nav-arrow {
-    width: 38px;
-    height: 38px;
+    bottom: calc(100% + clamp(6px, 1.2vh, 14px));
+    padding: 4px 2px;
+  }
+
+  .editorial__nav-arrow svg {
+    width: 40px;
+    height: 15px;
   }
 
   .editorial__nav-arrow--prev {
-    left: 8px;
+    left: 12px;
   }
 
   .editorial__nav-arrow--next {
-    right: 8px;
+    right: 12px;
   }
 
   /* Project rows are clustered closer together */

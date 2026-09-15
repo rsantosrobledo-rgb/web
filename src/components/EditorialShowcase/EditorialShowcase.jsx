@@ -251,7 +251,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
       <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''} ${isExitingToHome ? 'editorial__canvas--exit-up' : ''}`}>
         {/* Row 0: Section Title Header with selected title ALWAYS centered, previous and next visible, no overlap, strictly non-looping */}
         <div className="editorial__line editorial__line--header">
-          {/* Left Directional Arrow at the extreme over texts */}
+          {/* Left Directional Arrow: Elongated arrow placed above the titles at the extreme */}
           <button
             type="button"
             className={`editorial__nav-arrow editorial__nav-arrow--prev ${
@@ -263,8 +263,8 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
             id="editorial-nav-prev"
             disabled={!prevSection || !!activeProject || isExitingToHome}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
+            <svg width="52" height="18" viewBox="0 0 52 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M50 9H2M11 2L2 9l9 7" />
             </svg>
           </button>
 
@@ -298,7 +298,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
             })}
           </div>
 
-          {/* Right Directional Arrow at the extreme over texts */}
+          {/* Right Directional Arrow: Elongated arrow placed above the titles at the extreme */}
           <button
             type="button"
             className={`editorial__nav-arrow editorial__nav-arrow--next ${
@@ -310,8 +310,8 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
             id="editorial-nav-next"
             disabled={!nextSection || !!activeProject || isExitingToHome}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
+            <svg width="52" height="18" viewBox="0 0 52 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 9h48M41 2l9 7-9 7" />
             </svg>
           </button>
         </div>
