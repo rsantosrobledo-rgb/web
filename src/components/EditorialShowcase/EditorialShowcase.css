@@ -111,7 +111,7 @@
    ======================================================== */
 .editorial__nav-arrow {
   position: absolute;
-  bottom: calc(100% + clamp(10px, 2vh, 26px));
+  bottom: calc(100% + clamp(24px, 3.8vh, 52px));
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -683,7 +683,7 @@
 
   /* Mobile directional navigation arrows */
   .editorial__nav-arrow {
-    bottom: calc(100% + clamp(6px, 1.2vh, 14px));
+    bottom: calc(100% + clamp(14px, 2.8vh, 28px));
     padding: 4px 2px;
   }
 
