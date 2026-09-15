@@ -16,13 +16,14 @@ const STICKER_CONFIGS = {
   10: { rotate: 5, hoverRotate: 2, width: 'clamp(98px, 7.9vw, 158px)', overlap: '-12px' },    // Mach Club
   11: { rotate: 0, hoverRotate: 0, width: 'clamp(103px, 8.4vw, 170px)', overlap: '-12px' },   // Awake Sound
   12: { rotate: 6, hoverRotate: 3, width: 'clamp(98px, 7.9vw, 161px)', overlap: '-12px' },    // Hybrid Lab
+  13: { rotate: -4, hoverRotate: -2, width: 'clamp(85px, 6.8vw, 136px)', overlap: '-12px' },  // Robot Christmas
 }
 
 // Exactly 5 balanced rows filling the screen with 0 interlineado
 const EDITORIAL_ROWS = [
   [1, 4],       // Row 1: Decoding Culture · 5W Global Summit
   [3, 6],       // Row 2: Christmas Chronicles · That's Noise
-  [7, 2],       // Row 3: Helios AI Factory · Ameba Studios
+  [7, 2, 13],   // Row 3: Helios AI Factory · Ameba Studios · Robot Christmas
   [5, 8, 9],    // Row 4: The AI Desert · 8M Equal Voice · Siever Design Core
   [10, 11, 12], // Row 5: Mach Food Branding · Awake Sound Lab · Hybrid Futures Lab
 ]

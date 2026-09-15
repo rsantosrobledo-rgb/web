@@ -512,12 +512,12 @@
   margin-top: clamp(4px, 1vh, 12px);
 }
 
-/* Editorial Title Typography — EXCLUSIVELY FUTURA LIGHT (NOT BOLD), UNIFORM FONT SIZE ACROSS ALL PROJECTS (x1.2) */
+/* Editorial Title Typography — EXCLUSIVELY FUTURA LIGHT (NOT BOLD), UNIFORM FONT SIZE ACROSS ALL PROJECTS (scaled x0.8) */
 .editorial__title {
   font-family: 'Jost', 'Futura Light', 'Futura-Light', sans-serif;
-  font-size: clamp(5.8rem, 9.1vw, 10.8rem); /* Zoomed x1.2 across all projects */
+  font-size: clamp(4.64rem, 7.28vw, 8.64rem); /* Reduced x0.8 */
   font-weight: 300; /* Strictly Futura Light, NOT bold */
-  line-height: 0.68; /* Interlineado a 0 */
+  line-height: 0.68; /* Interlineado minimo a 0 */
   color: #111111;
   letter-spacing: -0.03em;
   white-space: nowrap;
@@ -626,12 +626,12 @@
     gap: clamp(24px, 7vw, 48px) !important;
   }
 
-  /* Scaled down project title typography for mobile */
+  /* Scaled down project title typography for mobile (reduced x0.8) */
   .editorial__title,
   .editorial__line--2 .editorial__title,
   .editorial__line--4 .editorial__title,
   .editorial__line--5 .editorial__title {
-    font-size: clamp(2.2rem, 9.8vw, 3.7rem) !important;
+    font-size: clamp(1.76rem, 7.84vw, 2.96rem) !important;
     line-height: 0.74;
   }
 

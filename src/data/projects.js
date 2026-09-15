@@ -9,6 +9,7 @@ import stickerHelios from '../assets/stickers/helios.png'
 import stickerHybrid from '../assets/stickers/hybrid.png'
 import stickerMach from '../assets/stickers/mach.png'
 import stickerMazda from '../assets/stickers/mazda.png'
+import stickerRobot from '../assets/stickers/robot.png'
 import stickerSiever from '../assets/stickers/siever.png'
 import stickerThatsNoise from '../assets/stickers/thats noise.png'
 
@@ -191,6 +192,19 @@ const projects = [
       { id: 'hyb-3', type: 'image', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
       { id: 'hyb-4', type: 'video', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
     ],
+  },
+  {
+    id: 13,
+    name: 'Robot Christmas',
+    category: 'Creative Direction · AI & Holiday Campaign',
+    year: '2024',
+    description: 'Making Science holiday campaign exploring artificial intelligence, robotics, and human connection through a heartwarming cinematic narrative.',
+    sticker: stickerRobot,
+    level: 4,
+    position: { x: 50, y: 43, z: -2860 },
+    size: 420,
+    videoEmbed: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr',
+    secondaryMedia: [],
   },
 ]
 
