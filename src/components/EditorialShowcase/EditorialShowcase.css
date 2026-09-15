@@ -578,7 +578,7 @@
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
-    padding: 1.5vh 0 3.5vh;
+    padding: 0;
     box-sizing: border-box;
   }
 
@@ -587,23 +587,32 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: clamp(24px, 5.5vh, 48px);
     gap: 0;
     row-gap: 0;
+    box-sizing: border-box;
   }
 
-  .editorial__line {
-    flex: 1;
-    min-height: 0;
+  /* Header sits elegantly near the top */
+  .editorial__line--header {
+    flex: none;
+    margin-bottom: clamp(24px, 5.5vh, 52px) !important;
+  }
+
+  /* Project rows are clustered closer together */
+  .editorial__line:not(.editorial__line--header) {
+    flex: none;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: nowrap !important;
     white-space: nowrap;
-    line-height: 0.72;
+    line-height: 0.74;
     overflow: visible;
+    margin: clamp(5px, 1.2vh, 12px) 0 !important;
   }
 
   /* Scaled down header for mobile viewports */
@@ -622,8 +631,8 @@
   .editorial__line--2 .editorial__title,
   .editorial__line--4 .editorial__title,
   .editorial__line--5 .editorial__title {
-    font-size: clamp(2.1rem, 9.4vw, 3.6rem) !important;
-    line-height: 0.72;
+    font-size: clamp(2.2rem, 9.8vw, 3.7rem) !important;
+    line-height: 0.74;
   }
 
   /* Scaled down stickers for mobile */
@@ -632,60 +641,65 @@
   }
 
   .editorial__sticker-img {
-    max-height: clamp(38px, 6vh, 58px) !important;
-    max-width: clamp(50px, 14vw, 76px) !important;
+    max-height: clamp(42px, 6.5vh, 60px) !important;
+    max-width: clamp(52px, 14vw, 78px) !important;
     width: auto !important;
   }
 
-  /* Bio Section on Mobile */
+  /* Bio Section on Mobile with larger, comfortable, legible typography */
   .editorial__bio {
-    top: 15vh;
+    top: 14vh;
     bottom: 4vh;
-    padding: 0 4vw;
+    padding: 0 6vw;
   }
 
   .editorial__bio-inner {
-    max-width: 92vw;
-    gap: 12px;
+    max-width: 88vw;
+    gap: clamp(16px, 2.6vh, 26px);
   }
 
   .editorial__bio-text {
-    font-size: clamp(0.9rem, 3.8vw, 1.1rem);
-    line-height: 1.45;
+    font-size: clamp(1.15rem, 4.8vw, 1.38rem);
+    line-height: 1.52;
+    letter-spacing: -0.012em;
+  }
+
+  .editorial__bio-actions {
+    margin-top: clamp(10px, 2vh, 20px);
   }
 
   .editorial__bio-back-btn {
-    padding: 10px 22px;
-    font-size: 0.8rem;
+    padding: 13px 26px;
+    font-size: 0.88rem;
   }
 
   /* Contact Section on Mobile */
   .editorial__contact {
-    top: 15vh;
+    top: 14vh;
     bottom: 4vh;
-    padding: 0 4vw;
+    padding: 0 5vw;
   }
 
   .editorial__contact-inner {
-    max-width: 92vw;
-    gap: 16px;
+    max-width: 90vw;
+    gap: clamp(16px, 2.8vh, 26px);
   }
 
   .editorial__contact-intro {
-    font-size: clamp(1rem, 4.2vw, 1.25rem);
-    line-height: 1.35;
+    font-size: clamp(1.1rem, 4.4vw, 1.32rem);
+    line-height: 1.4;
   }
 
   .editorial__contact-links {
-    gap: 10px;
+    gap: 12px;
   }
 
   .editorial__contact-item {
-    padding: 12px 16px;
+    padding: 14px 18px;
   }
 
   .editorial__contact-value {
-    font-size: clamp(0.9rem, 3.6vw, 1.1rem);
+    font-size: clamp(0.95rem, 3.8vw, 1.15rem);
   }
 
   /* Footer on Mobile */
