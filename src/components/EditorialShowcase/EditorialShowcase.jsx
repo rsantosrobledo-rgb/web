@@ -360,10 +360,10 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
             <div className="editorial__contact-links">
               {/* Mail Link */}
               <a
-                href="mailto:hola@rodrisanro.com"
+                href="mailto:r.santosrobledo@gmail.com"
                 className="editorial__contact-item"
                 id="contact-mail-link"
-                aria-label="Send email to hola@rodrisanro.com"
+                aria-label="Send email to r.santosrobledo@gmail.com"
               >
                 <div className="editorial__contact-icon-box">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -373,14 +373,14 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
                 </div>
                 <div className="editorial__contact-text-box">
                   <span className="editorial__contact-label">EMAIL</span>
-                  <span className="editorial__contact-value">hola@rodrisanro.com</span>
+                  <span className="editorial__contact-value">r.santosrobledo@gmail.com</span>
                 </div>
                 <span className="editorial__contact-arrow">↗</span>
               </a>
 
               {/* LinkedIn Link */}
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/rodrigo-santos-robledo-90050b177/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="editorial__contact-item"

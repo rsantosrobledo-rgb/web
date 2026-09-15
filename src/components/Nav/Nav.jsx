@@ -36,12 +36,12 @@ export default function Nav() {
 
             <h3 className="info-panel__subtitle">Contacto</h3>
             <div className="info-panel__links">
-              <a href="mailto:hola@rodrisanro.com" className="info-panel__link" id="contact-email">
+              <a href="mailto:r.santosrobledo@gmail.com" className="info-panel__link" id="contact-email">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <rect x="2" y="3.5" width="12" height="9" rx="2" stroke="currentColor" strokeWidth="1.3"/>
                   <path d="M2 5.5L8 9L14 5.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
                 </svg>
-                hola@rodrisanro.com
+                r.santosrobledo@gmail.com
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="info-panel__link" id="contact-instagram">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
