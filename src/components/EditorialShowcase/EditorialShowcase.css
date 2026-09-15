@@ -55,7 +55,7 @@
   flex: none;
   margin: 0;
   padding: 0;
-  line-height: 0.68; /* Interlineado a 0 */
+  line-height: 0.90; /* Interlineado minimo alineado a las letras */
   text-align: center;
   box-sizing: border-box;
   overflow: visible; /* NO RECORTA LAS LETRAS: permite que las letras y stickers solapen de forma natural */
@@ -517,7 +517,7 @@
   font-family: 'Jost', 'Futura Light', 'Futura-Light', sans-serif;
   font-size: clamp(4.64rem, 7.28vw, 8.64rem); /* Reduced x0.8 */
   font-weight: 300; /* Strictly Futura Light, NOT bold */
-  line-height: 0.68; /* Interlineado minimo a 0 */
+  line-height: 0.90; /* Interlineado minimo alineado a la tipografia */
   color: #111111;
   letter-spacing: -0.03em;
   white-space: nowrap;
@@ -525,6 +525,21 @@
     color 0.2s ease,
     letter-spacing 0.22s ease,
     transform 0.2s ease;
+}
+
+/* Project Item: Base align along the typography, never distorted by sticker height */
+.editorial__item {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  line-height: 0.90;
+  text-decoration: none;
+  outline: none;
 }
 
 /* Hover effects */
@@ -541,12 +556,15 @@
   transform: scale(0.98);
 }
 
-/* ---------- Sticker Box (Horizontally Overlapping Right Edge of Title) ---------- */
+/* ---------- Sticker Box (Horizontally Overlapping Right Edge of Title, 0 vertical impact on text alignment) ---------- */
 .editorial__sticker-box {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  height: 0; /* No afecta la altura del item: todos los textos de la fila se alinean en base a la tipografia */
+  align-self: center; /* Centrado verticalmente respecto al texto */
+  overflow: visible;
   z-index: 10;
   pointer-events: none;
   transition:
@@ -610,7 +628,7 @@
     justify-content: flex-start;
     flex-wrap: nowrap !important;
     white-space: nowrap;
-    line-height: 0.74;
+    line-height: 0.90;
     overflow: visible;
     margin: clamp(5px, 1.2vh, 12px) 0 !important;
   }
@@ -626,13 +644,13 @@
     gap: clamp(24px, 7vw, 48px) !important;
   }
 
-  /* Scaled down project title typography for mobile (reduced x0.8) */
+  /* Scaled down project title typography for mobile (reduced x0.8, aligned to text) */
   .editorial__title,
   .editorial__line--2 .editorial__title,
   .editorial__line--4 .editorial__title,
   .editorial__line--5 .editorial__title {
     font-size: clamp(1.76rem, 7.84vw, 2.96rem) !important;
-    line-height: 0.74;
+    line-height: 0.90;
   }
 
   /* Scaled down stickers for mobile */
