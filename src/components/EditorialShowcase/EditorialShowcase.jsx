@@ -121,13 +121,13 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
         contact: prevView === 'contact' ? 'exiting' : 'idle',
       })
 
-      // 1. Once HOME is centered (slide animation takes ~750ms),
-      // it disappears gliding upwards, while the home screen appears:
+      // 1. Once HOME centers in the nav (~500ms),
+      // header glides upwards while home view and background video fade in:
       if (homeTimerRef.current) clearTimeout(homeTimerRef.current)
       homeTimerRef.current = setTimeout(() => {
         setIsExitingToHome(true)
         if (onReturnToHero) onReturnToHero()
-      }, 750)
+      }, 500)
 
       // 2. Once smoothly settled back on home hero screen, reset showcase state to work:
       if (homeResetTimerRef.current) clearTimeout(homeResetTimerRef.current)
@@ -139,7 +139,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
           about: 'idle',
           contact: 'idle',
         })
-      }, 1800)
+      }, 1500)
 
       return
     }

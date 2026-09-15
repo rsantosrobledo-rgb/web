@@ -9,12 +9,15 @@ export default function App() {
   const [introKey, setIntroKey] = useState(0)
   const [selectedProject, setSelectedProject] = useState(null)
 
-  // Preload project stickers in background while intro is playing
+  // Preload project stickers and home video in background while intro is playing
   useEffect(() => {
     projects.forEach((p) => {
       const img = new Image()
       img.src = p.sticker
     })
+    const video = document.createElement('video')
+    video.src = '/home.webm'
+    video.preload = 'auto'
   }, [])
 
   const handleIntroComplete = useCallback(() => {

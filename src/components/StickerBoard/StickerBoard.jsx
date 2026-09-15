@@ -1,15 +1,18 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import entityBack from '../../assets/entity_back.png'
+import homeVideo from '../../assets/home.webm'
 import EditorialShowcase from '../EditorialShowcase/EditorialShowcase.jsx'
 import './StickerBoard.css'
 
 export default function StickerBoard({ projects, onSelectProject }) {
   const [scrollProgress, setScrollProgress] = useState(0) // 0 = Seated figure, 1 = Editorial showcase
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [videoReady, setVideoReady] = useState(false)
   const targetProgressRef = useRef(0)
   const currentProgressRef = useRef(0)
   const boardRef = useRef(null)
   const editorialScrollRef = useRef(null)
+  const videoRef = useRef(null)
 
   // 1. Mouse wheel handling
   const handleWheel = useCallback((e) => {
@@ -94,6 +97,13 @@ export default function StickerBoard({ projects, onSelectProject }) {
     }
   }
 
+  // Ensure background video plays automatically and handles entry fade
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+  }, [])
+
   // Quick navigation helpers
   const advanceToEditorial = () => {
     targetProgressRef.current = 1
@@ -114,6 +124,30 @@ export default function StickerBoard({ projects, onSelectProject }) {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
+      {/* ========================================================
+          HOME BACKGROUND VIDEO
+          Loops seamlessly under seated entity and hero title.
+          Transitions to solid cream by smooth crossfade when entering
+          other sections, and fades back in when returning to HOME.
+          ======================================================== */}
+      <video
+        ref={videoRef}
+        className={`board__video-bg ${videoReady ? 'board__video-bg--ready' : ''}`}
+        src={homeVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        onLoadedData={() => setVideoReady(true)}
+        onCanPlay={() => setVideoReady(true)}
+        style={{
+          opacity: videoReady
+            ? Math.max(0, 1 - scrollProgress * 2.2)
+            : 0,
+        }}
+        aria-hidden="true"
+      />
 
       {/* ========================================================
           HERO TITLE: Centered over seated person
