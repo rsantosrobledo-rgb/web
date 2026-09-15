@@ -152,7 +152,7 @@
   align-items: center;
   white-space: nowrap;
   will-change: transform;
-  gap: clamp(70px, 10vw, 160px);
+  gap: clamp(20px, 2.2vw, 40px);
   width: max-content;
   transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1);
 }
