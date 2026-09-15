@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react'
+import { useState, useRef, useLayoutEffect, useEffect, useCallback, useMemo } from 'react'
 import ProjectDetail from '../ProjectDetail/ProjectDetail.jsx'
 import './EditorialShowcase.css'
 
@@ -19,7 +19,7 @@ const STICKER_CONFIGS = {
   13: { rotate: -4, hoverRotate: -2, width: 'clamp(85px, 6.8vw, 136px)', overlap: '-12px' },  // Robot Christmas
 }
 
-// Exactly 5 balanced rows filling the screen with 0 interlineado
+// Fallback rows in case projects do not specify a row property
 const EDITORIAL_ROWS = [
   [1, 4],       // Row 1: Decoding Culture · 5W Global Summit
   [3, 6],       // Row 2: Christmas Chronicles · That's Noise
@@ -27,6 +27,23 @@ const EDITORIAL_ROWS = [
   [5, 8, 9],    // Row 4: The AI Desert · 8M Equal Voice · Siever Design Core
   [10, 11, 12], // Row 5: Mach Food Branding · Awake Sound Lab · Hybrid Futures Lab
 ]
+
+// Dynamically group projects by their row property (Row 1..5)
+const getEditorialRows = (projectList) => {
+  if (!projectList || projectList.length === 0) return EDITORIAL_ROWS
+  const hasRows = projectList.some((p) => p.row)
+  if (!hasRows) return EDITORIAL_ROWS
+
+  const rowMap = {}
+  projectList.forEach((p) => {
+    const r = p.row || 1
+    if (!rowMap[r]) rowMap[r] = []
+    rowMap[r].push(p.id)
+  })
+  return Object.keys(rowMap)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((k) => rowMap[k])
+}
 
 // Strictly non-looping sequence with HOME to the left of MY WORK:
 // HOME (returns to hero screen) · MY WORK · ABOUT ME · CONTACT
@@ -54,6 +71,9 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
 
   const titleRefs = useRef({})
   const projectMap = new Map(projects.map((p) => [p.id, p]))
+
+  // Dynamic rows calculated directly from each project's `row` definition
+  const editorialRows = useMemo(() => getEditorialRows(projects), [projects])
 
   // Measure and center the active section title precisely at 50vw
   const updateCenterPosition = useCallback(() => {
@@ -158,7 +178,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
     const project = projectMap.get(id)
     if (!project) return null
 
-    const config = STICKER_CONFIGS[id] || {
+    const config = project.stickerConfig || STICKER_CONFIGS[id] || {
       rotate: 0,
       hoverRotate: 0,
       width: '173px',
@@ -340,8 +360,8 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
           </div>
         </div>
 
-        {/* Exactly 5 rows of projects in Futura Light with 0 interlineado, slowly drifting in loop */}
-        {EDITORIAL_ROWS.map((rowIds, rowIndex) => {
+        {/* Rows of projects in Futura Light with 0 interlineado, slowly drifting in loop */}
+        {editorialRows.map((rowIds, rowIndex) => {
           const isEven = rowIndex % 2 === 1
           const directionClass = isEven ? 'editorial__line--drift-right' : 'editorial__line--drift-left'
           const statusClass = `editorial__line--${sectionStatus.work}`
