@@ -87,9 +87,10 @@ export default function ProjectDetail({
 
   const hasMultiplePieces = allPieces.length > 1
 
-  const displayCategory = useMemo(() => {
-    if (!project?.category) return ''
-    return project.category.replace(/^Script\s*&\s*/i, '')
+  const categoryParts = useMemo(() => {
+    if (!project?.category) return []
+    const cleaned = project.category.replace(/^Script\s*&\s*/i, '')
+    return cleaned.split(/\s*[·•]\s*/).map((s) => s.trim()).filter(Boolean)
   }, [project?.category])
 
   const goToNextPiece = useCallback((e) => {
@@ -190,7 +191,14 @@ export default function ProjectDetail({
         {/* Project Intro Banner: Meta, Title & Brief-to-Solution Storytelling */}
         <section className="project-detail__intro-section" aria-label="Project overview">
           <div className="project-detail__meta-bar">
-            <span className="project-detail__category-tag">{displayCategory}</span>
+            {categoryParts.map((part, index) => (
+              <React.Fragment key={index}>
+                {index > 0 && (
+                  <span className="project-detail__meta-divider" aria-hidden="true" />
+                )}
+                <span className="project-detail__category-tag">{part}</span>
+              </React.Fragment>
+            ))}
             {hasVideo && (
               <>
                 <span className="project-detail__meta-divider" aria-hidden="true" />
@@ -202,10 +210,7 @@ export default function ProjectDetail({
           <h1 className="project-detail__title">
             <span className="project-detail__title-text">{project.name}</span>
             {project.year && (
-              <>
-                <span className="project-detail__title-divider" aria-hidden="true" />
-                <span className="project-detail__title-year">{project.year}</span>
-              </>
+              <span className="project-detail__title-year">{project.year}</span>
             )}
           </h1>
 
