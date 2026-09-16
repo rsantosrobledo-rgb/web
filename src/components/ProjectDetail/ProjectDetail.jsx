@@ -187,31 +187,37 @@ export default function ProjectDetail({
 
           <h1 className="project-detail__title">{project.name}</h1>
 
-          {/* 3-Part Storytelling Grid: The Challenge / The Concept / The Impact */}
+          {/* 3-Part Storytelling Grid: The Dream / On Ground / The Harvest */}
           {project.story ? (
             <div className="project-detail__story-grid">
               <div className="project-detail__story-card">
                 <div className="project-detail__story-header">
                   <span className="project-detail__story-num">01</span>
-                  <span className="project-detail__story-label">THE CHALLENGE</span>
+                  <span className="project-detail__story-label">THE DREAM</span>
                 </div>
-                <p className="project-detail__story-text">{project.story.challenge}</p>
+                <p className="project-detail__story-text">
+                  {project.story.dream || project.story.challenge}
+                </p>
               </div>
 
               <div className="project-detail__story-card">
                 <div className="project-detail__story-header">
                   <span className="project-detail__story-num">02</span>
-                  <span className="project-detail__story-label">THE CONCEPT</span>
+                  <span className="project-detail__story-label">ON GROUND</span>
                 </div>
-                <p className="project-detail__story-text">{project.story.concept}</p>
+                <p className="project-detail__story-text">
+                  {project.story.onGround || project.story.concept}
+                </p>
               </div>
 
               <div className="project-detail__story-card">
                 <div className="project-detail__story-header">
                   <span className="project-detail__story-num">03</span>
-                  <span className="project-detail__story-label">THE IMPACT</span>
+                  <span className="project-detail__story-label">THE HARVEST</span>
                 </div>
-                <p className="project-detail__story-text">{project.story.impact}</p>
+                <p className="project-detail__story-text">
+                  {project.story.harvest || project.story.impact}
+                </p>
               </div>
             </div>
           ) : (
@@ -431,7 +437,7 @@ export default function ProjectDetail({
                     })}
                     <div className="project-detail__moodboard-hint">
                       <span className="project-detail__moodboard-hint-icon">✦</span>
-                      <span>INSPIRATION MOODBOARD · {project.processComparison.moodboard.length} REFERENCES</span>
+                      <span>INSPIRATION MOODBOARD</span>
                     </div>
                   </div>
                 ) : (

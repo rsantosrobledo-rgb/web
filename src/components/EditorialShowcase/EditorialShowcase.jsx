@@ -10,7 +10,7 @@ const STICKER_CONFIGS = {
   6: { rotate: 5, hoverRotate: 2, width: 'clamp(122px, 10.1vw, 200px)', overlap: '-14px' },   // That's Noise
   7: { rotate: -4, hoverRotate: -2, width: 'clamp(115px, 9.5vw, 187px)', overlap: '-14px' },  // Helios Factory
   2: { rotate: 5, hoverRotate: 2, width: 'clamp(122px, 10.1vw, 202px)', overlap: '-14px' },   // Ameba Studios
-  5: { rotate: -5, hoverRotate: -2, width: 'clamp(103px, 8.4vw, 166px)', overlap: '-12px' },   // AI Desert
+  5: { rotate: -5, hoverRotate: -2, width: 'clamp(103px, 8.4vw, 166px)', overlap: '-12px' },   // The Desert
   8: { rotate: 6, hoverRotate: 3, width: 'clamp(98px, 7.9vw, 158px)', overlap: '-12px' },     // Equal Voice
   9: { rotate: -3, hoverRotate: 0, width: 'clamp(130px, 10.5vw, 205px)', overlap: '-14px' },   // Geo Sphere
   10: { rotate: 5, hoverRotate: 2, width: 'clamp(98px, 7.9vw, 158px)', overlap: '-12px' },    // Mach Club
@@ -25,7 +25,7 @@ const EDITORIAL_ROWS = [
   [1, 4],       // Row 1: Decoding Culture · 5W Global Summit
   [3, 6, 14],   // Row 2: Christmas Chronicles · That's Noise · Mazda Exclusive Days
   [7, 2, 13],   // Row 3: Helios AI Factory · Ameba Studios · Robot Christmas
-  [5, 8, 9],    // Row 4: The AI Desert · 8M Equal Voice · Geo Sphere
+  [5, 8, 9],    // Row 4: The Desert · 8M Equal Voice · Geo Sphere
   [10, 11, 12], // Row 5: Mach Food Branding · Awake Sound Lab · Hybrid Futures Lab
 ]
 
