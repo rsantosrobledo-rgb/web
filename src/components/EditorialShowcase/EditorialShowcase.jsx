@@ -17,12 +17,13 @@ const STICKER_CONFIGS = {
   11: { rotate: 0, hoverRotate: 0, width: 'clamp(103px, 8.4vw, 170px)', overlap: '-12px' },   // Awake Sound
   12: { rotate: 6, hoverRotate: 3, width: 'clamp(98px, 7.9vw, 161px)', overlap: '-12px' },    // Hybrid Lab
   13: { rotate: -4, hoverRotate: -2, width: 'clamp(85px, 6.8vw, 136px)', overlap: '-12px' },  // Robot Christmas
+  14: { rotate: -4, hoverRotate: -2, width: 'clamp(103px, 8.4vw, 166px)', overlap: '-12px' }, // Mazda Exclusive Days
 }
 
 // Fallback rows in case projects do not specify a row property
 const EDITORIAL_ROWS = [
   [1, 4],       // Row 1: Decoding Culture · 5W Global Summit
-  [3, 6],       // Row 2: Christmas Chronicles · That's Noise
+  [3, 6, 14],   // Row 2: Christmas Chronicles · That's Noise · Mazda Exclusive Days
   [7, 2, 13],   // Row 3: Helios AI Factory · Ameba Studios · Robot Christmas
   [5, 8, 9],    // Row 4: The AI Desert · 8M Equal Voice · Siever Design Core
   [10, 11, 12], // Row 5: Mach Food Branding · Awake Sound Lab · Hybrid Futures Lab
