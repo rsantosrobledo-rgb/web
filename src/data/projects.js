@@ -222,7 +222,7 @@ const projects = [
     story: {
       dream: 'Breathe authentic emotional life into an autonomous mechanical character during a season strictly defined by human nostalgia.',
       onGround: 'Authored the heartfelt narrative script and built the entire world in Full 3D — sculpting the robot protagonist, procedural lighting rigs, and expressive character animation without AI.',
-      harvest: 'Surpassed 250,000 organic impressions with exceptionally high positive audience sentiment, proving the emotional power of artisanal 3D.',
+      harvest: 'Celebrated for its heartfelt emotional storytelling and character warmth, demonstrating the unique resonance of artisanal Full 3D craft without AI.',
     },
     sticker: stickerRobot,
     stickerConfig: {
