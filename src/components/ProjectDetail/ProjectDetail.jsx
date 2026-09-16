@@ -165,6 +165,53 @@ export default function ProjectDetail({
 
       {/* Main Content Area */}
       <div className="project-detail__body">
+        {/* Project Intro Banner: Meta, Title & Brief-to-Solution Storytelling */}
+        <section className="project-detail__intro-section" aria-label="Project overview">
+          <div className="project-detail__meta-bar">
+            <span className="project-detail__category-tag">{project.category}</span>
+            {project.year && (
+              <span className="project-detail__year-tag">{project.year}</span>
+            )}
+          </div>
+
+          <h1 className="project-detail__title">{project.name}</h1>
+
+          {/* 3-Part Storytelling Grid: The Challenge / The Concept / The Impact */}
+          {project.story ? (
+            <div className="project-detail__story-grid">
+              <div className="project-detail__story-card">
+                <div className="project-detail__story-header">
+                  <span className="project-detail__story-num">01</span>
+                  <span className="project-detail__story-label">THE CHALLENGE</span>
+                </div>
+                <p className="project-detail__story-text">{project.story.challenge}</p>
+              </div>
+
+              <div className="project-detail__story-card">
+                <div className="project-detail__story-header">
+                  <span className="project-detail__story-num">02</span>
+                  <span className="project-detail__story-label">THE CONCEPT</span>
+                </div>
+                <p className="project-detail__story-text">{project.story.concept}</p>
+              </div>
+
+              <div className="project-detail__story-card">
+                <div className="project-detail__story-header">
+                  <span className="project-detail__story-num">03</span>
+                  <span className="project-detail__story-label">THE IMPACT</span>
+                </div>
+                <p className="project-detail__story-text">{project.story.impact}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="project-detail__description-wrap">
+              <p className="project-detail__description-text">
+                {project.description}
+              </p>
+            </div>
+          )}
+        </section>
+
         {/* Media Showcase: Split if secondary pieces exist, otherwise full-width primary media */}
         <section
           className={`project-detail__media-showcase ${
@@ -321,23 +368,45 @@ export default function ProjectDetail({
           )}
         </section>
 
-        {/* Project Explanation Underneath */}
-        <section className="project-detail__info-section" aria-label="Project information">
-          <div className="project-detail__meta-bar">
-            <span className="project-detail__category-tag">{project.category}</span>
-            {project.year && (
-              <span className="project-detail__year-tag">{project.year}</span>
-            )}
-          </div>
-
-          <h1 className="project-detail__title">{project.name}</h1>
-
-          <div className="project-detail__description-wrap">
-            <p className="project-detail__description-text">
-              {project.description}
-            </p>
-          </div>
-        </section>
+        {/* Process & Craft: Before vs After (Concept Study → Final Render) */}
+        {project.processComparison && (
+          <section className="project-detail__process-section" aria-label="Process and craft comparison">
+            <div className="project-detail__process-header">
+              <span className="project-detail__process-tag">PROCESS & CRAFT</span>
+              <h2 className="project-detail__process-title">Concept Exploration to Final Execution</h2>
+            </div>
+            <div className="project-detail__process-grid">
+              <div className="project-detail__process-card project-detail__process-card--before">
+                <div className="project-detail__process-badge">
+                  <span className="project-detail__process-dot" />
+                  {project.processComparison.beforeLabel || 'Concept / R&D Study'}
+                </div>
+                <div className="project-detail__process-img-wrap">
+                  <img
+                    src={project.processComparison.before}
+                    alt={project.processComparison.beforeLabel}
+                    className="project-detail__process-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="project-detail__process-card project-detail__process-card--after">
+                <div className="project-detail__process-badge project-detail__process-badge--final">
+                  <span className="project-detail__process-dot project-detail__process-dot--final" />
+                  {project.processComparison.afterLabel || 'Final Key Visual / Execution'}
+                </div>
+                <div className="project-detail__process-img-wrap">
+                  <img
+                    src={project.processComparison.after}
+                    alt={project.processComparison.afterLabel}
+                    className="project-detail__process-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
 
       {/* Bottom Navigation: Arrows to flip through projects */}

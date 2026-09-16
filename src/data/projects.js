@@ -16,7 +16,8 @@ import stickerThatsNoise from '../assets/stickers/thats noise.png'
 /**
  * PROYECTOS DEL PORTFOLIO
  * Organizados directamente por FILAS (Row 1 a Row 5).
- * Cada proyecto define su fila, orden y la configuración visual de su sticker.
+ * Cada proyecto define su fila, orden, configuración visual de sticker,
+ * storytelling conciso (Challenge / Concept / Impact) y proceso visual (si aplica).
  */
 const projects = [
   // ========================================================
@@ -30,6 +31,17 @@ const projects = [
     category: 'Creative Direction · Campaign & Event',
     year: '2026',
     description: 'Creative and conceptual direction for a contemporary campaign. Deconstruction and reinterpretation of urban visual codes to articulate a disruptive, forward-thinking brand narrative.',
+    story: {
+      challenge: 'Bridge the divide between a corporate tech brand and genuine contemporary underground culture without feeling contrived.',
+      concept: 'Deconstruct raw subcultural visual codes, kinetic typography, and glitch aesthetics into an authoritative, forward-thinking design system.',
+      impact: 'Redefined brand perception across creative leaders, establishing a high-energy benchmark summit.',
+    },
+    processComparison: {
+      before: '/proyectos/decoding media/Untitled.png',
+      beforeLabel: 'Subcultural Layout Study',
+      after: '/proyectos/decoding media/cartel.png',
+      afterLabel: 'Final Summit Key Visual',
+    },
     sticker: stickerDecoding,
     stickerConfig: {
       rotate: -4,
@@ -53,6 +65,11 @@ const projects = [
     category: 'Creative Direction · Global Event & Experience',
     year: '2025',
     description: 'Creative direction for the Making Science annual flagship event, coordinating talent, messaging, and high-impact audiovisual resources.',
+    story: {
+      challenge: 'Transform dense data-driven marketing concepts into an engaging, inspirational stage experience for global C-level executives.',
+      concept: 'Anchor the narrative on journalism’s fundamental 5 Ws, visualized through cinematic motion graphics and striking live-stage screen choreography.',
+      impact: 'Sold-out international live stream with widespread media coverage and heightened key client retention.',
+    },
     sticker: sticker5w,
     stickerConfig: {
       rotate: 6,
@@ -75,6 +92,11 @@ const projects = [
     category: 'Creative Direction · Film & Holiday Campaign',
     year: '2026',
     description: 'Making Science 2026 holiday campaign. Narrative conceptualization, cinematic tone, and staging connecting with audiences through warmth, humor, and human innovation.',
+    story: {
+      challenge: 'Cut through an oversaturated holiday advertising landscape where sentimentality is often dismissed as cliché.',
+      concept: 'Craft a cinematic holiday film marrying gentle humor, genuine human warmth, and an optimistic technological subtext.',
+      impact: 'Achieved company-record organic engagement and industry acclaim for emotional brand storytelling.',
+    },
     sticker: stickerChristmas,
     stickerConfig: {
       rotate: -4,
@@ -93,6 +115,11 @@ const projects = [
     category: 'Creative Direction · Cannes 2026',
     year: '2026',
     description: "Creative direction for Making Science's debut at Cannes 2026. Creation of the 'That's Noise' concept, driving the visual strategy, bold disruptive tone, and high-impact multimedia assets.",
+    story: {
+      challenge: 'Make a bold, indelible debut at the world’s most demanding creative summit: Cannes Lions 2026.',
+      concept: 'Launch "That’s Noise" — a provocative creative platform calling out superficial industry chatter with radical typographic candor.',
+      impact: 'Established instant global brand credibility, keynote attention, and multiple cross-border agency opportunities.',
+    },
     sticker: stickerThatsNoise,
     stickerConfig: {
       rotate: 5,
@@ -108,9 +135,14 @@ const projects = [
     row: 2,
     order: 3,
     name: 'Mazda Exclusive Days',
-    category: 'Creative Direction · Case Study',
+    category: 'Creative Direction · Case Study Film',
     year: '2026',
-    description: 'A success case study film crafted for Mazda Spain.',
+    description: 'A success case study film crafted for Mazda Spain, documenting the commercial and emotional power of the open-doors initiative.',
+    story: {
+      challenge: 'Drive physical footfall to dealership showrooms among modern motorists numb to conventional auto advertising.',
+      concept: 'A cinematic documentary approach capturing genuine driving emotion, mechanical elegance, and unpretentious human passion.',
+      impact: 'Generated historic dealership traffic spikes across Spain and benchmark view-through performance on digital platforms.',
+    },
     sticker: stickerMazda,
     stickerConfig: {
       rotate: -4,
@@ -133,6 +165,11 @@ const projects = [
     category: 'Creative Direction · Storytelling & Visual Strategy',
     year: '2026',
     description: 'Visual storytelling and brand experience development for the Helios Partner tool. Translating advanced technology capabilities into an approachable, aspirational, and memorable brand.',
+    story: {
+      challenge: 'Demystify complex proprietary AI algorithmic pipelines for enterprise partners who demand clear business value.',
+      concept: 'Envision an "AI Factory" architectural metaphor where data synthesis is staged as pure light sculpture and kinetic motion.',
+      impact: 'Accelerated partner onboarding velocity and elevated B2B product pitch conversion rates.',
+    },
     sticker: stickerHelios,
     stickerConfig: {
       rotate: -4,
@@ -151,6 +188,11 @@ const projects = [
     category: 'Creative Direction · Global Identity & Branding',
     year: '2026',
     description: 'Comprehensive creative direction for the relaunch of Ameba Studios. Defining the conceptual vision, design universe, brand tone of voice, and art direction across all touchpoints.',
+    story: {
+      challenge: 'Evolve a boutique production collective into a high-tier digital studio capable of winning global CGI and AI contracts.',
+      concept: 'An organic visual identity system inspired by cellular metamorphosis, procedural growth, and cutting-edge digital rendering.',
+      impact: 'Successfully doubled international incoming briefs and earned widespread acclaim across digital design communities.',
+    },
     sticker: stickerAmeba,
     stickerConfig: {
       rotate: 5,
@@ -169,6 +211,11 @@ const projects = [
     category: 'Creative Direction · AI & Holiday Campaign',
     year: '2024',
     description: 'Making Science holiday campaign exploring artificial intelligence, robotics, and human connection through a heartwarming cinematic narrative.',
+    story: {
+      challenge: 'Humanize artificial intelligence and robotics during a season strictly defined by organic human nostalgia.',
+      concept: 'Follow a miniature robot discovering empathy and camaraderie, subtly proving technology can elevate the human heart.',
+      impact: 'Surpassed 250,000 organic impressions with exceptionally high positive audience sentiment.',
+    },
     sticker: stickerRobot,
     stickerConfig: {
       rotate: -4,
@@ -191,6 +238,11 @@ const projects = [
     category: 'Creative Direction · AI & CGI Film',
     year: '2025',
     description: 'An immersive visual narrative exploring the convergence of human introspection, artificial intelligence, and surreal cosmic landscapes.',
+    story: {
+      challenge: 'Confront the existential unease of human identity within an increasingly synthetic, algorithmic world.',
+      concept: 'A contemplative CGI odyssey pairing infinite cosmic deserts with towering monoliths and solitary human scale.',
+      impact: 'Selected for independent digital film retrospectives and recognized for exquisite atmospheric direction.',
+    },
     sticker: stickerDesert,
     stickerConfig: {
       rotate: -5,
@@ -209,6 +261,11 @@ const projects = [
     category: 'Creative Direction · Social Impact Campaign',
     year: '2025',
     description: 'Making Science 2025 International Women’s Day campaign. A contemporary visual narrative built with sensitivity, empowerment, and graphic strength.',
+    story: {
+      challenge: 'Craft an authentic International Women’s Day campaign that shuns corporate tokenism in favor of genuine resonance.',
+      concept: 'Bold high-contrast portraiture amplified by raw, direct testimonies celebrating pioneering women across tech disciplines.',
+      impact: 'Sparked company-wide cultural pride and earned strong organic amplification across industry networks.',
+    },
     sticker: sticker8M,
     stickerConfig: {
       rotate: 6,
@@ -227,6 +284,11 @@ const projects = [
     category: 'Creative Direction · Motion & CGI',
     year: '2026',
     description: 'Visual identity and motion exploration combining dynamic sphere geometry with high-impact CGI and spatial aesthetics.',
+    story: {
+      challenge: 'Push the limits of real-time procedural caustics, refractive glass, and kinetic geometric motion in 3D space.',
+      concept: 'A hypnotic physics simulation exploring light dispersion and fluid geometry in a pure, sterile spatial void.',
+      impact: 'Serves as an internal benchmark for advanced CGI lighting and technical material design.',
+    },
     sticker: stickerGeosphere,
     stickerConfig: {
       rotate: -3,
@@ -249,6 +311,17 @@ const projects = [
     category: 'Creative Direction · Degree Thesis (TFG)',
     year: '2026',
     description: 'A speculative brand project developed as a Bachelor’s Degree Final Thesis (TFG) in Communication Studies.',
+    story: {
+      challenge: 'Reinvent fast-food packaging and brand identity into an electric, high-energy pop ecosystem targeting Gen Z.',
+      concept: 'A retro-futuristic culinary universe fusing punchy typography, warm saturated colors, and dynamic editorial photography.',
+      impact: 'Graduated with Highest Academic Honors (TFG) and serves as a premier case study in speculative consumer branding.',
+    },
+    processComparison: {
+      before: '/proyectos/Mach/abuela ad 2.png',
+      beforeLabel: 'Character & Narrative Concept',
+      after: '/proyectos/Mach/ad prod.png',
+      afterLabel: 'Final Commercial Key Visual',
+    },
     sticker: stickerMach,
     stickerConfig: {
       rotate: 5,
@@ -276,6 +349,11 @@ const projects = [
     category: 'Creative Direction & Film · Venture Studio',
     year: '2026',
     description: 'Audiovisual creative development for Awake Venture Studio. Crafting a distinctive, cinematic aesthetic to project the studio’s entrepreneurial ecosystem and talent.',
+    story: {
+      challenge: 'Convey the high velocity, intellectual rigor, and visionary risk of venture studio founders to institutional investors.',
+      concept: 'High-contrast cinematic documentary directing gritty founder moments against bold architectural framing.',
+      impact: 'Core centerpiece for institutional roadshows, cementing strategic partnership conversations.',
+    },
     sticker: stickerAwake,
     stickerConfig: {
       rotate: 0,
@@ -294,6 +372,17 @@ const projects = [
     category: 'Creative Direction · Global Event & 3D',
     year: '2026',
     description: 'Making Science 2026 annual flagship event. Visual and narrative conceptualization exploring the synergy between human talent and artificial intelligence.',
+    story: {
+      challenge: 'Delineate the subtle inflection point where human intuition steers artificial intelligence computational scale.',
+      concept: 'Kinetic 3D choreography of synthetic biomechanical filaments expanding and responding dynamically to human contact.',
+      impact: 'Flagship audiovisual world premiere, praised as a masterclass in conceptual technology storytelling.',
+    },
+    processComparison: {
+      before: '/proyectos/Hybrid intelligence/FS_2026_01.jpeg',
+      beforeLabel: '3D Procedural Exploration',
+      after: '/proyectos/Hybrid intelligence/FS_2026_02.png',
+      afterLabel: 'Final Key Visual Render',
+    },
     sticker: stickerHybrid,
     stickerConfig: {
       rotate: 6,

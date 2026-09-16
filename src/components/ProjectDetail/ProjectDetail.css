@@ -425,15 +425,16 @@
 }
 
 /* --------------------------------------------------------------------------
-   Project Info Section (Underneath)
+   Project Intro Section & Brief → Solution Storytelling
    -------------------------------------------------------------------------- */
-.project-detail__info-section {
+.project-detail__intro-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: clamp(14px, 1.8vw, 22px);
   width: 100%;
-  max-width: 980px;
-  padding-top: clamp(8px, 1.5vw, 20px);
+  max-width: 1480px;
+  margin: 0 auto clamp(24px, 3.2vw, 42px) auto;
+  box-sizing: border-box;
 }
 
 .project-detail__meta-bar {
@@ -445,24 +446,24 @@
 
 .project-detail__category-tag {
   font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #111111;
   background: rgba(0, 0, 0, 0.05);
-  padding: 6px 14px;
+  padding: 5px 14px;
   border-radius: 999px;
 }
 
 .project-detail__year-tag {
   font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
   font-weight: 500;
   letter-spacing: 0.06em;
   color: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: 999px;
 }
 
@@ -470,12 +471,81 @@
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
   font-size: clamp(2.2rem, 4.2vw, 4.4rem);
   font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
   color: #111111;
   text-transform: uppercase;
   margin: 0;
   padding: 0;
+}
+
+/* 3-Column Storytelling Grid */
+.project-detail__story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 24px);
+  width: 100%;
+  margin-top: 4px;
+}
+
+.project-detail__story-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: clamp(14px, 1.6vw, 22px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.project-detail__story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.18);
+  background: #ffffff;
+}
+
+.project-detail__story-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-detail__story-num {
+  font-family: var(--font-display, 'Jost', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #777777;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.project-detail__story-label {
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.project-detail__story-text {
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.56;
+  color: rgba(17, 17, 17, 0.82);
+  margin: 0;
+  letter-spacing: -0.005em;
 }
 
 .project-detail__description-wrap {
@@ -484,11 +554,156 @@
 
 .project-detail__description-text {
   font-family: 'Futura', 'Jost', 'Helvetica Neue', sans-serif;
-  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
   font-weight: 300;
-  line-height: 1.68;
-  color: rgba(17, 17, 17, 0.88);
+  line-height: 1.65;
+  color: rgba(17, 17, 17, 0.86);
   margin: 0;
+}
+
+@media (max-width: 900px) {
+  .project-detail__story-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-detail__story-card {
+    padding: 14px 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Process & Craft Section: Concept Exploration vs Final Execution
+   -------------------------------------------------------------------------- */
+.project-detail__process-section {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 24px);
+  width: 100%;
+  max-width: 1480px;
+  margin: clamp(40px, 5.5vw, 72px) auto 0 auto;
+  padding-top: clamp(28px, 3.5vw, 44px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.project-detail__process-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-detail__process-tag {
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.project-detail__process-title {
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: #111111;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.project-detail__process-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 2.5vw, 32px);
+  width: 100%;
+}
+
+.project-detail__process-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.project-detail__process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+.project-detail__process-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #444444;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.project-detail__process-badge--final {
+  color: #000000;
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 800;
+}
+
+.project-detail__process-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #888888;
+}
+
+.project-detail__process-dot--final {
+  background: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+.project-detail__process-img-wrap {
+  width: 100%;
+  height: clamp(260px, 32vw, 440px);
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-detail__process-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-detail__process-card:hover .project-detail__process-img {
+  transform: scale(1.025);
+}
+
+@media (max-width: 768px) {
+  .project-detail__process-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-detail__process-img-wrap {
+    height: clamp(220px, 58vw, 320px);
+  }
 }
 
 /* --------------------------------------------------------------------------
