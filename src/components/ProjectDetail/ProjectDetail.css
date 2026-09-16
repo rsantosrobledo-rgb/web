@@ -515,9 +515,9 @@
 .project-detail__story-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(24px, 3.2vw, 44px);
+  gap: clamp(28px, 3.4vw, 52px);
   width: 100%;
-  margin-top: clamp(14px, 1.8vw, 24px);
+  margin-top: clamp(18px, 2.2vw, 32px);
 }
 
 .project-detail__story-card {
@@ -543,30 +543,32 @@
 .project-detail__story-header {
   display: flex;
   align-items: center;
-  gap: clamp(8px, 0.9vw, 12px);
+  gap: clamp(12px, 1.3vw, 18px);
 }
 
 .project-detail__story-num {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: clamp(28px, 2.2vw, 34px);
-  height: clamp(28px, 2.2vw, 34px);
-  background: #383838;
+  justify-content: flex-end;
+  width: clamp(54px, 5.2vw, 76px);
+  height: clamp(46px, 4.4vw, 64px);
+  padding-right: clamp(6px, 0.65vw, 10px);
+  background: #3e3e3e;
   color: #ffffff;
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
-  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  font-size: clamp(1.3rem, 1.7vw, 1.85rem);
   font-weight: 800;
   border-radius: 0;
   flex-shrink: 0;
   line-height: 1;
+  box-sizing: border-box;
 }
 
 .project-detail__story-label {
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
-  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  font-size: clamp(1.3rem, 1.7vw, 1.85rem);
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
   color: #000000;
   line-height: 1;
@@ -574,11 +576,11 @@
 
 .project-detail__story-text {
   font-family: 'Futura', 'Futura-Medium', 'Jost', sans-serif;
-  font-size: clamp(0.86rem, 0.96vw, 1rem);
+  font-size: clamp(0.88rem, 0.98vw, 1.02rem);
   font-weight: 400;
   line-height: 1.48;
   color: #111111;
-  margin: clamp(10px, 1.1vw, 16px) 0 0 0;
+  margin: clamp(18px, 2vw, 28px) 0 0 0;
   letter-spacing: -0.005em;
 }
 
@@ -698,8 +700,8 @@
   /* Layout editorial para las fases en móvil */
   .project-detail__story-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
-    margin-top: 14px;
+    gap: 26px;
+    margin-top: 18px;
   }
 
   .project-detail__story-card {
@@ -712,28 +714,28 @@
   }
 
   .project-detail__story-header {
-    gap: 8px;
+    gap: 12px;
   }
 
   .project-detail__story-num {
-    width: 25px;
-    height: 25px;
-    font-size: 0.9rem;
+    width: 46px;
+    height: 38px;
+    padding-right: 6px;
+    font-size: 1.25rem;
     font-weight: 800;
     border-radius: 0;
-    padding: 0;
   }
 
   .project-detail__story-label {
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     letter-spacing: -0.01em;
     font-weight: 800;
   }
 
   .project-detail__story-text {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     line-height: 1.45;
-    margin-top: 8px;
+    margin-top: 12px;
     letter-spacing: -0.005em;
   }
 
