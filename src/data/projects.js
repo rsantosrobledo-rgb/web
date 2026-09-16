@@ -396,16 +396,16 @@ const projects = [
     row: 5,
     order: 3,
     name: 'Hybrid Intelligence',
-    category: 'Script & Creative Direction · AI & CGI Film',
+    category: 'Script & Creative Direction · AI & 2D Composition Film',
     year: '2026',
-    description: 'Película insignia de Making Science. Creación de guion original y dirección creativa por Rodrigo Santos Robledo: fusión de modelos generativos de IA con simulación procedural CGI en 3D.',
+    description: 'Película insignia de Making Science. Creación de guion original y dirección creativa por Rodrigo Santos Robledo: integración de modelos generativos de IA con composición visual 2D y postproducción avanzada.',
     story: {
       dream: 'Visualize the tipping point where human artistic intuition and synthetic intelligence coalesce into a singular creative force.',
-      onGround: 'Authored the narrative screenplay and pioneered a hybrid pipeline uniting generative AI models with high-precision procedural CGI 3D simulation.',
-      harvest: 'Flagship audiovisual world premiere, praised internationally as a masterclass in conceptual AI & CGI art direction.',
+      onGround: 'Authored the narrative screenplay and pioneered a hybrid workflow uniting generative AI models with meticulous 2D visual composition, motion pacing, and multi-layer blending — without 3D simulation.',
+      harvest: 'Flagship audiovisual world premiere, praised internationally as a masterclass in conceptual AI direction and sophisticated 2D composition.',
     },
     processComparison: {
-      beforeLabel: 'Creative Direction Moodboard & 3D R&D',
+      beforeLabel: 'Creative Direction Moodboard & Visual R&D',
       moodboard: [
         '/proyectos/Hybrid intelligence/Inspiration and moodboard/90a9de1aebc125f5907f6615fdff6504.jpg',
         '/proyectos/Hybrid intelligence/Inspiration and moodboard/1eb1b3dc1a910df5efdac7bb8d86cce6.jpg',
@@ -413,7 +413,7 @@ const projects = [
         '/proyectos/Hybrid intelligence/Inspiration and moodboard/Captura de pantalla 2026-09-16 a las 13.19.33.png',
       ],
       after: '/proyectos/Hybrid intelligence/FS_2026_02.png',
-      afterLabel: 'Final AI & CGI Key Visual Render',
+      afterLabel: 'Final AI & 2D Composited Key Visual',
     },
     sticker: stickerHybrid,
     stickerConfig: {
