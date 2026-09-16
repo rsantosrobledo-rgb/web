@@ -226,7 +226,7 @@ export default function ProjectDetail({
             <div className="project-detail__story-grid">
               <div className="project-detail__story-card">
                 <div className="project-detail__story-header">
-                  <span className="project-detail__story-num">01</span>
+                  <span className="project-detail__story-num">1</span>
                   <span className="project-detail__story-label">THE DREAM</span>
                 </div>
                 <p className="project-detail__story-text">
@@ -236,7 +236,7 @@ export default function ProjectDetail({
 
               <div className="project-detail__story-card">
                 <div className="project-detail__story-header">
-                  <span className="project-detail__story-num">02</span>
+                  <span className="project-detail__story-num">2</span>
                   <span className="project-detail__story-label">ON GROUND</span>
                 </div>
                 <p className="project-detail__story-text">
@@ -246,7 +246,7 @@ export default function ProjectDetail({
 
               <div className="project-detail__story-card">
                 <div className="project-detail__story-header">
-                  <span className="project-detail__story-num">03</span>
+                  <span className="project-detail__story-num">3</span>
                   <span className="project-detail__story-label">THE HARVEST</span>
                 </div>
                 <p className="project-detail__story-text">

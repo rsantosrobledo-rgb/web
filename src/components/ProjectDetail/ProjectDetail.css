@@ -511,72 +511,74 @@
   padding: 0;
 }
 
-/* 3-Column Storytelling Grid (Scaled to x0.9) */
+/* 3-Column Storytelling Grid (Editorial Minimalist Style matching mockup) */
 .project-detail__story-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(13px, 1.6vw, 21.5px);
+  gap: clamp(24px, 3.2vw, 44px);
   width: 100%;
-  margin-top: 4px;
+  margin-top: clamp(14px, 1.8vw, 24px);
 }
 
 .project-detail__story-card {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 11px;
-  padding: clamp(13px, 1.45vw, 20px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  transition:
-    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.28s ease,
-    border-color 0.28s ease;
+  transition: none;
 }
 
 .project-detail__story-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.18);
-  background: #ffffff;
+  transform: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
 .project-detail__story-header {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: clamp(8px, 0.9vw, 12px);
 }
 
 .project-detail__story-num {
-  font-family: var(--font-display, 'Jost', sans-serif);
-  font-size: 0.61rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #777777;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 2px 5.5px;
-  border-radius: 3.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(28px, 2.2vw, 34px);
+  height: clamp(28px, 2.2vw, 34px);
+  background: #383838;
+  color: #ffffff;
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  font-weight: 800;
+  border-radius: 0;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .project-detail__story-label {
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
-  font-size: 0.67rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
   font-weight: 800;
-  letter-spacing: 0.13em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #111111;
+  color: #000000;
+  line-height: 1;
 }
 
 .project-detail__story-text {
-  font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.83rem, 0.95vw, 0.95rem);
+  font-family: 'Futura', 'Futura-Medium', 'Jost', sans-serif;
+  font-size: clamp(0.86rem, 0.96vw, 1rem);
   font-weight: 400;
-  line-height: 1.52;
-  color: rgba(17, 17, 17, 0.82);
-  margin: 0;
+  line-height: 1.48;
+  color: #111111;
+  margin: clamp(10px, 1.1vw, 16px) 0 0 0;
   letter-spacing: -0.005em;
 }
 
@@ -596,11 +598,11 @@
 @media (max-width: 900px) and (min-width: 769px) {
   .project-detail__story-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 24px;
   }
 
   .project-detail__story-card {
-    padding: 12px 14px;
+    padding: 0;
   }
 }
 
@@ -693,39 +695,45 @@
     font-size: clamp(1.4rem, 6.2vw, 2.1rem);
   }
 
-  /* Tarjetas de las fases reducidas a la mitad de tamaño en móvil */
+  /* Layout editorial para las fases en móvil */
   .project-detail__story-grid {
     grid-template-columns: 1fr;
-    gap: 6px;
-    margin-top: 2px;
+    gap: 22px;
+    margin-top: 14px;
   }
 
   .project-detail__story-card {
-    padding: 7px 10px;
-    border-radius: 7px;
-    gap: 3px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    padding: 0;
+    border-radius: 0;
+    gap: 0;
+    box-shadow: none;
+    background: transparent;
+    border: none;
   }
 
   .project-detail__story-header {
-    gap: 4px;
+    gap: 8px;
   }
 
   .project-detail__story-num {
-    font-size: 0.46rem;
-    font-weight: 700;
-    padding: 1px 4px;
-    border-radius: 3px;
+    width: 25px;
+    height: 25px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    border-radius: 0;
+    padding: 0;
   }
 
   .project-detail__story-label {
-    font-size: 0.54rem;
-    letter-spacing: 0.08em;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    font-weight: 800;
   }
 
   .project-detail__story-text {
-    font-size: 0.68rem;
-    line-height: 1.34;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-top: 8px;
     letter-spacing: -0.005em;
   }
 
