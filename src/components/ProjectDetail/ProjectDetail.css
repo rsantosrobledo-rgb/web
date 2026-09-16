@@ -503,11 +503,11 @@
   padding: 0;
 }
 
-/* 3-Column Storytelling Grid (Scaled to x0.8) */
+/* 3-Column Storytelling Grid (Scaled to x0.9) */
 .project-detail__story-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(11px, 1.4vw, 19px);
+  gap: clamp(13px, 1.6vw, 21.5px);
   width: 100%;
   margin-top: 4px;
 }
@@ -517,12 +517,12 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  padding: clamp(11px, 1.25vw, 17px);
+  border-radius: 11px;
+  padding: clamp(13px, 1.45vw, 20px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   transition:
     transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.28s ease,
@@ -539,34 +539,34 @@
 .project-detail__story-header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
 }
 
 .project-detail__story-num {
   font-family: var(--font-display, 'Jost', sans-serif);
-  font-size: 0.55rem;
+  font-size: 0.61rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #777777;
   background: rgba(0, 0, 0, 0.05);
-  padding: 1.5px 5px;
-  border-radius: 3px;
+  padding: 2px 5.5px;
+  border-radius: 3.5px;
 }
 
 .project-detail__story-label {
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
-  font-size: 0.60rem;
+  font-size: 0.67rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: #111111;
 }
 
 .project-detail__story-text {
   font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.76rem, 0.85vw, 0.86rem);
+  font-size: clamp(0.83rem, 0.95vw, 0.95rem);
   font-weight: 400;
-  line-height: 1.48;
+  line-height: 1.52;
   color: rgba(17, 17, 17, 0.82);
   margin: 0;
   letter-spacing: -0.005em;
