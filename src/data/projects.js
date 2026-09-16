@@ -10,7 +10,7 @@ import stickerHybrid from '../assets/stickers/hybrid.png'
 import stickerMach from '../assets/stickers/mach.png'
 import stickerMazda from '../assets/stickers/mazda.png'
 import stickerRobot from '../assets/stickers/robot.png'
-import stickerSiever from '../assets/stickers/siever.png'
+import stickerGeosphere from '../assets/stickers/geosphere.png'
 import stickerThatsNoise from '../assets/stickers/thats noise.png'
 
 /**
@@ -223,18 +223,18 @@ const projects = [
     id: 9,
     row: 4,
     order: 3,
-    name: 'Siever Design Core',
-    category: 'Creative Direction · Visual Identity & Digital Product',
+    name: 'Geo Sphere',
+    category: 'Creative Direction · Motion & CGI',
     year: '2026',
-    description: 'Visual identity and creative asset development for the Siever digital product tool.',
-    sticker: stickerSiever,
+    description: 'Visual identity and motion exploration combining dynamic sphere geometry with high-impact CGI and spatial aesthetics.',
+    sticker: stickerGeosphere,
     stickerConfig: {
-      rotate: -4,
-      hoverRotate: -1,
-      width: 'clamp(103px, 8.4vw, 166px)',
-      overlap: '-12px',
+      rotate: -3,
+      hoverRotate: 0,
+      width: 'clamp(130px, 10.5vw, 205px)',
+      overlap: '-14px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/Y36_MxJxmQE?si=fh3gws95xcH5Hyeq&autoplay=1&playsinline=1',
+    videoEmbed: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4',
     secondaryMedia: [],
   },
 

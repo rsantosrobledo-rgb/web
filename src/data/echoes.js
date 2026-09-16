@@ -8,7 +8,7 @@ import stickerDesert from '../assets/stickers/desert.png'
 import stickerHelios from '../assets/stickers/helios.png'
 import stickerHybrid from '../assets/stickers/hybrid.png'
 import stickerMach from '../assets/stickers/mach.png'
-import stickerSiever from '../assets/stickers/siever.png'
+import stickerGeosphere from '../assets/stickers/geosphere.png'
 import stickerThatsNoise from '../assets/stickers/thats noise.png'
 
 // Atmospheric echoes / afterimages that populate intermediate depths and peripheral canvas space
@@ -51,8 +51,8 @@ export const ECHOES = [
   // --- Zwischenraum Plano 1 -> Plano 2 (-950px to -1250px) ---
   {
     id: 'echo-4',
-    name: 'Siever Echo',
-    sticker: stickerSiever,
+    name: 'Geo Sphere Echo',
+    sticker: stickerGeosphere,
     x: 88,
     y: 72,
     z: -980,
