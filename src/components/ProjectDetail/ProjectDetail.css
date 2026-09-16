@@ -192,6 +192,65 @@
   transition: transform 0.4s ease;
 }
 
+/* Pasadores a los lados de la pieza principal */
+.project-detail__pasador {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 25;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+  outline: none;
+}
+
+.project-detail__pasador:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.project-detail__pasador:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.project-detail__pasador--prev {
+  left: 14px;
+}
+
+.project-detail__pasador--next {
+  right: 14px;
+}
+
+@media (max-width: 768px) {
+  .project-detail__pasador {
+    width: 38px;
+    height: 38px;
+  }
+  .project-detail__pasador--prev {
+    left: 8px;
+  }
+  .project-detail__pasador--next {
+    right: 8px;
+  }
+}
+
 /* Secondary Grid */
 .project-detail__secondary-grid {
   display: flex;
@@ -255,6 +314,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+/* Overlay for the 6th slot when more pieces exist */
+.project-detail__more-overlay {
+  position: absolute;
+  inset: -8px;
+  background: rgba(18, 18, 18, 0.62);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #ffffff;
+  z-index: 5;
+  transition: background-color 0.25s ease;
+}
+
+.project-detail__grid-card:hover .project-detail__more-overlay {
+  background: rgba(18, 18, 18, 0.74);
+}
+
+.project-detail__more-icon {
+  width: 22px;
+  height: 22px;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+}
+
+.project-detail__more-badge {
+  font-family: var(--font-display, 'Jost', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  line-height: 1;
 }
 
 .project-detail__grid-img,

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import './ProjectDetail.css'
 
 function formatYouTubeUrl(url) {
@@ -29,101 +29,14 @@ export default function ProjectDetail({
 }) {
   const [selectedMedia, setSelectedMedia] = useState(null)
   const detailRef = useRef(null)
-  const wheelUpAccumulator = useRef(0)
-  const wheelUpTimeout = useRef(null)
-  const touchStartY = useRef(null)
-  const hasClosedRef = useRef(false)
-
-  const safeClose = useCallback(() => {
-    if (hasClosedRef.current) return
-    hasClosedRef.current = true
-    onClose()
-  }, [onClose])
 
   // Reset custom selected media when project changes
   useEffect(() => {
     setSelectedMedia(null)
-    hasClosedRef.current = false
     if (detailRef.current) {
       detailRef.current.scrollTop = 0
     }
   }, [project.id])
-
-  // Scroll up detection: scrolling up while at top returns to MY WORK, NOT to home
-  useEffect(() => {
-    const el = detailRef.current
-    if (!el) return
-
-    const handleWheel = (e) => {
-      // Always stop propagation so wheel events inside a project detail NEVER leak to StickerBoard (which would return to home)
-      e.stopPropagation()
-
-      // If user is at the top of the project detail and scrolls up:
-      if (el.scrollTop <= 2 && e.deltaY < 0) {
-        wheelUpAccumulator.current += Math.abs(e.deltaY)
-        if (wheelUpTimeout.current) clearTimeout(wheelUpTimeout.current)
-        wheelUpTimeout.current = setTimeout(() => {
-          wheelUpAccumulator.current = 0
-        }, 220)
-
-        // Threshold reached: return to MY WORK!
-        if (wheelUpAccumulator.current > 20 || e.deltaY < -15) {
-          wheelUpAccumulator.current = 0
-          safeClose()
-        }
-      } else {
-        wheelUpAccumulator.current = 0
-      }
-    }
-
-    const handleTouchStart = (e) => {
-      touchStartY.current = e.touches[0].clientY
-    }
-
-    const handleTouchMove = (e) => {
-      e.stopPropagation()
-      if (touchStartY.current === null) return
-      const deltaY = touchStartY.current - e.touches[0].clientY
-
-      // If user is at top of project detail and pulls down / scrolls up:
-      if (el.scrollTop <= 2 && deltaY < -30) {
-        touchStartY.current = null
-        safeClose()
-      }
-    }
-
-    const handleTouchEnd = () => {
-      touchStartY.current = null
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: true })
-    window.addEventListener('touchstart', handleTouchStart, { passive: true })
-    window.addEventListener('touchmove', handleTouchMove, { passive: true })
-    window.addEventListener('touchend', handleTouchEnd, { passive: true })
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel)
-      window.removeEventListener('touchstart', handleTouchStart)
-      window.removeEventListener('touchmove', handleTouchMove)
-      window.removeEventListener('touchend', handleTouchEnd)
-      if (wheelUpTimeout.current) clearTimeout(wheelUpTimeout.current)
-    }
-  }, [safeClose, project.id])
-
-  // Keyboard navigation: Escape to go back, Left/Right for prev/next
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        safeClose()
-      } else if (e.key === 'ArrowRight') {
-        goToNext()
-      } else if (e.key === 'ArrowLeft') {
-        goToPrev()
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [project.id, projects, safeClose])
 
   if (!project) return null
 
@@ -134,22 +47,83 @@ export default function ProjectDetail({
   const goToNext = () => onNavigateProject(nextProject)
   const goToPrev = () => onNavigateProject(prevProject)
 
-  // Determine secondary pieces — only show if explicitly provided in project data
+  // Full list of media pieces for this project (used by side pasadores)
+  const allPieces = useMemo(() => {
+    const secondary = Array.isArray(project.secondaryMedia) ? project.secondaryMedia : []
+    if (project.videoEmbed) {
+      return [
+        { id: `${project.id}-primary-video`, type: 'video', src: project.videoEmbed, isPrimary: true },
+        ...secondary,
+      ]
+    }
+    if (secondary.length > 0) {
+      return secondary
+    }
+    return [{ id: `${project.id}-sticker`, type: 'image', src: project.sticker, isPrimary: true }]
+  }, [project.id, project.videoEmbed, project.secondaryMedia, project.sticker])
+
+  const activePieceIndex = useMemo(() => {
+    if (!selectedMedia) return 0
+    const idx = allPieces.findIndex((p) => p.id === selectedMedia.id)
+    return idx >= 0 ? idx : 0
+  }, [allPieces, selectedMedia])
+
+  const activePiece = allPieces[activePieceIndex] || allPieces[0]
+  const activeMainType = activePiece ? activePiece.type : 'image'
+  const activeMainSrc = activePiece ? activePiece.src : project.sticker
+  const activePieceId = activePiece ? activePiece.id : null
+  const isYouTube = typeof activeMainSrc === 'string' && (activeMainSrc.includes('youtube.com') || activeMainSrc.includes('youtu.be'))
+
+  const hasMultiplePieces = allPieces.length > 1
+
+  const goToNextPiece = useCallback((e) => {
+    if (e) e.stopPropagation()
+    if (allPieces.length <= 1) return
+    const nextIdx = (activePieceIndex + 1) % allPieces.length
+    setSelectedMedia(allPieces[nextIdx])
+  }, [activePieceIndex, allPieces])
+
+  const goToPrevPiece = useCallback((e) => {
+    if (e) e.stopPropagation()
+    if (allPieces.length <= 1) return
+    const prevIdx = (activePieceIndex - 1 + allPieces.length) % allPieces.length
+    setSelectedMedia(allPieces[prevIdx])
+  }, [activePieceIndex, allPieces])
+
+  // Keyboard navigation: Escape to go back, Left/Right for piece navigation (or project navigation if single piece)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose()
+      } else if (e.key === 'ArrowRight') {
+        if (hasMultiplePieces) {
+          goToNextPiece()
+        } else {
+          goToNext()
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (hasMultiplePieces) {
+          goToPrevPiece()
+        } else {
+          goToPrev()
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [hasMultiplePieces, goToNextPiece, goToPrevPiece, goToNext, goToPrev, onClose])
+
+  // Secondary pieces grid calculation
   const secondaryPieces = Array.isArray(project.secondaryMedia) ? project.secondaryMedia : []
   const hasSecondaryPieces = secondaryPieces.length > 0
-  const firstSecondaryPiece = secondaryPieces.length > 0 ? secondaryPieces[0] : null
 
-  const hasVideo = Boolean(project.videoEmbed)
-
-  const defaultMediaSrc = hasVideo ? project.videoEmbed : (firstSecondaryPiece ? firstSecondaryPiece.src : project.sticker)
-  const defaultMediaType = hasVideo ? 'video' : (firstSecondaryPiece ? firstSecondaryPiece.type : 'image')
-
-  const activeMainType = selectedMedia ? selectedMedia.type : defaultMediaType
-  const activeMainSrc = selectedMedia ? selectedMedia.src : defaultMediaSrc
-
-  const activePieceId = selectedMedia ? selectedMedia.id : (!hasVideo && firstSecondaryPiece ? firstSecondaryPiece.id : null)
-
-  const isYouTube = typeof activeMainSrc === 'string' && (activeMainSrc.includes('youtube.com') || activeMainSrc.includes('youtu.be'))
+  // If there are more than 6 secondary pieces, show at most 6 slots with "more pieces" indicator on slot 6
+  const MAX_GRID_SLOTS = 6
+  const hasMoreThanMax = secondaryPieces.length > MAX_GRID_SLOTS
+  const visibleGridPieces = hasMoreThanMax
+    ? secondaryPieces.slice(0, MAX_GRID_SLOTS)
+    : secondaryPieces
+  const remainingCount = secondaryPieces.length - MAX_GRID_SLOTS
 
   return (
     <article
@@ -158,7 +132,7 @@ export default function ProjectDetail({
       ref={detailRef}
       aria-label={`Project details for ${project.name}`}
     >
-      {/* Top Bar: Return to projects arrow button */}
+      {/* Top Bar: Return to projects arrow button — ONLY way to go back */}
       <header className="project-detail__header">
         <button
           type="button"
@@ -191,8 +165,24 @@ export default function ProjectDetail({
           }`}
           aria-label="Project media showcase"
         >
-          {/* Left / Center: Large Primary Piece (Video prioritized) */}
+          {/* Left / Center: Large Primary Piece with Pasadores */}
           <div className="project-detail__primary-media">
+            {/* Pasador Izquierdo (Previous Piece) */}
+            {hasMultiplePieces && (
+              <button
+                type="button"
+                className="project-detail__pasador project-detail__pasador--prev"
+                onClick={goToPrevPiece}
+                aria-label="Previous piece"
+                id="pasador-prev-piece"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m15 18-6-6 6-6"/>
+                </svg>
+              </button>
+            )}
+
+            {/* Media Display */}
             {activeMainType === 'video' ? (
               <div className="project-detail__video-wrapper">
                 {isYouTube ? (
@@ -228,24 +218,56 @@ export default function ProjectDetail({
                 />
               </div>
             )}
+
+            {/* Pasador Derecho (Next Piece) */}
+            {hasMultiplePieces && (
+              <button
+                type="button"
+                className="project-detail__pasador project-detail__pasador--next"
+                onClick={goToNextPiece}
+                aria-label="Next piece"
+                id="pasador-next-piece"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </button>
+            )}
           </div>
 
-          {/* Right: Grid of Secondary Pieces (only if present, no names/labels) */}
+          {/* Right: Grid of Secondary Pieces (at most 6 slots) */}
           {hasSecondaryPieces && (
             <aside className="project-detail__secondary-grid" aria-label="Secondary pieces">
               <div className="project-detail__grid-items">
-                {secondaryPieces.map((piece, idx) => {
-                  const isSelected = activePieceId === piece.id
+                {visibleGridPieces.map((piece, idx) => {
+                  const isLastSlotWithMore = hasMoreThanMax && idx === MAX_GRID_SLOTS - 1
+
+                  // Selected state: if active piece is one of the extra pieces (index >= 5), highlight slot 6
+                  const isSelected = isLastSlotWithMore
+                    ? (activePieceId === piece.id || (!project.videoEmbed && activePieceIndex >= MAX_GRID_SLOTS - 1) || (project.videoEmbed && activePieceIndex >= MAX_GRID_SLOTS))
+                    : activePieceId === piece.id
+
                   const isPieceYouTube = typeof piece.src === 'string' && (piece.src.includes('youtube.com') || piece.src.includes('youtu.be'))
+
+                  const handleCardClick = () => {
+                    if (isLastSlotWithMore && isSelected) {
+                      // Cycle to next piece if already viewing extra pieces
+                      const nextIdx = (activePieceIndex + 1) % allPieces.length
+                      setSelectedMedia(allPieces[nextIdx])
+                    } else {
+                      setSelectedMedia(piece)
+                    }
+                  }
+
                   return (
                     <button
                       key={`${project.id}-piece-${idx}`}
                       type="button"
                       className={`project-detail__grid-card ${
                         isSelected ? 'project-detail__grid-card--selected' : ''
-                      }`}
-                      onClick={() => setSelectedMedia(piece)}
-                      aria-label={`View piece ${idx + 1}`}
+                      } ${isLastSlotWithMore ? 'project-detail__grid-card--more' : ''}`}
+                      onClick={handleCardClick}
+                      aria-label={isLastSlotWithMore ? `View more pieces (+${remainingCount})` : `View piece ${idx + 1}`}
                     >
                       <div className="project-detail__grid-img-box">
                         {piece.type === 'video' ? (
@@ -272,6 +294,16 @@ export default function ProjectDetail({
                             className="project-detail__grid-img"
                             loading="lazy"
                           />
+                        )}
+
+                        {isLastSlotWithMore && (
+                          <div className="project-detail__more-overlay">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="project-detail__more-icon">
+                              <rect width="13" height="13" x="8" y="8" rx="2" />
+                              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                            </svg>
+                            <span className="project-detail__more-badge">+{remainingCount}</span>
+                          </div>
                         )}
                       </div>
                     </button>
