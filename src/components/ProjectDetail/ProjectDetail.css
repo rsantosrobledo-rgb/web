@@ -543,34 +543,34 @@
 .project-detail__story-header {
   display: flex;
   align-items: baseline;
-  gap: clamp(7px, 0.75vw, 10px);
+  gap: 6px;
 }
 
 .project-detail__story-num {
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
-  font-size: clamp(0.91rem, 1.19vw, 1.3rem);
+  font-size: clamp(0.85rem, 0.95vw, 0.98rem);
   font-weight: 800;
   color: #000000;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .project-detail__story-label {
   font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
-  font-size: clamp(0.91rem, 1.19vw, 1.3rem);
+  font-size: clamp(0.85rem, 0.95vw, 0.98rem);
   font-weight: 800;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #000000;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .project-detail__story-text {
   font-family: 'Futura', 'Futura-Medium', 'Jost', sans-serif;
-  font-size: clamp(0.88rem, 0.98vw, 1.02rem);
+  font-size: clamp(0.85rem, 0.95vw, 0.98rem);
   font-weight: 400;
   line-height: 1.48;
   color: #111111;
-  margin: clamp(10px, 1.1vw, 16px) 0 0 0;
+  margin: clamp(8px, 0.8vw, 12px) 0 0 0;
   letter-spacing: -0.005em;
 }
 
@@ -704,27 +704,28 @@
   }
 
   .project-detail__story-header {
-    gap: 6px;
+    gap: 5px;
     align-items: baseline;
   }
 
   .project-detail__story-num {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     font-weight: 800;
     color: #000000;
-    line-height: 1;
+    line-height: 1.2;
   }
 
   .project-detail__story-label {
-    font-size: 0.88rem;
-    letter-spacing: -0.01em;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
     font-weight: 800;
+    line-height: 1.2;
   }
 
   .project-detail__story-text {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     line-height: 1.45;
-    margin-top: 8px;
+    margin-top: 6px;
     letter-spacing: -0.005em;
   }
 
