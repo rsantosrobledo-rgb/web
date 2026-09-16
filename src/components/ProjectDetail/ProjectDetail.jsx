@@ -87,6 +87,11 @@ export default function ProjectDetail({
 
   const hasMultiplePieces = allPieces.length > 1
 
+  const displayCategory = useMemo(() => {
+    if (!project?.category) return ''
+    return project.category.replace(/^Script\s*&\s*/i, '')
+  }, [project?.category])
+
   const goToNextPiece = useCallback((e) => {
     if (e) e.stopPropagation()
     if (allPieces.length <= 1) return
@@ -185,7 +190,7 @@ export default function ProjectDetail({
         {/* Project Intro Banner: Meta, Title & Brief-to-Solution Storytelling */}
         <section className="project-detail__intro-section" aria-label="Project overview">
           <div className="project-detail__meta-bar">
-            <span className="project-detail__category-tag">{project.category}</span>
+            <span className="project-detail__category-tag">{displayCategory}</span>
             {hasVideo && (
               <>
                 <span className="project-detail__meta-divider" aria-hidden="true" />

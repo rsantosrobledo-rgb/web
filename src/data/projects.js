@@ -32,7 +32,7 @@ const projects = [
     row: 1,
     order: 1,
     name: 'Decoding Culture',
-    category: 'Script & Creative Direction · Campaign & Event',
+    category: 'Creative Direction · Campaign & Event',
     year: '2026',
     description: 'Creación de guion y dirección creativa integral por Rodrigo Santos Robledo. Deconstrucción y reinterpretación de códigos visuales urbanos para articular una narrativa de marca disruptiva y vanguardista.',
     story: {
@@ -70,7 +70,7 @@ const projects = [
     row: 1,
     order: 2,
     name: '5W of Marketing',
-    category: 'Script & Creative Direction · Flagship Event',
+    category: 'Creative Direction · Flagship Event',
     year: '2025',
     description: 'Creación de guion y dirección creativa para el evento insignia de Making Science. Coordinación de narrativa, ritmo audiovisual y recursos de alto impacto escénico.',
     story: {
@@ -97,7 +97,7 @@ const projects = [
     row: 2,
     order: 1,
     name: 'Christmas Chronicles',
-    category: 'Script & Creative Direction · Holiday Film',
+    category: 'Creative Direction · Holiday Film',
     year: '2026',
     description: 'Creación de guion y dirección creativa para la campaña navideña de Making Science. Conceptualización narrativa, tono cinematográfico y puesta en escena con humor, calidez e innovación.',
     story: {
@@ -120,7 +120,7 @@ const projects = [
     row: 2,
     order: 2,
     name: "That's Noise",
-    category: 'Script & Creative Direction · Cannes 2026',
+    category: 'Creative Direction · Cannes 2026',
     year: '2026',
     description: "Creación del guion manifiesto y dirección creativa para el debut de Making Science en Cannes 2026. Creación del concepto 'That's Noise', dirección visual y piezas multimedia de alto impacto.",
     story: {
@@ -143,7 +143,7 @@ const projects = [
     row: 2,
     order: 3,
     name: 'Mazda Exclusive Days',
-    category: 'Script & Creative Direction · Case Study Film',
+    category: 'Creative Direction · Case Study Film',
     year: '2026',
     description: 'Creación de guion narrativo y dirección creativa de la película de caso de éxito para Mazda España, documentando la eficacia comercial de las jornadas de puertas abiertas.',
     story: {
@@ -170,7 +170,7 @@ const projects = [
     row: 3,
     order: 1,
     name: 'Helios AI Factory',
-    category: 'Script & Creative Direction · Visual Strategy & 3D',
+    category: 'Creative Direction · Visual Strategy & 3D',
     year: '2026',
     description: 'Creación de guion explicativo y dirección creativa para Helios Partner. Traducción de complejas capacidades algorítmicas en una narrativa visual aspiracional y memorable.',
     story: {
@@ -193,7 +193,7 @@ const projects = [
     row: 3,
     order: 2,
     name: 'Ameba Studios',
-    category: 'Script & Creative Direction · Studio Relaunch & CGI',
+    category: 'Creative Direction · Studio Relaunch & CGI',
     year: '2026',
     description: 'Creación de guion de presentación y dirección creativa integral para el relanzamiento de Ameba Studios. Definición de la visión conceptual, universo de diseño, tono de voz y dirección de arte.',
     story: {
@@ -216,7 +216,7 @@ const projects = [
     row: 3,
     order: 3,
     name: 'Robot Christmas',
-    category: 'Script & Creative Direction · Full 3D & Animation',
+    category: 'Creative Direction · Full 3D & Animation',
     year: '2024',
     description: 'Película navideña creada íntegramente en Full 3D. Creación de guion y dirección técnica y artística por Rodrigo Santos Robledo: diseño de personaje, modelado, texturas físicas, iluminación y animación sin IA.',
     story: {
@@ -243,7 +243,7 @@ const projects = [
     row: 4,
     order: 1,
     name: 'The Desert',
-    category: 'Script & Creative Direction · 2D Art & Compositing Film',
+    category: 'Creative Direction · 2D Art & Compositing Film',
     year: '2025',
     description: 'Universo cinematográfico contemplativo creado mediante arte digital 2D y composición avanzada. Cero simulación 3D — Creación de guion y dirección técnica y visual por Rodrigo Santos Robledo: composición por capas, gradación de atmósfera y diseño de movimiento.',
     story: {
@@ -279,7 +279,7 @@ const projects = [
     row: 4,
     order: 2,
     name: '8M Equal Voice',
-    category: 'Script & Creative Direction · Social Impact Film',
+    category: 'Creative Direction · Social Impact Film',
     year: '2025',
     description: 'Creación de guion narrativo y dirección creativa para la campaña del 8M de Making Science. Una narrativa contemporánea construida con sensibilidad, empoderamiento y fuerza gráfica.',
     story: {
@@ -302,7 +302,7 @@ const projects = [
     row: 4,
     order: 3,
     name: 'Geo Sphere',
-    category: 'Script & Creative Direction · Motion & CGI',
+    category: 'Creative Direction · Motion & CGI',
     year: '2026',
     description: 'Guion técnico y dirección creativa por Rodrigo Santos Robledo: exploración de geometría esférica, shaders de cáusticas procedurales, refracción de luz y simulación cinética.',
     story: {
@@ -373,7 +373,7 @@ const projects = [
     row: 5,
     order: 2,
     name: 'Awake Venture Studio',
-    category: 'Script & Creative Direction · Venture Film',
+    category: 'Creative Direction · Venture Film',
     year: '2026',
     description: 'Creación de guion y desarrollo audiovisual para Awake Venture Studio por Rodrigo Santos Robledo. Creación de una estética cinematográfica distintiva para proyectar el talento y visión de los fundadores.',
     story: {
@@ -396,7 +396,7 @@ const projects = [
     row: 5,
     order: 3,
     name: 'Hybrid Intelligence',
-    category: 'Script & Creative Direction · AI & 2D Composition Film',
+    category: 'Creative Direction · AI & 2D Composition Film',
     year: '2026',
     description: 'Película insignia de Making Science. Creación de guion original y dirección creativa por Rodrigo Santos Robledo: integración de modelos generativos de IA con composición visual 2D y postproducción avanzada.',
     story: {
