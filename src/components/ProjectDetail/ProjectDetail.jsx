@@ -202,7 +202,10 @@ export default function ProjectDetail({
           <h1 className="project-detail__title">
             <span className="project-detail__title-text">{project.name}</span>
             {project.year && (
-              <span className="project-detail__title-year">{project.year}</span>
+              <>
+                <span className="project-detail__title-divider" aria-hidden="true" />
+                <span className="project-detail__title-year">{project.year}</span>
+              </>
             )}
           </h1>
 

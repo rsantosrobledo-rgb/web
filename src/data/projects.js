@@ -244,7 +244,7 @@ const projects = [
     order: 1,
     name: 'The Desert',
     category: 'Creative Direction · 2D Art & Compositing Film',
-    year: '2025',
+    year: '2024',
     description: 'Universo cinematográfico contemplativo creado mediante arte digital 2D y composición avanzada. Cero simulación 3D — Creación de guion y dirección técnica y visual por Rodrigo Santos Robledo: composición por capas, gradación de atmósfera y diseño de movimiento.',
     story: {
       dream: 'Explore human introspection and solitude through a contemplative desert landscape.',
