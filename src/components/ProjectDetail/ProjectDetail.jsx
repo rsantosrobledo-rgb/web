@@ -131,6 +131,10 @@ export default function ProjectDetail({
       id="project-detail-view"
       ref={detailRef}
       aria-label={`Project details for ${project.name}`}
+      onWheel={(e) => e.stopPropagation()}
+      onTouchStart={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+      onTouchEnd={(e) => e.stopPropagation()}
     >
       {/* Top Bar: Return to projects arrow button — ONLY way to go back */}
       <header className="project-detail__header">
@@ -145,15 +149,18 @@ export default function ProjectDetail({
           <span className="project-detail__back-label">BACK TO PROJECTS</span>
         </button>
 
-        <div className="project-detail__header-index">
-          <span className="project-detail__index-current">
-            {String(currentIndex + 1).padStart(2, '0')}
-          </span>
-          <span className="project-detail__index-sep">/</span>
-          <span className="project-detail__index-total">
-            {String(projects.length).padStart(2, '0')}
-          </span>
-        </div>
+        {/* Top Right: Next Project button */}
+        <button
+          type="button"
+          className="project-detail__header-next-btn"
+          onClick={goToNext}
+          id="project-detail-header-next-btn"
+          aria-label={`Next project: ${nextProject.name}`}
+        >
+          <span className="project-detail__header-next-label">NEXT PROJECT:</span>
+          <span className="project-detail__header-next-name">{nextProject.name}</span>
+          <span className="project-detail__header-next-arrow">→</span>
+        </button>
       </header>
 
       {/* Main Content Area */}

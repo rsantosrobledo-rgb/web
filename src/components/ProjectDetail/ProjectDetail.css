@@ -12,6 +12,11 @@
   z-index: 999;
   overflow-y: auto;
   overflow-x: hidden;
+  overscroll-behavior: none;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -85,21 +90,57 @@
   opacity: 0.7;
 }
 
-.project-detail__header-index {
-  font-family: 'Futura', 'Jost', monospace;
-  font-size: clamp(0.9rem, 1.1vw, 1.15rem);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  color: rgba(0, 0, 0, 0.45);
-}
-
-.project-detail__index-current {
+.project-detail__header-next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
   color: #111111;
-  font-weight: 700;
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(0.85rem, 1vw, 1.05rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 55vw;
 }
 
-.project-detail__index-sep {
-  margin: 0 4px;
+.project-detail__header-next-label {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.45);
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.project-detail__header-next-name {
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: 0.06em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-detail__header-next-arrow {
+  font-size: 1.3em;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  margin-left: 2px;
+}
+
+.project-detail__header-next-btn:hover .project-detail__header-next-arrow {
+  transform: translateX(5px);
+}
+
+.project-detail__header-next-btn:hover .project-detail__header-next-label {
+  color: #111111;
+}
+
+.project-detail__header-next-btn:hover {
+  opacity: 0.75;
 }
 
 /* --------------------------------------------------------------------------
