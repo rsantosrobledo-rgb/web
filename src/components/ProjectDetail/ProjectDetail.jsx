@@ -1,6 +1,26 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import './ProjectDetail.css'
 
+function formatYouTubeUrl(url) {
+  if (!url || typeof url !== 'string') return url
+  if (!url.includes('youtube.com') && !url.includes('youtu.be')) return url
+  try {
+    const parsed = new URL(url)
+    parsed.searchParams.set('autoplay', '1')
+    parsed.searchParams.set('playsinline', '1')
+    return parsed.toString()
+  } catch {
+    const sep = url.includes('?') ? '&' : '?'
+    return `${url}${sep}autoplay=1&playsinline=1`
+  }
+}
+
+function getYouTubeThumbnail(url) {
+  if (!url || typeof url !== 'string') return ''
+  const match = url.match(/(?:embed\/|v\/|vi\/|youtu\.be\/|watch\?v=)([\w-]{11})/)
+  return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : ''
+}
+
 export default function ProjectDetail({
   project,
   projects,
@@ -121,7 +141,6 @@ export default function ProjectDetail({
 
   const hasVideo = Boolean(project.videoEmbed)
 
-  // If a project has no video, default to the first piece in the order (or sticker as fallback)
   const defaultMediaSrc = hasVideo ? project.videoEmbed : (firstSecondaryPiece ? firstSecondaryPiece.src : project.sticker)
   const defaultMediaType = hasVideo ? 'video' : (firstSecondaryPiece ? firstSecondaryPiece.type : 'image')
 
@@ -178,7 +197,8 @@ export default function ProjectDetail({
               <div className="project-detail__video-wrapper">
                 {isYouTube ? (
                   <iframe
-                    src={activeMainSrc}
+                    key={activeMainSrc}
+                    src={formatYouTubeUrl(activeMainSrc)}
                     title={project.name}
                     className="project-detail__video-iframe"
                     frameBorder="0"
@@ -188,6 +208,7 @@ export default function ProjectDetail({
                   />
                 ) : (
                   <video
+                    key={activeMainSrc}
                     src={activeMainSrc}
                     title={project.name}
                     className="project-detail__video-element"
@@ -200,6 +221,7 @@ export default function ProjectDetail({
             ) : (
               <div className="project-detail__image-wrapper">
                 <img
+                  key={activeMainSrc}
                   src={activeMainSrc}
                   alt={project.name}
                   className="project-detail__primary-image"
@@ -214,6 +236,7 @@ export default function ProjectDetail({
               <div className="project-detail__grid-items">
                 {secondaryPieces.map((piece, idx) => {
                   const isSelected = activePieceId === piece.id
+                  const isPieceYouTube = typeof piece.src === 'string' && (piece.src.includes('youtube.com') || piece.src.includes('youtu.be'))
                   return (
                     <button
                       key={`${project.id}-piece-${idx}`}
@@ -226,13 +249,22 @@ export default function ProjectDetail({
                     >
                       <div className="project-detail__grid-img-box">
                         {piece.type === 'video' ? (
-                          <video
-                            src={piece.src}
-                            className="project-detail__grid-video"
-                            muted
-                            playsInline
-                            preload="metadata"
-                          />
+                          isPieceYouTube ? (
+                            <img
+                              src={getYouTubeThumbnail(piece.src)}
+                              alt=""
+                              className="project-detail__grid-img"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <video
+                              src={piece.src}
+                              className="project-detail__grid-video"
+                              muted
+                              playsInline
+                              preload="metadata"
+                            />
+                          )
                         ) : (
                           <img
                             src={piece.src}

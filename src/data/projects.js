@@ -60,7 +60,7 @@ const projects = [
       width: 'clamp(108px, 8.9vw, 180px)',
       overlap: '-12px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR',
+    videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
 
@@ -82,7 +82,7 @@ const projects = [
       width: 'clamp(115px, 9.8vw, 194px)',
       overlap: '-14px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/zswd19kHTdU?si=n3qoIPd1om-tR7J5',
+    videoEmbed: 'https://www.youtube.com/embed/zswd19kHTdU?si=n3qoIPd1om-tR7J5&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
   {
@@ -100,7 +100,7 @@ const projects = [
       width: 'clamp(122px, 10.1vw, 200px)',
       overlap: '-14px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l',
+    videoEmbed: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
 
@@ -122,7 +122,7 @@ const projects = [
       width: 'clamp(115px, 9.5vw, 187px)',
       overlap: '-14px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn',
+    videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
   {
@@ -140,7 +140,7 @@ const projects = [
       width: 'clamp(122px, 10.1vw, 202px)',
       overlap: '-14px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk',
+    videoEmbed: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
   {
@@ -158,7 +158,7 @@ const projects = [
       width: 'clamp(85px, 6.8vw, 136px)',
       overlap: '-12px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr',
+    videoEmbed: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
 
@@ -198,7 +198,7 @@ const projects = [
       width: 'clamp(98px, 7.9vw, 158px)',
       overlap: '-12px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F',
+    videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
   {
@@ -216,7 +216,7 @@ const projects = [
       width: 'clamp(103px, 8.4vw, 166px)',
       overlap: '-12px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/Y36_MxJxmQE?si=fh3gws95xcH5Hyeq',
+    videoEmbed: 'https://www.youtube.com/embed/Y36_MxJxmQE?si=fh3gws95xcH5Hyeq&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
 
@@ -245,6 +245,9 @@ const projects = [
       { id: 'mach-3', type: 'image', src: '/proyectos/Mach/abuela ad 2.png' },
       { id: 'mach-4', type: 'image', src: '/proyectos/Mach/ameba-Dutch_angle_close_up.jpg' },
       { id: 'mach-5', type: 'image', src: '/proyectos/Mach/ameba-eye_level_medium_shot.jpg' },
+      { id: 'mach-6', type: 'image', src: '/proyectos/Mach/1000029087.jpg' },
+      { id: 'mach-7', type: 'image', src: '/proyectos/Mach/Captura de pantalla 2026-09-16 a las 10.15.11.png' },
+      { id: 'mach-8', type: 'image', src: '/proyectos/Mach/Enhance_quality_eliminating_arti…_202605061106.jpeg' },
     ],
   },
   {
@@ -262,7 +265,7 @@ const projects = [
       width: 'clamp(103px, 8.4vw, 170px)',
       overlap: '-12px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU',
+    videoEmbed: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
   {
@@ -280,12 +283,13 @@ const projects = [
       width: 'clamp(98px, 7.9vw, 161px)',
       overlap: '-12px',
     },
-    videoEmbed: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p',
+    videoEmbed: '/proyectos/Hybrid intelligence/INTRO_Flagship2026.webm',
     secondaryMedia: [
       { id: 'hyb-1', type: 'image', src: '/proyectos/Hybrid intelligence/FS_2026_01.jpeg' },
       { id: 'hyb-2', type: 'image', src: '/proyectos/Hybrid intelligence/FS_2026_02.png' },
       { id: 'hyb-3', type: 'image', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
       { id: 'hyb-4', type: 'video', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
+      { id: 'hyb-5', type: 'video', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
     ],
   },
 ]

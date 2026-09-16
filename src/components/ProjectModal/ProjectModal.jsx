@@ -1,6 +1,20 @@
 import { useEffect, useRef } from 'react'
 import './ProjectModal.css'
 
+function formatYouTubeUrl(url) {
+  if (!url || typeof url !== 'string') return url
+  if (!url.includes('youtube.com') && !url.includes('youtu.be')) return url
+  try {
+    const parsed = new URL(url)
+    parsed.searchParams.set('autoplay', '1')
+    parsed.searchParams.set('playsinline', '1')
+    return parsed.toString()
+  } catch {
+    const sep = url.includes('?') ? '&' : '?'
+    return `${url}${sep}autoplay=1&playsinline=1`
+  }
+}
+
 export default function ProjectModal({ project, onClose }) {
   const overlayRef = useRef(null)
   const modalRef = useRef(null)
@@ -41,7 +55,7 @@ export default function ProjectModal({ project, onClose }) {
           {project.videoEmbed ? (
             <div className="modal__video-wrapper">
               <iframe
-                src={project.videoEmbed}
+                src={formatYouTubeUrl(project.videoEmbed)}
                 title={project.name}
                 className="modal__video-iframe"
                 frameBorder="0"
