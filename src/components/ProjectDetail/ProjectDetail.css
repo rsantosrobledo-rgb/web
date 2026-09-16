@@ -511,6 +511,19 @@
   text-transform: uppercase;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.2vw, 18px);
+}
+
+.project-detail__title-year {
+  font-family: 'Futura', 'Futura-Medium', 'Jost', sans-serif;
+  font-size: 0.5em;
+  font-weight: 400;
+  color: #888888;
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
 
 /* 3-Column Storytelling Grid (Editorial Minimalist Style matching mockup) */
@@ -690,6 +703,7 @@
 
   .project-detail__title {
     font-size: clamp(1.4rem, 6.2vw, 2.1rem);
+    gap: 8px;
   }
 
   /* Layout editorial para las fases en móvil */
