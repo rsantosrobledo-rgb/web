@@ -37,8 +37,12 @@ const projects = [
       impact: 'Redefined brand perception across creative leaders, establishing a high-energy benchmark summit.',
     },
     processComparison: {
-      before: '/proyectos/decoding media/Untitled.png',
-      beforeLabel: 'Subcultural Layout Study',
+      beforeLabel: 'Subcultural Inspiration & Studies',
+      moodboard: [
+        '/proyectos/decoding media/Untitled.png',
+        '/proyectos/decoding media/logo evento.png',
+        '/proyectos/decoding media/JL.png',
+      ],
       after: '/proyectos/decoding media/cartel.png',
       afterLabel: 'Final Summit Key Visual',
     },
@@ -243,6 +247,17 @@ const projects = [
       concept: 'A contemplative CGI odyssey pairing infinite cosmic deserts with towering monoliths and solitary human scale.',
       impact: 'Selected for independent digital film retrospectives and recognized for exquisite atmospheric direction.',
     },
+    processComparison: {
+      beforeLabel: 'Cinematographic Inspiration & Moodboard',
+      moodboard: [
+        '/proyectos/desert/Inspiration and moodboard/678d1cdf88e31a63e48b17118fab32ea.jpg',
+        '/proyectos/desert/Inspiration and moodboard/44cd992faca7dfaae0ed15c6bfccfd80.jpg',
+        '/proyectos/desert/Inspiration and moodboard/neon_circle_dune.png',
+      ],
+      after: '/proyectos/desert/desert_final.webm',
+      afterLabel: 'Final CGI Cinematic World',
+      afterType: 'video',
+    },
     sticker: stickerDesert,
     stickerConfig: {
       rotate: -5,
@@ -317,10 +332,16 @@ const projects = [
       impact: 'Graduated with Highest Academic Honors (TFG) and serves as a premier case study in speculative consumer branding.',
     },
     processComparison: {
-      before: '/proyectos/Mach/abuela ad 2.png',
-      beforeLabel: 'Character & Narrative Concept',
+      beforeLabel: 'Pop Culture Inspiration & Moodboard',
+      moodboard: [
+        '/proyectos/Mach/Moodboard/98e9d41f65d2901bb78d311fe01aa962.jpg',
+        '/proyectos/Mach/Moodboard/8ea78aeb28f4d8d038b1c10650511928.jpg',
+        '/proyectos/Mach/Moodboard/f9d5de69ce98aa808df05127af0f90c8.jpg',
+        '/proyectos/Mach/Moodboard/6df288397f8c77ddc22445efc00cfbab.jpg',
+        '/proyectos/Mach/Moodboard/descarga (7).png',
+      ],
       after: '/proyectos/Mach/ad prod.png',
-      afterLabel: 'Final Commercial Key Visual',
+      afterLabel: 'Final Commercial Campaign',
     },
     sticker: stickerMach,
     stickerConfig: {
@@ -378,8 +399,13 @@ const projects = [
       impact: 'Flagship audiovisual world premiere, praised as a masterclass in conceptual technology storytelling.',
     },
     processComparison: {
-      before: '/proyectos/Hybrid intelligence/FS_2026_01.jpeg',
-      beforeLabel: '3D Procedural Exploration',
+      beforeLabel: 'Creative Direction Moodboard & 3D R&D',
+      moodboard: [
+        '/proyectos/Hybrid intelligence/Inspiration and moodboard/90a9de1aebc125f5907f6615fdff6504.jpg',
+        '/proyectos/Hybrid intelligence/Inspiration and moodboard/1eb1b3dc1a910df5efdac7bb8d86cce6.jpg',
+        '/proyectos/Hybrid intelligence/Inspiration and moodboard/3c2d4f929430b36d4c2a45af1a0450ca.jpg',
+        '/proyectos/Hybrid intelligence/FS_2026_01.jpeg',
+      ],
       after: '/proyectos/Hybrid intelligence/FS_2026_02.png',
       afterLabel: 'Final Key Visual Render',
     },

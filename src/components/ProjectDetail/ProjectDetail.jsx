@@ -28,15 +28,26 @@ export default function ProjectDetail({
   onNavigateProject,
 }) {
   const [selectedMedia, setSelectedMedia] = useState(null)
+  const [activeMoodboardIdx, setActiveMoodboardIdx] = useState(null)
   const detailRef = useRef(null)
 
-  // Reset custom selected media when project changes
+  // Reset custom selected media and moodboard state when project changes
   useEffect(() => {
     setSelectedMedia(null)
+    setActiveMoodboardIdx(null)
     if (detailRef.current) {
       detailRef.current.scrollTop = 0
     }
   }, [project.id])
+
+  const cycleMoodboardTop = useCallback(() => {
+    const mb = project?.processComparison?.moodboard
+    if (!Array.isArray(mb) || mb.length <= 1) return
+    setActiveMoodboardIdx((prev) => {
+      if (prev === null) return 0
+      return (prev + 1) % mb.length
+    })
+  }, [project])
 
   if (!project) return null
 
@@ -376,32 +387,89 @@ export default function ProjectDetail({
               <h2 className="project-detail__process-title">Concept Exploration to Final Execution</h2>
             </div>
             <div className="project-detail__process-grid">
+              {/* Left Card: Moodboard & Inspiration (Amontonadas) */}
               <div className="project-detail__process-card project-detail__process-card--before">
                 <div className="project-detail__process-badge">
                   <span className="project-detail__process-dot" />
-                  {project.processComparison.beforeLabel || 'Concept / R&D Study'}
+                  {project.processComparison.beforeLabel || 'Inspiration & Concept Moodboard'}
                 </div>
-                <div className="project-detail__process-img-wrap">
-                  <img
-                    src={project.processComparison.before}
-                    alt={project.processComparison.beforeLabel}
-                    className="project-detail__process-img"
-                    loading="lazy"
-                  />
-                </div>
+
+                {Array.isArray(project.processComparison.moodboard) && project.processComparison.moodboard.length > 0 ? (
+                  <div
+                    className="project-detail__moodboard-pile"
+                    onClick={cycleMoodboardTop}
+                    title="Click to shuffle references"
+                    role="region"
+                    aria-label="Stacked moodboard references"
+                  >
+                    {project.processComparison.moodboard.map((imgSrc, imgIdx) => {
+                      const total = project.processComparison.moodboard.length
+                      const isTop = activeMoodboardIdx !== null ? activeMoodboardIdx === imgIdx : imgIdx === total - 1
+                      return (
+                        <div
+                          key={`mb-${imgIdx}`}
+                          className={`project-detail__moodboard-item project-detail__moodboard-item--${imgIdx} ${
+                            isTop ? 'project-detail__moodboard-item--top' : ''
+                          }`}
+                          style={{
+                            '--item-index': imgIdx,
+                            '--total-items': total,
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setActiveMoodboardIdx(imgIdx)
+                          }}
+                        >
+                          <img
+                            src={imgSrc}
+                            alt={`Moodboard reference ${imgIdx + 1}`}
+                            className="project-detail__moodboard-img"
+                            loading="lazy"
+                          />
+                        </div>
+                      )
+                    })}
+                    <div className="project-detail__moodboard-hint">
+                      <span className="project-detail__moodboard-hint-icon">✦</span>
+                      <span>INSPIRATION MOODBOARD · {project.processComparison.moodboard.length} REFERENCES</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="project-detail__process-img-wrap">
+                    <img
+                      src={project.processComparison.before}
+                      alt={project.processComparison.beforeLabel}
+                      className="project-detail__process-img"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
+
+              {/* Right Card: Final Execution Render or Video */}
               <div className="project-detail__process-card project-detail__process-card--after">
                 <div className="project-detail__process-badge project-detail__process-badge--final">
                   <span className="project-detail__process-dot project-detail__process-dot--final" />
                   {project.processComparison.afterLabel || 'Final Key Visual / Execution'}
                 </div>
                 <div className="project-detail__process-img-wrap">
-                  <img
-                    src={project.processComparison.after}
-                    alt={project.processComparison.afterLabel}
-                    className="project-detail__process-img"
-                    loading="lazy"
-                  />
+                  {project.processComparison.afterType === 'video' ? (
+                    <video
+                      src={project.processComparison.after}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="project-detail__process-img"
+                    />
+                  ) : (
+                    <img
+                      src={project.processComparison.after}
+                      alt={project.processComparison.afterLabel}
+                      className="project-detail__process-img"
+                      loading="lazy"
+                    />
+                  )}
                 </div>
               </div>
             </div>

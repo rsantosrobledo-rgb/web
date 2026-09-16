@@ -707,6 +707,179 @@
 }
 
 /* --------------------------------------------------------------------------
+   Moodboard Pile: Visually stacked / amontonadas photos with tactile aesthetic
+   -------------------------------------------------------------------------- */
+.project-detail__moodboard-pile {
+  width: 100%;
+  height: clamp(280px, 34vw, 440px);
+  position: relative;
+  background: #0e0e10;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.project-detail__moodboard-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(135px, 17vw, 215px);
+  max-height: clamp(170px, 22vw, 270px);
+  padding: 5px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    z-index 0.2s ease,
+    filter 0.3s ease;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Organic Amontonamiento (scattered angles and offsets) */
+.project-detail__moodboard-item--0 {
+  transform: translate(calc(-50% - 46px), calc(-50% - 24px)) rotate(-8deg);
+  z-index: 2;
+}
+
+.project-detail__moodboard-item--1 {
+  transform: translate(calc(-50% + 48px), calc(-50% - 32px)) rotate(7deg);
+  z-index: 3;
+}
+
+.project-detail__moodboard-item--2 {
+  transform: translate(calc(-50% - 26px), calc(-50% + 30px)) rotate(-4deg);
+  z-index: 4;
+}
+
+.project-detail__moodboard-item--3 {
+  transform: translate(calc(-50% + 38px), calc(-50% + 22px)) rotate(9deg);
+  z-index: 5;
+}
+
+.project-detail__moodboard-item--4 {
+  transform: translate(calc(-50% + 0px), calc(-50% + 0px)) rotate(-2deg);
+  z-index: 6;
+}
+
+/* Fan-out on container hover: expanded spread to preview all inspirations */
+.project-detail__moodboard-pile:hover .project-detail__moodboard-item--0 {
+  transform: translate(calc(-50% - 88px), calc(-50% - 42px)) rotate(-13deg) scale(1.02);
+}
+
+.project-detail__moodboard-pile:hover .project-detail__moodboard-item--1 {
+  transform: translate(calc(-50% + 90px), calc(-50% - 46px)) rotate(11deg) scale(1.02);
+}
+
+.project-detail__moodboard-pile:hover .project-detail__moodboard-item--2 {
+  transform: translate(calc(-50% - 66px), calc(-50% + 50px)) rotate(-6deg) scale(1.02);
+}
+
+.project-detail__moodboard-pile:hover .project-detail__moodboard-item--3 {
+  transform: translate(calc(-50% + 72px), calc(-50% + 42px)) rotate(13deg) scale(1.02);
+}
+
+.project-detail__moodboard-pile:hover .project-detail__moodboard-item--4 {
+  transform: translate(-50%, -50%) rotate(0deg) scale(1.05);
+  z-index: 12;
+}
+
+/* Individual card hover: pop up to foreground */
+.project-detail__moodboard-item:hover {
+  z-index: 40 !important;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1.15) !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7), 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Active top card */
+.project-detail__moodboard-item--top {
+  z-index: 25 !important;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1.08);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
+}
+
+.project-detail__moodboard-img {
+  width: 100%;
+  height: auto;
+  max-height: clamp(160px, 20vw, 250px);
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+}
+
+.project-detail__moodboard-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(14, 14, 16, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 35;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s ease;
+}
+
+.project-detail__moodboard-hint-icon {
+  font-size: 0.75rem;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .project-detail__moodboard-pile {
+    height: clamp(240px, 62vw, 340px);
+  }
+
+  .project-detail__moodboard-item {
+    width: clamp(120px, 32vw, 165px);
+    max-height: clamp(140px, 38vw, 200px);
+  }
+
+  .project-detail__moodboard-item--0 {
+    transform: translate(calc(-50% - 32px), calc(-50% - 18px)) rotate(-7deg);
+  }
+
+  .project-detail__moodboard-item--1 {
+    transform: translate(calc(-50% + 34px), calc(-50% - 22px)) rotate(6deg);
+  }
+
+  .project-detail__moodboard-item--2 {
+    transform: translate(calc(-50% - 18px), calc(-50% + 22px)) rotate(-4deg);
+  }
+
+  .project-detail__moodboard-item--3 {
+    transform: translate(calc(-50% + 24px), calc(-50% + 18px)) rotate(8deg);
+  }
+
+  .project-detail__moodboard-item--4 {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
    Bottom Navigation: Next / Prev Project Arrows
    -------------------------------------------------------------------------- */
 .project-detail__footer-nav {
