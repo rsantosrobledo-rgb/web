@@ -200,10 +200,10 @@ export default function ProjectDetail({
           </div>
 
           <h1 className="project-detail__title">
+            <span className="project-detail__title-text">{project.name}</span>
             {project.year && (
               <span className="project-detail__title-year">{project.year}</span>
             )}
-            <span className="project-detail__title-text">{project.name}</span>
           </h1>
 
           {/* 3-Part Storytelling Grid: The Dream / On Ground / The Harvest */}
