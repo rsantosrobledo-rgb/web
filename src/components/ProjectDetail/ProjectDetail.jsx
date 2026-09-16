@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useRef, useCallback, useMemo, Fragment } from 'react'
 import './ProjectDetail.css'
 
 function formatYouTubeUrl(url) {
@@ -192,12 +192,12 @@ export default function ProjectDetail({
         <section className="project-detail__intro-section" aria-label="Project overview">
           <div className="project-detail__meta-bar">
             {categoryParts.map((part, index) => (
-              <React.Fragment key={index}>
+              <Fragment key={index}>
                 {index > 0 && (
                   <span className="project-detail__meta-divider" aria-hidden="true" />
                 )}
                 <span className="project-detail__category-tag">{part}</span>
-              </React.Fragment>
+              </Fragment>
             ))}
             {hasVideo && (
               <>
