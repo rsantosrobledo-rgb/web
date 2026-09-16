@@ -187,24 +187,30 @@ export default function ProjectDetail({
           <div className="project-detail__meta-bar">
             <span className="project-detail__category-tag">{project.category}</span>
             {hasVideo && (
-              <span className="project-detail__script-tag">
-                <svg
-                  className="project-detail__script-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 20h9"/>
-                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                </svg>
-                SCRIPT CREATION
-              </span>
+              <>
+                <span className="project-detail__meta-divider" aria-hidden="true" />
+                <span className="project-detail__script-tag">
+                  <svg
+                    className="project-detail__script-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 20h9"/>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                  </svg>
+                  SCRIPT CREATION
+                </span>
+              </>
             )}
             {project.year && (
-              <span className="project-detail__year-tag">{project.year}</span>
+              <>
+                <span className="project-detail__meta-divider" aria-hidden="true" />
+                <span className="project-detail__year-tag">{project.year}</span>
+              </>
             )}
           </div>
 

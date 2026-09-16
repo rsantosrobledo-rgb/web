@@ -452,31 +452,23 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: clamp(0.76rem, 0.88vw, 0.94rem);
+  text-transform: uppercase;
+  color: #111111;
+  line-height: 1.2;
 }
 
 .project-detail__category-tag {
-  font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: #111111;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 5px 14px;
-  border-radius: 999px;
 }
 
 .project-detail__script-tag {
-  font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: #111111;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  padding: 4px 14px;
-  border-radius: 999px;
   display: inline-flex;
   align-items: center;
 }
@@ -488,17 +480,23 @@
   flex-shrink: 0;
   display: inline-block;
   vertical-align: middle;
+  opacity: 0.8;
 }
 
 .project-detail__year-tag {
-  font-family: 'Futura', 'Jost', sans-serif;
-  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.06em;
-  color: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 4px 12px;
-  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.project-detail__meta-divider {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.35);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .project-detail__title {
@@ -659,35 +657,36 @@
     margin: 0 auto 16px auto;
   }
 
-  /* Píldoras reducidas a la mitad de tamaño en móvil */
+  /* Meta bar: Texto plano con rombos divisores y año con peso diferente */
   .project-detail__meta-bar {
-    gap: 5px;
-  }
-
-  .project-detail__category-tag,
-  .project-detail__script-tag,
-  .project-detail__year-tag {
-    font-size: 0.52rem;
-    line-height: 1.1;
-    letter-spacing: 0.04em;
+    gap: 8px;
+    font-size: 0.60rem;
+    letter-spacing: 0.06em;
   }
 
   .project-detail__category-tag {
-    padding: 2.5px 7px;
+    font-weight: 700;
   }
 
   .project-detail__script-tag {
-    padding: 2px 7px;
+    font-weight: 700;
   }
 
   .project-detail__script-icon {
     width: 8px;
     height: 8px;
-    margin-right: 3px;
+    margin-right: 4px;
   }
 
   .project-detail__year-tag {
-    padding: 2px 6px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .project-detail__meta-divider {
+    width: 4px;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .project-detail__title {
