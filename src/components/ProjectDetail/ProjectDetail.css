@@ -443,7 +443,9 @@
   gap: clamp(14px, 1.8vw, 22px);
   width: 100%;
   max-width: 1480px;
-  margin: 0 auto clamp(24px, 3.2vw, 42px) auto;
+  margin: 0 auto;
+  padding-bottom: clamp(24px, 3.2vw, 40px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
 
@@ -650,6 +652,8 @@
   .project-detail__intro-section {
     gap: 8px;
     margin: 0 auto 16px auto;
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
   /* Meta bar: Texto plano con rombos divisores y año con peso diferente */
