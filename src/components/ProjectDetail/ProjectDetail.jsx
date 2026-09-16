@@ -134,6 +134,7 @@ export default function ProjectDetail({
   const visibleGridPieces = hasMoreThanMax
     ? secondaryPieces.slice(0, MAX_GRID_SLOTS)
     : secondaryPieces
+  const remainingCount = Math.max(0, secondaryPieces.length - (MAX_GRID_SLOTS - 1))
   const hasVideo = Boolean(
     project.videoEmbed ||
     (Array.isArray(project.secondaryMedia) && project.secondaryMedia.some((m) => m.type === 'video'))
@@ -189,7 +190,7 @@ export default function ProjectDetail({
                   <path d="M12 20h9"/>
                   <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
                 </svg>
-                ORIGINAL SCRIPT & SCREENPLAY AUTHORSHIP
+                SCRIPT CREATION
               </span>
             )}
             {project.year && (

@@ -18,7 +18,7 @@ import stickerThatsNoise from '../assets/stickers/thats noise.png'
  * Organizados por FILAS (Row 1 a Row 5).
  * 
  * Rodrigo es el máximo responsable creativo y artífice de la dirección
- * técnica (CGI, 3D, IA) y autoría del script / guion original en todos los proyectos de vídeo.
+ * técnica (CGI, 3D, IA) y guion / script creation en todos los proyectos de vídeo.
  * 
  * En Inspiración y Moodboard SÓLO se muestran las imágenes exactas
  * depositadas dentro de las carpetas de moodboard creadas por el usuario.
@@ -34,11 +34,21 @@ const projects = [
     name: 'Decoding Culture',
     category: 'Script & Creative Direction · Campaign & Event',
     year: '2026',
-    description: 'Guion original, autoría de script y dirección creativa por Rodrigo Santos Robledo. Deconstrucción y reinterpretación de códigos visuales urbanos para articular una narrativa de marca disruptiva y vanguardista.',
+    description: 'Creación de guion y dirección creativa integral por Rodrigo Santos Robledo. Deconstrucción y reinterpretación de códigos visuales urbanos para articular una narrativa de marca disruptiva y vanguardista.',
     story: {
       dream: 'Bridge the divide between a corporate tech brand and genuine contemporary underground culture without feeling contrived.',
       onGround: 'Original scriptwriting combined with street typography, kinetic glitch dynamics, and high-contrast editorial layouts into a coherent design system.',
       harvest: 'Redefined brand perception across creative leaders, establishing a high-energy benchmark summit.',
+    },
+    processComparison: {
+      beforeLabel: 'Cultural Movement & Street Moodboard',
+      moodboard: [
+        '/proyectos/decoding media/Moodboard/3433584c5f02a685e612a63d9ad3ad9b.jpg',
+        '/proyectos/decoding media/Moodboard/1518ecf132a48225b8cc50ee61c90a91.jpg',
+        '/proyectos/decoding media/Moodboard/descarga (6).png',
+      ],
+      after: '/proyectos/decoding media/cartel.png',
+      afterLabel: 'Final Event Key Visual & Poster',
     },
     sticker: stickerDecoding,
     stickerConfig: {
@@ -62,7 +72,7 @@ const projects = [
     name: '5W of Marketing',
     category: 'Script & Creative Direction · Flagship Event',
     year: '2025',
-    description: 'Guion original, autoría completa del script y dirección creativa para el evento insignia de Making Science. Coordinación de narrativa, ritmo audiovisual y recursos de alto impacto escénico.',
+    description: 'Creación de guion y dirección creativa para el evento insignia de Making Science. Coordinación de narrativa, ritmo audiovisual y recursos de alto impacto escénico.',
     story: {
       dream: 'Transform dense marketing metrics and data architecture into an exhilarating, cinematic stage experience for global C-level executives.',
       onGround: 'Authored the central script based on journalism’s fundamental 5 Ws, directing stage screens, kinetic typography, and synchronized motion pacing.',
@@ -89,7 +99,7 @@ const projects = [
     name: 'Christmas Chronicles',
     category: 'Script & Creative Direction · Holiday Film',
     year: '2026',
-    description: 'Guion original, autoría íntegra del script y dirección creativa para la campaña navideña de Making Science. Conceptualización narrativa, tono cinematográfico y puesta en escena con humor, calidez e innovación.',
+    description: 'Creación de guion y dirección creativa para la campaña navideña de Making Science. Conceptualización narrativa, tono cinematográfico y puesta en escena con humor, calidez e innovación.',
     story: {
       dream: 'Cut through an oversaturated holiday advertising landscape where sentimentality is often dismissed as cliché.',
       onGround: 'Authored an original, witty screenplay and directed the cinematic staging, marrying genuine human warmth with technological optimism.',
@@ -112,7 +122,7 @@ const projects = [
     name: "That's Noise",
     category: 'Script & Creative Direction · Cannes 2026',
     year: '2026',
-    description: "Guion original, autoría del manifiesto/script y dirección creativa para el debut de Making Science en Cannes 2026. Creación del concepto 'That's Noise', dirección visual y piezas multimedia de alto impacto.",
+    description: "Creación del guion manifiesto y dirección creativa para el debut de Making Science en Cannes 2026. Creación del concepto 'That's Noise', dirección visual y piezas multimedia de alto impacto.",
     story: {
       dream: 'Make a bold, indelible debut at the world’s most demanding creative summit: Cannes Lions 2026.',
       onGround: 'Wrote the provocative "That’s Noise" script manifesto calling out superficial industry buzzwords, paired with radical typographic direction.',
@@ -135,7 +145,7 @@ const projects = [
     name: 'Mazda Exclusive Days',
     category: 'Script & Creative Direction · Case Study Film',
     year: '2026',
-    description: 'Guion original, autoría del script narrativo y dirección creativa de la película de caso de éxito para Mazda España, documentando la eficacia comercial de las jornadas de puertas abiertas.',
+    description: 'Creación de guion narrativo y dirección creativa de la película de caso de éxito para Mazda España, documentando la eficacia comercial de las jornadas de puertas abiertas.',
     story: {
       dream: 'Drive physical footfall to dealership showrooms among modern motorists numb to conventional auto advertising.',
       onGround: 'Wrote the documentary script structure and directed a dynamic case film blending visceral driving shots, customer testimony, and kinetic editing.',
@@ -162,7 +172,7 @@ const projects = [
     name: 'Helios AI Factory',
     category: 'Script & Creative Direction · Visual Strategy & 3D',
     year: '2026',
-    description: 'Guion original, autoría del script explicativo y dirección creativa para Helios Partner. Traducción de complejas capacidades algorítmicas en una narrativa visual aspiracional y memorable.',
+    description: 'Creación de guion explicativo y dirección creativa para Helios Partner. Traducción de complejas capacidades algorítmicas en una narrativa visual aspiracional y memorable.',
     story: {
       dream: 'Demystify complex proprietary AI algorithmic pipelines for enterprise partners who demand clear business value.',
       onGround: 'Structured the narrative script around an "AI Factory" architectural metaphor, staging data synthesis as pure light sculpture and kinetic 3D motion.',
@@ -185,7 +195,7 @@ const projects = [
     name: 'Ameba Studios',
     category: 'Script & Creative Direction · Studio Relaunch & CGI',
     year: '2026',
-    description: 'Guion original, autoría de script de presentación y dirección creativa integral para el relanzamiento de Ameba Studios. Definición de la visión conceptual, universo de diseño, tono de voz y dirección de arte.',
+    description: 'Creación de guion de presentación y dirección creativa integral para el relanzamiento de Ameba Studios. Definición de la visión conceptual, universo de diseño, tono de voz y dirección de arte.',
     story: {
       dream: 'Evolve a boutique production collective into a high-tier digital studio capable of winning global CGI and digital contracts.',
       onGround: 'Authored the brand relaunch manifesto and engineered an organic visual identity system inspired by cellular metamorphosis and procedural 3D growth.',
@@ -208,7 +218,7 @@ const projects = [
     name: 'Robot Christmas',
     category: 'Script & Creative Direction · Full 3D & Animation',
     year: '2024',
-    description: 'Película navideña creada íntegramente en Full 3D. Guion original, autoría del script y dirección técnica y artística por Rodrigo Santos Robledo: diseño de personaje, modelado, texturas físicas, iluminación y animación sin IA.',
+    description: 'Película navideña creada íntegramente en Full 3D. Creación de guion y dirección técnica y artística por Rodrigo Santos Robledo: diseño de personaje, modelado, texturas físicas, iluminación y animación sin IA.',
     story: {
       dream: 'Breathe authentic emotional life into an autonomous mechanical character during a season strictly defined by human nostalgia.',
       onGround: 'Authored the heartfelt narrative script and built the entire world in Full 3D — sculpting the robot protagonist, procedural lighting rigs, and expressive character animation without AI.',
@@ -233,13 +243,13 @@ const projects = [
     row: 4,
     order: 1,
     name: 'The Desert',
-    category: 'Script & Creative Direction · Full CGI Film',
+    category: 'Script & Creative Direction · 2D Art & Compositing Film',
     year: '2025',
-    description: 'Universo cinematográfico contemplativo creado en puro CGI. Cero IA — Guion original, autoría de script y dirección técnica por Rodrigo Santos Robledo: simulación de dunas, volumetría atmosférica y estructuras de neón.',
+    description: 'Universo cinematográfico contemplativo creado mediante arte digital 2D y composición avanzada. Cero simulación 3D — Creación de guion y dirección técnica y visual por Rodrigo Santos Robledo: composición por capas, gradación de atmósfera y diseño de movimiento.',
     story: {
       dream: 'Evoke human introspection and cosmic solitude across an immense, alien desert landscape.',
-      onGround: 'Wrote the contemplative poetic script and engineered the entire universe through pure CGI and 3D simulation with zero AI — procedural sand displacement and volumetric dust scattering.',
-      harvest: 'Celebrated for its atmospheric worldbuilding, demonstrating master-level CGI technical execution and art direction.',
+      onGround: 'Wrote the contemplative poetic script and engineered the entire visual piece exclusively through 2D digital art, multi-layered visual compositing, and atmospheric lighting — zero 3D simulation.',
+      harvest: 'Celebrated for its atmospheric worldbuilding and poetic pacing, demonstrating master-level 2D compositing and art direction.',
     },
     processComparison: {
       beforeLabel: 'Atmospheric Inspiration & Moodboard',
@@ -251,7 +261,7 @@ const projects = [
         '/proyectos/desert/Inspiration and moodboard/ee194b8145d36c995cb27a83a9de4e1d.jpg',
       ],
       after: '/proyectos/desert/desert_final.webm',
-      afterLabel: 'Final Pure CGI World',
+      afterLabel: 'Final 2D & Composited Film',
       afterType: 'video',
     },
     sticker: stickerDesert,
@@ -271,7 +281,7 @@ const projects = [
     name: '8M Equal Voice',
     category: 'Script & Creative Direction · Social Impact Film',
     year: '2025',
-    description: 'Guion original, autoría del script narrativo y dirección creativa para la campaña del 8M de Making Science. Una narrativa contemporánea construida con sensibilidad, empoderamiento y fuerza gráfica.',
+    description: 'Creación de guion narrativo y dirección creativa para la campaña del 8M de Making Science. Una narrativa contemporánea construida con sensibilidad, empoderamiento y fuerza gráfica.',
     story: {
       dream: 'Craft an authentic International Women’s Day campaign that shuns corporate tokenism in favor of genuine cultural resonance.',
       onGround: 'Authored the voiceover script and directed high-contrast portraiture amplified by raw testimonies celebrating pioneering women in tech.',
@@ -294,7 +304,7 @@ const projects = [
     name: 'Geo Sphere',
     category: 'Script & Creative Direction · Motion & CGI',
     year: '2026',
-    description: 'Guion técnico, autoría conceptual y dirección creativa por Rodrigo Santos Robledo: exploración de geometría esférica, shaders de cáusticas procedurales, refracción de luz y simulación cinética.',
+    description: 'Guion técnico y dirección creativa por Rodrigo Santos Robledo: exploración de geometría esférica, shaders de cáusticas procedurales, refracción de luz y simulación cinética.',
     story: {
       dream: 'Push the limits of real-time procedural caustics, refractive glass, and kinetic geometric motion in 3D space.',
       onGround: 'Scripted the procedural physics progression and developed custom shaders for light dispersion, real-time reflection, and sphere collision physics.',
@@ -365,7 +375,7 @@ const projects = [
     name: 'Awake Venture Studio',
     category: 'Script & Creative Direction · Venture Film',
     year: '2026',
-    description: 'Guion original, autoría de script y desarrollo audiovisual para Awake Venture Studio por Rodrigo Santos Robledo. Creación de una estética cinematográfica distintiva para proyectar el talento y visión de los fundadores.',
+    description: 'Creación de guion y desarrollo audiovisual para Awake Venture Studio por Rodrigo Santos Robledo. Creación de una estética cinematográfica distintiva para proyectar el talento y visión de los fundadores.',
     story: {
       dream: 'Convey the high velocity, intellectual rigor, and visionary risk of venture studio founders to institutional investors.',
       onGround: 'Wrote the documentary script and directed high-contrast cinematography capturing gritty founder moments against bold architectural framing.',
@@ -388,7 +398,7 @@ const projects = [
     name: 'Hybrid Intelligence',
     category: 'Script & Creative Direction · AI & CGI Film',
     year: '2026',
-    description: 'Película insignia de Making Science. Guion original, autoría íntegra del script y dirección creativa por Rodrigo Santos Robledo: fusión de modelos generativos de IA con simulación procedural CGI en 3D.',
+    description: 'Película insignia de Making Science. Creación de guion original y dirección creativa por Rodrigo Santos Robledo: fusión de modelos generativos de IA con simulación procedural CGI en 3D.',
     story: {
       dream: 'Visualize the tipping point where human artistic intuition and synthetic intelligence coalesce into a singular creative force.',
       onGround: 'Authored the narrative screenplay and pioneered a hybrid pipeline uniting generative AI models with high-precision procedural CGI 3D simulation.',
