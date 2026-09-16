@@ -36,9 +36,9 @@ const projects = [
     year: '2026',
     description: 'Creación de guion y dirección creativa integral por Rodrigo Santos Robledo. Deconstrucción y reinterpretación de códigos visuales urbanos para articular una narrativa de marca disruptiva y vanguardista.',
     story: {
-      dream: 'Bridge the divide between a corporate tech brand and genuine contemporary underground culture without feeling contrived.',
-      onGround: 'Original scriptwriting combined with street typography, kinetic glitch dynamics, and high-contrast editorial layouts into a coherent design system.',
-      harvest: 'Redefined brand perception across creative leaders, establishing a high-energy benchmark summit.',
+      dream: 'Bridge the gap between a tech brand and contemporary urban culture through an authentic visual narrative.',
+      onGround: 'Original scriptwriting combined with street typography, kinetic dynamics, and editorial layouts into a unified event design.',
+      harvest: 'A distinct visual identity and event system aligning contemporary street codes with brand communication.',
     },
     processComparison: {
       beforeLabel: 'Cultural Movement & Street Moodboard',
@@ -74,9 +74,9 @@ const projects = [
     year: '2025',
     description: 'Creación de guion y dirección creativa para el evento insignia de Making Science. Coordinación de narrativa, ritmo audiovisual y recursos de alto impacto escénico.',
     story: {
-      dream: 'Transform dense marketing metrics and data architecture into an exhilarating, cinematic stage experience for global C-level executives.',
-      onGround: 'Authored the central script based on journalism’s fundamental 5 Ws, directing stage screens, kinetic typography, and synchronized motion pacing.',
-      harvest: 'Sold-out international live stream with widespread media coverage and heightened key client retention.',
+      dream: 'Translate core marketing concepts into a dynamic, cinematic stage experience for event attendees.',
+      onGround: 'Authored the central script based on journalism’s 5 Ws, directing stage screens, kinetic typography, and motion pacing.',
+      harvest: 'A cohesive stage and motion package that gave clear visual rhythm to the presentation and event screens.',
     },
     sticker: sticker5w,
     stickerConfig: {
@@ -101,9 +101,9 @@ const projects = [
     year: '2026',
     description: 'Creación de guion y dirección creativa para la campaña navideña de Making Science. Conceptualización narrativa, tono cinematográfico y puesta en escena con humor, calidez e innovación.',
     story: {
-      dream: 'Cut through an oversaturated holiday advertising landscape where sentimentality is often dismissed as cliché.',
-      onGround: 'Authored an original, witty screenplay and directed the cinematic staging, marrying genuine human warmth with technological optimism.',
-      harvest: 'Achieved company-record organic engagement and industry acclaim for emotional brand storytelling.',
+      dream: 'Create a holiday story that connects through humor and warmth rather than conventional advertising tropes.',
+      onGround: 'Authored the narrative script and directed the staging, balancing human warmth with lighthearted comedic moments.',
+      harvest: 'A character-driven holiday piece shared across company digital channels.',
     },
     sticker: stickerChristmas,
     stickerConfig: {
@@ -124,9 +124,9 @@ const projects = [
     year: '2026',
     description: "Creación del guion manifiesto y dirección creativa para el debut de Making Science en Cannes 2026. Creación del concepto 'That's Noise', dirección visual y piezas multimedia de alto impacto.",
     story: {
-      dream: 'Make a bold, indelible debut at the world’s most demanding creative summit: Cannes Lions 2026.',
-      onGround: 'Wrote the provocative "That’s Noise" script manifesto calling out superficial industry buzzwords, paired with radical typographic direction.',
-      harvest: 'Established instant global brand credibility, keynote attention, and multiple cross-border agency opportunities.',
+      dream: 'Present a bold, focused creative statement for Making Science’s presence at Cannes.',
+      onGround: 'Wrote the "That’s Noise" manifesto script focusing on substance over buzzwords, paired with bold typographic direction.',
+      harvest: 'A punchy manifesto film and visual package created for international event screens.',
     },
     sticker: stickerThatsNoise,
     stickerConfig: {
@@ -147,9 +147,9 @@ const projects = [
     year: '2026',
     description: 'Creación de guion narrativo y dirección creativa de la película de caso de éxito para Mazda España, documentando la eficacia comercial de las jornadas de puertas abiertas.',
     story: {
-      dream: 'Drive physical footfall to dealership showrooms among modern motorists numb to conventional auto advertising.',
-      onGround: 'Wrote the documentary script structure and directed a dynamic case film blending visceral driving shots, customer testimony, and kinetic editing.',
-      harvest: 'Generated historic dealership traffic spikes across Spain and benchmark view-through performance on digital platforms.',
+      dream: 'Document the open-doors commercial initiative with an engaging, documentary-style case film.',
+      onGround: 'Wrote the script structure and directed a case film blending driving footage, customer reactions, and dynamic editing.',
+      harvest: 'A finished case study video capturing the real-world initiative across participating dealerships.',
     },
     sticker: stickerMazda,
     stickerConfig: {
@@ -174,9 +174,9 @@ const projects = [
     year: '2026',
     description: 'Creación de guion explicativo y dirección creativa para Helios Partner. Traducción de complejas capacidades algorítmicas en una narrativa visual aspiracional y memorable.',
     story: {
-      dream: 'Demystify complex proprietary AI algorithmic pipelines for enterprise partners who demand clear business value.',
-      onGround: 'Structured the narrative script around an "AI Factory" architectural metaphor, staging data synthesis as pure light sculpture and kinetic 3D motion.',
-      harvest: 'Accelerated partner onboarding velocity and elevated enterprise pitch conversion rates.',
+      dream: 'Communicate proprietary technological solutions clearly to partners and prospective clients.',
+      onGround: 'Structured the narrative script around an "AI Factory" metaphor, directing motion graphics and visual explanations.',
+      harvest: 'A clear visual presentation translating complex technical concepts into accessible storytelling.',
     },
     sticker: stickerHelios,
     stickerConfig: {
@@ -197,9 +197,9 @@ const projects = [
     year: '2026',
     description: 'Creación de guion de presentación y dirección creativa integral para el relanzamiento de Ameba Studios. Definición de la visión conceptual, universo de diseño, tono de voz y dirección de arte.',
     story: {
-      dream: 'Evolve a boutique production collective into a high-tier digital studio capable of winning global CGI and digital contracts.',
-      onGround: 'Authored the brand relaunch manifesto and engineered an organic visual identity system inspired by cellular metamorphosis and procedural 3D growth.',
-      harvest: 'Successfully doubled international incoming briefs and earned widespread acclaim across digital design communities.',
+      dream: 'Develop a fresh, contemporary brand identity and visual language for the studio relaunch.',
+      onGround: 'Authored the relaunch manifesto and developed an organic visual identity system with 3D elements and motion.',
+      harvest: 'A complete visual identity and presentation film defining the studio’s new creative direction.',
     },
     sticker: stickerAmeba,
     stickerConfig: {
@@ -220,9 +220,9 @@ const projects = [
     year: '2024',
     description: 'Película navideña creada íntegramente en Full 3D. Creación de guion y dirección técnica y artística por Rodrigo Santos Robledo: diseño de personaje, modelado, texturas físicas, iluminación y animación sin IA.',
     story: {
-      dream: 'Breathe authentic emotional life into an autonomous mechanical character during a season strictly defined by human nostalgia.',
-      onGround: 'Authored the heartfelt narrative script and built the entire world in Full 3D — sculpting the robot protagonist, procedural lighting rigs, and expressive character animation without AI.',
-      harvest: 'Celebrated for its heartfelt emotional storytelling and character warmth, demonstrating the unique resonance of artisanal Full 3D craft without AI.',
+      dream: 'Build a holiday short story centered on an expressive mechanical character.',
+      onGround: 'Authored the script and built the entire scene in Full 3D — character modeling, texturing, lighting, and animation without AI.',
+      harvest: 'A finished 3D animation piece focused on character expression, lighting, and handcrafted craft.',
     },
     sticker: stickerRobot,
     stickerConfig: {
@@ -247,9 +247,9 @@ const projects = [
     year: '2025',
     description: 'Universo cinematográfico contemplativo creado mediante arte digital 2D y composición avanzada. Cero simulación 3D — Creación de guion y dirección técnica y visual por Rodrigo Santos Robledo: composición por capas, gradación de atmósfera y diseño de movimiento.',
     story: {
-      dream: 'Evoke human introspection and cosmic solitude across an immense, alien desert landscape.',
-      onGround: 'Wrote the contemplative poetic script and engineered the entire visual piece exclusively through 2D digital art, multi-layered visual compositing, and atmospheric lighting — zero 3D simulation.',
-      harvest: 'Celebrated for its atmospheric worldbuilding and poetic pacing, demonstrating master-level 2D compositing and art direction.',
+      dream: 'Explore human introspection and solitude through a contemplative desert landscape.',
+      onGround: 'Wrote the poetic script and built the visual world through 2D digital art, atmospheric lighting, and layered composition — zero 3D simulation.',
+      harvest: 'A contemplative audiovisual piece combining layered 2D digital art, atmospheric color grading, and poetic pacing.',
     },
     processComparison: {
       beforeLabel: 'Atmospheric Inspiration & Moodboard',
@@ -283,9 +283,9 @@ const projects = [
     year: '2025',
     description: 'Creación de guion narrativo y dirección creativa para la campaña del 8M de Making Science. Una narrativa contemporánea construida con sensibilidad, empoderamiento y fuerza gráfica.',
     story: {
-      dream: 'Craft an authentic International Women’s Day campaign that shuns corporate tokenism in favor of genuine cultural resonance.',
-      onGround: 'Authored the voiceover script and directed high-contrast portraiture amplified by raw testimonies celebrating pioneering women in tech.',
-      harvest: 'Sparked company-wide cultural pride and earned strong organic amplification across industry networks.',
+      dream: 'Create a genuine International Women’s Day piece highlighting real voices and experiences in tech.',
+      onGround: 'Authored the voiceover script and directed high-contrast portraiture paired with authentic testimonials.',
+      harvest: 'A focused, sensitive piece celebrating women in tech through honest storytelling and graphic simplicity.',
     },
     sticker: sticker8M,
     stickerConfig: {
@@ -306,9 +306,9 @@ const projects = [
     year: '2026',
     description: 'Guion técnico y dirección creativa por Rodrigo Santos Robledo: exploración de geometría esférica, shaders de cáusticas procedurales, refracción de luz y simulación cinética.',
     story: {
-      dream: 'Push the limits of real-time procedural caustics, refractive glass, and kinetic geometric motion in 3D space.',
-      onGround: 'Scripted the procedural physics progression and developed custom shaders for light dispersion, real-time reflection, and sphere collision physics.',
-      harvest: 'Serves as an internal studio benchmark for advanced CGI lighting and technical material design.',
+      dream: 'Study light refraction, procedural dispersion, and kinetic movement in 3D geometry.',
+      onGround: 'Scripted the procedural animation and developed custom materials for light dispersion and reflective surfaces.',
+      harvest: 'A technical visual study exploring real-time materials, caustic light behavior, and kinetic motion.',
     },
     sticker: stickerGeosphere,
     stickerConfig: {
@@ -333,9 +333,9 @@ const projects = [
     year: '2026',
     description: 'Proyecto de marca especulativo desarrollado como Trabajo de Fin de Grado (TFG) en Comunicación. Dirección creativa integral, universo pop retrofuturista, fotografía editorial, packaging y piezas publicitarias.',
     story: {
-      dream: 'Reinvent fast-food packaging and brand identity into an electric, high-energy pop ecosystem tailor-made for Gen Z.',
-      onGround: 'Directed a retro-futuristic culinary universe fusing punchy typography, saturated editorial photography, packaging mockups, and dynamic video spots.',
-      harvest: 'Graduated with Highest Academic Honors (Matrícula de Honor) and recognized as a premier case study in speculative consumer branding.',
+      dream: 'Develop an energetic, pop-inspired fast-food brand concept for younger audiences.',
+      onGround: 'Directed the visual universe across packaging mockups, saturated photography, typography, and promotional pieces.',
+      harvest: 'A complete speculative branding project spanning packaging design, editorial photography, and campaign pieces.',
     },
     processComparison: {
       beforeLabel: 'Pop Culture Inspiration & Moodboard',
@@ -377,9 +377,9 @@ const projects = [
     year: '2026',
     description: 'Creación de guion y desarrollo audiovisual para Awake Venture Studio por Rodrigo Santos Robledo. Creación de una estética cinematográfica distintiva para proyectar el talento y visión de los fundadores.',
     story: {
-      dream: 'Convey the high velocity, intellectual rigor, and visionary risk of venture studio founders to institutional investors.',
-      onGround: 'Wrote the documentary script and directed high-contrast cinematography capturing gritty founder moments against bold architectural framing.',
-      harvest: 'Core centerpiece for institutional roadshows, cementing strategic partnership conversations.',
+      dream: 'Capture the energy, rhythm, and vision of studio founders in a sharp documentary format.',
+      onGround: 'Wrote the script and directed high-contrast cinematography highlighting founder moments and architecture.',
+      harvest: 'A finished brand piece conveying the studio’s environment and approach to founders and partners.',
     },
     sticker: stickerAwake,
     stickerConfig: {
@@ -400,9 +400,9 @@ const projects = [
     year: '2026',
     description: 'Película insignia de Making Science. Creación de guion original y dirección creativa por Rodrigo Santos Robledo: integración de modelos generativos de IA con composición visual 2D y postproducción avanzada.',
     story: {
-      dream: 'Visualize the tipping point where human artistic intuition and synthetic intelligence coalesce into a singular creative force.',
-      onGround: 'Authored the narrative screenplay and pioneered a hybrid workflow uniting generative AI models with meticulous 2D visual composition, motion pacing, and multi-layer blending — without 3D simulation.',
-      harvest: 'Flagship audiovisual world premiere, praised internationally as a masterclass in conceptual AI direction and sophisticated 2D composition.',
+      dream: 'Explore the dialogue between human creative direction and generative tools in a unified film.',
+      onGround: 'Authored the narrative screenplay and combined generative visual exploration with meticulous 2D composition and editing.',
+      harvest: 'The centerpiece film for the flagship event, integrating narrative pacing, 2D composition, and generative visuals.',
     },
     processComparison: {
       beforeLabel: 'Creative Direction Moodboard & Visual R&D',
