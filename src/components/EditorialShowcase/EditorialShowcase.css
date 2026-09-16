@@ -97,8 +97,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: clamp(14px, 2.2vh, 32px);
-  margin-bottom: clamp(24px, 3.8vh, 48px);
+  margin-top: clamp(2px, 0.4vh, 6px);
+  margin-bottom: clamp(28px, 4.2vh, 56px);
   position: relative;
   z-index: 50;
   overflow: visible;
@@ -112,7 +112,7 @@
    ======================================================== */
 .editorial__nav-arrow {
   position: absolute;
-  bottom: calc(100% + clamp(12px, 1.8vh, 26px));
+  bottom: calc(100% + clamp(21px, 3.4vh, 46px));
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -323,10 +323,10 @@
 /* ---------- Bio Section (Appears when ABOUT ME is active) ---------- */
 .editorial__bio {
   position: absolute;
-  top: 22vh;
+  top: clamp(170px, 24vh, 230px);
   left: 0;
   right: 0;
-  bottom: 2vh;
+  bottom: 3vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,10 +429,10 @@
 /* ---------- Contact Section (Appears when CONTACT is active) ---------- */
 .editorial__contact {
   position: absolute;
-  top: 22vh;
+  top: clamp(170px, 24vh, 230px);
   left: 0;
   right: 0;
-  bottom: 2vh;
+  bottom: 3vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -668,24 +668,24 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0;
+    padding-top: clamp(20px, 3.8vh, 34px);
     gap: 0;
     row-gap: 0;
     box-sizing: border-box;
   }
 
-  /* Header sits elegantly above the centered project lines */
+  /* Header sits elegantly near the top */
   .editorial__line--header {
     flex: none;
     margin-top: 0 !important;
-    margin-bottom: clamp(16px, 3.2vh, 32px) !important;
+    margin-bottom: clamp(14px, 2.4vh, 22px) !important;
   }
 
-  /* Mobile directional navigation arrows */
+  /* Mobile directional navigation arrows - lowered slightly from 14-28px */
   .editorial__nav-arrow {
-    bottom: calc(100% + clamp(6px, 1.2vh, 14px));
+    bottom: calc(100% + clamp(12px, 2.2vh, 22px));
     padding: 4px 2px;
   }
 
@@ -702,7 +702,12 @@
     right: 12px;
   }
 
-  /* Project rows are clustered closer together */
+  /* Centering project lines vertically on mobile without dropping the header */
+  .editorial__line--1 {
+    margin-top: clamp(110px, 22vh, 190px) !important;
+  }
+
+  /* Project rows are clustered and spaced gracefully on mobile */
   .editorial__line:not(.editorial__line--header) {
     flex: none;
     width: 100%;
@@ -713,7 +718,7 @@
     white-space: nowrap;
     line-height: 0.90;
     overflow: visible;
-    margin: clamp(5px, 1.2vh, 12px) 0 !important;
+    margin: clamp(10px, 2.2vh, 18px) 0 !important;
   }
 
   /* Scaled down header for mobile viewports */
@@ -749,7 +754,7 @@
 
   /* Bio Section on Mobile with larger, comfortable, legible typography */
   .editorial__bio {
-    top: 14vh;
+    top: clamp(82px, 13.5vh, 115px);
     bottom: 4vh;
     padding: 0 6vw;
   }
@@ -776,7 +781,7 @@
 
   /* Contact Section on Mobile */
   .editorial__contact {
-    top: 14vh;
+    top: clamp(82px, 13.5vh, 115px);
     bottom: 4vh;
     padding: 0 5vw;
   }
