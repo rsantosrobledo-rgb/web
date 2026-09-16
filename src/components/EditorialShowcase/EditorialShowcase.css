@@ -670,7 +670,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: clamp(20px, 3.8vh, 34px);
+    padding-top: clamp(42px, 5.5vh, 54px);
     gap: 0;
     row-gap: 0;
     box-sizing: border-box;
@@ -680,12 +680,12 @@
   .editorial__line--header {
     flex: none;
     margin-top: 0 !important;
-    margin-bottom: clamp(14px, 2.4vh, 22px) !important;
+    margin-bottom: clamp(16px, 2.5vh, 24px) !important;
   }
 
-  /* Mobile directional navigation arrows - lowered slightly from 14-28px */
+  /* Mobile directional navigation arrows */
   .editorial__nav-arrow {
-    bottom: calc(100% + clamp(12px, 2.2vh, 22px));
+    bottom: calc(100% + clamp(14px, 2.2vh, 22px));
     padding: 4px 2px;
   }
 
@@ -702,11 +702,6 @@
     right: 12px;
   }
 
-  /* Centering project lines vertically on mobile without dropping the header */
-  .editorial__line--1 {
-    margin-top: clamp(110px, 22vh, 190px) !important;
-  }
-
   /* Project rows are clustered and spaced gracefully on mobile */
   .editorial__line:not(.editorial__line--header) {
     flex: none;
@@ -718,7 +713,15 @@
     white-space: nowrap;
     line-height: 0.90;
     overflow: visible;
-    margin: clamp(10px, 2.2vh, 18px) 0 !important;
+    margin-top: clamp(6px, 1.2vh, 10px) !important;
+    margin-bottom: clamp(6px, 1.2vh, 10px) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Centering project lines vertically on mobile matching user reference */
+  .editorial__line.editorial__line--1 {
+    margin-top: clamp(160px, 21vh, 205px) !important;
   }
 
   /* Scaled down header for mobile viewports */
@@ -754,7 +757,7 @@
 
   /* Bio Section on Mobile with larger, comfortable, legible typography */
   .editorial__bio {
-    top: clamp(82px, 13.5vh, 115px);
+    top: clamp(118px, 15vh, 138px);
     bottom: 4vh;
     padding: 0 6vw;
   }
@@ -781,7 +784,7 @@
 
   /* Contact Section on Mobile */
   .editorial__contact {
-    top: clamp(82px, 13.5vh, 115px);
+    top: clamp(118px, 15vh, 138px);
     bottom: 4vh;
     padding: 0 5vw;
   }
