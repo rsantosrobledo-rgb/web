@@ -172,8 +172,10 @@ export default function ProjectDetail({
           id="project-detail-header-next-btn"
           aria-label={`Next project: ${nextProject.name}`}
         >
-          <span className="project-detail__header-next-label">NEXT PROJECT:</span>
-          <span className="project-detail__header-next-name">{nextProject.name}</span>
+          <span className="project-detail__header-next-content">
+            <span className="project-detail__header-next-label">NEXT PROJECT</span>
+            <span className="project-detail__header-next-name">{nextProject.name}</span>
+          </span>
           <span className="project-detail__header-next-arrow">→</span>
         </button>
       </header>

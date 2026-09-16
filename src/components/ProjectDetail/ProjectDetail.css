@@ -107,12 +107,22 @@
   max-width: 55vw;
 }
 
+.project-detail__header-next-content {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
 .project-detail__header-next-label {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.45);
   letter-spacing: 0.08em;
   transition: color 0.2s ease;
   white-space: nowrap;
+}
+
+.project-detail__header-next-label::after {
+  content: ':';
 }
 
 .project-detail__header-next-name {
@@ -597,6 +607,53 @@
 }
 
 @media (max-width: 768px) {
+  /* Header & Next Project (2 líneas en móvil: arriba next project y abajo el nombre) */
+  .project-detail__header {
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+
+  .project-detail__back-btn {
+    font-size: clamp(0.72rem, 2.2vw, 0.85rem);
+    gap: 6px;
+  }
+
+  .project-detail__header-next-btn {
+    align-items: center;
+    gap: 6px;
+    max-width: 50vw;
+  }
+
+  .project-detail__header-next-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
+    text-align: right;
+  }
+
+  .project-detail__header-next-label {
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .project-detail__header-next-label::after {
+    content: '';
+  }
+
+  .project-detail__header-next-name {
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    max-width: 40vw;
+  }
+
+  .project-detail__header-next-arrow {
+    font-size: 1.15em;
+  }
+
   .project-detail__intro-section {
     gap: 8px;
     margin: 0 auto 16px auto;
