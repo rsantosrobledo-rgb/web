@@ -134,7 +134,10 @@ export default function ProjectDetail({
   const visibleGridPieces = hasMoreThanMax
     ? secondaryPieces.slice(0, MAX_GRID_SLOTS)
     : secondaryPieces
-  const remainingCount = secondaryPieces.length - MAX_GRID_SLOTS
+  const hasVideo = Boolean(
+    project.videoEmbed ||
+    (Array.isArray(project.secondaryMedia) && project.secondaryMedia.some((m) => m.type === 'video'))
+  )
 
   return (
     <article
@@ -180,6 +183,15 @@ export default function ProjectDetail({
         <section className="project-detail__intro-section" aria-label="Project overview">
           <div className="project-detail__meta-bar">
             <span className="project-detail__category-tag">{project.category}</span>
+            {hasVideo && (
+              <span className="project-detail__script-tag">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+                ORIGINAL SCRIPT & SCREENPLAY AUTHORSHIP
+              </span>
+            )}
             {project.year && (
               <span className="project-detail__year-tag">{project.year}</span>
             )}
