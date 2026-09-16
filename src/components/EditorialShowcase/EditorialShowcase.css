@@ -97,7 +97,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: clamp(28px, 4.2vh, 56px);
+  margin-top: clamp(14px, 2.2vh, 32px);
+  margin-bottom: clamp(24px, 3.8vh, 48px);
   position: relative;
   z-index: 50;
   overflow: visible;
@@ -111,7 +112,7 @@
    ======================================================== */
 .editorial__nav-arrow {
   position: absolute;
-  bottom: calc(100% + clamp(24px, 3.8vh, 52px));
+  bottom: calc(100% + clamp(12px, 1.8vh, 26px));
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -667,23 +668,24 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    padding-top: clamp(24px, 5.5vh, 48px);
+    padding: 0;
     gap: 0;
     row-gap: 0;
     box-sizing: border-box;
   }
 
-  /* Header sits elegantly near the top */
+  /* Header sits elegantly above the centered project lines */
   .editorial__line--header {
     flex: none;
-    margin-bottom: clamp(24px, 5.5vh, 52px) !important;
+    margin-top: 0 !important;
+    margin-bottom: clamp(16px, 3.2vh, 32px) !important;
   }
 
   /* Mobile directional navigation arrows */
   .editorial__nav-arrow {
-    bottom: calc(100% + clamp(14px, 2.8vh, 28px));
+    bottom: calc(100% + clamp(6px, 1.2vh, 14px));
     padding: 4px 2px;
   }
 
