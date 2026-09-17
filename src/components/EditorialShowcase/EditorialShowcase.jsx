@@ -249,7 +249,9 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
   // Measure and center the active section title precisely at 50vw
   const updateCenterPosition = useCallback(() => {
-    const activeEl = titleRefs.current[currentView]
+    // When on HOME, keep header track aligned to 'work' so entering/leaving HOME has ZERO horizontal drift
+    const targetSection = currentView === 'home' ? 'work' : currentView
+    const activeEl = titleRefs.current[targetSection]
     if (activeEl) {
       const center = activeEl.offsetLeft + activeEl.offsetWidth / 2
       setTrackOffset(window.innerWidth / 2 - center)
@@ -563,36 +565,36 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
           </div>
         </div>
 
-        {/* Rows of projects in Futura Light with 0 interlineado, slowly drifting in loop */}
-        {editorialRows.map((rowIds, rowIndex) => {
-          const isEven = rowIndex % 2 === 1
-          const directionClass = isEven ? 'editorial__line--drift-right' : 'editorial__line--drift-left'
-          const statusClass = `editorial__line--${getSectionState('work')}`
+        {/* Unified 3D Work Stage for authentic camera Dolly In / Dolly Out and lateral panning */}
+        <div className={`editorial__work-stage editorial__work-stage--${getSectionState('work')}`}>
+          {editorialRows.map((rowIds, rowIndex) => {
+            const isEven = rowIndex % 2 === 1
+            const directionClass = isEven ? 'editorial__line--drift-right' : 'editorial__line--drift-left'
 
-
-          return (
-            <div
-              className={`editorial__line editorial__line--${rowIndex + 1} ${directionClass} ${statusClass}`}
-              key={`row-${rowIndex}`}
-              style={{ '--row-idx': rowIndex }}
-            >
-              <div className="editorial__track">
-                {/* First set of projects */}
-                <div className="editorial__track-group">
-                  {rowIds.map((id) => renderProjectItem(id, 'set1'))}
-                </div>
-                {/* Second duplicated set for seamless infinite loop */}
-                <div className="editorial__track-group" aria-hidden="true">
-                  {rowIds.map((id) => renderProjectItem(id, 'set2'))}
-                </div>
-                {/* Third duplicated set for wide screens */}
-                <div className="editorial__track-group" aria-hidden="true">
-                  {rowIds.map((id) => renderProjectItem(id, 'set3'))}
+            return (
+              <div
+                className={`editorial__line editorial__line--${rowIndex + 1} ${directionClass}`}
+                key={`row-${rowIndex}`}
+                style={{ '--row-idx': rowIndex }}
+              >
+                <div className="editorial__track">
+                  {/* First set of projects */}
+                  <div className="editorial__track-group">
+                    {rowIds.map((id) => renderProjectItem(id, 'set1'))}
+                  </div>
+                  {/* Second duplicated set for seamless infinite loop */}
+                  <div className="editorial__track-group" aria-hidden="true">
+                    {rowIds.map((id) => renderProjectItem(id, 'set2'))}
+                  </div>
+                  {/* Third duplicated set for wide screens */}
+                  <div className="editorial__track-group" aria-hidden="true">
+                    {rowIds.map((id) => renderProjectItem(id, 'set3'))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
 
         {/* Full-Page Project Detail View with video/media grid, description, and navigation */}
         {activeProject && (
