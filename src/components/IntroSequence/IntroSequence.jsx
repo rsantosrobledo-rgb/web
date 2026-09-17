@@ -112,10 +112,10 @@ export default function IntroSequence({ onComplete }) {
         </div>
       </div>
 
-      {/* Text — Welcome to my portfolio with TAKE A SIT subtitle */}
+      {/* Text — Welcome to my portfolio with TAKE A SEAT subtitle */}
       <div className="intro__text">
         <h1 className="intro__heading">Welcome to my portfolio</h1>
-        <p className="intro__subheading">TAKE A SIT</p>
+        <p className="intro__subheading">TAKE A SEAT</p>
       </div>
 
       {/* CLICK button on the chair */}
