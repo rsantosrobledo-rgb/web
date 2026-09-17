@@ -25,7 +25,7 @@ const STICKER_CONFIGS = {
 
 // Fallback rows in case projects do not specify a row property
 const EDITORIAL_ROWS = [
-  [1, 4],       // Row 1: Decoding Culture · 5W Global Summit
+  [4],          // Row 1: 5W Global Summit (Decoding Culture oculto temporalmente)
   [3, 6, 14],   // Row 2: Christmas Chronicles · That's Noise · Mazda Exclusive Days
   [7, 2, 13],   // Row 3: Helios AI Factory · Ameba Studios · Robot Christmas
   [5, 8, 9],    // Row 4: The Desert · 8M Equal Voice · Geo Sphere
@@ -46,7 +46,12 @@ const getEditorialRows = (projectList) => {
   })
   return Object.keys(rowMap)
     .sort((a, b) => Number(a) - Number(b))
-    .map((k) => rowMap[k])
+    .map((k) => {
+      const ids = rowMap[k]
+      // If a row has only 1 project, double it so the infinite marquee ribbon has balanced density
+      if (ids.length === 1) return [ids[0], ids[0]]
+      return ids
+    })
 }
 
 // Strictly non-looping sequence:
@@ -528,15 +533,6 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
               >
                 <span className="editorial__bio-back-arrow">←</span> VIEW PROJECTS
               </button>
-
-              <a
-                href="#cv"
-                className="editorial__bio-cv-btn"
-                id="bio-view-cv-btn"
-              >
-                <span>CURRICULUM VITAE</span>
-                <span className="editorial__bio-cv-arrow">↗</span>
-              </a>
             </div>
           </div>
         </div>
@@ -623,15 +619,15 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
                 <div className="editorial__track">
                   {/* First set of projects */}
                   <div className="editorial__track-group">
-                    {rowIds.map((id) => renderProjectItem(id, 'set1'))}
+                    {rowIds.map((id, itemIdx) => renderProjectItem(id, `set1-${itemIdx}`))}
                   </div>
                   {/* Second duplicated set for seamless infinite loop */}
                   <div className="editorial__track-group" aria-hidden="true">
-                    {rowIds.map((id) => renderProjectItem(id, 'set2'))}
+                    {rowIds.map((id, itemIdx) => renderProjectItem(id, `set2-${itemIdx}`))}
                   </div>
                   {/* Third duplicated set for wide screens */}
                   <div className="editorial__track-group" aria-hidden="true">
-                    {rowIds.map((id) => renderProjectItem(id, 'set3'))}
+                    {rowIds.map((id, itemIdx) => renderProjectItem(id, `set3-${itemIdx}`))}
                   </div>
                 </div>
               </div>

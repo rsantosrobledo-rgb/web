@@ -31,6 +31,7 @@ const projects = [
     id: 1,
     row: 1,
     order: 1,
+    hidden: true, // Temporalmente oculto a petición del usuario
     name: 'Decoding Culture',
     category: 'Creative Direction · Campaign & Event',
     year: '2026',
@@ -433,4 +434,8 @@ const projects = [
   },
 ]
 
-export default projects
+// Filtramos proyectos ocultos temporalmente
+const visibleProjects = projects.filter((p) => !p.hidden)
+
+export { projects as allProjects }
+export default visibleProjects

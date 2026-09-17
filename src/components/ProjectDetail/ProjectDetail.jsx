@@ -21,6 +21,13 @@ function getYouTubeThumbnail(url) {
   return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : ''
 }
 
+// Module-level persistent wheel lock state across ProjectDetail mounts / project transitions
+let projectWheelLocked = false
+let projectMinTimePassed = false
+let projectWheelActive = false
+let projectWheelTimer = null
+let projectLockTimer = null
+
 export default function ProjectDetail({
   project,
   projects,
@@ -112,6 +119,10 @@ export default function ProjectDetail({
   const handleClose = useCallback(() => {
     if (isClosing) return
     setIsClosing(true)
+    projectWheelLocked = false
+    projectWheelActive = false
+    if (projectWheelTimer) clearTimeout(projectWheelTimer)
+    if (projectLockTimer) clearTimeout(projectLockTimer)
     setTimeout(() => {
       onClose()
     }, 350)
@@ -226,33 +237,69 @@ export default function ProjectDetail({
   }
 
   // Wheel / Trackpad handling for desktop horizontal swipe and scroll-past-bottom
-  const detailWheelLockRef = useRef(false)
   const handleDetailWheel = (e) => {
     e.stopPropagation()
-    if (isClosing || detailWheelLockRef.current) return
+    if (isClosing) return
 
-    // Trackpad horizontal swipe: change project
-    if (Math.abs(e.deltaX) > 40 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5) {
-      detailWheelLockRef.current = true
-      setTimeout(() => { detailWheelLockRef.current = false }, 550)
+    // Track active wheel momentum stream from trackpad (requires 180ms quiet window to settle)
+    if (projectWheelTimer) clearTimeout(projectWheelTimer)
+    projectWheelActive = true
+    projectWheelTimer = setTimeout(() => {
+      projectWheelActive = false
+      // Only unlock when trackpad momentum stream has settled and min lock time elapsed
+      if (projectMinTimePassed) {
+        projectWheelLocked = false
+      }
+    }, 180)
+
+    // Vertical wheel past bottom: dismiss
+    if (detailRef.current && e.deltaY > 60 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.4) {
+      const { scrollTop, scrollHeight, clientHeight } = detailRef.current
+      if (scrollTop + clientHeight >= scrollHeight - 5) {
+        if (!projectWheelLocked) {
+          projectWheelLocked = true
+          setTimeout(() => { projectWheelLocked = false }, 600)
+          handleClose()
+        }
+      }
+      return
+    }
+
+    // If currently locked during project transition or active residual momentum, ignore horizontal change
+    if (projectWheelLocked) return
+
+    // Trackpad horizontal swipe: change project (strictly 1 project per physical gesture)
+    if (Math.abs(e.deltaX) > 45 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.4) {
+      projectWheelLocked = true
+      projectMinTimePassed = false
+
+      if (projectLockTimer) clearTimeout(projectLockTimer)
+      projectLockTimer = setTimeout(() => {
+        projectMinTimePassed = true
+        // Only unlock if trackpad momentum stream is completely quiet
+        if (!projectWheelActive) {
+          projectWheelLocked = false
+        }
+      }, 750)
+
       if (e.deltaX > 0) {
         goToNext()
       } else {
         goToPrev()
       }
-      return
-    }
-
-    // Vertical wheel past bottom: dismiss
-    if (detailRef.current && e.deltaY > 60) {
-      const { scrollTop, scrollHeight, clientHeight } = detailRef.current
-      if (scrollTop + clientHeight >= scrollHeight - 5) {
-        detailWheelLockRef.current = true
-        setTimeout(() => { detailWheelLockRef.current = false }, 600)
-        handleClose()
-      }
     }
   }
+
+  useEffect(() => {
+    return () => {
+      if (isClosing) {
+        projectWheelLocked = false
+        projectWheelActive = false
+        if (projectWheelTimer) clearTimeout(projectWheelTimer)
+        if (projectLockTimer) clearTimeout(projectLockTimer)
+      }
+    }
+  }, [isClosing])
 
   // Secondary pieces grid calculation
   const secondaryPieces = Array.isArray(project.secondaryMedia) ? project.secondaryMedia : []
