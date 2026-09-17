@@ -125,10 +125,39 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     })
   }, [currentView])
 
+  // Robust navigation lock to prevent multiple section skips from a single swipe/trackpad momentum
+  const isNavigatingRef = useRef(false)
+  const navigationLockTimerRef = useRef(null)
+  const wheelActiveTimerRef = useRef(null)
+  const minTimePassedRef = useRef(false)
+
+  const navigateTo = useCallback((targetId) => {
+    if (!targetId || targetId === currentView || isNavigatingRef.current) return
+    isNavigatingRef.current = true
+    minTimePassedRef.current = false
+    setCurrentView(targetId)
+
+    if (navigationLockTimerRef.current) clearTimeout(navigationLockTimerRef.current)
+    navigationLockTimerRef.current = setTimeout(() => {
+      minTimePassedRef.current = true
+      // Only unlock if trackpad momentum stream has settled (no wheel events for 160ms)
+      if (!wheelActiveTimerRef.current) {
+        isNavigatingRef.current = false
+      }
+    }, 750)
+  }, [currentView])
+
+  useEffect(() => {
+    return () => {
+      if (navigationLockTimerRef.current) clearTimeout(navigationLockTimerRef.current)
+      if (wheelActiveTimerRef.current) clearTimeout(wheelActiveTimerRef.current)
+    }
+  }, [])
+
   // Arrow key navigation between sections
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (activeProject) return
+      if (activeProject || isNavigatingRef.current) return
       if (currentView === 'home') {
         if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === ' ') {
           e.preventDefault()
@@ -144,13 +173,12 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [prevSection, nextSection, activeProject, currentView])
+  }, [prevSection, nextSection, activeProject, currentView, navigateTo])
 
   // Swipe navigation between sections: Touch & Trackpad horizontal swipe
   const touchStartXRef = useRef(null)
   const touchStartYRef = useRef(null)
   const isHorizontalSwipeRef = useRef(false)
-  const showcaseWheelLockRef = useRef(false)
 
   const handleTouchStart = (e) => {
     if (activeProject) return
@@ -175,6 +203,9 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     touchStartXRef.current = null
     touchStartYRef.current = null
 
+    // Ignore touch swipe if already navigating
+    if (isNavigatingRef.current) return
+
     // In HOME: lateral swipe is disabled; swipe up advances to MY WORK
     if (currentView === 'home') {
       if (dy < -25 && Math.abs(dy) > Math.abs(dx) * 0.8) {
@@ -183,7 +214,7 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
       return
     }
 
-    // In MY WORK, ABOUT ME, CONTACT: lateral swipe enabled
+    // In MY WORK, ABOUT ME, CONTACT: lateral swipe enabled — strictly one by one
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
       if (dx < 0 && nextSection) {
         navigateTo(nextSection.id)
@@ -203,27 +234,36 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     }
   }
 
-  // Wheel / trackpad swipe (both horizontal swipe and vertical scroll between Home & Work)
+  // Wheel / trackpad swipe (strictly 1 section per gesture, debouncing mac momentum)
   const handleShowcaseWheel = useCallback((e) => {
-    if (activeProject || showcaseWheelLockRef.current) return
+    if (activeProject) return
 
-    // In HOME: lateral displacement is NOT enabled, only scroll up/down advances to MY WORK
+    // Track active wheel momentum stream from trackpad
+    if (wheelActiveTimerRef.current) clearTimeout(wheelActiveTimerRef.current)
+    wheelActiveTimerRef.current = setTimeout(() => {
+      wheelActiveTimerRef.current = null
+      // Once momentum has completely stopped and animation time elapsed, unlock
+      if (minTimePassedRef.current) {
+        isNavigatingRef.current = false
+      }
+    }, 160)
+
+    // Strictly ignore while animating or during residual momentum
+    if (isNavigatingRef.current) return
+
+    // In HOME: lateral displacement is NOT enabled, only scroll down / swipe up advances to MY WORK
     if (currentView === 'home') {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5) {
         return // Ignore lateral swipe on HOME
       }
-      if (Math.abs(e.deltaY) > 20) {
-        showcaseWheelLockRef.current = true
-        setTimeout(() => { showcaseWheelLockRef.current = false }, 600)
+      if (Math.abs(e.deltaY) > 25) {
         navigateTo('work')
       }
       return
     }
 
-    // In MY WORK, ABOUT ME, CONTACT: horizontal swipe between sections
-    if (Math.abs(e.deltaX) > 35 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.3) {
-      showcaseWheelLockRef.current = true
-      setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
+    // In MY WORK, ABOUT ME, CONTACT: horizontal swipe strictly ONE-BY-ONE
+    if (Math.abs(e.deltaX) > 40 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.3) {
       if (e.deltaX > 0 && nextSection) {
         navigateTo(nextSection.id)
       } else if (e.deltaX < 0 && prevSection) {
@@ -235,12 +275,10 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     // Vertical wheel: scrolling up in MY WORK returns to HOME
     if (Math.abs(e.deltaY) > 35 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.3) {
       if (currentView === 'work' && e.deltaY < 0) {
-        showcaseWheelLockRef.current = true
-        setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
         navigateTo('home')
       }
     }
-  }, [activeProject, nextSection, prevSection, currentView])
+  }, [activeProject, nextSection, prevSection, currentView, navigateTo])
 
   useEffect(() => {
     window.addEventListener('wheel', handleShowcaseWheel, { passive: true })
@@ -270,10 +308,6 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     return () => window.removeEventListener('resize', updateCenterPosition)
   }, [updateCenterPosition])
 
-  const navigateTo = (targetId) => {
-    if (targetId === currentView) return
-    setCurrentView(targetId)
-  }
 
 
   const renderProjectItem = (id, keySuffix = '') => {
