@@ -62,7 +62,7 @@
   position: relative;
 }
 
-/* Line statuses: Active, Exiting (sliding to left), and Idle (waiting on right) */
+/* Line statuses: Active, Past (left), Future (right) */
 .editorial__line--active {
   transform: translate3d(0, 0, 0) !important;
   opacity: 1 !important;
@@ -70,25 +70,21 @@
   transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
+.editorial__line--past,
 .editorial__line--exiting {
-  transform: translate3d(-150vw, 0, 0) !important;
+  transform: translate3d(-120vw, 0, 0) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
 }
 
-.editorial__line--exiting-right {
-  transform: translate3d(150vw, 0, 0) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
-}
-
+.editorial__line--future,
+.editorial__line--exiting-right,
 .editorial__line--idle {
-  transform: translate3d(140vw, 0, 0) !important;
+  transform: translate3d(120vw, 0, 0) !important;
   opacity: 0 !important;
   pointer-events: none !important;
-  transition: none !important;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
 }
 
 /* Header line for MY WORK, ABOUT ME & CONTACT — Chosen title ALWAYS in the center */
@@ -227,25 +223,21 @@
   transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
-.editorial__home--exiting {
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(-150vw, 0, 0);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
-}
-
-.editorial__home--exiting-right {
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(150vw, 0, 0);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
-}
-
+.editorial__home--past,
+.editorial__home--exiting,
 .editorial__home--idle {
   opacity: 0;
   pointer-events: none;
   transform: translate3d(-120vw, 0, 0);
-  transition: none;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.editorial__home--future,
+.editorial__home--exiting-right {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(120vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 /* Home Background Video of the eye */
@@ -483,18 +475,21 @@
   transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
+.editorial__bio--past,
 .editorial__bio--exiting {
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-150vw, 0, 0);
+  transform: translate3d(-120vw, 0, 0);
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
+.editorial__bio--future,
+.editorial__bio--exiting-right,
 .editorial__bio--idle {
   opacity: 0;
   pointer-events: none;
   transform: translate3d(120vw, 0, 0);
-  transition: none;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 .editorial__bio-inner {
@@ -589,18 +584,21 @@
   transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
+.editorial__contact--past,
 .editorial__contact--exiting {
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(-150vw, 0, 0);
+  transform: translate3d(-120vw, 0, 0);
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
+.editorial__contact--future,
+.editorial__contact--exiting-right,
 .editorial__contact--idle {
   opacity: 0;
   pointer-events: none;
   transform: translate3d(120vw, 0, 0);
-  transition: none;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 .editorial__contact-inner {

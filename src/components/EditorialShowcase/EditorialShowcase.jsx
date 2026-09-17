@@ -65,13 +65,6 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
   const [trackOffset, setTrackOffset] = useState(0)
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
 
-  const [sectionStatus, setSectionStatus] = useState({
-    home: 'active',
-    work: 'idle',
-    about: 'idle',
-    contact: 'idle',
-  })
-
   const homeVideoRef = useRef(null)
   const titleRefs = useRef({})
   const projectMap = new Map(projects.map((p) => [p.id, p]))
@@ -83,6 +76,14 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
   const currentIndex = SECTIONS.findIndex((s) => s.id === currentView)
   const prevSection = currentIndex > 0 ? SECTIONS[currentIndex - 1] : null
   const nextSection = currentIndex < SECTIONS.length - 1 ? SECTIONS[currentIndex + 1] : null
+
+  // Pure spatial state: active at 0, past on the left (-120vw), future on the right (+120vw)
+  const getSectionState = (sectionId) => {
+    const targetIdx = SECTIONS.findIndex((s) => s.id === sectionId)
+    if (targetIdx === currentIndex) return 'active'
+    if (targetIdx < currentIndex) return 'past'
+    return 'future'
+  }
 
   // Ensure home video plays automatically with audio muted
   useEffect(() => {
@@ -263,37 +264,9 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
   const navigateTo = (targetId) => {
     if (targetId === currentView) return
-
-    const prevIndex = SECTIONS.findIndex((s) => s.id === currentView)
-    const nextIndex = SECTIONS.findIndex((s) => s.id === targetId)
-    const isMovingLeft = nextIndex < prevIndex
-
-    const prevView = currentView
     setCurrentView(targetId)
-
-    // Update section status for linear transition:
-    setSectionStatus((prev) => {
-      const next = { ...prev }
-      Object.keys(next).forEach((key) => {
-        if (key === targetId) {
-          next[key] = 'active'
-        } else if (key === prevView) {
-          next[key] = isMovingLeft ? 'exiting-right' : 'exiting'
-        } else {
-          next[key] = 'idle'
-        }
-      })
-      return next
-    })
-
-    // After exit animation finishes (780ms), reposition previous section to idle
-    setTimeout(() => {
-      setSectionStatus((prev) => ({
-        ...prev,
-        [prevView]: 'idle',
-      }))
-    }, 780)
   }
+
 
   const renderProjectItem = (id, keySuffix = '') => {
     const project = projectMap.get(id)
@@ -435,7 +408,7 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
         {/* Home Section: Appears when HOME is active */}
         <div
-          className={`editorial__home editorial__home--${sectionStatus.home}`}
+          className={`editorial__home editorial__home--${getSectionState('home')}`}
           aria-hidden={currentView !== 'home'}
           id="editorial-home-section"
         >
@@ -489,7 +462,7 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
         {/* Bio Section: Appears when ABOUT ME is active */}
         <div
-          className={`editorial__bio editorial__bio--${sectionStatus.about}`}
+          className={`editorial__bio editorial__bio--${getSectionState('about')}`}
           aria-hidden={currentView !== 'about'}
           id="editorial-bio-section"
         >
@@ -519,7 +492,7 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
         {/* Contact Section: Appears when CONTACT is active */}
         <div
-          className={`editorial__contact editorial__contact--${sectionStatus.contact}`}
+          className={`editorial__contact editorial__contact--${getSectionState('contact')}`}
           aria-hidden={currentView !== 'contact'}
           id="editorial-contact-section"
         >
@@ -588,7 +561,8 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
         {editorialRows.map((rowIds, rowIndex) => {
           const isEven = rowIndex % 2 === 1
           const directionClass = isEven ? 'editorial__line--drift-right' : 'editorial__line--drift-left'
-          const statusClass = `editorial__line--${sectionStatus.work}`
+          const statusClass = `editorial__line--${getSectionState('work')}`
+
 
           return (
             <div
