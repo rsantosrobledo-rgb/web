@@ -107,28 +107,152 @@ export default function ProjectDetail({
     setSelectedMedia(allPieces[prevIdx])
   }, [activePieceIndex, allPieces])
 
-  // Keyboard navigation: Escape to go back, Left/Right for piece navigation (or project navigation if single piece)
+  const [isClosing, setIsClosing] = useState(false)
+
+  const handleClose = useCallback(() => {
+    if (isClosing) return
+    setIsClosing(true)
+    setTimeout(() => {
+      onClose()
+    }, 350)
+  }, [isClosing, onClose])
+
+  // Keyboard navigation: Escape to go back, Left/Right to change project
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        onClose()
+        handleClose()
       } else if (e.key === 'ArrowRight') {
-        if (hasMultiplePieces) {
-          goToNextPiece()
-        } else {
-          goToNext()
-        }
+        goToNext()
       } else if (e.key === 'ArrowLeft') {
-        if (hasMultiplePieces) {
-          goToPrevPiece()
-        } else {
-          goToPrev()
-        }
+        goToPrev()
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [hasMultiplePieces, goToNextPiece, goToPrevPiece, goToNext, goToPrev, onClose])
+  }, [goToNext, goToPrev, handleClose])
+
+  // Swipe gesture navigation:
+  // - Horizontal swipe (left/right) changes project
+  // - Vertical swipe UP closes project (at bottom, header, footer, or if content fits)
+  // - Vertical pull DOWN at top also closes project
+  const touchStartXRef = useRef(null)
+  const touchStartYRef = useRef(null)
+  const initialScrollTopRef = useRef(0)
+  const isAtBottomAtStartRef = useRef(false)
+  const touchTargetTypeRef = useRef('body')
+
+  const handleTouchStart = (e) => {
+    e.stopPropagation()
+    if (isClosing) return
+    const touch = e.touches[0]
+    touchStartXRef.current = touch.clientX
+    touchStartYRef.current = touch.clientY
+
+    if (detailRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = detailRef.current
+      initialScrollTopRef.current = scrollTop
+      isAtBottomAtStartRef.current = scrollTop + clientHeight >= scrollHeight - 35
+    } else {
+      initialScrollTopRef.current = 0
+      isAtBottomAtStartRef.current = true
+    }
+
+    if (e.target.closest('.project-detail__header')) {
+      touchTargetTypeRef.current = 'header'
+    } else if (e.target.closest('.project-detail__footer-nav')) {
+      touchTargetTypeRef.current = 'footer'
+    } else if (touch.clientY > window.innerHeight * 0.75) {
+      touchTargetTypeRef.current = 'bottom-edge'
+    } else {
+      touchTargetTypeRef.current = 'body'
+    }
+  }
+
+  const handleTouchMove = (e) => {
+    e.stopPropagation()
+  }
+
+  const handleTouchEnd = (e) => {
+    e.stopPropagation()
+    if (isClosing || touchStartXRef.current === null) return
+
+    const touch = e.changedTouches[0]
+    const dx = touch.clientX - touchStartXRef.current
+    const dy = touch.clientY - touchStartYRef.current
+
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+
+    // 1. Deslizado horizontal: cambiar de proyecto
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+      if (dx < 0) {
+        goToNext()
+      } else {
+        goToPrev()
+      }
+      return
+    }
+
+    // 2. Deslizado hacia ARRIBA: volver hacia atrás
+    if (dy < -50 && Math.abs(dy) > Math.abs(dx) * 1.2) {
+      let isScrollable = false
+      let isAtBottomNow = false
+      if (detailRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = detailRef.current
+        isScrollable = scrollHeight > clientHeight + 25
+        isAtBottomNow = scrollTop + clientHeight >= scrollHeight - 35
+      }
+
+      const shouldClose =
+        !isScrollable ||
+        isAtBottomAtStartRef.current ||
+        isAtBottomNow ||
+        touchTargetTypeRef.current === 'header' ||
+        touchTargetTypeRef.current === 'footer' ||
+        touchTargetTypeRef.current === 'bottom-edge'
+
+      if (shouldClose) {
+        handleClose()
+        return
+      }
+    }
+
+    // 3. Deslizado hacia ABAJO al inicio de la página: también permite volver atrás
+    if (dy > 70 && Math.abs(dy) > Math.abs(dx) * 1.2 && initialScrollTopRef.current <= 5) {
+      handleClose()
+      return
+    }
+  }
+
+  // Wheel / Trackpad handling for desktop horizontal swipe and scroll-past-bottom
+  const detailWheelLockRef = useRef(false)
+  const handleDetailWheel = (e) => {
+    e.stopPropagation()
+    if (isClosing || detailWheelLockRef.current) return
+
+    // Trackpad horizontal swipe: change project
+    if (Math.abs(e.deltaX) > 40 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5) {
+      detailWheelLockRef.current = true
+      setTimeout(() => { detailWheelLockRef.current = false }, 550)
+      if (e.deltaX > 0) {
+        goToNext()
+      } else {
+        goToPrev()
+      }
+      return
+    }
+
+    // Vertical wheel past bottom: dismiss
+    if (detailRef.current && e.deltaY > 60) {
+      const { scrollTop, scrollHeight, clientHeight } = detailRef.current
+      if (scrollTop + clientHeight >= scrollHeight - 5) {
+        detailWheelLockRef.current = true
+        setTimeout(() => { detailWheelLockRef.current = false }, 600)
+        handleClose()
+      }
+    }
+  }
 
   // Secondary pieces grid calculation
   const secondaryPieces = Array.isArray(project.secondaryMedia) ? project.secondaryMedia : []
@@ -148,21 +272,21 @@ export default function ProjectDetail({
 
   return (
     <article
-      className="project-detail"
+      className={`project-detail ${isClosing ? 'project-detail--closing' : ''}`}
       id="project-detail-view"
       ref={detailRef}
       aria-label={`Project details for ${project.name}`}
-      onWheel={(e) => e.stopPropagation()}
-      onTouchStart={(e) => e.stopPropagation()}
-      onTouchMove={(e) => e.stopPropagation()}
-      onTouchEnd={(e) => e.stopPropagation()}
+      onWheel={handleDetailWheel}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Top Bar: Return to projects arrow button — ONLY way to go back */}
       <header className="project-detail__header">
         <button
           type="button"
           className="project-detail__back-btn"
-          onClick={onClose}
+          onClick={handleClose}
           id="project-detail-back-btn"
           aria-label="Back to projects"
         >

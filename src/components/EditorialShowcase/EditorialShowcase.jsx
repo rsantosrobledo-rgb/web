@@ -95,6 +95,69 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [prevSection, nextSection, activeProject])
 
+  // Swipe navigation between sections: Touch & Trackpad horizontal swipe
+  const touchStartXRef = useRef(null)
+  const touchStartYRef = useRef(null)
+  const isHorizontalSwipeRef = useRef(false)
+  const showcaseWheelLockRef = useRef(false)
+
+  const handleTouchStart = (e) => {
+    if (activeProject || isExitingToHome) return
+    touchStartXRef.current = e.touches[0].clientX
+    touchStartYRef.current = e.touches[0].clientY
+    isHorizontalSwipeRef.current = false
+  }
+
+  const handleTouchMove = (e) => {
+    if (activeProject || isExitingToHome || touchStartXRef.current === null) return
+    const dx = e.touches[0].clientX - touchStartXRef.current
+    const dy = e.touches[0].clientY - touchStartYRef.current
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 12) {
+      isHorizontalSwipeRef.current = true
+    }
+  }
+
+  const handleTouchEnd = (e) => {
+    if (activeProject || isExitingToHome || touchStartXRef.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartXRef.current
+    const dy = e.changedTouches[0].clientY - touchStartYRef.current
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      if (dx < 0 && nextSection) {
+        navigateTo(nextSection.id)
+      } else if (dx > 0 && prevSection) {
+        navigateTo(prevSection.id)
+      }
+    }
+
+    if (isHorizontalSwipeRef.current) {
+      setTimeout(() => {
+        isHorizontalSwipeRef.current = false
+      }, 120)
+    }
+  }
+
+  // Horizontal wheel / trackpad swipe
+  const handleShowcaseWheel = useCallback((e) => {
+    if (activeProject || isExitingToHome || showcaseWheelLockRef.current) return
+    if (Math.abs(e.deltaX) > 35 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.4) {
+      showcaseWheelLockRef.current = true
+      setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
+      if (e.deltaX > 0 && nextSection) {
+        navigateTo(nextSection.id)
+      } else if (e.deltaX < 0 && prevSection) {
+        navigateTo(prevSection.id)
+      }
+    }
+  }, [activeProject, isExitingToHome, nextSection, prevSection, navigateTo])
+
+  useEffect(() => {
+    window.addEventListener('wheel', handleShowcaseWheel, { passive: true })
+    return () => window.removeEventListener('wheel', handleShowcaseWheel)
+  }, [handleShowcaseWheel])
+
   // Measure and center the active section title precisely at 50vw
   const updateCenterPosition = useCallback(() => {
     const activeEl = titleRefs.current[currentView]
@@ -216,7 +279,10 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
         type="button"
         className="editorial__item"
         id={`editorial-item-${project.id}${keySuffix ? '-' + keySuffix : ''}`}
-        onClick={() => setActiveProject(project)}
+        onClick={() => {
+          if (isHorizontalSwipeRef.current) return
+          setActiveProject(project)
+        }}
         onMouseEnter={() => setHoveredId(project.id)}
         onMouseLeave={() => setHoveredId(null)}
         aria-label={`View project ${project.name}`}
@@ -247,7 +313,14 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
   }
 
   return (
-    <section className="editorial" id="editorial-showcase" aria-label="Project Portfolio">
+    <section
+      className="editorial"
+      id="editorial-showcase"
+      aria-label="Project Portfolio"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* 5 packed typography lines + Center Header spanning with 0 interlineado */}
       <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''} ${isExitingToHome ? 'editorial__canvas--exit-up' : ''}`}>
         {/* Row 0: Section Title Header with selected title ALWAYS centered, previous and next visible, no overlap, strictly non-looping */}
@@ -447,6 +520,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
         {/* Full-Page Project Detail View with video/media grid, description, and navigation */}
         {activeProject && (
           <ProjectDetail
+            key={activeProject.id}
             project={activeProject}
             projects={projects}
             onClose={() => setActiveProject(null)}
