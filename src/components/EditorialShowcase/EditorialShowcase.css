@@ -105,6 +105,14 @@
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
+/* When in HOME, the section title header glides UP and disappears off-screen cleanly */
+.editorial__canvas--home .editorial__line--header {
+  transform: translateY(-240px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
 /* ========================================================
    DIRECTIONAL NAVIGATION ARROWS
    Elongated minimalist arrows positioned directly ABOVE the titles

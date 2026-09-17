@@ -122,6 +122,13 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (activeProject) return
+      if (currentView === 'home') {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === ' ') {
+          e.preventDefault()
+          navigateTo('work')
+        }
+        return
+      }
       if (e.key === 'ArrowLeft' && prevSection) {
         navigateTo(prevSection.id)
       } else if (e.key === 'ArrowRight' && nextSection) {
@@ -130,7 +137,7 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [prevSection, nextSection, activeProject])
+  }, [prevSection, nextSection, activeProject, currentView])
 
   // Swipe navigation between sections: Touch & Trackpad horizontal swipe
   const touchStartXRef = useRef(null)
@@ -161,16 +168,23 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
     touchStartXRef.current = null
     touchStartYRef.current = null
 
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+    // In HOME: lateral swipe is disabled; swipe up advances to MY WORK
+    if (currentView === 'home') {
+      if (dy < -25 && Math.abs(dy) > Math.abs(dx) * 0.8) {
+        navigateTo('work')
+      }
+      return
+    }
+
+    // In MY WORK, ABOUT ME, CONTACT: lateral swipe enabled
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
       if (dx < 0 && nextSection) {
         navigateTo(nextSection.id)
       } else if (dx > 0 && prevSection) {
         navigateTo(prevSection.id)
       }
     } else if (Math.abs(dy) > 45 && Math.abs(dy) > Math.abs(dx) * 1.2) {
-      if (currentView === 'home' && dy < 0) {
-        navigateTo('work')
-      } else if (currentView === 'work' && dy > 0) {
+      if (currentView === 'work' && dy > 45) {
         navigateTo('home')
       }
     }
@@ -186,7 +200,20 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
   const handleShowcaseWheel = useCallback((e) => {
     if (activeProject || showcaseWheelLockRef.current) return
 
-    // Horizontal swipe between sections
+    // In HOME: lateral displacement is NOT enabled, only scroll up/down advances to MY WORK
+    if (currentView === 'home') {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5) {
+        return // Ignore lateral swipe on HOME
+      }
+      if (Math.abs(e.deltaY) > 20) {
+        showcaseWheelLockRef.current = true
+        setTimeout(() => { showcaseWheelLockRef.current = false }, 600)
+        navigateTo('work')
+      }
+      return
+    }
+
+    // In MY WORK, ABOUT ME, CONTACT: horizontal swipe between sections
     if (Math.abs(e.deltaX) > 35 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.3) {
       showcaseWheelLockRef.current = true
       setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
@@ -198,13 +225,9 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
       return
     }
 
-    // Vertical wheel between Home and Work
-    if (Math.abs(e.deltaY) > 40 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.3) {
-      if (currentView === 'home' && e.deltaY > 0) {
-        showcaseWheelLockRef.current = true
-        setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
-        navigateTo('work')
-      } else if (currentView === 'work' && e.deltaY < 0) {
+    // Vertical wheel: scrolling up in MY WORK returns to HOME
+    if (Math.abs(e.deltaY) > 35 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.3) {
+      if (currentView === 'work' && e.deltaY < 0) {
         showcaseWheelLockRef.current = true
         setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
         navigateTo('home')
@@ -338,7 +361,11 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
       onTouchEnd={handleTouchEnd}
     >
       {/* 5 packed typography lines + Center Header spanning with 0 interlineado */}
-      <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''}`}>
+      <div
+        className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''} ${
+          currentView === 'home' ? 'editorial__canvas--home' : ''
+        }`}
+      >
         {/* Row 0: Section Title Header with selected title ALWAYS centered, previous and next visible, no overlap, strictly non-looping */}
         <div className="editorial__line editorial__line--header">
           {/* Left Directional Arrow: Elongated arrow placed above the titles at the extreme */}
