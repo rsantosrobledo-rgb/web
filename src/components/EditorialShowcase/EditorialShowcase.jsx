@@ -77,8 +77,14 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
   const prevSection = currentIndex > 0 ? SECTIONS[currentIndex - 1] : null
   const nextSection = currentIndex < SECTIONS.length - 1 ? SECTIONS[currentIndex + 1] : null
 
-  // Pure spatial state: active at 0, past on the left (-120vw), future on the right (+120vw)
+  // Pure spatial state: active at 0, past on the left (-120vw), future on the right (+120vw), depth for zoom from home
   const getSectionState = (sectionId) => {
+    if (sectionId === 'home') {
+      return currentView === 'home' ? 'active' : 'inactive'
+    }
+    if (sectionId === 'work' && currentView === 'home') {
+      return 'depth'
+    }
     const targetIdx = SECTIONS.findIndex((s) => s.id === sectionId)
     if (targetIdx === currentIndex) return 'active'
     if (targetIdx < currentIndex) return 'past'

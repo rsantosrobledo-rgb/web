@@ -62,17 +62,25 @@
   position: relative;
 }
 
-/* Line statuses: Active, Past (left), Future (right) */
+/* Line statuses: Active, Depth (when HOME is active), Past (left), Future (right) */
 .editorial__line--active {
-  transform: translate3d(0, 0, 0) !important;
+  transform: scale(1) translate3d(0, 0, 0) !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
+}
+
+/* In depth (when HOME is active) - strictly depth zoom, 0 lateral movement */
+.editorial__line--depth {
+  transform: scale(0.85) translate3d(0, 45px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
 .editorial__line--past,
 .editorial__line--exiting {
-  transform: translate3d(-120vw, 0, 0) !important;
+  transform: scale(1) translate3d(-120vw, 0, 0) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
@@ -81,7 +89,7 @@
 .editorial__line--future,
 .editorial__line--exiting-right,
 .editorial__line--idle {
-  transform: translate3d(120vw, 0, 0) !important;
+  transform: scale(1) translate3d(120vw, 0, 0) !important;
   opacity: 0 !important;
   pointer-events: none !important;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--row-idx, 0) * 0.04s), opacity 0.45s ease calc(var(--row-idx, 0) * 0.03s);
@@ -107,6 +115,14 @@
   opacity: 0 !important;
   pointer-events: none !important;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+/* When in HOME, ensure all project lines remain in depth (no lateral displacement) */
+.editorial__canvas--home .editorial__line:not(.editorial__line--header) {
+  transform: scale(0.85) translate3d(0, 45px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease !important;
 }
 
 /* ========================================================
@@ -199,7 +215,8 @@
 
 /* ==========================================================================
    Home Section (Appears when HOME is active)
-   Loops the eye video seamlessly with Rodrigo Santos hero typography and seated entity
+   Loops the eye video seamlessly with Rodrigo Santos hero typography and seated entity.
+   Camera Depth Zoom in/out - STRICTLY ZERO LATERAL MOVEMENT ("nada de DE LADO")
    ========================================================================== */
 .editorial__home {
   position: fixed;
@@ -214,30 +231,28 @@
   z-index: 40;
   pointer-events: none;
   overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: none !important; /* STRICTLY NO LATERAL TRANSLATION */
+  transition: opacity 0.65s ease, visibility 0.65s ease;
 }
 
 .editorial__home--active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-  transform: translate3d(0, 0, 0);
-  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transform: none !important;
 }
 
+.editorial__home--inactive,
 .editorial__home--past,
+.editorial__home--future,
 .editorial__home--exiting,
 .editorial__home--idle {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transform: translate3d(-120vw, 0, 0);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
-}
-
-.editorial__home--future,
-.editorial__home--exiting-right {
-  opacity: 0;
-  pointer-events: none;
-  transform: translate3d(120vw, 0, 0);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  transform: none !important; /* ZERO LATERAL SLIDING */
 }
 
 /* Home Background Video of the eye */
@@ -251,7 +266,15 @@
   pointer-events: none;
   z-index: 1;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transform: scale(1);
+  transition: opacity 0.65s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial__home--inactive .editorial__home-video,
+.editorial__home--past .editorial__home-video,
+.editorial__home--future .editorial__home-video {
+  opacity: 0;
+  transform: scale(1.15);
 }
 
 /* Hero Title & Subtitle centered */
@@ -259,7 +282,7 @@
   position: absolute;
   top: 38%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   text-align: center;
   z-index: 8;
   display: flex;
@@ -267,6 +290,16 @@
   align-items: center;
   width: 100%;
   pointer-events: auto;
+  opacity: 1;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
+}
+
+.editorial__home--inactive .editorial__home-title-wrap,
+.editorial__home--past .editorial__home-title-wrap,
+.editorial__home--future .editorial__home-title-wrap {
+  transform: translate(-50%, calc(-50% - 90px)) scale(1.18);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .editorial__home-name {
@@ -341,6 +374,17 @@
   max-width: none !important;
   display: block;
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.22));
+  transform: scale(1) translate3d(0, 0, 0);
+  transform-origin: 50% 85%;
+  opacity: 1;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
+}
+
+.editorial__home--inactive .editorial__home-entity-img,
+.editorial__home--past .editorial__home-entity-img,
+.editorial__home--future .editorial__home-entity-img {
+  transform: scale(1.48) translate3d(0, 160px, 0);
+  opacity: 0;
 }
 
 .editorial__header-track {
@@ -1003,7 +1047,8 @@
   letter-spacing: 0.18em;
 }
 
-/* Hide footer cleanly when a project is open */
+/* Hide footer cleanly when on HOME or when a project is open */
+.editorial__canvas--home ~ .editorial__footer,
 .editorial__canvas--project-open ~ .editorial__footer {
   opacity: 0;
   transform: translateX(-50%) translateY(8px);
