@@ -1,5 +1,8 @@
 import { useState, useRef, useLayoutEffect, useEffect, useCallback, useMemo } from 'react'
 import ProjectDetail from '../ProjectDetail/ProjectDetail.jsx'
+import entityBack from '../../assets/entity_back.png'
+import homeVideoMp4 from '../../assets/home.mp4'
+import homeVideoWebm from '../../assets/home.webm'
 import './EditorialShowcase.css'
 
 // Stickers styled to overlap the typography directly, exactly like physical cutouts in the reference photo (scaled x1.2)
@@ -46,8 +49,8 @@ const getEditorialRows = (projectList) => {
     .map((k) => rowMap[k])
 }
 
-// Strictly non-looping sequence with HOME to the left of MY WORK:
-// HOME (returns to hero screen) · MY WORK · ABOUT ME · CONTACT
+// Strictly non-looping sequence:
+// HOME · MY WORK · ABOUT ME · CONTACT
 const SECTIONS = [
   { id: 'home', label: 'HOME' },
   { id: 'work', label: 'MY WORK' },
@@ -55,21 +58,21 @@ const SECTIONS = [
   { id: 'contact', label: 'CONTACT' },
 ]
 
-export default function EditorialShowcase({ projects, onSelectProject, onReturnToHero }) {
+export default function EditorialShowcase({ projects, onSelectProject }) {
   const [hoveredId, setHoveredId] = useState(null)
-  const [currentView, setCurrentView] = useState('work') // 'home' | 'work' | 'about' | 'contact'
+  const [currentView, setCurrentView] = useState('home') // 'home' | 'work' | 'about' | 'contact'
   const [activeProject, setActiveProject] = useState(null)
   const [trackOffset, setTrackOffset] = useState(0)
-  const [isExitingToHome, setIsExitingToHome] = useState(false)
-  const homeTimerRef = useRef(null)
-  const homeResetTimerRef = useRef(null)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
 
   const [sectionStatus, setSectionStatus] = useState({
-    work: 'active',
+    home: 'active',
+    work: 'idle',
     about: 'idle',
     contact: 'idle',
   })
 
+  const homeVideoRef = useRef(null)
   const titleRefs = useRef({})
   const projectMap = new Map(projects.map((p) => [p.id, p]))
 
@@ -80,6 +83,40 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
   const currentIndex = SECTIONS.findIndex((s) => s.id === currentView)
   const prevSection = currentIndex > 0 ? SECTIONS[currentIndex - 1] : null
   const nextSection = currentIndex < SECTIONS.length - 1 ? SECTIONS[currentIndex + 1] : null
+
+  // Ensure home video plays automatically with audio muted
+  useEffect(() => {
+    const v = homeVideoRef.current
+    if (!v) return
+    v.muted = true
+    v.defaultMuted = true
+    v.playsInline = true
+    const p = v.play()
+    if (p && p.catch) {
+      p.catch(() => {
+        const unlock = () => {
+          v.play().catch(() => {})
+          window.removeEventListener('click', unlock)
+          window.removeEventListener('touchstart', unlock)
+          window.removeEventListener('wheel', unlock)
+        }
+        window.addEventListener('click', unlock, { once: true })
+        window.addEventListener('touchstart', unlock, { once: true })
+        window.addEventListener('wheel', unlock, { once: true })
+      })
+    }
+  }, [currentView])
+
+  // Subtle mouse tilt for seated figure on home view
+  const handleMouseMove = useCallback((e) => {
+    if (currentView !== 'home') return
+    const xRatio = (e.clientX / window.innerWidth) - 0.5
+    const yRatio = (e.clientY / window.innerHeight) - 0.5
+    setTilt({
+      x: yRatio * -3,
+      y: xRatio * 4,
+    })
+  }, [currentView])
 
   // Arrow key navigation between sections
   useEffect(() => {
@@ -102,14 +139,14 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
   const showcaseWheelLockRef = useRef(false)
 
   const handleTouchStart = (e) => {
-    if (activeProject || isExitingToHome) return
+    if (activeProject) return
     touchStartXRef.current = e.touches[0].clientX
     touchStartYRef.current = e.touches[0].clientY
     isHorizontalSwipeRef.current = false
   }
 
   const handleTouchMove = (e) => {
-    if (activeProject || isExitingToHome || touchStartXRef.current === null) return
+    if (activeProject || touchStartXRef.current === null) return
     const dx = e.touches[0].clientX - touchStartXRef.current
     const dy = e.touches[0].clientY - touchStartYRef.current
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 12) {
@@ -118,7 +155,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
   }
 
   const handleTouchEnd = (e) => {
-    if (activeProject || isExitingToHome || touchStartXRef.current === null) return
+    if (activeProject || touchStartXRef.current === null) return
     const dx = e.changedTouches[0].clientX - touchStartXRef.current
     const dy = e.changedTouches[0].clientY - touchStartYRef.current
     touchStartXRef.current = null
@@ -130,6 +167,12 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
       } else if (dx > 0 && prevSection) {
         navigateTo(prevSection.id)
       }
+    } else if (Math.abs(dy) > 45 && Math.abs(dy) > Math.abs(dx) * 1.2) {
+      if (currentView === 'home' && dy < 0) {
+        navigateTo('work')
+      } else if (currentView === 'work' && dy > 0) {
+        navigateTo('home')
+      }
     }
 
     if (isHorizontalSwipeRef.current) {
@@ -139,10 +182,12 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
     }
   }
 
-  // Horizontal wheel / trackpad swipe
+  // Wheel / trackpad swipe (both horizontal swipe and vertical scroll between Home & Work)
   const handleShowcaseWheel = useCallback((e) => {
-    if (activeProject || isExitingToHome || showcaseWheelLockRef.current) return
-    if (Math.abs(e.deltaX) > 35 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.4) {
+    if (activeProject || showcaseWheelLockRef.current) return
+
+    // Horizontal swipe between sections
+    if (Math.abs(e.deltaX) > 35 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.3) {
       showcaseWheelLockRef.current = true
       setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
       if (e.deltaX > 0 && nextSection) {
@@ -150,8 +195,22 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
       } else if (e.deltaX < 0 && prevSection) {
         navigateTo(prevSection.id)
       }
+      return
     }
-  }, [activeProject, isExitingToHome, nextSection, prevSection, navigateTo])
+
+    // Vertical wheel between Home and Work
+    if (Math.abs(e.deltaY) > 40 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.3) {
+      if (currentView === 'home' && e.deltaY > 0) {
+        showcaseWheelLockRef.current = true
+        setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
+        navigateTo('work')
+      } else if (currentView === 'work' && e.deltaY < 0) {
+        showcaseWheelLockRef.current = true
+        setTimeout(() => { showcaseWheelLockRef.current = false }, 550)
+        navigateTo('home')
+      }
+    }
+  }, [activeProject, nextSection, prevSection, currentView])
 
   useEffect(() => {
     window.addEventListener('wheel', handleShowcaseWheel, { passive: true })
@@ -179,69 +238,24 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
     return () => window.removeEventListener('resize', updateCenterPosition)
   }, [updateCenterPosition])
 
-  useEffect(() => {
-    return () => {
-      if (homeTimerRef.current) clearTimeout(homeTimerRef.current)
-      if (homeResetTimerRef.current) clearTimeout(homeResetTimerRef.current)
-    }
-  }, [])
-
   const navigateTo = (targetId) => {
-    if (isExitingToHome) return
-
-    if (targetId === 'home') {
-      if (currentView === 'home') return
-
-      const prevView = currentView
-      setCurrentView('home')
-
-      // Slide previous view out smoothly:
-      // If coming from 'work', work exits to the right (since home is to the left)
-      // If coming from 'about' or 'contact', they exit normally
-      setSectionStatus({
-        work: prevView === 'work' ? 'exiting-right' : 'idle',
-        about: prevView === 'about' ? 'exiting' : 'idle',
-        contact: prevView === 'contact' ? 'exiting' : 'idle',
-      })
-
-      // 1. Immediately initiate smooth return to hero in StickerBoard:
-      if (onReturnToHero) onReturnToHero()
-
-      // 2. Once HOME centers in the nav, glide header up:
-      if (homeTimerRef.current) clearTimeout(homeTimerRef.current)
-      homeTimerRef.current = setTimeout(() => {
-        setIsExitingToHome(true)
-      }, 320)
-
-      // 3. Once settled back on home hero screen, reset showcase state to work:
-      if (homeResetTimerRef.current) clearTimeout(homeResetTimerRef.current)
-      homeResetTimerRef.current = setTimeout(() => {
-        setIsExitingToHome(false)
-        setCurrentView('work')
-        setSectionStatus({
-          work: 'active',
-          about: 'idle',
-          contact: 'idle',
-        })
-      }, 1200)
-
-      return
-    }
-
     if (targetId === currentView) return
+
+    const prevIndex = SECTIONS.findIndex((s) => s.id === currentView)
+    const nextIndex = SECTIONS.findIndex((s) => s.id === targetId)
+    const isMovingLeft = nextIndex < prevIndex
 
     const prevView = currentView
     setCurrentView(targetId)
 
     // Update section status for linear transition:
-    // targetView becomes active, previous view exits to the left, others idle
     setSectionStatus((prev) => {
       const next = { ...prev }
       Object.keys(next).forEach((key) => {
         if (key === targetId) {
           next[key] = 'active'
         } else if (key === prevView) {
-          next[key] = 'exiting'
+          next[key] = isMovingLeft ? 'exiting-right' : 'exiting'
         } else {
           next[key] = 'idle'
         }
@@ -249,7 +263,7 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
       return next
     })
 
-    // After exit animation finishes (780ms), reposition previous section to idle on the right
+    // After exit animation finishes (780ms), reposition previous section to idle
     setTimeout(() => {
       setSectionStatus((prev) => ({
         ...prev,
@@ -318,25 +332,26 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
       className="editorial"
       id="editorial-showcase"
       aria-label="Project Portfolio"
+      onMouseMove={handleMouseMove}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
       {/* 5 packed typography lines + Center Header spanning with 0 interlineado */}
-      <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''} ${isExitingToHome ? 'editorial__canvas--exit-up' : ''}`}>
+      <div className={`editorial__canvas ${activeProject ? 'editorial__canvas--project-open' : ''}`}>
         {/* Row 0: Section Title Header with selected title ALWAYS centered, previous and next visible, no overlap, strictly non-looping */}
         <div className="editorial__line editorial__line--header">
           {/* Left Directional Arrow: Elongated arrow placed above the titles at the extreme */}
           <button
             type="button"
             className={`editorial__nav-arrow editorial__nav-arrow--prev ${
-              !prevSection || activeProject || isExitingToHome ? 'editorial__nav-arrow--hidden' : ''
+              !prevSection || activeProject ? 'editorial__nav-arrow--hidden' : ''
             }`}
             onClick={() => prevSection && navigateTo(prevSection.id)}
             aria-label={prevSection ? `Go to ${prevSection.label}` : 'Previous section'}
             title={prevSection ? `Go to ${prevSection.label}` : ''}
             id="editorial-nav-prev"
-            disabled={!prevSection || !!activeProject || isExitingToHome}
+            disabled={!prevSection || !!activeProject}
           >
             <svg width="52" height="18" viewBox="0 0 52 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M50 9H2M11 2L2 9l9 7" />
@@ -377,18 +392,72 @@ export default function EditorialShowcase({ projects, onSelectProject, onReturnT
           <button
             type="button"
             className={`editorial__nav-arrow editorial__nav-arrow--next ${
-              !nextSection || activeProject || isExitingToHome ? 'editorial__nav-arrow--hidden' : ''
+              !nextSection || activeProject ? 'editorial__nav-arrow--hidden' : ''
             }`}
             onClick={() => nextSection && navigateTo(nextSection.id)}
             aria-label={nextSection ? `Go to ${nextSection.label}` : 'Next section'}
             title={nextSection ? `Go to ${nextSection.label}` : ''}
             id="editorial-nav-next"
-            disabled={!nextSection || !!activeProject || isExitingToHome}
+            disabled={!nextSection || !!activeProject}
           >
             <svg width="52" height="18" viewBox="0 0 52 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2 9h48M41 2l9 7-9 7" />
             </svg>
           </button>
+        </div>
+
+        {/* Home Section: Appears when HOME is active */}
+        <div
+          className={`editorial__home editorial__home--${sectionStatus.home}`}
+          aria-hidden={currentView !== 'home'}
+          id="editorial-home-section"
+        >
+          {/* Background video of the eye */}
+          <video
+            ref={homeVideoRef}
+            className="editorial__home-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          >
+            <source src={homeVideoMp4} type="video/mp4" />
+            <source src={homeVideoWebm} type="video/webm" />
+          </video>
+
+          {/* Hero Title & Subtitle */}
+          <div className="editorial__home-title-wrap">
+            <h1 className="editorial__home-name">RODRIGO SANTOS</h1>
+            <p className="editorial__home-sub">CREATIVE DIRECTION</p>
+
+            <button
+              type="button"
+              className="editorial__home-cta"
+              onClick={() => navigateTo('work')}
+              id="home-explore-work-btn"
+              aria-label="Explore work"
+            >
+              <span className="editorial__home-cta-text">EXPLORE WORK</span>
+              <span className="editorial__home-cta-arrow">→</span>
+            </button>
+          </div>
+
+          {/* Seated Entity from behind with 3D parallax tilt */}
+          <div
+            className="editorial__home-entity"
+            style={{
+              transform: `translateX(-50%) translate3d(${tilt.y * -1.2}px, ${tilt.x * -1.0}px, 0)`,
+            }}
+          >
+            <img
+              src={entityBack}
+              alt="Rodrigo Santos back view"
+              className="editorial__home-entity-img"
+              draggable={false}
+            />
+          </div>
         </div>
 
         {/* Bio Section: Appears when ABOUT ME is active */}
