@@ -574,6 +574,8 @@
 .editorial__bio-actions {
   display: flex;
   align-items: center;
+  gap: clamp(10px, 1.5vw, 18px);
+  flex-wrap: wrap;
   margin-top: clamp(6px, 1.2vh, 16px);
 }
 
@@ -614,6 +616,47 @@
 
 .editorial__bio-back-btn:hover .editorial__bio-back-arrow {
   transform: translateX(-4px);
+}
+
+.editorial__bio-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #111111;
+  border: 1.5px solid rgba(0, 0, 0, 0.24);
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.editorial__bio-cv-btn:hover {
+  border-color: #000000;
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.editorial__bio-cv-arrow {
+  font-size: 1.15em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.editorial__bio-cv-btn:hover .editorial__bio-cv-arrow {
+  transform: translate(2px, -2px);
 }
 
 /* ---------- Contact Section (Appears when CONTACT is active) ---------- */

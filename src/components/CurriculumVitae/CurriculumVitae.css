@@ -1,0 +1,450 @@
+/* ==========================================================================
+   Curriculum Vitae — Editorial Style
+   Matches the exact aesthetics of rodrisanro.com:
+   Background #FAF8F5, Jost / Futura Light typography, crisp editorial lines,
+   continuous timeline marker, and zero-defect 1-page A4 print optimization.
+   ========================================================================== */
+
+/* Outer Viewing Canvas (Screen mode) */
+.cv-view {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100vw;
+  background-color: #ECE7DE;
+  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px 20px 60px;
+  box-sizing: border-box;
+  color: #111111;
+  font-family: var(--font-body, 'Jost', sans-serif);
+  position: relative;
+  overflow-x: hidden;
+  z-index: 100;
+}
+
+/* ---------- FLOATING TOOLBAR (Screen Only) ---------- */
+.cv-toolbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(820px, calc(100vw - 36px));
+  background: rgba(250, 248, 245, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cv-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: var(--font-body, 'Jost', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #111111;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.cv-toolbar__btn--back {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.cv-toolbar__btn--back:hover {
+  background: rgba(0, 0, 0, 0.09);
+  transform: translateX(-2px);
+}
+
+.cv-toolbar__btn--print {
+  background: #111111;
+  color: #FAF8F5;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.cv-toolbar__btn--print:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+}
+
+/* ---------- A4 SHEET CONTAINER ---------- */
+.cv-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  max-width: 100%;
+  background-color: #FAF8F5;
+  position: relative;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
+  padding: 16mm 18mm 14mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Subtle delicate paper grain on sheet */
+.cv-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* ---------- HEADER: Two Columns ---------- */
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 5mm;
+  border-bottom: 1.5px solid #111111;
+  position: relative;
+  z-index: 2;
+}
+
+.cv-header__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-header__name {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-display, 'Jost', 'Futura', sans-serif);
+  font-size: 2.85rem;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  text-transform: lowercase;
+}
+
+.cv-header__role {
+  margin: 10px 0 2px;
+  padding: 0;
+  font-family: var(--font-body, 'Jost', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111111;
+  letter-spacing: 0.02em;
+}
+
+.cv-header__tagline {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body, 'Jost', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #666666;
+}
+
+/* Contact block on top right */
+.cv-header__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.cv-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #222222;
+  letter-spacing: -0.01em;
+}
+
+.cv-contact-item__link {
+  color: #111111;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.cv-contact-item__link:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.cv-contact-item__icon {
+  color: #111111;
+  flex-shrink: 0;
+}
+
+/* ---------- TIMELINE BODY ---------- */
+.cv-timeline {
+  position: relative;
+  margin-top: 5mm;
+  padding-left: 20px;
+  border-left: 1.5px solid #111111;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5mm;
+  flex: 1;
+  z-index: 2;
+}
+
+/* ---------- SECTION ---------- */
+.cv-section {
+  position: relative;
+}
+
+/* Solid black circular timeline marker */
+.cv-section__marker {
+  position: absolute;
+  left: -25px; /* Centers 10px dot on the 1.5px line (20px padding-left + 5px) */
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #111111;
+}
+
+.cv-section__title {
+  margin: 0 0 3mm;
+  padding: 0;
+  font-family: var(--font-display, 'Jost', 'Futura', sans-serif);
+  font-size: 1.45rem;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #000000;
+  text-transform: lowercase;
+}
+
+.cv-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8mm;
+}
+
+.cv-text {
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.44;
+  color: #262626;
+  font-weight: 350;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- ENTRY (Jobs / Education) ---------- */
+.cv-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+}
+
+.cv-entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cv-entry__title {
+  margin: 0;
+  padding: 0;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #111111;
+  line-height: 1.25;
+}
+
+.cv-entry__title strong {
+  font-weight: 600;
+  color: #000000;
+}
+
+.cv-entry__date {
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #666666;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cv-entry__institution {
+  margin: 0;
+  padding: 0;
+  font-size: 0.80rem;
+  color: #555555;
+  font-weight: 400;
+}
+
+.cv-entry--compact {
+  gap: 1px;
+}
+
+/* ---------- SKILLS GRID ---------- */
+.cv-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 1mm;
+}
+
+.cv-skills-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cv-skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  color: #1a1a1a;
+  font-weight: 400;
+}
+
+.cv-skill-item__bullet {
+  font-size: 1rem;
+  line-height: 1;
+  color: #111111;
+}
+
+/* ---------- FOOTER ---------- */
+.cv-footer {
+  margin-top: 6mm;
+  padding-top: 3.5mm;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: #777777;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.cv-footer__site {
+  font-weight: 600;
+  color: #111111;
+}
+
+/* ==========================================================================
+   PRINT STYLES — Flawless 1-Page A4 PDF Output
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FAF8F5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide screen clutter */
+  .cv-toolbar,
+  #editorial-showcase,
+  .intro,
+  .board-reveal > *:not(.cv-view) {
+    display: none !important;
+  }
+
+  .cv-view {
+    background: transparent !important;
+    background-image: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    overflow: hidden !important;
+  }
+
+  .cv-sheet {
+    box-shadow: none !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    padding: 14mm 16mm 12mm !important;
+    margin: 0 !important;
+    background-color: #FAF8F5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .cv-sheet::before {
+    display: none !important;
+  }
+}
+
+/* Responsive adjustments for mobile preview */
+@media screen and (max-width: 768px) {
+  .cv-view {
+    padding: 70px 10px 40px;
+  }
+
+  .cv-sheet {
+    width: 100%;
+    min-height: auto;
+    padding: 24px 18px;
+  }
+
+  .cv-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cv-header__contact {
+    align-items: flex-start;
+  }
+
+  .cv-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .cv-entry__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}

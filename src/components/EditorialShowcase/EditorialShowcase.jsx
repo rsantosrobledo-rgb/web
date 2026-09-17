@@ -528,6 +528,15 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
               >
                 <span className="editorial__bio-back-arrow">←</span> VIEW PROJECTS
               </button>
+
+              <a
+                href="#cv"
+                className="editorial__bio-cv-btn"
+                id="bio-view-cv-btn"
+              >
+                <span>CURRICULUM VITAE</span>
+                <span className="editorial__bio-cv-arrow">↗</span>
+              </a>
             </div>
           </div>
         </div>

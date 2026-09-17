@@ -1,13 +1,29 @@
 import { useState, useCallback, useEffect } from 'react'
 import IntroSequence from './components/IntroSequence/IntroSequence.jsx'
 import StickerBoard from './components/StickerBoard/StickerBoard.jsx'
+import CurriculumVitae from './components/CurriculumVitae/CurriculumVitae.jsx'
 import projects from './data/projects.js'
 
 export default function App() {
-  const [introComplete, setIntroComplete] = useState(false)
-  const [showIntro, setShowIntro] = useState(true)
+  const [showCV, setShowCV] = useState(() => window.location.hash === '#cv')
+  const [introComplete, setIntroComplete] = useState(() => window.location.hash === '#cv')
+  const [showIntro, setShowIntro] = useState(() => window.location.hash !== '#cv')
   const [introKey, setIntroKey] = useState(0)
   const [selectedProject, setSelectedProject] = useState(null)
+
+  // Listen to hash changes (#cv <-> default)
+  useEffect(() => {
+    const handleHash = () => {
+      const isCV = window.location.hash === '#cv'
+      setShowCV(isCV)
+      if (isCV) {
+        setIntroComplete(true)
+        setShowIntro(false)
+      }
+    }
+    window.addEventListener('hashchange', handleHash)
+    return () => window.removeEventListener('hashchange', handleHash)
+  }, [])
 
   // Preload project stickers and home video in background while intro is playing
   useEffect(() => {
@@ -28,6 +44,17 @@ export default function App() {
       setShowIntro(false)
     }, 600)
   }, [])
+
+  const handleBackFromCV = useCallback(() => {
+    window.location.hash = ''
+    setShowCV(false)
+    setIntroComplete(true)
+    setShowIntro(false)
+  }, [])
+
+  if (showCV) {
+    return <CurriculumVitae onBack={handleBackFromCV} />
+  }
 
   return (
     <>
