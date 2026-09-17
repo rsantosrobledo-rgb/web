@@ -15,15 +15,19 @@ export default function IntroSequence({ onComplete }) {
   const [isBackView, setIsBackView] = useState(false)
   const [isCreamBg, setIsCreamBg] = useState(false)
   const [activeBg, setActiveBg] = useState(0)
-  const [bgLoaded, setBgLoaded] = useState(false)
+  const [bgLoaded, setBgLoaded] = useState(true)
   const intervalRef = useRef(null)
 
-  // Preload all backgrounds
+  // Preload all backgrounds in parallel
   useEffect(() => {
     let loaded = 0
     backgrounds.forEach((bg) => {
       const img = new Image()
       img.onload = () => {
+        loaded++
+        if (loaded >= 1) setBgLoaded(true)
+      }
+      img.onerror = () => {
         loaded++
         if (loaded >= 1) setBgLoaded(true)
       }
@@ -87,6 +91,8 @@ export default function IntroSequence({ onComplete }) {
               key={i}
               src={bg}
               alt=""
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'low'}
               className={`intro__bg-img ${i === activeBg ? 'intro__bg-img--active' : ''}`}
             />
           ))}

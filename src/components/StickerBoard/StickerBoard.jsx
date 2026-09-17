@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import entityBack from '../../assets/entity_back.png'
-import homeVideo from '../../assets/home.webm'
+import homeVideoMp4 from '../../assets/home.mp4'
+import homeVideoWebm from '../../assets/home.webm'
 import EditorialShowcase from '../EditorialShowcase/EditorialShowcase.jsx'
 import './StickerBoard.css'
 
@@ -26,6 +27,13 @@ export default function StickerBoard({ projects, onSelectProject }) {
       e.preventDefault()
       const delta = e.deltaY * 0.0022
       targetProgressRef.current = Math.max(0, Math.min(1, targetProgressRef.current + delta))
+    }
+
+    // Horizontal trackpad swipe on hero screen to advance to work
+    if (currentProgressRef.current < 0.25 && Math.abs(e.deltaX) > 25 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.2) {
+      if (e.deltaX > 0) {
+        targetProgressRef.current = 1
+      }
     }
   }, [])
 
@@ -74,33 +82,94 @@ export default function StickerBoard({ projects, onSelectProject }) {
           e.preventDefault()
           targetProgressRef.current = 1
         }
+      } else if (e.key === 'ArrowRight' && currentProgressRef.current < 0.25) {
+        targetProgressRef.current = 1
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // 5. Touch swipe handling for mobile / tablets
-  const touchStartY = useRef(null)
+  // 5. Touch swipe handling for mobile / tablets (both vertical scroll and horizontal swipe to work)
+  const touchStartXRef = useRef(null)
+  const touchStartYRef = useRef(null)
+
   const handleTouchStart = (e) => {
-    touchStartY.current = e.touches[0].clientY
+    touchStartXRef.current = e.touches[0].clientX
+    touchStartYRef.current = e.touches[0].clientY
   }
+
   const handleTouchMove = (e) => {
     if (document.querySelector('.project-detail')) return
-    if (touchStartY.current === null) return
-    const deltaY = touchStartY.current - e.touches[0].clientY
+    if (touchStartYRef.current === null || touchStartXRef.current === null) return
+    const deltaY = touchStartYRef.current - e.touches[0].clientY
+    const deltaX = touchStartXRef.current - e.touches[0].clientX
 
     if (currentProgressRef.current < 0.92) {
-      if (Math.abs(deltaY) > 10) {
+      if (Math.abs(deltaY) > 12) {
         targetProgressRef.current = deltaY > 0 ? 1 : 0
+      } else if (deltaX > 25 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+        // Swiping left on hero screen advances to MY WORK
+        targetProgressRef.current = 1
       }
     }
   }
 
-  // Ensure background video plays automatically and handles entry fade
+  const handleTouchEnd = () => {
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+  }
+
+  // Ensure background video plays automatically, is muted in DOM, and handles entry fade
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {})
+    const v = videoRef.current
+    if (!v) return
+
+    v.muted = true
+    v.defaultMuted = true
+    v.playsInline = true
+
+    const markReady = () => setVideoReady(true)
+
+    v.addEventListener('loadeddata', markReady)
+    v.addEventListener('canplay', markReady)
+    v.addEventListener('canplaythrough', markReady)
+    v.addEventListener('playing', markReady)
+
+    if (v.readyState >= 2) {
+      markReady()
+    }
+
+    // Safety fallback: ensure video is marked ready after 300ms so it's never stuck invisible
+    const fallbackTimer = setTimeout(markReady, 300)
+
+    const playVideo = () => {
+      const p = v.play()
+      if (p && p.catch) {
+        p.catch(() => {
+          // If browser policy blocked un-interacted autoplay, play on first user interaction
+          const unlockPlay = () => {
+            v.play().catch(() => {})
+            window.removeEventListener('click', unlockPlay)
+            window.removeEventListener('touchstart', unlockPlay)
+            window.removeEventListener('wheel', unlockPlay)
+            window.removeEventListener('keydown', unlockPlay)
+          }
+          window.addEventListener('click', unlockPlay, { once: true })
+          window.addEventListener('touchstart', unlockPlay, { once: true })
+          window.addEventListener('wheel', unlockPlay, { once: true })
+          window.addEventListener('keydown', unlockPlay, { once: true })
+        })
+      }
+    }
+    playVideo()
+
+    return () => {
+      clearTimeout(fallbackTimer)
+      v.removeEventListener('loadeddata', markReady)
+      v.removeEventListener('canplay', markReady)
+      v.removeEventListener('canplaythrough', markReady)
+      v.removeEventListener('playing', markReady)
     }
   }, [])
 
@@ -110,6 +179,9 @@ export default function StickerBoard({ projects, onSelectProject }) {
   }
   const returnToHero = () => {
     targetProgressRef.current = 0
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
   }
 
   const isPassed = scrollProgress > 0.5
@@ -123,31 +195,31 @@ export default function StickerBoard({ projects, onSelectProject }) {
       onMouseMove={handleMouseMove}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* ========================================================
           HOME BACKGROUND VIDEO
           Loops seamlessly under seated entity and hero title.
           Transitions to solid cream by smooth crossfade when entering
           other sections, and fades back in when returning to HOME.
+          Supports MP4 and WebM for complete cross-browser reliability.
           ======================================================== */}
       <video
         ref={videoRef}
         className={`board__video-bg ${videoReady ? 'board__video-bg--ready' : ''}`}
-        src={homeVideo}
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        onLoadedData={() => setVideoReady(true)}
-        onCanPlay={() => setVideoReady(true)}
         style={{
-          opacity: videoReady
-            ? Math.max(0, 1 - scrollProgress * 2.2)
-            : 0,
+          opacity: Math.max(0, 1 - scrollProgress * 2.2),
         }}
         aria-hidden="true"
-      />
+      >
+        <source src={homeVideoMp4} type="video/mp4" />
+        <source src={homeVideoWebm} type="video/webm" />
+      </video>
 
       {/* ========================================================
           HERO TITLE: Centered over seated person
