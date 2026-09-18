@@ -239,30 +239,37 @@
     opacity 1.8s cubic-bezier(0.35, 0, 0.25, 1);
 }
 
-/* ========== CLICK BUTTON ========== */
+/* ========== SWIPE BUTTON ========== */
+.intro__swipe-btn,
 .intro__click-btn {
   position: absolute;
   z-index: 10;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 32px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 30px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
   cursor: pointer;
+  outline: none;
   opacity: 0;
-  animation: clickBtnIn 0.5s var(--ease-out) 0.8s both,
-    clickPulse 2.5s ease-in-out 1.8s infinite;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+  animation: swipeBtnIn 0.5s var(--ease-out) 0.8s both,
+    swipePulse 2.8s ease-in-out 1.8s infinite;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, opacity 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-@keyframes clickBtnIn {
+@keyframes swipeBtnIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translate(-50%, -50%) scale(0.92);
   }
 
   to {
@@ -271,24 +278,32 @@
   }
 }
 
-@keyframes clickPulse {
-
+@keyframes swipePulse {
   0%,
   100% {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 
   50% {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25), 0 0 0 8px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.20), 0 0 0 7px rgba(255, 255, 255, 0.45);
   }
 }
 
+.intro__swipe-btn:hover,
 .intro__click-btn:hover {
-  transform: translate(-50%, calc(-50% - 2px));
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
+  transform: translate(-50%, calc(-50% - 3px));
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.20), 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Hide button immediately on click */
+.intro__swipe-btn:active,
+.intro__click-btn:active {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+
+/* Hide button immediately when transition starts */
+.intro--seated .intro__swipe-btn,
+.intro--zooming .intro__swipe-btn,
+.intro--done .intro__swipe-btn,
 .intro--seated .intro__click-btn,
 .intro--zooming .intro__click-btn,
 .intro--done .intro__click-btn {
@@ -296,12 +311,30 @@
   pointer-events: none;
 }
 
+.intro__swipe-text,
 .intro__click-label {
-  font-family: var(--font-display);
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--text);
+  font-family: var(--font-body, 'Jost', -apple-system, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #222222;
+  line-height: 1;
+}
+
+.intro__swipe-icon {
+  display: inline-block;
+  color: #222222;
+  animation: swipeChevronFloat 2.2s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+@keyframes swipeChevronFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
 }
 
 /* ========== ENTITY CONTAINER & IMAGES ==========

@@ -481,13 +481,26 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
             <button
               type="button"
-              className="editorial__home-cta"
+              className="editorial__home-swipe-btn"
               onClick={() => navigateTo('work')}
-              id="home-explore-work-btn"
-              aria-label="Explore work"
+              id="home-swipe-btn"
+              aria-label="Swipe to explore work"
             >
-              <span className="editorial__home-cta-text">EXPLORE WORK</span>
-              <span className="editorial__home-cta-arrow">→</span>
+              <span className="editorial__swipe-text">Swipe</span>
+              <svg
+                className="editorial__swipe-icon"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="18 15 12 9 6 15" />
+              </svg>
             </button>
           </div>
 

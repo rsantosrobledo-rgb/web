@@ -74,6 +74,58 @@ export default function IntroSequence({ onComplete }) {
     }, 5400)
   }, [phase, onComplete])
 
+  // Touch & Wheel gesture handling: swipe up to trigger intro transition
+  const touchStartYRef = useRef(null)
+  const touchStartXRef = useRef(null)
+
+  useEffect(() => {
+    if (phase !== 'IDLE') return
+
+    const handleTouchStart = (e) => {
+      touchStartYRef.current = e.touches[0].clientY
+      touchStartXRef.current = e.touches[0].clientX
+    }
+
+    const handleTouchEnd = (e) => {
+      if (touchStartYRef.current === null) return
+      const dy = e.changedTouches[0].clientY - touchStartYRef.current
+      const dx = e.changedTouches[0].clientX - (touchStartXRef.current || 0)
+      touchStartYRef.current = null
+      touchStartXRef.current = null
+
+      // Upward swipe: dy < -25 and predominantly vertical
+      if (dy < -25 && Math.abs(dy) > Math.abs(dx) * 0.8) {
+        handleClick()
+      }
+    }
+
+    const handleWheel = (e) => {
+      // Any vertical swipe or scroll gesture on desktop triggers the transition
+      if (Math.abs(e.deltaY) > 20 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.2) {
+        handleClick()
+      }
+    }
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault()
+        handleClick()
+      }
+    }
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
+    window.addEventListener('wheel', handleWheel, { passive: true })
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [phase, handleClick])
+
   return (
     <div
       className={`intro intro--${phase.toLowerCase()} ${isCreamBg ? 'intro--cream' : ''} ${isBackView ? 'intro--back-view' : ''}`}
@@ -124,14 +176,29 @@ export default function IntroSequence({ onComplete }) {
         <p className="intro__subheading">TAKE A SEAT</p>
       </div>
 
-      {/* CLICK button on the chair */}
+      {/* Swipe button on the chair */}
       <button
-        className="intro__click-btn"
+        type="button"
+        className="intro__swipe-btn"
         onClick={handleClick}
-        aria-label="Take a seat"
-        id="chair-click-button"
+        aria-label="Swipe up to enter portfolio"
+        id="chair-swipe-button"
       >
-        <span className="intro__click-label">CLICK</span>
+        <span className="intro__swipe-text">Swipe</span>
+        <svg
+          className="intro__swipe-icon"
+          width="17"
+          height="17"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
       </button>
 
       {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION */}
