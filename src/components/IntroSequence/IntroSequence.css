@@ -50,6 +50,7 @@
 }
 
 .intro--zooming .intro__camera,
+.intro--diving .intro__camera,
 .intro--done .intro__camera {
   transform: scale(2.388);
 }
@@ -374,6 +375,25 @@
 .intro__entity--back {
   top: 36.43vh;
   height: 46.06vh;
+  transform-origin: 50% 85%;
+  transition: opacity 0.35s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Automatic diving zoom-in into MY WORK */
+.intro--diving .intro__entity--back {
+  transform: translateX(-50%) scale(2.4);
+  opacity: 0;
+}
+
+.intro--diving {
+  pointer-events: none;
+}
+
+.intro--diving .intro__cream-overlay,
+.intro--diving .intro__backgrounds,
+.intro--diving .intro__fallback-bg {
+  opacity: 0;
+  transition: opacity 0.65s ease;
 }
 
 /* ========== MOBILE ADAPTATION ========== */

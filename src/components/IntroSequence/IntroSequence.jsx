@@ -66,12 +66,18 @@ export default function IntroSequence({ onComplete }) {
       setIsBackView(true)
     }, 2500)
 
-    // 4. At t = 5.4s (2.0s static + 3.2s zoom + 0.2s handoff buffer):
-    // Zoom completes into exact reference escorzo
+    // 4. At t = 4.8s:
+    // Once we reach the back entity, execute automatic zoom-in directly into MY WORK
+    setTimeout(() => {
+      setPhase('DIVING')
+      onComplete()
+    }, 4800)
+
+    // 5. At t = 5.6s:
+    // Diving zoom completes and intro unmounts
     setTimeout(() => {
       setPhase('DONE')
-      onComplete()
-    }, 5400)
+    }, 5600)
   }, [phase, onComplete])
 
   // Touch & Wheel gesture handling: swipe up to trigger intro transition

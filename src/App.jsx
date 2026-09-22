@@ -25,24 +25,21 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHash)
   }, [])
 
-  // Preload project stickers and home video in background while intro is playing
+  // Preload project stickers in background while intro is playing
   useEffect(() => {
     projects.forEach((p) => {
       const img = new Image()
       img.src = p.sticker
     })
-    const video = document.createElement('video')
-    video.src = '/home.webm'
-    video.preload = 'auto'
   }, [])
 
   const handleIntroComplete = useCallback(() => {
-    // Mount board immediately under intro so entity matches seamlessly
+    // Mount board immediately under intro so diving zoom reveals MY WORK seamlessly
     setIntroComplete(true)
-    // After intro finishes fading out (0.5s), unmount it
+    // After diving zoom completes (0.85s), unmount intro
     setTimeout(() => {
       setShowIntro(false)
-    }, 600)
+    }, 850)
   }, [])
 
   const handleBackFromCV = useCallback(() => {
