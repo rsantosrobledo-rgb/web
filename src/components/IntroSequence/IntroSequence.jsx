@@ -72,12 +72,6 @@ export default function IntroSequence({ onComplete }) {
       setPhase('DIVING')
       onComplete()
     }, 4800)
-
-    // 5. At t = 5.6s:
-    // Diving zoom completes and intro unmounts
-    setTimeout(() => {
-      setPhase('DONE')
-    }, 5600)
   }, [phase, onComplete])
 
   // Touch & Wheel gesture handling: swipe up to trigger intro transition

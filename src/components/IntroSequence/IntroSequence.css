@@ -16,16 +16,12 @@
   to { opacity: 1; }
 }
 
-.intro--diving {
-  pointer-events: none;
-  background-color: transparent !important;
-  transition: background-color 0.85s ease;
-}
-
+.intro--diving,
 .intro--done {
   pointer-events: none;
+  background-color: transparent !important;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.75s ease, background-color 0.75s ease;
 }
 
 /* ========== FALLBACK BACKGROUND ========== */
@@ -370,21 +366,21 @@
 }
 
 /* Automatic diving zoom-in into MY WORK: zooms straight in without climbing upward */
-.intro--diving .intro__entity--back {
+.intro--diving .intro__entity--back,
+.intro--done .intro__entity--back {
   transform: translateX(-50%) scale(2.8);
-  opacity: 0;
-  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s ease;
-}
-
-.intro--diving {
-  pointer-events: none;
+  opacity: 0 !important;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
 }
 
 .intro--diving .intro__cream-overlay,
 .intro--diving .intro__backgrounds,
-.intro--diving .intro__fallback-bg {
-  opacity: 0;
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+.intro--diving .intro__fallback-bg,
+.intro--done .intro__cream-overlay,
+.intro--done .intro__backgrounds,
+.intro--done .intro__fallback-bg {
+  opacity: 0 !important;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ========== MOBILE ADAPTATION ========== */

@@ -36,10 +36,10 @@ export default function App() {
   const handleIntroComplete = useCallback(() => {
     // Mount board immediately under intro so diving zoom reveals MY WORK seamlessly
     setIntroComplete(true)
-    // After diving zoom completes (0.85s), unmount intro
+    // After diving zoom completes and intro is completely transparent (0.75s), cleanly unmount intro
     setTimeout(() => {
       setShowIntro(false)
-    }, 850)
+    }, 950)
   }, [])
 
   const handleGoHome = useCallback(() => {

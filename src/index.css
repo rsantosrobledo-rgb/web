@@ -51,7 +51,7 @@ img {
 /* ---------- Design Tokens ---------- */
 :root {
   /* Colors */
-  --bg: #F2EDE8;
+  --bg: #FAF8F5;
   --bg-light: #FAF7F4;
   --text: #1A1A1A;
   --text-secondary: #666666;
@@ -160,7 +160,7 @@ img {
 /* ---------- Board Reveal (Intro → Board transition) ---------- */
 .board-reveal {
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.92);
   transform-origin: 50% 50%;
   will-change: transform, opacity;
 }
@@ -168,7 +168,7 @@ img {
 @keyframes boardRevealFadeIn {
   0% {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.92);
   }
   100% {
     opacity: 1;
@@ -177,5 +177,7 @@ img {
 }
 
 .board-reveal--visible {
-  animation: boardRevealFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  opacity: 1;
+  transform: scale(1);
+  animation: boardRevealFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
