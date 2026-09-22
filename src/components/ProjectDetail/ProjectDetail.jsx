@@ -145,13 +145,9 @@ export default function ProjectDetail({
 
   // Swipe gesture navigation:
   // - Horizontal swipe (left/right) changes project
-  // - Vertical swipe UP closes project (at bottom, header, footer, or if content fits)
-  // - Vertical pull DOWN at top also closes project
+  // - Vertical scrolling scrolls through project content freely without dismissing
   const touchStartXRef = useRef(null)
   const touchStartYRef = useRef(null)
-  const initialScrollTopRef = useRef(0)
-  const isAtBottomAtStartRef = useRef(false)
-  const touchTargetTypeRef = useRef('body')
 
   const handleTouchStart = (e) => {
     e.stopPropagation()
@@ -159,25 +155,6 @@ export default function ProjectDetail({
     const touch = e.touches[0]
     touchStartXRef.current = touch.clientX
     touchStartYRef.current = touch.clientY
-
-    if (detailRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = detailRef.current
-      initialScrollTopRef.current = scrollTop
-      isAtBottomAtStartRef.current = scrollTop + clientHeight >= scrollHeight - 35
-    } else {
-      initialScrollTopRef.current = 0
-      isAtBottomAtStartRef.current = true
-    }
-
-    if (e.target.closest('.project-detail__header')) {
-      touchTargetTypeRef.current = 'header'
-    } else if (e.target.closest('.project-detail__footer-nav')) {
-      touchTargetTypeRef.current = 'footer'
-    } else if (touch.clientY > window.innerHeight * 0.75) {
-      touchTargetTypeRef.current = 'bottom-edge'
-    } else {
-      touchTargetTypeRef.current = 'body'
-    }
   }
 
   const handleTouchMove = (e) => {
@@ -195,7 +172,7 @@ export default function ProjectDetail({
     touchStartXRef.current = null
     touchStartYRef.current = null
 
-    // 1. Deslizado horizontal: cambiar de proyecto
+    // Deslizado horizontal: cambiar de proyecto
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) {
       if (dx < 0) {
         goToNext()
@@ -204,39 +181,9 @@ export default function ProjectDetail({
       }
       return
     }
-
-    // 2. Deslizado hacia ARRIBA: volver hacia atrás
-    if (dy < -50 && Math.abs(dy) > Math.abs(dx) * 1.2) {
-      let isScrollable = false
-      let isAtBottomNow = false
-      if (detailRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = detailRef.current
-        isScrollable = scrollHeight > clientHeight + 25
-        isAtBottomNow = scrollTop + clientHeight >= scrollHeight - 35
-      }
-
-      const shouldClose =
-        !isScrollable ||
-        isAtBottomAtStartRef.current ||
-        isAtBottomNow ||
-        touchTargetTypeRef.current === 'header' ||
-        touchTargetTypeRef.current === 'footer' ||
-        touchTargetTypeRef.current === 'bottom-edge'
-
-      if (shouldClose) {
-        handleClose()
-        return
-      }
-    }
-
-    // 3. Deslizado hacia ABAJO al inicio de la página: también permite volver atrás
-    if (dy > 70 && Math.abs(dy) > Math.abs(dx) * 1.2 && initialScrollTopRef.current <= 5) {
-      handleClose()
-      return
-    }
   }
 
-  // Wheel / Trackpad handling for desktop horizontal swipe and scroll-past-bottom
+  // Wheel / Trackpad handling for desktop horizontal swipe between projects
   const handleDetailWheel = (e) => {
     e.stopPropagation()
     if (isClosing) return
@@ -251,19 +198,6 @@ export default function ProjectDetail({
         projectWheelLocked = false
       }
     }, 180)
-
-    // Vertical wheel past bottom: dismiss
-    if (detailRef.current && e.deltaY > 60 && Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.4) {
-      const { scrollTop, scrollHeight, clientHeight } = detailRef.current
-      if (scrollTop + clientHeight >= scrollHeight - 5) {
-        if (!projectWheelLocked) {
-          projectWheelLocked = true
-          setTimeout(() => { projectWheelLocked = false }, 600)
-          handleClose()
-        }
-      }
-      return
-    }
 
     // If currently locked during project transition or active residual momentum, ignore horizontal change
     if (projectWheelLocked) return

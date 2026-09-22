@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import bgDesert from '../../assets/bg_desert.jpg'
-import bgMeadow from '../../assets/bg_meadow.jpg'
-import bgBeach from '../../assets/bg_beach.jpg'
-import bgRoom from '../../assets/bg_room.jpg'
-import entityFront from '../../assets/entity_front.png'
-import entityBack from '../../assets/entity_back.png'
+import bgDesert from '../../assets/bg_desert.webp'
+import bgMeadow from '../../assets/bg_meadow.webp'
+import bgBeach from '../../assets/bg_beach.webp'
+import bgRoom from '../../assets/bg_room.webp'
+import entityFront from '../../assets/entity_front.webp'
+import entityBack from '../../assets/entity_back.webp'
 import './IntroSequence.css'
 
 const backgrounds = [bgDesert, bgMeadow, bgBeach, bgRoom]

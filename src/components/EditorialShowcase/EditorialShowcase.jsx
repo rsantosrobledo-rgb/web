@@ -1,6 +1,6 @@
 import { useState, useRef, useLayoutEffect, useEffect, useCallback, useMemo } from 'react'
 import ProjectDetail from '../ProjectDetail/ProjectDetail.jsx'
-import entityBack from '../../assets/entity_back.png'
+import entityBack from '../../assets/entity_back.webp'
 import homeVideoMp4 from '../../assets/home.mp4'
 import homeVideoWebm from '../../assets/home.webm'
 import './EditorialShowcase.css'
