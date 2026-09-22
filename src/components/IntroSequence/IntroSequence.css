@@ -359,7 +359,7 @@
 .intro__entity--back {
   top: 36.43vh;
   height: 46.06vh;
-  transform-origin: 50% 45%;
+  transform-origin: 50% 11%;
   transition: opacity 0.35s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
