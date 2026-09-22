@@ -42,6 +42,15 @@ export default function App() {
     }, 850)
   }, [])
 
+  const handleGoHome = useCallback(() => {
+    // Reset to the very initial screen with chair, cycling backgrounds, and swipe button
+    setIntroKey((k) => k + 1)
+    setShowIntro(true)
+    setTimeout(() => {
+      setIntroComplete(false)
+    }, 500)
+  }, [])
+
   const handleBackFromCV = useCallback(() => {
     window.location.hash = ''
     setShowCV(false)
@@ -66,6 +75,7 @@ export default function App() {
           <StickerBoard
             projects={projects}
             onSelectProject={setSelectedProject}
+            onGoHome={handleGoHome}
           />
         </div>
       )}

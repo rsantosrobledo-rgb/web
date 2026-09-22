@@ -148,23 +148,15 @@
   text-transform: uppercase;
 }
 
-/* Text stays visible at scale(1) during SEATED, then zooms in and fades progressively during ZOOMING */
-.intro--seated .intro__text {
-  animation: none;
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
-  pointer-events: none;
-}
-
+/* Hide text immediately when user initiates transition */
+.intro--seated .intro__text,
 .intro--zooming .intro__text,
+.intro--diving .intro__text,
 .intro--done .intro__text {
-  animation: none;
-  opacity: 0;
-  transform: translateX(-50%) translateY(0) scale(2.8);
-  pointer-events: none;
-  transition:
-    transform 3.0s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 2.2s cubic-bezier(0.35, 0, 0.25, 1);
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* ========== FOOTER — RODRIGO SANTOS CREATIVE DIRECTION ========== */
@@ -221,23 +213,15 @@
   letter-spacing: 0.18em;
 }
 
-/* Footer stays visible at scale(1) during SEATED, then zooms and fades progressively during ZOOMING */
-.intro--seated .intro__footer {
-  animation: none;
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
-  pointer-events: none;
-}
-
+/* Hide footer immediately when user initiates transition */
+.intro--seated .intro__footer,
 .intro--zooming .intro__footer,
+.intro--diving .intro__footer,
 .intro--done .intro__footer {
-  animation: none;
-  opacity: 0;
-  transform: translateX(-50%) translateY(0) scale(2.0);
-  pointer-events: none;
-  transition:
-    transform 3.0s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 1.8s cubic-bezier(0.35, 0, 0.25, 1);
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* ========== SWIPE BUTTON ========== */
@@ -375,13 +359,13 @@
 .intro__entity--back {
   top: 36.43vh;
   height: 46.06vh;
-  transform-origin: 50% 85%;
+  transform-origin: 50% 45%;
   transition: opacity 0.35s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Automatic diving zoom-in into MY WORK */
+/* Automatic diving zoom-in into MY WORK: zooms straight in without climbing upward */
 .intro--diving .intro__entity--back {
-  transform: translateX(-50%) scale(2.4);
+  transform: translateX(-50%) scale(2.8);
   opacity: 0;
 }
 

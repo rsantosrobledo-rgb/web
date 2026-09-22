@@ -176,45 +176,51 @@ export default function IntroSequence({ onComplete }) {
         </div>
       </div>
 
-      {/* Text — Welcome to my portfolio with TAKE A SEAT subtitle */}
-      <div className="intro__text">
-        <h1 className="intro__heading">Welcome to my portfolio</h1>
-        <p className="intro__subheading">TAKE A SEAT</p>
-      </div>
+      {/* Text — Welcome to my portfolio with TAKE A SEAT subtitle (strictly only in IDLE phase) */}
+      {phase === 'IDLE' && (
+        <div className="intro__text">
+          <h1 className="intro__heading">Welcome to my portfolio</h1>
+          <p className="intro__subheading">TAKE A SEAT</p>
+        </div>
+      )}
 
-      {/* Swipe button on the chair */}
-      <button
-        type="button"
-        className="intro__swipe-btn"
-        onClick={handleClick}
-        aria-label="Swipe up to enter portfolio"
-        id="chair-swipe-button"
-      >
-        <span className="intro__swipe-text">Swipe</span>
-        <svg
-          className="intro__swipe-icon"
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
+      {/* Swipe button on the chair (strictly only in IDLE phase) */}
+      {phase === 'IDLE' && (
+        <button
+          type="button"
+          className="intro__swipe-btn"
+          onClick={handleClick}
+          aria-label="Swipe up to enter portfolio"
+          id="chair-swipe-button"
         >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-      </button>
+          <span className="intro__swipe-text">Swipe</span>
+          <svg
+            className="intro__swipe-icon"
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+        </button>
+      )}
 
-      {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION */}
-      <div className="intro__footer">
-        <span className="intro__footer-text">
-          <span className="intro__footer-name">RODRIGO SANTOS</span>
-          <span className="intro__footer-sep"> - </span>
-          <span className="intro__footer-sub">CREATIVE DIRECTION</span>
-        </span>
-      </div>
+      {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION (strictly only in IDLE phase) */}
+      {phase === 'IDLE' && (
+        <div className="intro__footer">
+          <span className="intro__footer-text">
+            <span className="intro__footer-name">RODRIGO SANTOS</span>
+            <span className="intro__footer-sep"> - </span>
+            <span className="intro__footer-sub">CREATIVE DIRECTION</span>
+          </span>
+        </div>
+      )}
 
       {/* Final fade overlay */}
       <div className="intro__final-overlay" />

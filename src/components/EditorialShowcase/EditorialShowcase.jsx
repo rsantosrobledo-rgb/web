@@ -52,14 +52,15 @@ const getEditorialRows = (projectList) => {
 }
 
 // Strictly non-looping sequence:
-// MY WORK · ABOUT ME · CONTACT
+// HOME · MY WORK · ABOUT ME · CONTACT
 const SECTIONS = [
+  { id: 'home', label: 'HOME' },
   { id: 'work', label: 'MY WORK' },
   { id: 'about', label: 'ABOUT ME' },
   { id: 'contact', label: 'CONTACT' },
 ]
 
-export default function EditorialShowcase({ projects, onSelectProject }) {
+export default function EditorialShowcase({ projects, onSelectProject, onGoHome }) {
   const [hoveredId, setHoveredId] = useState(null)
   const [currentView, setCurrentView] = useState('work') // 'work' | 'about' | 'contact'
   const [activeProject, setActiveProject] = useState(null)
@@ -92,6 +93,14 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
 
   const navigateTo = useCallback((targetId) => {
     if (!targetId || targetId === currentView || isNavigatingRef.current) return
+
+    if (targetId === 'home') {
+      if (onGoHome) {
+        onGoHome()
+      }
+      return
+    }
+
     isNavigatingRef.current = true
     minTimePassedRef.current = false
     setCurrentView(targetId)
@@ -104,7 +113,7 @@ export default function EditorialShowcase({ projects, onSelectProject }) {
         isNavigatingRef.current = false
       }
     }, 750)
-  }, [currentView])
+  }, [currentView, onGoHome])
 
   useEffect(() => {
     return () => {
