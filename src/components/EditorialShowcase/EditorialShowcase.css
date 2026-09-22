@@ -80,32 +80,27 @@
   will-change: transform, opacity;
 }
 
-@keyframes sectionZoomIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.88) translate3d(0, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translate3d(0, 0, 0);
-  }
-}
-
-/* Active in MY WORK: zoom in and opacity */
+/* Active in MY WORK: full scale 1, at center (0, 0, 0) */
 .editorial__work-stage--active {
   transform: scale(1) translate3d(0, 0, 0);
   opacity: 1;
   pointer-events: auto;
-  animation: sectionZoomIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
 }
 
-/* Inactive work stage */
-.editorial__work-stage--past,
-.editorial__work-stage--future {
-  transform: scale(0.92) translate3d(0, 0, 0);
+/* Exited to left when in ABOUT ME or CONTACT: pure lateral pan */
+.editorial__work-stage--past {
+  transform: scale(1) translate3d(-120vw, 0, 0);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.editorial__work-stage--future {
+  transform: scale(1) translate3d(120vw, 0, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 /* Header line for MY WORK, ABOUT ME & CONTACT — Chosen title ALWAYS in the center */
@@ -334,26 +329,30 @@
   padding: 0 6vw;
   z-index: 45;
   pointer-events: none;
-  transform-origin: 50% 50%;
-  will-change: transform, opacity;
 }
 
 .editorial__bio--active {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1) translate3d(0, 0, 0);
-  animation: sectionZoomIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
 .editorial__bio--past,
-.editorial__bio--exiting,
+.editorial__bio--exiting {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-120vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
 .editorial__bio--future,
 .editorial__bio--exiting-right,
 .editorial__bio--idle {
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.92) translate3d(0, 0, 0);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transform: translate3d(120vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 .editorial__bio-inner {
@@ -482,26 +481,30 @@
   padding: 0 6vw;
   z-index: 45;
   pointer-events: none;
-  transform-origin: 50% 50%;
-  will-change: transform, opacity;
 }
 
 .editorial__contact--active {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1) translate3d(0, 0, 0);
-  animation: sectionZoomIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.82s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
 .editorial__contact--past,
-.editorial__contact--exiting,
+.editorial__contact--exiting {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-120vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
 .editorial__contact--future,
 .editorial__contact--exiting-right,
 .editorial__contact--idle {
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.92) translate3d(0, 0, 0);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transform: translate3d(120vw, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 .editorial__contact-inner {
