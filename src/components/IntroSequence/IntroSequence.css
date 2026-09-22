@@ -16,6 +16,12 @@
   to { opacity: 1; }
 }
 
+.intro--diving {
+  pointer-events: none;
+  background-color: transparent !important;
+  transition: background-color 0.85s ease;
+}
+
 .intro--done {
   pointer-events: none;
   opacity: 0;
@@ -367,6 +373,7 @@
 .intro--diving .intro__entity--back {
   transform: translateX(-50%) scale(2.8);
   opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s ease;
 }
 
 .intro--diving {
@@ -377,7 +384,7 @@
 .intro--diving .intro__backgrounds,
 .intro--diving .intro__fallback-bg {
   opacity: 0;
-  transition: opacity 0.65s ease;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ========== MOBILE ADAPTATION ========== */
