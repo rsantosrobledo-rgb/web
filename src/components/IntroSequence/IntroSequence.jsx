@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import homeReal from '../../assets/home_real.jpg'
+import homeEye from '../../assets/home_eye.webp'
 import './IntroSequence.css'
 
 export default function IntroSequence({ onStartTransition, onComplete }) {
@@ -73,35 +73,58 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
     }
   }, [phase, triggerTransition])
 
+  const marqueeItems = ['PORTFOLIO', 'PORTFOLIO', 'PORTFOLIO', 'PORTFOLIO', 'PORTFOLIO']
+
   return (
     <div
       className={`intro ${phase === 'ZOOM_OUT' ? 'intro--zoom-out' : ''}`}
       id="intro-sequence"
     >
-      {/* Zooming Camera Viewport: background photo zooms out on swipe */}
+      {/* Zooming Camera Viewport: contains marquee carousel ribbon and centered eye photo */}
       <div className="intro__camera">
+        {/* Infinite Carousel Marquee passing horizontally behind the eye */}
+        <div className="intro__marquee" aria-hidden="true">
+          <div className="intro__marquee-inner">
+            <div className="intro__marquee-group">
+              {marqueeItems.map((item, i) => (
+                <span key={`m1-${i}`} className="intro__marquee-text">
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="intro__marquee-group">
+              {marqueeItems.map((item, i) => (
+                <span key={`m2-${i}`} className="intro__marquee-text">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Eye image: sits in front of the marquee */}
         <img
-          src={homeReal}
+          src={homeEye}
           alt="Rodrigo Santos Portfolio"
           className="intro__bg-img"
           fetchPriority="high"
           loading="eager"
         />
+
+        {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}
+        <button
+          type="button"
+          className="intro__center-trigger"
+          onClick={triggerTransition}
+          aria-label="Click to enter portfolio"
+          id="center-photo-trigger"
+        />
       </div>
 
-      {/* Text — Take a look */}
+      {/* Header — Take a look */}
       <div className="intro__text">
         <h1 className="intro__heading">Take a look</h1>
       </div>
-
-      {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}
-      <button
-        type="button"
-        className="intro__center-trigger"
-        onClick={triggerTransition}
-        aria-label="Click to enter portfolio"
-        id="center-photo-trigger"
-      />
 
       {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION in black */}
       <div className="intro__footer">

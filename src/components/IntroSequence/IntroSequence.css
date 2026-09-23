@@ -38,7 +38,56 @@
   transform: scale(0.85);
 }
 
-/* ========== BACKGROUND IMAGE ========== */
+/* ========== INFINITE CAROUSEL MARQUEE (PORTFOLIO) ========== */
+.intro__marquee {
+  position: absolute;
+  top: 54.35%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 2;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.intro__marquee-inner {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop 22s linear infinite;
+}
+
+.intro__marquee-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(32px, 4.5vw, 75px);
+  padding-right: clamp(32px, 4.5vw, 75px);
+  flex-shrink: 0;
+}
+
+.intro__marquee-text {
+  font-family: var(--font-display, 'Jost', sans-serif);
+  font-size: clamp(5rem, 28vh, 260px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========== BACKGROUND EYE IMAGE ========== */
 .intro__bg-img {
   position: absolute;
   inset: 0;
@@ -47,6 +96,7 @@
   object-fit: cover;
   object-position: center center;
   display: block;
+  z-index: 4;
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
