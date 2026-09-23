@@ -98,8 +98,8 @@
   height: min(54vh, 54vw, 530px);
   border-radius: 50%;
   overflow: hidden;
-  clip-path: circle(50% at 50% 50%);
-  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(49.6% at 50% 50%);
+  -webkit-clip-path: circle(49.6% at 50% 50%);
   z-index: 4;
   pointer-events: none;
   background: transparent;
@@ -114,7 +114,7 @@
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
-  transform: scale(1.04);
+  transform: scale(1.20);
 }
 
 /* Central eye pulse & reveal animation during burst */
