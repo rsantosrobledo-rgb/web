@@ -94,8 +94,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(58vh, 58vw, 580px);
-  height: min(58vh, 58vw, 580px);
+  width: min(60vh, 60vw, 600px);
+  height: min(60vh, 60vw, 600px);
   border-radius: 50%;
   overflow: hidden;
   clip-path: circle(49.8% at 50% 50%);
@@ -114,7 +114,7 @@
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
-  transform: scale(1.12);
+  transform: scale(1.095) translate(-0.6%, 0);
 }
 
 /* Central eye pulse & reveal animation during burst */
@@ -152,8 +152,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(58vmin, 580px);
-  height: min(58vmin, 580px);
+  width: min(60vmin, 600px);
+  height: min(60vmin, 600px);
   border-radius: 50%;
   clip-path: circle(49.2% at 50% 50%);
   -webkit-clip-path: circle(49.2% at 50% 50%);
@@ -245,8 +245,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(58vh, 58vw, 580px);
-  height: min(58vh, 58vw, 580px);
+  width: min(60vh, 60vw, 600px);
+  height: min(60vh, 60vw, 600px);
   border-radius: 50%;
   background: transparent;
   border: none;
@@ -273,13 +273,13 @@
 @media (max-width: 900px) {
   .intro__eye-container,
   .intro__center-trigger {
-    width: min(44vh, 60vw, 290px);
-    height: min(44vh, 60vw, 290px);
+    width: min(46vh, 64vw, 310px);
+    height: min(46vh, 64vw, 310px);
   }
 
   .intro__eye-clone {
-    width: min(58vmin, 290px);
-    height: min(58vmin, 290px);
+    width: min(60vmin, 310px);
+    height: min(60vmin, 310px);
   }
 
   .intro__marquee-text {
