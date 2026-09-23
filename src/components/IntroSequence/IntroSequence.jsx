@@ -113,16 +113,18 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
         </div>
 
         {/* Eye video with alpha channel: sits in front of the marquee */}
-        <video
-          ref={videoRef}
-          src={homeOjo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="intro__bg-img intro__bg-video"
-          aria-hidden="true"
-        />
+        <div className="intro__eye-container">
+          <video
+            ref={videoRef}
+            src={homeOjo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="intro__bg-video"
+            aria-hidden="true"
+          />
+        </div>
 
         {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}
         <button

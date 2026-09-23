@@ -87,17 +87,28 @@
   }
 }
 
-/* ========== BACKGROUND EYE IMAGE / VIDEO ========== */
-.intro__bg-img,
-.intro__bg-video {
+/* ========== EYE VIDEO CONTAINER & CLIPPING ========== */
+.intro__eye-container {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(54vh, 54vw, 530px);
+  height: min(54vh, 54vw, 530px);
+  border-radius: 50%;
+  overflow: hidden;
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+  z-index: 4;
+  pointer-events: none;
+  background: transparent;
+}
+
+.intro__bg-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
   display: block;
-  z-index: 4;
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
@@ -193,6 +204,7 @@
 
 /* ========== MOBILE ADAPTATION ========== */
 @media (max-width: 900px) {
+  .intro__eye-container,
   .intro__center-trigger {
     width: min(65vh, 78vw, 420px);
     height: min(65vh, 78vw, 420px);
