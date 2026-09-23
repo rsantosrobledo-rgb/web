@@ -206,17 +206,17 @@
 @media (max-width: 900px) {
   .intro__eye-container,
   .intro__center-trigger {
-    width: min(56vh, 76vw, 360px);
-    height: min(56vh, 76vw, 360px);
+    width: min(39vh, 53vw, 252px);
+    height: min(39vh, 53vw, 252px);
   }
 
   .intro__marquee-text {
-    font-size: clamp(3.6rem, 19vh, 170px);
+    font-size: clamp(2.5rem, 13.5vh, 120px);
   }
 
   .intro__marquee-group {
-    gap: clamp(20px, 3.5vw, 44px);
-    padding-right: clamp(20px, 3.5vw, 44px);
+    gap: clamp(14px, 2.5vw, 30px);
+    padding-right: clamp(14px, 2.5vw, 30px);
   }
 
   .intro__footer {
