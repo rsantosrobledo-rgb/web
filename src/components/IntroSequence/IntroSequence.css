@@ -41,7 +41,7 @@
 /* ========== INFINITE CAROUSEL MARQUEE (PORTFOLIO) ========== */
 .intro__marquee {
   position: absolute;
-  top: 54.35%;
+  top: 50%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -102,72 +102,17 @@
   pointer-events: none;
 }
 
-/* ========== TEXT — Pure Black Typography ========== */
-.intro__text {
-  position: absolute;
-  z-index: 10;
-  top: clamp(20px, 6vh, 60px);
-  left: 50%;
-  transform: translateX(-50%) translateY(0) scale(1);
-  transform-origin: center center;
-  text-align: center;
-  width: max-content;
-  max-width: 95vw;
-  opacity: 0;
-  animation: introTextIn 0.8s var(--ease-out) 0.15s both;
-  will-change: transform, opacity;
-  pointer-events: none;
-}
-
-@keyframes introTextIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-.intro__heading {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.8vw, 5.2rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: #000000;
-  white-space: nowrap;
-  text-shadow: none;
-}
-
-.intro__subheading {
-  font-family: var(--font-body);
-  font-size: clamp(0.72rem, 1.1vw, 1rem);
-  font-weight: 600;
-  letter-spacing: 0.38em;
-  color: rgba(0, 0, 0, 0.82);
-  margin-top: 12px;
-  text-transform: uppercase;
-}
-
-.intro--zoom-out .intro__text {
-  opacity: 0;
-  transform: translateX(-50%) scale(0.92);
-  transition: opacity 0.35s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ========== FOOTER — Black Typography ========== */
+/* ========== FOOTER — Rodrigo Santos Creative Direction (1.5x larger) ========== */
 .intro__footer {
   position: absolute;
-  bottom: 32px;
+  bottom: clamp(32px, 5vh, 60px);
   left: 50%;
   transform: translateX(-50%) translateY(0);
   transform-origin: center center;
   z-index: 10;
   text-align: center;
   opacity: 0;
-  animation: introFooterIn 0.8s var(--ease-out) 0.4s both;
+  animation: introFooterIn 0.8s var(--ease-out) 0.3s both;
   pointer-events: none;
   will-change: transform, opacity;
 }
@@ -185,9 +130,9 @@
 
 .intro__footer-text {
   font-family: var(--font-body);
-  font-size: clamp(0.7rem, 0.88vw, 0.84rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
   letter-spacing: 0.22em;
-  color: rgba(0, 0, 0, 0.72);
+  color: rgba(0, 0, 0, 0.85);
   white-space: nowrap;
   text-shadow: none;
   display: inline-flex;
@@ -195,13 +140,13 @@
 }
 
 .intro__footer-name {
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.18em;
 }
 
 .intro__footer-sep {
   opacity: 0.5;
-  margin: 0 4px;
+  margin: 0 6px;
   font-weight: 300;
 }
 
@@ -218,7 +163,7 @@
 /* ========== CENTER PHOTO TRIGGER (CLICK ON EYE) ========== */
 .intro__center-trigger {
   position: absolute;
-  top: 54.35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: min(54vh, 54vw, 530px);
@@ -247,29 +192,16 @@
 
 /* ========== MOBILE ADAPTATION ========== */
 @media (max-width: 900px) {
-  .intro__text {
-    top: clamp(16px, 4.5vh, 40px);
-    width: 94vw;
-    max-width: 94vw;
-  }
-
-  .intro__heading {
-    font-size: clamp(1.4rem, 6.4vw, 3.2rem);
-    white-space: nowrap;
-    line-height: 1.1;
-  }
-
-  .intro__subheading {
-    font-size: clamp(0.7rem, 2.8vw, 0.85rem);
-    letter-spacing: 0.28em;
-  }
-
   .intro__center-trigger {
     width: min(65vh, 78vw, 420px);
     height: min(65vh, 78vw, 420px);
   }
 
   .intro__footer {
-    bottom: 24px;
+    bottom: clamp(24px, 4vh, 40px);
+  }
+
+  .intro__footer-text {
+    font-size: clamp(0.95rem, 3.2vw, 1.18rem);
   }
 }
