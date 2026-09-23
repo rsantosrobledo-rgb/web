@@ -94,12 +94,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(54vh, 54vw, 530px);
-  height: min(54vh, 54vw, 530px);
+  width: min(58vh, 58vw, 580px);
+  height: min(58vh, 58vw, 580px);
   border-radius: 50%;
   overflow: hidden;
-  clip-path: circle(49.6% at 50% 50%);
-  -webkit-clip-path: circle(49.6% at 50% 50%);
+  clip-path: circle(49.8% at 50% 50%);
+  -webkit-clip-path: circle(49.8% at 50% 50%);
   z-index: 4;
   pointer-events: none;
   background: transparent;
@@ -114,7 +114,7 @@
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
-  transform: scale(1.20);
+  transform: scale(1.12);
 }
 
 /* Central eye pulse & reveal animation during burst */
@@ -152,8 +152,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(54vmin, 540px);
-  height: min(54vmin, 540px);
+  width: min(58vmin, 580px);
+  height: min(58vmin, 580px);
   border-radius: 50%;
   clip-path: circle(49.2% at 50% 50%);
   -webkit-clip-path: circle(49.2% at 50% 50%);
@@ -245,8 +245,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(54vh, 54vw, 530px);
-  height: min(54vh, 54vw, 530px);
+  width: min(58vh, 58vw, 580px);
+  height: min(58vh, 58vw, 580px);
   border-radius: 50%;
   background: transparent;
   border: none;
@@ -273,13 +273,13 @@
 @media (max-width: 900px) {
   .intro__eye-container,
   .intro__center-trigger {
-    width: min(39vh, 53vw, 252px);
-    height: min(39vh, 53vw, 252px);
+    width: min(44vh, 60vw, 290px);
+    height: min(44vh, 60vw, 290px);
   }
 
   .intro__eye-clone {
-    width: min(54vmin, 260px);
-    height: min(54vmin, 260px);
+    width: min(58vmin, 290px);
+    height: min(58vmin, 290px);
   }
 
   .intro__marquee-text {
