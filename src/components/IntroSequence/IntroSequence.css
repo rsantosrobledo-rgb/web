@@ -141,14 +141,16 @@
 }
 
 .intro__eye-container--burst {
-  animation: centerEyeBurstReveal 0.82s cubic-bezier(0.25, 1, 0.5, 1) 0.05s forwards;
+  z-index: 9998;
+  animation: centerEyeBurstReveal 0.85s cubic-bezier(0.25, 1, 0.5, 1) 0.02s forwards;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
 }
 
-/* ========== BURST FIELD OF EYE CLONES ========== */
+/* ========== BURST FIELD OF EYE CLONES (SUPERIMPOSED OVER EVERYTHING) ========== */
 .intro__eye-burst-field {
   position: absolute;
   inset: 0;
-  z-index: 6;
+  z-index: 9999; /* Highest priority: overlays everything on screen */
   pointer-events: none;
   overflow: visible;
 }
@@ -157,15 +159,16 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(34vmin, 340px);
-  height: min(34vmin, 340px);
+  width: min(48vmin, 460px);
+  height: min(48vmin, 460px);
   border-radius: 50%;
   object-fit: cover;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
   will-change: transform, opacity;
-  animation: eyeBloomAndReveal 0.82s cubic-bezier(0.25, 1, 0.5, 1) var(--delay) both;
+  animation: eyeBloomAndReveal 0.86s cubic-bezier(0.25, 1, 0.5, 1) var(--delay) both;
 }
 
 @keyframes eyeBloomAndReveal {
@@ -173,15 +176,15 @@
     transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
     opacity: 0;
   }
-  18% {
+  16% {
     opacity: 1;
   }
   46% {
-    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.12);
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.22);
     opacity: 1;
   }
-  56% {
-    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1);
+  58% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.08);
     opacity: 1;
   }
   75% {
@@ -286,8 +289,8 @@
   }
 
   .intro__eye-clone {
-    width: min(34vmin, 160px);
-    height: min(34vmin, 160px);
+    width: min(50vmin, 240px);
+    height: min(50vmin, 240px);
   }
 
   .intro__marquee-text {

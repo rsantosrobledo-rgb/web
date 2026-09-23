@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import homeOjo from '../../assets/home_ojo.webm'
-import homeEye from '../../assets/home_eye.webp'
+import homeTransicion from '../../assets/home_transicion.webm'
+import homeTransicionEye from '../../assets/home_transicion_eye.webp'
 import { EYE_CLONES } from './eyeClones.js'
 import './IntroSequence.css'
 
@@ -16,12 +17,12 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
       videoRef.current.muted = true
       videoRef.current.play().catch(() => {})
     }
-  }, [])
+  }, [phase])
 
-  // Preload clone image asset in advance for zero-latency burst
+  // Preload transition assets in advance for zero-latency burst
   useEffect(() => {
     const img = new Image()
-    img.src = homeEye
+    img.src = homeTransicionEye
   }, [])
 
   const triggerTransition = useCallback(() => {
@@ -33,10 +34,10 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
       onStartTransition()
     }
 
-    // 1-second animation: eyes burst to cover screen then reveal MY WORK
+    // 1-second animation: dense overlapping eyes burst over everything then reveal MY WORK
     setTimeout(() => {
       onComplete?.()
-    }, 1100)
+    }, 1150)
   }, [onStartTransition, onComplete])
 
   // Touch & Wheel gesture handling: swipe or scroll triggers transition
@@ -98,7 +99,7 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
       className={`intro ${phase === 'BURST' ? 'intro--burst' : ''}`}
       id="intro-sequence"
     >
-      {/* Viewport Camera: contains marquee, central eye video, and surreal burst clones */}
+      {/* Viewport Camera: contains marquee, eye video, and surreal burst clones */}
       <div className="intro__camera">
         {/* Infinite Carousel Marquee passing horizontally behind the eye */}
         <div className="intro__marquee" aria-hidden="true">
@@ -120,11 +121,11 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
           </div>
         </div>
 
-        {/* Central Eye Video */}
+        {/* Central Eye Video: switches to homeTransicion when burst starts */}
         <div className={`intro__eye-container ${phase === 'BURST' ? 'intro__eye-container--burst' : ''}`}>
           <video
             ref={videoRef}
-            src={homeOjo}
+            src={phase === 'BURST' ? homeTransicion : homeOjo}
             autoPlay
             loop
             muted
@@ -134,13 +135,13 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
           />
         </div>
 
-        {/* Multiplied Eye Clones (covers screen in concentric waves then reveals) */}
+        {/* Multiplied Eye Clones (densely overlapping, superimposed over everything) */}
         {phase === 'BURST' && (
           <div className="intro__eye-burst-field" aria-hidden="true">
             {EYE_CLONES.map((clone, i) => (
               <img
                 key={i}
-                src={homeEye}
+                src={homeTransicionEye}
                 alt=""
                 className="intro__eye-clone"
                 style={{
