@@ -95,30 +95,14 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
         <p className="intro__subheading">TAKE A SEAT</p>
       </div>
 
-      {/* Swipe button */}
+      {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}
       <button
         type="button"
-        className="intro__swipe-btn"
+        className="intro__center-trigger"
         onClick={triggerTransition}
-        aria-label="Swipe to view work"
-        id="chair-swipe-button"
-      >
-        <span className="intro__swipe-text">Swipe</span>
-        <svg
-          className="intro__swipe-icon"
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-      </button>
+        aria-label="Click to enter portfolio"
+        id="center-photo-trigger"
+      />
 
       {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION in black */}
       <div className="intro__footer">

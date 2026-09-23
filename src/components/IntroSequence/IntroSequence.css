@@ -56,16 +56,17 @@
 .intro__text {
   position: absolute;
   z-index: 10;
-  top: 20%;
+  top: clamp(20px, 6vh, 60px);
   left: 50%;
   transform: translateX(-50%) translateY(0) scale(1);
   transform-origin: center center;
   text-align: center;
   width: max-content;
-  max-width: 100vw;
+  max-width: 95vw;
   opacity: 0;
   animation: introTextIn 0.8s var(--ease-out) 0.15s both;
   will-change: transform, opacity;
+  pointer-events: none;
 }
 
 @keyframes introTextIn {
@@ -81,7 +82,7 @@
 
 .intro__heading {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2.4rem, 5.8vw, 5.2rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -92,11 +93,11 @@
 
 .intro__subheading {
   font-family: var(--font-body);
-  font-size: clamp(0.75rem, 1.2vw, 1.05rem);
+  font-size: clamp(0.72rem, 1.1vw, 1rem);
   font-weight: 600;
   letter-spacing: 0.38em;
   color: rgba(0, 0, 0, 0.82);
-  margin-top: 14px;
+  margin-top: 12px;
   text-transform: uppercase;
 }
 
@@ -164,99 +165,42 @@
   transition: opacity 0.35s ease;
 }
 
-/* ========== SWIPE BUTTON ========== */
-.intro__swipe-btn {
+/* ========== CENTER PHOTO TRIGGER (CLICK ON EYE) ========== */
+.intro__center-trigger {
   position: absolute;
-  z-index: 10;
-  top: 58%;
+  top: 54.35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 32px;
-  border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  background: #ffffff;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-  cursor: pointer;
+  width: min(54vh, 54vw, 530px);
+  height: min(54vh, 54vw, 530px);
+  border-radius: 50%;
+  background: transparent;
+  border: none;
   outline: none;
-  opacity: 0;
-  animation: swipeBtnIn 0.5s var(--ease-out) 0.5s both,
-    swipePulse 2.8s ease-in-out 1.5s infinite;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, opacity 0.3s ease;
-  user-select: none;
-  -webkit-user-select: none;
+  cursor: pointer;
+  z-index: 15;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes swipeBtnIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+.intro__center-trigger:hover {
+  transform: translate(-50%, -50%) scale(1.02);
 }
 
-@keyframes swipePulse {
-  0%,
-  100% {
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-  }
-  50% {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13), 0 0 0 6px rgba(0, 0, 0, 0.04);
-  }
+.intro__center-trigger:active {
+  transform: translate(-50%, -50%) scale(0.98);
 }
 
-.intro__swipe-btn:hover {
-  transform: translate(-50%, calc(-50% - 3px));
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-.intro__swipe-btn:active {
-  transform: translate(-50%, -50%) scale(0.97);
-}
-
-.intro--zoom-out .intro__swipe-btn {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
-  transition: opacity 0.35s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.intro__swipe-text {
-  font-family: var(--font-body, 'Jost', -apple-system, sans-serif);
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #111111;
-  line-height: 1;
-}
-
-.intro__swipe-icon {
-  display: inline-block;
-  color: #111111;
-  animation: swipeChevronFloat 2.2s ease-in-out infinite;
-  transition: transform 0.2s ease;
-}
-
-@keyframes swipeChevronFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2.5px);
-  }
+.intro--zoom-out .intro__center-trigger {
+  pointer-events: none;
 }
 
 /* ========== MOBILE ADAPTATION ========== */
 @media (max-width: 900px) {
   .intro__text {
-    top: 18%;
-    width: 92vw;
-    max-width: 92vw;
+    top: clamp(16px, 4.5vh, 40px);
+    width: 94vw;
+    max-width: 94vw;
   }
 
   .intro__heading {
@@ -270,9 +214,9 @@
     letter-spacing: 0.28em;
   }
 
-  .intro__swipe-btn {
-    top: 60%;
-    padding: 11px 28px;
+  .intro__center-trigger {
+    width: min(65vh, 78vw, 420px);
+    height: min(65vh, 78vw, 420px);
   }
 
   .intro__footer {
