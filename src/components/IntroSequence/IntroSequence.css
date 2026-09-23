@@ -1,5 +1,5 @@
 /* ============================================
-   IntroSequence — Progressive Zoom & Handoff
+   IntroSequence — Home Real & Zoom-Out Transition
    ============================================ */
 
 .intro {
@@ -7,8 +7,9 @@
   inset: 0;
   z-index: 200;
   overflow: hidden;
-  background-color: var(--bg);
+  background-color: #FBF7F4;
   animation: introFadeIn 0.5s ease;
+  will-change: opacity;
 }
 
 @keyframes introFadeIn {
@@ -16,55 +17,28 @@
   to { opacity: 1; }
 }
 
-.intro--diving,
-.intro--done {
+/* ========== ZOOM OUT & OPACITY TRANSITION ON SWIPE ========== */
+.intro--zoom-out {
   pointer-events: none;
-  background-color: transparent !important;
   opacity: 0;
-  transition: opacity 0.75s ease, background-color 0.75s ease;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ========== FALLBACK BACKGROUND ========== */
-.intro__fallback-bg {
-  position: absolute;
-  inset: 0;
-  background: #2a2a28;
-  z-index: 0;
-  transition: opacity 0.8s ease;
-}
-
-.intro--cream .intro__fallback-bg,
-.intro--done .intro__fallback-bg {
-  opacity: 0;
-}
-
-/* ========== CAMERA CONTAINER (UNIFIED ZOOM) ==========
-   Progressive camera zoom from t = 0 to t = 3.2s
-   Both background AND entities zoom together in 100% lockstep
-   ======================================================= */
+/* ========== CAMERA CONTAINER (ZOOM OUT) ========== */
 .intro__camera {
   position: absolute;
   inset: 0;
-  transform-origin: 50% 18.72%;
+  transform-origin: 50% 50%;
   transform: scale(1);
-  transition: transform 3.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-.intro--zooming .intro__camera,
-.intro--diving .intro__camera,
-.intro--done .intro__camera {
-  transform: scale(2.388);
+.intro--zoom-out .intro__camera {
+  transform: scale(0.85);
 }
 
-/* ========== BACKGROUND SLIDESHOW ========== */
-.intro__backgrounds {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  transition: opacity 0.6s ease;
-}
-
+/* ========== BACKGROUND IMAGE ========== */
 .intro__bg-img {
   position: absolute;
   inset: 0;
@@ -72,40 +46,17 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  opacity: 0;
-  transition: opacity 0.7s ease-in-out;
-  will-change: opacity;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 
-.intro__bg-img--active {
-  opacity: 1;
-}
-
-/* Backgrounds fade out when cream overlay takes over at t = 1s */
-.intro--cream .intro__backgrounds,
-.intro--done .intro__backgrounds {
-  opacity: 0;
-}
-
-/* ========== CREAM OVERLAY ========== */
-.intro__cream-overlay {
-  position: absolute;
-  inset: -100%;
-  background-color: var(--bg);
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 0.6s ease;
-}
-
-.intro__cream-overlay--active {
-  opacity: 1;
-}
-
-/* ========== TEXT — single line, no shadow ========== */
+/* ========== TEXT — Pure Black Typography ========== */
 .intro__text {
   position: absolute;
   z-index: 10;
-  top: 22%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%) translateY(0) scale(1);
   transform-origin: center center;
@@ -113,7 +64,7 @@
   width: max-content;
   max-width: 100vw;
   opacity: 0;
-  animation: introTextIn 0.8s var(--ease-out) 0.3s both;
+  animation: introTextIn 0.8s var(--ease-out) 0.15s both;
   will-change: transform, opacity;
 }
 
@@ -122,7 +73,6 @@
     opacity: 0;
     transform: translateX(-50%) translateY(15px);
   }
-
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -135,7 +85,7 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: #000000;
   white-space: nowrap;
   text-shadow: none;
 }
@@ -145,33 +95,28 @@
   font-size: clamp(0.75rem, 1.2vw, 1.05rem);
   font-weight: 600;
   letter-spacing: 0.38em;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.82);
   margin-top: 14px;
   text-transform: uppercase;
 }
 
-/* Hide text immediately when user initiates transition */
-.intro--seated .intro__text,
-.intro--zooming .intro__text,
-.intro--diving .intro__text,
-.intro--done .intro__text {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+.intro--zoom-out .intro__text {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.92);
+  transition: opacity 0.35s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ========== FOOTER — RODRIGO SANTOS CREATIVE DIRECTION ========== */
+/* ========== FOOTER — Black Typography ========== */
 .intro__footer {
   position: absolute;
   bottom: 32px;
   left: 50%;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translateX(-50%) translateY(0);
   transform-origin: center center;
   z-index: 10;
   text-align: center;
   opacity: 0;
-  animation: introFooterIn 0.8s var(--ease-out) 0.6s both;
+  animation: introFooterIn 0.8s var(--ease-out) 0.4s both;
   pointer-events: none;
   will-change: transform, opacity;
 }
@@ -181,7 +126,6 @@
     opacity: 0;
     transform: translateX(-50%) translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -192,62 +136,55 @@
   font-family: var(--font-body);
   font-size: clamp(0.7rem, 0.88vw, 0.84rem);
   letter-spacing: 0.22em;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(0, 0, 0, 0.72);
   white-space: nowrap;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  text-shadow: none;
   display: inline-flex;
   align-items: center;
 }
 
 .intro__footer-name {
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.18em;
 }
 
 .intro__footer-sep {
-  opacity: 0.65;
+  opacity: 0.5;
   margin: 0 4px;
   font-weight: 300;
 }
 
 .intro__footer-sub {
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.18em;
 }
 
-/* Hide footer immediately when user initiates transition */
-.intro--seated .intro__footer,
-.intro--zooming .intro__footer,
-.intro--diving .intro__footer,
-.intro--done .intro__footer {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+.intro--zoom-out .intro__footer {
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 /* ========== SWIPE BUTTON ========== */
-.intro__swipe-btn,
-.intro__click-btn {
+.intro__swipe-btn {
   position: absolute;
   z-index: 10;
-  top: 60%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 30px;
+  padding: 12px 32px;
   border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.14);
   background: #ffffff;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   outline: none;
   opacity: 0;
-  animation: swipeBtnIn 0.5s var(--ease-out) 0.8s both,
-    swipePulse 2.8s ease-in-out 1.8s infinite;
+  animation: swipeBtnIn 0.5s var(--ease-out) 0.5s both,
+    swipePulse 2.8s ease-in-out 1.5s infinite;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, opacity 0.3s ease;
   user-select: none;
   -webkit-user-select: none;
@@ -258,7 +195,6 @@
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.92);
   }
-
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -268,49 +204,40 @@
 @keyframes swipePulse {
   0%,
   100% {
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
   }
-
   50% {
-    box-shadow: 0 6px 26px rgba(0, 0, 0, 0.20), 0 0 0 7px rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13), 0 0 0 6px rgba(0, 0, 0, 0.04);
   }
 }
 
-.intro__swipe-btn:hover,
-.intro__click-btn:hover {
+.intro__swipe-btn:hover {
   transform: translate(-50%, calc(-50% - 3px));
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.20), 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
-.intro__swipe-btn:active,
-.intro__click-btn:active {
+.intro__swipe-btn:active {
   transform: translate(-50%, -50%) scale(0.97);
 }
 
-/* Hide button immediately when transition starts */
-.intro--seated .intro__swipe-btn,
-.intro--zooming .intro__swipe-btn,
-.intro--done .intro__swipe-btn,
-.intro--seated .intro__click-btn,
-.intro--zooming .intro__click-btn,
-.intro--done .intro__click-btn {
-  opacity: 0 !important;
-  pointer-events: none;
+.intro--zoom-out .intro__swipe-btn {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.35s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.intro__swipe-text,
-.intro__click-label {
+.intro__swipe-text {
   font-family: var(--font-body, 'Jost', -apple-system, sans-serif);
   font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: #222222;
+  color: #111111;
   line-height: 1;
 }
 
 .intro__swipe-icon {
   display: inline-block;
-  color: #222222;
+  color: #111111;
   animation: swipeChevronFloat 2.2s ease-in-out infinite;
   transition: transform 0.2s ease;
 }
@@ -324,69 +251,10 @@
   }
 }
 
-/* ========== ENTITY CONTAINER & IMAGES ==========
-   Continuous progressive zoom from t = 0 to t = 3.2s
-   ================================================= */
-.intro__entities {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.intro__entity {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto !important;
-  max-width: none !important;
-  display: block;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  will-change: opacity;
-}
-
-.intro__entity--visible {
-  opacity: 1;
-}
-
-/* Front entity: placed on chair at scale 1, zooms seamlessly with camera and background */
-.intro__entity--front {
-  top: 36.43vh;
-  height: 46.06vh;
-}
-
-/* Back entity: placed on chair at scale 1, zooms with camera to exact reference escorzo (top: 61vh, height: 110vh) */
-.intro__entity--back {
-  top: 36.43vh;
-  height: 46.06vh;
-  transform-origin: 50% 11%;
-  transition: opacity 0.35s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Automatic diving zoom-in into MY WORK: zooms straight in without climbing upward */
-.intro--diving .intro__entity--back,
-.intro--done .intro__entity--back {
-  transform: translateX(-50%) scale(2.8);
-  opacity: 0 !important;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
-}
-
-.intro--diving .intro__cream-overlay,
-.intro--diving .intro__backgrounds,
-.intro--diving .intro__fallback-bg,
-.intro--done .intro__cream-overlay,
-.intro--done .intro__backgrounds,
-.intro--done .intro__fallback-bg {
-  opacity: 0 !important;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 /* ========== MOBILE ADAPTATION ========== */
 @media (max-width: 900px) {
   .intro__text {
-    top: 20%;
+    top: 18%;
     width: 92vw;
     max-width: 92vw;
   }
@@ -397,10 +265,17 @@
     line-height: 1.1;
   }
 
-  /* Silueta frontal y trasera ajustadas exactamente al asiento y suelo de las sillas en móvil */
-  .intro__entity--front,
-  .intro__entity--back {
-    top: 37vh;
-    height: 39vh;
+  .intro__subheading {
+    font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+    letter-spacing: 0.28em;
+  }
+
+  .intro__swipe-btn {
+    top: 60%;
+    padding: 11px 28px;
+  }
+
+  .intro__footer {
+    bottom: 24px;
   }
 }

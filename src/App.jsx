@@ -33,22 +33,23 @@ export default function App() {
     })
   }, [])
 
-  const handleIntroComplete = useCallback(() => {
-    // Mount board immediately under intro so diving zoom reveals MY WORK seamlessly
+  const handleIntroStartTransition = useCallback(() => {
+    // Mount board immediately under intro so zoom out reveals MY WORK seamlessly
     setIntroComplete(true)
-    // After diving zoom completes and intro is completely transparent (0.75s), cleanly unmount intro
-    setTimeout(() => {
-      setShowIntro(false)
-    }, 950)
+  }, [])
+
+  const handleIntroComplete = useCallback(() => {
+    // Cleanly unmount intro after zoom-out and fade out finish
+    setShowIntro(false)
   }, [])
 
   const handleGoHome = useCallback(() => {
-    // Reset to the very initial screen with chair, cycling backgrounds, and swipe button
+    // Reset to the initial home screen with home_real.jpg
     setIntroKey((k) => k + 1)
     setShowIntro(true)
     setTimeout(() => {
       setIntroComplete(false)
-    }, 500)
+    }, 400)
   }, [])
 
   const handleBackFromCV = useCallback(() => {
@@ -64,9 +65,13 @@ export default function App() {
 
   return (
     <>
-      {/* Intro sequence — sits on top (z-index: 200), fades out when done */}
+      {/* Intro sequence — sits on top (z-index: 200), zooms out and fades out when swiped */}
       {showIntro && (
-        <IntroSequence key={introKey} onComplete={handleIntroComplete} />
+        <IntroSequence
+          key={introKey}
+          onStartTransition={handleIntroStartTransition}
+          onComplete={handleIntroComplete}
+        />
       )}
 
       {/* Sticker board — revealed when intro completes */}
