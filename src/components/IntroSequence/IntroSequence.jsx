@@ -89,10 +89,10 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
         />
       </div>
 
-      {/* Text — Welcome to my portfolio with TAKE A SEAT subtitle in black */}
+      {/* Text — Welcome to my portfolio with TAKE A LOOK subtitle in black */}
       <div className="intro__text">
         <h1 className="intro__heading">Welcome to my portfolio</h1>
-        <p className="intro__subheading">TAKE A SEAT</p>
+        <p className="intro__subheading">TAKE A LOOK</p>
       </div>
 
       {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}
