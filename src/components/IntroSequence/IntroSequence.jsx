@@ -1,10 +1,20 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import homeEye from '../../assets/home_eye.webp'
+import homeOjo from '../../assets/home_ojo.webm'
 import './IntroSequence.css'
 
 export default function IntroSequence({ onStartTransition, onComplete }) {
   const [phase, setPhase] = useState('IDLE') // 'IDLE' | 'ZOOM_OUT'
   const hasTriggeredRef = useRef(false)
+  const videoRef = useRef(null)
+
+  // Ensure video autoplays smoothly on all browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true
+      videoRef.current.muted = true
+      videoRef.current.play().catch(() => {})
+    }
+  }, [])
 
   const triggerTransition = useCallback(() => {
     if (hasTriggeredRef.current) return
@@ -102,13 +112,16 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
           </div>
         </div>
 
-        {/* Eye image: sits in front of the marquee */}
-        <img
-          src={homeEye}
-          alt="Rodrigo Santos Portfolio"
-          className="intro__bg-img"
-          fetchPriority="high"
-          loading="eager"
+        {/* Eye video with alpha channel: sits in front of the marquee */}
+        <video
+          ref={videoRef}
+          src={homeOjo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="intro__bg-img intro__bg-video"
+          aria-hidden="true"
         />
 
         {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}

@@ -87,8 +87,9 @@
   }
 }
 
-/* ========== BACKGROUND EYE IMAGE ========== */
-.intro__bg-img {
+/* ========== BACKGROUND EYE IMAGE / VIDEO ========== */
+.intro__bg-img,
+.intro__bg-video {
   position: absolute;
   inset: 0;
   width: 100%;
