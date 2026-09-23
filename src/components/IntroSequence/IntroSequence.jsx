@@ -145,9 +145,10 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
                 alt=""
                 className="intro__eye-clone"
                 style={{
-                  '--tx': `${clone.x}vmin`,
-                  '--ty': `${clone.y}vmin`,
+                  '--tx': clone.tx,
+                  '--ty': clone.ty,
                   '--delay': `${clone.delay}s`,
+                  '--scale': clone.scale || 1,
                 }}
               />
             ))}
