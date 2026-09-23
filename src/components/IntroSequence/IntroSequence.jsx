@@ -121,10 +121,6 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
         />
       </div>
 
-      {/* Header — Take a look */}
-      <div className="intro__text">
-        <h1 className="intro__heading">Take a look</h1>
-      </div>
 
       {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION in black */}
       <div className="intro__footer">
