@@ -1,5 +1,5 @@
 /* ============================================
-   IntroSequence — Home Real & Zoom-Out Transition
+   IntroSequence — Surrealist Eye Multiplication
    ============================================ */
 
 .intro {
@@ -9,7 +9,7 @@
   overflow: hidden;
   background-color: #FBF7F4;
   animation: introFadeIn 0.5s ease;
-  will-change: opacity;
+  will-change: opacity, background-color;
 }
 
 @keyframes introFadeIn {
@@ -17,25 +17,26 @@
   to { opacity: 1; }
 }
 
-/* ========== ZOOM OUT & OPACITY TRANSITION ON SWIPE ========== */
-.intro--zoom-out {
+/* ========== BURST PHASE: INVASION & REVEAL ========== */
+.intro--burst {
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: transparent !important;
+  transition: background-color 0.4s ease 0.42s;
 }
 
-/* ========== CAMERA CONTAINER (ZOOM OUT) ========== */
+/* Fast fade out for marquee & footer during burst */
+.intro--burst .intro__marquee,
+.intro--burst .intro__footer {
+  opacity: 0 !important;
+  transition: opacity 0.22s ease;
+}
+
+/* ========== CAMERA CONTAINER ========== */
 .intro__camera {
   position: absolute;
   inset: 0;
   transform-origin: 50% 50%;
-  transform: scale(1);
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
-}
-
-.intro--zoom-out .intro__camera {
-  transform: scale(0.85);
 }
 
 /* ========== INFINITE CAROUSEL MARQUEE (PORTFOLIO) ========== */
@@ -102,6 +103,7 @@
   z-index: 4;
   pointer-events: none;
   background: transparent;
+  will-change: transform, opacity;
 }
 
 .intro__bg-video {
@@ -114,7 +116,85 @@
   pointer-events: none;
 }
 
-/* ========== FOOTER — Rodrigo Santos Creative Direction (1.5x larger) ========== */
+/* Central eye pulse & reveal animation during burst */
+@keyframes centerEyeBurstReveal {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  42% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+  55% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  78% {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+.intro__eye-container--burst {
+  animation: centerEyeBurstReveal 0.82s cubic-bezier(0.25, 1, 0.5, 1) 0.05s forwards;
+}
+
+/* ========== BURST FIELD OF EYE CLONES ========== */
+.intro__eye-burst-field {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.intro__eye-clone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(34vmin, 340px);
+  height: min(34vmin, 340px);
+  border-radius: 50%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform, opacity;
+  animation: eyeBloomAndReveal 0.82s cubic-bezier(0.25, 1, 0.5, 1) var(--delay) both;
+}
+
+@keyframes eyeBloomAndReveal {
+  0% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  46% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.12);
+    opacity: 1;
+  }
+  56% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.85);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ========== FOOTER — Rodrigo Santos Creative Direction ========== */
 .intro__footer {
   position: absolute;
   bottom: clamp(32px, 5vh, 60px);
@@ -167,11 +247,6 @@
   letter-spacing: 0.18em;
 }
 
-.intro--zoom-out .intro__footer {
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
 /* ========== CENTER PHOTO TRIGGER (CLICK ON EYE) ========== */
 .intro__center-trigger {
   position: absolute;
@@ -198,7 +273,7 @@
   transform: translate(-50%, -50%) scale(0.98);
 }
 
-.intro--zoom-out .intro__center-trigger {
+.intro--burst .intro__center-trigger {
   pointer-events: none;
 }
 
@@ -208,6 +283,11 @@
   .intro__center-trigger {
     width: min(39vh, 53vw, 252px);
     height: min(39vh, 53vw, 252px);
+  }
+
+  .intro__eye-clone {
+    width: min(34vmin, 160px);
+    height: min(34vmin, 160px);
   }
 
   .intro__marquee-text {

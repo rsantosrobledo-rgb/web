@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import homeOjo from '../../assets/home_ojo.webm'
+import homeEye from '../../assets/home_eye.webp'
+import { EYE_CLONES } from './eyeClones.js'
 import './IntroSequence.css'
 
 export default function IntroSequence({ onStartTransition, onComplete }) {
-  const [phase, setPhase] = useState('IDLE') // 'IDLE' | 'ZOOM_OUT'
+  const [phase, setPhase] = useState('IDLE') // 'IDLE' | 'BURST'
   const hasTriggeredRef = useRef(false)
   const videoRef = useRef(null)
 
@@ -16,19 +18,25 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
     }
   }, [])
 
+  // Preload clone image asset in advance for zero-latency burst
+  useEffect(() => {
+    const img = new Image()
+    img.src = homeEye
+  }, [])
+
   const triggerTransition = useCallback(() => {
     if (hasTriggeredRef.current) return
     hasTriggeredRef.current = true
 
-    setPhase('ZOOM_OUT')
+    setPhase('BURST')
     if (onStartTransition) {
       onStartTransition()
     }
 
-    // After zoom-out and opacity animation completes (750ms), notify parent to unmount
+    // 1-second animation: eyes burst to cover screen then reveal MY WORK
     setTimeout(() => {
       onComplete?.()
-    }, 750)
+    }, 1100)
   }, [onStartTransition, onComplete])
 
   // Touch & Wheel gesture handling: swipe or scroll triggers transition
@@ -87,10 +95,10 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
 
   return (
     <div
-      className={`intro ${phase === 'ZOOM_OUT' ? 'intro--zoom-out' : ''}`}
+      className={`intro ${phase === 'BURST' ? 'intro--burst' : ''}`}
       id="intro-sequence"
     >
-      {/* Zooming Camera Viewport: contains marquee carousel ribbon and centered eye photo */}
+      {/* Viewport Camera: contains marquee, central eye video, and surreal burst clones */}
       <div className="intro__camera">
         {/* Infinite Carousel Marquee passing horizontally behind the eye */}
         <div className="intro__marquee" aria-hidden="true">
@@ -112,8 +120,8 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
           </div>
         </div>
 
-        {/* Eye video with alpha channel: sits in front of the marquee */}
-        <div className="intro__eye-container">
+        {/* Central Eye Video */}
+        <div className={`intro__eye-container ${phase === 'BURST' ? 'intro__eye-container--burst' : ''}`}>
           <video
             ref={videoRef}
             src={homeOjo}
@@ -126,6 +134,25 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
           />
         </div>
 
+        {/* Multiplied Eye Clones (covers screen in concentric waves then reveals) */}
+        {phase === 'BURST' && (
+          <div className="intro__eye-burst-field" aria-hidden="true">
+            {EYE_CLONES.map((clone, i) => (
+              <img
+                key={i}
+                src={homeEye}
+                alt=""
+                className="intro__eye-clone"
+                style={{
+                  '--tx': `${clone.x}vmin`,
+                  '--ty': `${clone.y}vmin`,
+                  '--delay': `${clone.delay}s`,
+                }}
+              />
+            ))}
+          </div>
+        )}
+
         {/* Center trigger — clicking in the center of the photo (the eye) starts the animation */}
         <button
           type="button"
@@ -135,7 +162,6 @@ export default function IntroSequence({ onStartTransition, onComplete }) {
           id="center-photo-trigger"
         />
       </div>
-
 
       {/* Bottom footer text: RODRIGO SANTOS - CREATIVE DIRECTION in black */}
       <div className="intro__footer">
