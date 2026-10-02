@@ -21,6 +21,11 @@ function getYouTubeThumbnail(url) {
   return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : ''
 }
 
+function isYouTubeUrl(url) {
+  if (!url || typeof url !== 'string') return false
+  return url.includes('youtube.com') || url.includes('youtu.be')
+}
+
 // Module-level persistent wheel lock state across ProjectDetail mounts / project transitions
 let projectWheelLocked = false
 let projectMinTimePassed = false
@@ -34,13 +39,13 @@ export default function ProjectDetail({
   onClose,
   onNavigateProject,
 }) {
-  const [selectedMedia, setSelectedMedia] = useState(null)
+  const [lightboxAsset, setLightboxAsset] = useState(null)
   const [activeMoodboardIdx, setActiveMoodboardIdx] = useState(null)
   const detailRef = useRef(null)
 
-  // Reset custom selected media and moodboard state when project changes
+  // Reset custom states when project changes
   useEffect(() => {
-    setSelectedMedia(null)
+    setLightboxAsset(null)
     setActiveMoodboardIdx(null)
     if (detailRef.current) {
       detailRef.current.scrollTop = 0
@@ -65,54 +70,23 @@ export default function ProjectDetail({
   const goToNext = () => onNavigateProject(nextProject)
   const goToPrev = () => onNavigateProject(prevProject)
 
-  // Full list of media pieces for this project (used by side pasadores)
-  const allPieces = useMemo(() => {
-    const secondary = Array.isArray(project.secondaryMedia) ? project.secondaryMedia : []
-    if (project.videoEmbed) {
-      return [
-        { id: `${project.id}-primary-video`, type: 'video', src: project.videoEmbed, isPrimary: true },
-        ...secondary,
-      ]
+  const isCoverYouTube = isYouTubeUrl(project.videoEmbed)
+
+  const brandAssetsList = useMemo(() => {
+    if (Array.isArray(project.brandAssets) && project.brandAssets.length > 0) {
+      return project.brandAssets
     }
-    if (secondary.length > 0) {
-      return secondary
+    if (Array.isArray(project.secondaryMedia) && project.secondaryMedia.length > 0) {
+      return project.secondaryMedia
     }
-    return [{ id: `${project.id}-sticker`, type: 'image', src: project.sticker, isPrimary: true }]
-  }, [project.id, project.videoEmbed, project.secondaryMedia, project.sticker])
-
-  const activePieceIndex = useMemo(() => {
-    if (!selectedMedia) return 0
-    const idx = allPieces.findIndex((p) => p.id === selectedMedia.id)
-    return idx >= 0 ? idx : 0
-  }, [allPieces, selectedMedia])
-
-  const activePiece = allPieces[activePieceIndex] || allPieces[0]
-  const activeMainType = activePiece ? activePiece.type : 'image'
-  const activeMainSrc = activePiece ? activePiece.src : project.sticker
-  const activePieceId = activePiece ? activePiece.id : null
-  const isYouTube = typeof activeMainSrc === 'string' && (activeMainSrc.includes('youtube.com') || activeMainSrc.includes('youtu.be'))
-
-  const hasMultiplePieces = allPieces.length > 1
+    return []
+  }, [project.brandAssets, project.secondaryMedia])
 
   const categoryParts = useMemo(() => {
     if (!project?.category) return []
     const cleaned = project.category.replace(/^Script\s*&\s*/i, '')
     return cleaned.split(/\s*[·•]\s*/).map((s) => s.trim()).filter(Boolean)
   }, [project?.category])
-
-  const goToNextPiece = useCallback((e) => {
-    if (e) e.stopPropagation()
-    if (allPieces.length <= 1) return
-    const nextIdx = (activePieceIndex + 1) % allPieces.length
-    setSelectedMedia(allPieces[nextIdx])
-  }, [activePieceIndex, allPieces])
-
-  const goToPrevPiece = useCallback((e) => {
-    if (e) e.stopPropagation()
-    if (allPieces.length <= 1) return
-    const prevIdx = (activePieceIndex - 1 + allPieces.length) % allPieces.length
-    setSelectedMedia(allPieces[prevIdx])
-  }, [activePieceIndex, allPieces])
 
   const [isClosing, setIsClosing] = useState(false)
 
@@ -128,20 +102,24 @@ export default function ProjectDetail({
     }, 350)
   }, [isClosing, onClose])
 
-  // Keyboard navigation: Escape to go back, Left/Right to change project
+  // Keyboard navigation: Escape to go back (or close lightbox), Left/Right to change project
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
+        if (lightboxAsset) {
+          setLightboxAsset(null)
+          return
+        }
         handleClose()
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === 'ArrowRight' && !lightboxAsset) {
         goToNext()
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === 'ArrowLeft' && !lightboxAsset) {
         goToPrev()
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [goToNext, goToPrev, handleClose])
+  }, [goToNext, goToPrev, handleClose, lightboxAsset])
 
   // Swipe gesture navigation:
   // - Horizontal swipe (left/right) changes project
@@ -361,37 +339,18 @@ export default function ProjectDetail({
           )}
         </section>
 
-        {/* Media Showcase: Split if secondary pieces exist, otherwise full-width primary media */}
+        {/* Media Showcase: Always a single hero asset, prioritizing videos in all projects */}
         <section
-          className={`project-detail__media-showcase ${
-            hasSecondaryPieces ? '' : 'project-detail__media-showcase--full'
-          }`}
-          aria-label="Project media showcase"
+          className="project-detail__media-showcase project-detail__media-showcase--full"
+          aria-label="Project cover showcase"
         >
-          {/* Left / Center: Large Primary Piece with Pasadores */}
           <div className="project-detail__primary-media">
-            {/* Pasador Izquierdo (Previous Piece) */}
-            {hasMultiplePieces && (
-              <button
-                type="button"
-                className="project-detail__pasador project-detail__pasador--prev"
-                onClick={goToPrevPiece}
-                aria-label="Previous piece"
-                id="pasador-prev-piece"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m15 18-6-6 6-6"/>
-                </svg>
-              </button>
-            )}
-
-            {/* Media Display */}
-            {activeMainType === 'video' ? (
+            {project.videoEmbed ? (
               <div className="project-detail__video-wrapper">
-                {isYouTube ? (
+                {isCoverYouTube ? (
                   <iframe
-                    key={activeMainSrc}
-                    src={formatYouTubeUrl(activeMainSrc)}
+                    key={project.videoEmbed}
+                    src={formatYouTubeUrl(project.videoEmbed)}
                     title={project.name}
                     className="project-detail__video-iframe"
                     frameBorder="0"
@@ -401,8 +360,8 @@ export default function ProjectDetail({
                   />
                 ) : (
                   <video
-                    key={activeMainSrc}
-                    src={activeMainSrc}
+                    key={project.videoEmbed}
+                    src={project.videoEmbed}
                     title={project.name}
                     className="project-detail__video-element"
                     controls
@@ -414,107 +373,14 @@ export default function ProjectDetail({
             ) : (
               <div className="project-detail__image-wrapper">
                 <img
-                  key={activeMainSrc}
-                  src={activeMainSrc}
+                  key={project.coverImage || project.sticker}
+                  src={project.coverImage || project.sticker}
                   alt={project.name}
                   className="project-detail__primary-image"
                 />
               </div>
             )}
-
-            {/* Pasador Derecho (Next Piece) */}
-            {hasMultiplePieces && (
-              <button
-                type="button"
-                className="project-detail__pasador project-detail__pasador--next"
-                onClick={goToNextPiece}
-                aria-label="Next piece"
-                id="pasador-next-piece"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m9 18 6-6-6-6"/>
-                </svg>
-              </button>
-            )}
           </div>
-
-          {/* Right: Grid of Secondary Pieces (at most 6 slots) */}
-          {hasSecondaryPieces && (
-            <aside className="project-detail__secondary-grid" aria-label="Secondary pieces">
-              <div className="project-detail__grid-items">
-                {visibleGridPieces.map((piece, idx) => {
-                  const isLastSlotWithMore = hasMoreThanMax && idx === MAX_GRID_SLOTS - 1
-
-                  // Selected state: if active piece is one of the extra pieces (index >= 5), highlight slot 6
-                  const isSelected = isLastSlotWithMore
-                    ? (activePieceId === piece.id || (!project.videoEmbed && activePieceIndex >= MAX_GRID_SLOTS - 1) || (project.videoEmbed && activePieceIndex >= MAX_GRID_SLOTS))
-                    : activePieceId === piece.id
-
-                  const isPieceYouTube = typeof piece.src === 'string' && (piece.src.includes('youtube.com') || piece.src.includes('youtu.be'))
-
-                  const handleCardClick = () => {
-                    if (isLastSlotWithMore && isSelected) {
-                      // Cycle to next piece if already viewing extra pieces
-                      const nextIdx = (activePieceIndex + 1) % allPieces.length
-                      setSelectedMedia(allPieces[nextIdx])
-                    } else {
-                      setSelectedMedia(piece)
-                    }
-                  }
-
-                  return (
-                    <button
-                      key={`${project.id}-piece-${idx}`}
-                      type="button"
-                      className={`project-detail__grid-card ${
-                        isSelected ? 'project-detail__grid-card--selected' : ''
-                      } ${isLastSlotWithMore ? 'project-detail__grid-card--more' : ''}`}
-                      onClick={handleCardClick}
-                      aria-label={isLastSlotWithMore ? `View more pieces (+${remainingCount})` : `View piece ${idx + 1}`}
-                    >
-                      <div className="project-detail__grid-img-box">
-                        {piece.type === 'video' ? (
-                          isPieceYouTube ? (
-                            <img
-                              src={getYouTubeThumbnail(piece.src)}
-                              alt=""
-                              className="project-detail__grid-img"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <video
-                              src={piece.src}
-                              className="project-detail__grid-video"
-                              muted
-                              playsInline
-                              preload="metadata"
-                            />
-                          )
-                        ) : (
-                          <img
-                            src={piece.src}
-                            alt=""
-                            className="project-detail__grid-img"
-                            loading="lazy"
-                          />
-                        )}
-
-                        {isLastSlotWithMore && (
-                          <div className="project-detail__more-overlay">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="project-detail__more-icon">
-                              <rect width="13" height="13" x="8" y="8" rx="2" />
-                              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-                            </svg>
-                            <span className="project-detail__more-badge">+{remainingCount}</span>
-                          </div>
-                        )}
-                      </div>
-                    </button>
-                  )
-                })}
-              </div>
-            </aside>
-          )}
         </section>
 
         {/* Editorial Narrative / Background Story (Debajo de las piezas) */}
@@ -537,12 +403,12 @@ export default function ProjectDetail({
           </section>
         )}
 
-        {/* Brand System & Identity: Logo, Color Palette & Live Web Viewer */}
-        {(project.colorPalette || project.logo || project.webPreview) && (
+        {/* Brand System & Identity: Logo, Color Palette, Web Viewer & All Uploaded Brand Assets */}
+        {(project.colorPalette || project.logo || project.webPreview || brandAssetsList.length > 0) && (
           <section className="project-detail__brand-system" aria-label="Brand visual identity system">
             <div className="project-detail__brand-header">
-              <span className="project-detail__brand-tag">IDENTITY & DESIGN SYSTEM</span>
-              <h2 className="project-detail__brand-title">Brand Assets & Palette</h2>
+              <span className="project-detail__brand-tag">IDENTITY & BRAND REPOSITORY</span>
+              <h2 className="project-detail__brand-title">Brand Assets & System</h2>
             </div>
 
             {/* Brand Artifacts Row: Logo Badge & Color Swatches */}
@@ -629,6 +495,82 @@ export default function ProjectDetail({
                     loading="lazy"
                     sandbox="allow-scripts allow-same-origin allow-popups"
                   />
+                </div>
+              </div>
+            )}
+
+            {/* All Uploaded Project Brand Assets Repository */}
+            {brandAssetsList.length > 0 && (
+              <div className="project-detail__brand-assets-section">
+                <div className="project-detail__brand-assets-header">
+                  <span className="project-detail__artifact-label">
+                    PROJECT ASSETS REPOSITORY ({brandAssetsList.length})
+                  </span>
+                  <span className="project-detail__brand-assets-hint">
+                    Click any asset to inspect in full resolution
+                  </span>
+                </div>
+                <div className="project-detail__brand-assets-grid">
+                  {brandAssetsList.map((asset, aIdx) => {
+                    const isAssetVideo = asset.type === 'video'
+                    const isAssetYT = isYouTubeUrl(asset.src)
+                    return (
+                      <div
+                        key={asset.id || `asset-${aIdx}`}
+                        className="project-detail__brand-asset-card"
+                        onClick={() => setLightboxAsset(asset)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') setLightboxAsset(asset)
+                        }}
+                      >
+                        <div className="project-detail__brand-asset-media-box">
+                          {isAssetVideo ? (
+                            isAssetYT ? (
+                              <img
+                                src={getYouTubeThumbnail(asset.src)}
+                                alt={asset.title || 'Video Asset'}
+                                className="project-detail__brand-asset-img"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <video
+                                src={asset.src}
+                                className="project-detail__brand-asset-video"
+                                muted
+                                playsInline
+                                preload="metadata"
+                              />
+                            )
+                          ) : (
+                            <img
+                              src={asset.src}
+                              alt={asset.title || 'Brand Asset'}
+                              className="project-detail__brand-asset-img"
+                              loading="lazy"
+                            />
+                          )}
+                          <div className="project-detail__brand-asset-overlay">
+                            <span className="project-detail__brand-asset-badge">
+                              {isAssetVideo ? 'VIDEO' : 'ASSET'}
+                            </span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="project-detail__brand-asset-zoom-icon">
+                              <circle cx="11" cy="11" r="8"/>
+                              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                              <line x1="11" y1="8" x2="11" y2="14"/>
+                              <line x1="8" y1="11" x2="14" y2="11"/>
+                            </svg>
+                          </div>
+                        </div>
+                        {asset.title && (
+                          <div className="project-detail__brand-asset-footer">
+                            <span className="project-detail__brand-asset-title">{asset.title}</span>
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             )}
@@ -763,6 +705,77 @@ export default function ProjectDetail({
           <span className="project-detail__nav-arrow">→</span>
         </button>
       </footer>
+
+      {/* High-Resolution Lightbox Modal for Brand Assets */}
+      {lightboxAsset && (
+        <div
+          className="project-detail__lightbox"
+          onClick={() => setLightboxAsset(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="project-detail__lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="project-detail__lightbox-close"
+              onClick={() => setLightboxAsset(null)}
+              aria-label="Close asset preview"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+            <div className="project-detail__lightbox-media-wrap">
+              {lightboxAsset.type === 'video' ? (
+                isYouTubeUrl(lightboxAsset.src) ? (
+                  <iframe
+                    src={formatYouTubeUrl(lightboxAsset.src)}
+                    title={lightboxAsset.title || 'Video preview'}
+                    className="project-detail__lightbox-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video
+                    src={lightboxAsset.src}
+                    className="project-detail__lightbox-video"
+                    controls
+                    autoPlay
+                    playsInline
+                  />
+                )
+              ) : (
+                <img
+                  src={lightboxAsset.src}
+                  alt={lightboxAsset.title || 'Brand Asset preview'}
+                  className="project-detail__lightbox-img"
+                />
+              )}
+            </div>
+            {lightboxAsset.title && (
+              <div className="project-detail__lightbox-bar">
+                <span className="project-detail__lightbox-title">{lightboxAsset.title}</span>
+                {typeof lightboxAsset.src === 'string' && !isYouTubeUrl(lightboxAsset.src) && (
+                  <a
+                    href={lightboxAsset.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-detail__lightbox-ext"
+                  >
+                    <span>OPEN ORIGINAL</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </article>
   )
 }
