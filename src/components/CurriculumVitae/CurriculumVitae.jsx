@@ -148,7 +148,20 @@ export default function CurriculumVitae({ onBack }) {
                 </ul>
               </article>
 
-              {/* Job 2 */}
+              {/* Job 2: Freelance */}
+              <article className="cv-entry">
+                <div className="cv-entry__head">
+                  <h3 className="cv-entry__title">
+                    <strong>Freelance</strong> — Creative & Audiovisual Direction
+                  </h3>
+                  <span className="cv-entry__date">2020 — PRESENT</span>
+                </div>
+                <p className="cv-text">
+                  Direct bespoke commercial films, visual identities, and 3D narrative universes for global brands and cultural initiatives, orchestrating full-cycle conceptual development, shoot direction, and high-end post-production.
+                </p>
+              </article>
+
+              {/* Job 3 */}
               <article className="cv-entry">
                 <div className="cv-entry__head">
                   <h3 className="cv-entry__title">
