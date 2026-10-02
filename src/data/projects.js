@@ -66,10 +66,10 @@ const projects = [
       { id: 'dec-4', type: 'image', src: '/proyectos/decoding media/Untitled.png' },
     ],
     colorPalette: [
-      { name: 'Street Lime', hex: '#00FF66' },
-      { name: 'Brutalist Black', hex: '#0D0D0D' },
-      { name: 'Paper White', hex: '#F5F5F5' },
-      { name: 'Concrete Slate', hex: '#222222' },
+      { name: 'Cyber Magenta', hex: '#FF00DC' },
+      { name: 'Electric Cobalt', hex: '#0031D6' },
+      { name: 'Brutalist Black', hex: '#030304' },
+      { name: 'Paper White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
       "When tech companies try to speak the language of youth or street culture, it usually feels forced—like a corporate giant trying on sneakers that don't fit.",
@@ -100,10 +100,10 @@ const projects = [
     videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
     secondaryMedia: [],
     colorPalette: [
-      { name: 'Cobalt Blue', hex: '#0038FF' },
-      { name: 'Deep Void', hex: '#0A0B10' },
-      { name: 'Tech Cyan', hex: '#00E5FF' },
-      { name: 'Pure White', hex: '#FFFFFF' },
+      { name: 'Electric Orchid', hex: '#A942B4' },
+      { name: 'Deep Violet', hex: '#452162' },
+      { name: 'Pitch Black', hex: '#000000' },
+      { name: 'Crisp White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
       "Every year, Making Science feels that urge to innovate—that need to raise its voice above the noise and claim what is rightfully theirs.",
@@ -135,9 +135,9 @@ const projects = [
     videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
     secondaryMedia: [],
     colorPalette: [
-      { name: 'Soul Red', hex: '#990000' },
-      { name: 'Jet Black', hex: '#111111' },
-      { name: 'Chrome Silver', hex: '#C5C5C5' },
+      { name: 'Jet Black', hex: '#08080A' },
+      { name: 'Titanium Silver', hex: '#8C8C94' },
+      { name: 'Dark Graphite', hex: '#1A1A1D' },
       { name: 'Pure White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
@@ -203,9 +203,9 @@ const projects = [
     secondaryMedia: [],
     colorPalette: [
       { name: 'Stark Black', hex: '#000000' },
-      { name: 'Paper White', hex: '#FFFFFF' },
-      { name: 'Noise Charcoal', hex: '#1A1A1A' },
-      { name: 'Signal Red', hex: '#FF2A2A' },
+      { name: 'Newsprint White', hex: '#F8F8F8' },
+      { name: 'Concrete Charcoal', hex: '#222222' },
+      { name: 'Industrial Slate', hex: '#555555' },
     ],
     editorialNarrative: [
       "Landing in Cannes for the very first time with Making Science was a defining milestone, but Cannes is also the loudest room on the planet. Everyone is trying to out-shout each other with dazzling gimmicks, trendy buzzwords, and spectacle.",
@@ -240,9 +240,9 @@ const projects = [
     videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1',
     secondaryMedia: [],
     colorPalette: [
-      { name: 'Solar Amber', hex: '#FFAA00' },
-      { name: 'Cosmic Black', hex: '#08090C' },
-      { name: 'Steel Slate', hex: '#1E222D' },
+      { name: 'Solar Amber', hex: '#E7BE7D' },
+      { name: 'Molten Bronze', hex: '#6F3518' },
+      { name: 'Deep Space', hex: '#080505' },
       { name: 'Photon White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
@@ -360,12 +360,7 @@ const projects = [
     },
     videoEmbed: '/proyectos/desert/desert_final.webm',
     secondaryMedia: [],
-    colorPalette: [
-      { name: 'Dune Terracotta', hex: '#C86446' },
-      { name: 'Twilight Indigo', hex: '#2B1D3A' },
-      { name: 'Golden Amber', hex: '#E09F5B' },
-      { name: 'Nocturne Black', hex: '#0E0B14' },
-    ],
+
     editorialNarrative: [
       "Everyone assumed this piece was built inside a high-end 3D physics engine. The truth is there is zero 3D simulation in the entire film.",
       "The Desert was an uncompromising exercise in 2D digital art, multi-plane optical compositing, and atmospheric color science. We wanted to capture the heavy, contemplative solitude of vast dunes at twilight—where time slows down and silence feels palpable.",
@@ -395,9 +390,9 @@ const projects = [
     videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1',
     secondaryMedia: [],
     colorPalette: [
-      { name: 'Feminist Violet', hex: '#7828C8' },
-      { name: 'Stark Black', hex: '#000000' },
-      { name: 'Slate Charcoal', hex: '#333333' },
+      { name: 'Feminist Purple', hex: '#782078' },
+      { name: 'Skin Terracotta', hex: '#DA7B79' },
+      { name: 'Deep Obsidian', hex: '#120E16' },
       { name: 'Pure White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
@@ -428,12 +423,7 @@ const projects = [
     },
     videoEmbed: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4',
     secondaryMedia: [],
-    colorPalette: [
-      { name: 'Neon Mint', hex: '#56FFA4' },
-      { name: 'Gen-Z Lilac', hex: '#B8A9FF' },
-      { name: 'Deep Violet', hex: '#160E33' },
-      { name: 'Pure White', hex: '#FFFFFF' },
-    ],
+
     editorialNarrative: [
       "GEO is on everyone's radar right now, but it is a trend that is definitively here to stay.",
       "Adopting a playful, Gen-Z and naif aesthetic, we introduced this new tool with modern culture pulsing through its veins.",
@@ -488,10 +478,10 @@ const projects = [
       { id: 'mach-8', type: 'image', src: '/proyectos/Mach/Enhance_quality_eliminating_arti…_202605061106.jpeg' },
     ],
     colorPalette: [
-      { name: 'Mustard Pop', hex: '#FFC700' },
-      { name: 'Ketchup Crimson', hex: '#E60000' },
-      { name: 'Diner Cream', hex: '#FFF8EE' },
-      { name: 'Retro Cyan', hex: '#00B4D8' },
+      { name: 'Mach Fiery Orange', hex: '#D24A00' },
+      { name: 'Golden Yolk', hex: '#FA980B' },
+      { name: 'Obsidian Black', hex: '#111111' },
+      { name: 'Warm Diner Cream', hex: '#FFF8E6' },
     ],
     editorialNarrative: [
       "Mach began as a Degree Thesis project in Communication, but we treated it from day one as if it were a multi-million-dollar rebellious brand ready to hit the streets.",
@@ -522,10 +512,10 @@ const projects = [
     videoEmbed: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1',
     secondaryMedia: [],
     colorPalette: [
-      { name: 'Venture Blue', hex: '#0055FF' },
-      { name: 'Architectural Black', hex: '#141414' },
-      { name: 'Concrete Gray', hex: '#8E8E93' },
-      { name: 'Pure White', hex: '#FFFFFF' },
+      { name: 'Venture Cyan', hex: '#00A6DD' },
+      { name: 'Midnight Navy', hex: '#002850' },
+      { name: 'Studio Obsidian', hex: '#0B0E14' },
+      { name: 'Clean White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
       "Venture studios often struggle to communicate their soul on film. They either produce dry corporate interviews behind glass desks or fast-paced promo reels with zero emotional resonance.",
@@ -573,10 +563,10 @@ const projects = [
       { id: 'hyb-5', type: 'video', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
     ],
     colorPalette: [
-      { name: 'Bio Cyan', hex: '#00F5D4' },
-      { name: 'Neural Magenta', hex: '#7B2CBF' },
-      { name: 'Deep Void', hex: '#060709' },
-      { name: 'Synthetic White', hex: '#F0F4F8' },
+      { name: 'Technical Cyan', hex: '#00ADEA' },
+      { name: 'Flagship Navy', hex: '#012457' },
+      { name: 'Deep Void', hex: '#06070B' },
+      { name: 'Synthetic White', hex: '#FFFFFF' },
     ],
     editorialNarrative: [
       "The brief this year was straightforward: Making Science, as a pioneer in Artificial Intelligence, stands at the center of the conversation. It is admired and frequently emulated.",
