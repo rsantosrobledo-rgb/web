@@ -143,7 +143,7 @@ export default function CurriculumVitae({ onBack }) {
                 <ul className="cv-bullets">
                   <li>Spearhead creative direction, narrative conception, and audiovisual execution for flagship films, international campaigns, and brand summits (Cannes 2026 debut, Mazda España, Helios AI Factory, 5W of Marketing).</li>
                   <li>Directed the comprehensive studio rebranding and launch of <strong>Ameba Studios</strong>, architecting its visual universe, launch film, and positioning as an AI-driven audiovisual powerhouse.</li>
-                  <li>Engineered proprietary generative AI (ComfyUI) and procedural 3D pipelines, bridging cutting-edge visual exploration with high-fidelity production velocity.</li>
+                  <li>Engineered proprietary generative AI and procedural 3D pipelines, bridging cutting-edge visual exploration with high-fidelity production velocity.</li>
                   <li>Lead and mentor multidisciplinary talent across art direction, 3D/CGI, screenwriting, sound design, and post-production.</li>
                 </ul>
               </article>
@@ -165,12 +165,12 @@ export default function CurriculumVitae({ onBack }) {
               <article className="cv-entry">
                 <div className="cv-entry__head">
                   <h3 className="cv-entry__title">
-                    <strong>New Rule Magazine</strong> — Creative & Editorial Direction
+                    <strong>New Rule Magazine</strong> — Creative
                   </h3>
                   <span className="cv-entry__date">2021</span>
                 </div>
                 <p className="cv-text">
-                  Directed visual culture curation and experimental editorial design, deconstructing conventional publication grids through brutalist kinetic typography and contemporary street aesthetics.
+                  Supported creative projects while beginning to develop skills in both innovative idea generation and technical execution.
                 </p>
               </article>
             </div>
@@ -225,7 +225,7 @@ export default function CurriculumVitae({ onBack }) {
                   <span className="cv-skills-category">Leadership & AI Innovation</span>
                   <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Multidisciplinary Team Leadership</span></div>
                   <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">AI-Driven Audiovisual Workflows</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">ComfyUI Pipelines & Generative Video</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Generative Video & Diffusion Workflows</span></div>
                   <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">End-to-End Creative Production</span></div>
                 </div>
               </div>
