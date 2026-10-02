@@ -89,6 +89,29 @@ const projects = [
     videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
     secondaryMedia: [],
   },
+  {
+    id: 14,
+    row: 1,
+    order: 3,
+    name: 'Mazda Exclusive Days',
+    category: 'Creative Direction · Case Study Film',
+    year: '2026',
+    description: 'Dirección creativa y estructura narrativa para el caso de éxito de Mazda España. Un tratamiento visual dinámico que hibrida estética publicitaria automovilística con tensión documental y ritmo de alta velocidad.',
+    story: {
+      dream: 'Document the open-doors commercial initiative with an engaging, documentary-style case film.',
+      onGround: 'Elevated the traditional B2B case study through visceral sound design, kinetic match cuts, and atmospheric driving sequences aligned with Mazda’s Jinba Ittai philosophy.',
+      harvest: 'Reframed a retail sales operation into a cinematic proof-of-performance story, setting a premier showcase standard across the network.',
+    },
+    sticker: stickerMazda,
+    stickerConfig: {
+      rotate: -4,
+      hoverRotate: -2,
+      width: 'clamp(103px, 8.4vw, 166px)',
+      overlap: '-12px',
+    },
+    videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
+    secondaryMedia: [],
+  },
 
   // ========================================================
   // FILA 2 — Drift hacia la derecha
@@ -137,29 +160,6 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1',
-    secondaryMedia: [],
-  },
-  {
-    id: 14,
-    row: 2,
-    order: 3,
-    name: 'Mazda Exclusive Days',
-    category: 'Creative Direction · Case Study Film',
-    year: '2026',
-    description: 'Dirección creativa y estructura narrativa para el caso de éxito de Mazda España. Un tratamiento visual dinámico que hibrida estética publicitaria automovilística con tensión documental y ritmo de alta velocidad.',
-    story: {
-      dream: 'Document the open-doors commercial initiative with an engaging, documentary-style case film.',
-      onGround: 'Elevated the traditional B2B case study through visceral sound design, kinetic match cuts, and atmospheric driving sequences aligned with Mazda’s Jinba Ittai philosophy.',
-      harvest: 'Reframed a retail sales operation into a cinematic proof-of-performance story, setting a premier showcase standard across the network.',
-    },
-    sticker: stickerMazda,
-    stickerConfig: {
-      rotate: -4,
-      hoverRotate: -2,
-      width: 'clamp(103px, 8.4vw, 166px)',
-      overlap: '-12px',
-    },
-    videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
     secondaryMedia: [],
   },
 

@@ -22,8 +22,8 @@ const STICKER_CONFIGS = {
 
 // Fallback rows in case projects do not specify a row property
 const EDITORIAL_ROWS = [
-  [4],          // Row 1: 5W Global Summit (Decoding Culture oculto temporalmente)
-  [3, 6, 14],   // Row 2: Christmas Chronicles · That's Noise · Mazda Exclusive Days
+  [4, 14],      // Row 1: 5W of Marketing · Mazda Exclusive Days
+  [3, 6],       // Row 2: Christmas Chronicles · That's Noise
   [7, 2, 13],   // Row 3: Helios AI Factory · Ameba Studios · Robot Christmas
   [5, 8, 9],    // Row 4: The Desert · 8M Equal Voice · Geo Sphere
   [10, 11, 12], // Row 5: Mach Food Branding · Awake Sound Lab · Hybrid Futures Lab
@@ -43,12 +43,7 @@ const getEditorialRows = (projectList) => {
   })
   return Object.keys(rowMap)
     .sort((a, b) => Number(a) - Number(b))
-    .map((k) => {
-      const ids = rowMap[k]
-      // If a row has only 1 project, double it so the infinite marquee ribbon has balanced density
-      if (ids.length === 1) return [ids[0], ids[0]]
-      return ids
-    })
+    .map((k) => rowMap[k])
 }
 
 // Strictly non-looping sequence:
