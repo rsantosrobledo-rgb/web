@@ -66,12 +66,7 @@ const projects = [
       { id: 'dec-3', type: 'image', title: 'JL Graphic Element', src: '/proyectos/decoding media/JL.png' },
       { id: 'dec-4', type: 'image', title: 'Abstract Artwork Graphic', src: '/proyectos/decoding media/Untitled.png' },
     ],
-    colorPalette: [
-      { name: 'Cyber Magenta', hex: '#FF00DC' },
-      { name: 'Electric Cobalt', hex: '#0031D6' },
-      { name: 'Brutalist Black', hex: '#030304' },
-      { name: 'Paper White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#FF00DC', '#0031D6', '#030304', '#FFFFFF'],
     editorialNarrative: [
       "When tech companies try to speak the language of youth or street culture, it usually feels forced—like a corporate giant trying on sneakers that don't fit.",
       "With Decoding Culture, the ambition was never to mimic urban trends, but to truly deconstruct them. We took raw street typography, underground posters, and kinetic rhythms, colliding them against a rigid Swiss editorial framework.",
@@ -102,12 +97,7 @@ const projects = [
     brandAssets: [
       { id: '5w-vid', type: 'video', title: '5W of Marketing · Stage Keynote Film', src: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1' },
     ],
-    colorPalette: [
-      { name: 'Electric Orchid', hex: '#A942B4' },
-      { name: 'Deep Violet', hex: '#452162' },
-      { name: 'Pitch Black', hex: '#000000' },
-      { name: 'Crisp White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#A942B4', '#452162', '#000000', '#FFFFFF'],
     editorialNarrative: [
       "Every year, Making Science feels that urge to innovate—that need to raise its voice above the noise and claim what is rightfully theirs.",
       "The throne of Artificial Intelligence applied to marketing has belonged to them for years, and once again, we had to make that crystal clear.",
@@ -139,12 +129,7 @@ const projects = [
     brandAssets: [
       { id: 'mazda-vid', type: 'video', title: 'Mazda Exclusive Days · Eficacia Case Study Film', src: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4' },
     ],
-    colorPalette: [
-      { name: 'Jet Black', hex: '#08080A' },
-      { name: 'Titanium Silver', hex: '#8C8C94' },
-      { name: 'Dark Graphite', hex: '#1A1A1D' },
-      { name: 'Pure White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#08080A', '#8C8C94', '#1A1A1D', '#FFFFFF'],
     editorialNarrative: [
       "This case film was crafted to compete in top-tier industry festivals: the Eficacia Awards, IAB Awards, and BestIn Auto.",
       "Submissions for these awards tend to skew either towards comedy or overly stiff corporate presentations. We chose to break that mold.",
@@ -210,12 +195,7 @@ const projects = [
     brandAssets: [
       { id: 'noise-vid', type: 'video', title: "That's Noise · Cannes 2026 Manifesto Film", src: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1' },
     ],
-    colorPalette: [
-      { name: 'Stark Black', hex: '#000000' },
-      { name: 'Newsprint White', hex: '#F8F8F8' },
-      { name: 'Concrete Charcoal', hex: '#222222' },
-      { name: 'Industrial Slate', hex: '#555555' },
-    ],
+    colorPalette: ['#000000', '#F8F8F8', '#222222', '#555555'],
     editorialNarrative: [
       "Landing in Cannes for the very first time with Making Science was a defining milestone, but Cannes is also the loudest room on the planet. Everyone is trying to out-shout each other with dazzling gimmicks, trendy buzzwords, and spectacle.",
       "We quickly realized that adding more visual glitter to the noise was a losing game. The only way to command real attention was to deliver a sharp, fearless provocation: call out the industry's obsession with hype and strip everything back to pure, unvarnished substance.",
@@ -250,12 +230,7 @@ const projects = [
     brandAssets: [
       { id: 'helios-vid', type: 'video', title: 'Helios AI Factory · Launch Film', src: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1' },
     ],
-    colorPalette: [
-      { name: 'Solar Amber', hex: '#E7BE7D' },
-      { name: 'Molten Bronze', hex: '#6F3518' },
-      { name: 'Deep Space', hex: '#080505' },
-      { name: 'Photon White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#E7BE7D', '#6F3518', '#080505', '#FFFFFF'],
     editorialNarrative: [
       "Rooted in a deep affinity with celestial bodies and cosmology, Awake Venture Studio launched Helios AI Factory.",
       "The moment the name was shared with us, the core idea sparked naturally. We merged the mythological realm with high technology—two worlds that, paradoxically, seem fundamentally intertwined.",
@@ -292,12 +267,7 @@ const projects = [
       url: 'https://amebastudios.com',
       title: 'amebastudios.com',
     },
-    colorPalette: [
-      { name: 'Electric Lime', hex: '#D4FF00' },
-      { name: 'Obsidian Black', hex: '#0A0A0A' },
-      { name: 'Pure White', hex: '#FFFFFF' },
-      { name: 'Slate Gray', hex: '#2A2A2A' },
-    ],
+    colorPalette: ['#D4FF00', '#0A0A0A', '#FFFFFF', '#2A2A2A'],
     editorialNarrative: [
       "The brand building of Ameba Studios was unexpected, but at the same time, it was an entirely necessary strategic move.",
       "Making Science Studios was the previous name of this division. Making Science is a company with numerous branches, but what stands out about most of them is their independence from the parent company—the opportunity each has to carve out a name for itself beyond its heritage. This could be no exception.",
@@ -381,12 +351,7 @@ const projects = [
       { id: 'desert-key', type: 'image', title: 'The Desert · Creatividad General Key Visual', src: '/proyectos/desert/Creatividad general.jpg' },
       { id: 'desert-promo', type: 'image', title: 'The Desert · YouTube Promo Release', src: '/proyectos/desert/youtube_promo.png' },
     ],
-    colorPalette: [
-      { name: 'Twilight Indigo', hex: '#0D0E68' },
-      { name: 'Nocturne Void', hex: '#050614' },
-      { name: 'Deep Amethyst', hex: '#2A1846' },
-      { name: 'Dune Mist', hex: '#FAF0FB' },
-    ],
+    colorPalette: ['#0D0E68', '#050614', '#2A1846', '#FAF0FB'],
 
     editorialNarrative: [
       "Everyone assumed this piece was built inside a high-end 3D physics engine. The truth is there is zero 3D simulation in the entire film.",
@@ -418,12 +383,7 @@ const projects = [
     brandAssets: [
       { id: '8m-vid', type: 'video', title: '8M Equal Voice · Manifesto Film', src: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1' },
     ],
-    colorPalette: [
-      { name: 'Feminist Purple', hex: '#782078' },
-      { name: 'Skin Terracotta', hex: '#DA7B79' },
-      { name: 'Deep Obsidian', hex: '#120E16' },
-      { name: 'Pure White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#782078', '#DA7B79', '#120E16', '#FFFFFF'],
     editorialNarrative: [
       "The International Women’s Day campaign is one of the most significant initiatives for Making Science each year. For a long time, these pieces focused on our industry, or even on our company. While meaningful, we felt we weren’t connecting with enough people—we were speaking to an overly narrow niche.",
       "With this film, our aim was to talk about courage and self-worth: that holy grail everyone searches for, yet which we all inherently possess from the moment we are born. For women, this journey is particularly critical, as society often makes this search especially unforgiving.",
@@ -509,12 +469,7 @@ const projects = [
       { id: 'mach-6', type: 'image', title: 'Graphic Artwork Screenshot', src: '/proyectos/Mach/Captura de pantalla 2026-09-16 a las 10.15.11.png' },
       { id: 'mach-7', type: 'image', title: 'Enhanced Quality Detail Render', src: '/proyectos/Mach/Enhance_quality_eliminating_arti…_202605061106.jpeg' },
     ],
-    colorPalette: [
-      { name: 'Mach Fiery Orange', hex: '#D24A00' },
-      { name: 'Golden Yolk', hex: '#FA980B' },
-      { name: 'Obsidian Black', hex: '#111111' },
-      { name: 'Warm Diner Cream', hex: '#FFF8E6' },
-    ],
+    colorPalette: ['#D24A00', '#FA980B', '#111111', '#FFF8E6'],
     editorialNarrative: [
       "Mach began as a Degree Thesis project in Communication, but we treated it from day one as if it were a multi-million-dollar rebellious brand ready to hit the streets.",
       "Traditional fast food has grown dull and overly corporate. We took inspiration from 90s retrofuturism, hyperbolic Japanese packaging, and surrealist editorial fashion photography to build an unashamed, high-octane food universe.",
@@ -545,12 +500,7 @@ const projects = [
     brandAssets: [
       { id: 'awake-vid', type: 'video', title: 'Awake Venture Studio · Documentary Film', src: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1' },
     ],
-    colorPalette: [
-      { name: 'Venture Cyan', hex: '#00A6DD' },
-      { name: 'Midnight Navy', hex: '#002850' },
-      { name: 'Studio Obsidian', hex: '#0B0E14' },
-      { name: 'Clean White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#00A6DD', '#002850', '#0B0E14', '#FFFFFF'],
     editorialNarrative: [
       "Venture studios often struggle to communicate their soul on film. They either produce dry corporate interviews behind glass desks or fast-paced promo reels with zero emotional resonance.",
       "With Awake, we wanted to capture the invisible electricity that happens when founders meet: the obsessive energy, the intense debates, and the shared vision of building companies from nothing.",
@@ -600,12 +550,7 @@ const projects = [
       { id: 'hyb-4', type: 'video', title: 'Teaser 2 Motion Cut', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
       { id: 'hyb-5', type: 'video', title: 'Keynote Film (YouTube)', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
     ],
-    colorPalette: [
-      { name: 'Technical Cyan', hex: '#00ADEA' },
-      { name: 'Flagship Navy', hex: '#012457' },
-      { name: 'Deep Void', hex: '#06070B' },
-      { name: 'Synthetic White', hex: '#FFFFFF' },
-    ],
+    colorPalette: ['#00ADEA', '#012457', '#06070B', '#FFFFFF'],
     editorialNarrative: [
       "The brief this year was straightforward: Making Science, as a pioneer in Artificial Intelligence, stands at the center of the conversation. It is admired and frequently emulated.",
       "Yet vanity is never the answer. The path exists to be led—to guide clients and other companies toward that promised horizon.",

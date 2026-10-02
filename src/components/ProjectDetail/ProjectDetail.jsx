@@ -27,6 +27,17 @@ function isYouTubeUrl(url) {
   return url.includes('youtube.com') || url.includes('youtu.be')
 }
 
+function isColorLight(hex) {
+  if (!hex || typeof hex !== 'string') return false
+  const cleanHex = hex.replace('#', '')
+  if (cleanHex.length < 6) return false
+  const r = parseInt(cleanHex.substring(0, 2), 16) || 0
+  const g = parseInt(cleanHex.substring(2, 4), 16) || 0
+  const b = parseInt(cleanHex.substring(4, 6), 16) || 0
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+  return luminance > 0.65
+}
+
 // Module-level persistent wheel lock state across ProjectDetail mounts / project transitions
 let projectWheelLocked = false
 let projectMinTimePassed = false
@@ -42,12 +53,25 @@ export default function ProjectDetail({
 }) {
   const [lightboxAsset, setLightboxAsset] = useState(null)
   const [activeMoodboardIdx, setActiveMoodboardIdx] = useState(null)
+  const [copiedHex, setCopiedHex] = useState(null)
   const detailRef = useRef(null)
+
+  const handleCopyHex = (hex) => {
+    if (!hex) return
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(hex).catch(() => {})
+    }
+    setCopiedHex(hex)
+    setTimeout(() => {
+      setCopiedHex(prev => (prev === hex ? null : prev))
+    }, 1600)
+  }
 
   // Reset custom states when project changes
   useEffect(() => {
     setLightboxAsset(null)
     setActiveMoodboardIdx(null)
+    setCopiedHex(null)
     if (detailRef.current) {
       detailRef.current.scrollTop = 0
     }
@@ -471,23 +495,38 @@ export default function ProjectDetail({
                   </div>
                 )}
 
-                {/* Curated Color Palette */}
+                {/* Visual Brand Color Palette */}
                 {Array.isArray(project.colorPalette) && project.colorPalette.length > 0 && (
                   <div className="project-detail__palette-card">
-                    <span className="project-detail__artifact-label">CURATED COLOR PALETTE</span>
-                    <div className="project-detail__palette-swatches">
-                      {project.colorPalette.map((color, cIdx) => (
-                        <div key={cIdx} className="project-detail__swatch-item" title={`${color.name}: ${color.hex}`}>
-                          <div
-                            className="project-detail__swatch-circle"
-                            style={{ backgroundColor: color.hex }}
-                          />
-                          <div className="project-detail__swatch-meta">
-                            <span className="project-detail__swatch-name">{color.name}</span>
-                            <span className="project-detail__swatch-hex">{color.hex}</span>
-                          </div>
-                        </div>
-                      ))}
+                    <div className="project-detail__palette-header">
+                      <span className="project-detail__artifact-label">COLOR PALETTE</span>
+                      {copiedHex && (
+                        <span className="project-detail__palette-toast">
+                          {copiedHex} COPIADO
+                        </span>
+                      )}
+                    </div>
+                    <div className="project-detail__palette-strip" role="region" aria-label="Paleta de color">
+                      {project.colorPalette.map((colorItem, cIdx) => {
+                        const hex = typeof colorItem === 'string' ? colorItem : colorItem.hex
+                        const isLight = isColorLight(hex)
+                        const isCopied = copiedHex === hex
+                        return (
+                          <button
+                            key={cIdx}
+                            type="button"
+                            className={`project-detail__palette-swatch ${isLight ? 'project-detail__palette-swatch--light' : ''}`}
+                            style={{ backgroundColor: hex }}
+                            onClick={() => handleCopyHex(hex)}
+                            title={`Copiar color ${hex}`}
+                            aria-label={`Color ${hex}`}
+                          >
+                            <span className="project-detail__swatch-pill">
+                              {isCopied ? 'COPIADO' : hex.toUpperCase()}
+                            </span>
+                          </button>
+                        )
+                      })}
                     </div>
                   </div>
                 )}
