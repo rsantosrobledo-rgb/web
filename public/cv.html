@@ -288,17 +288,83 @@
         gap: 1px;
       }
 
+      /* Bullet list for achievements & roles */
+      .cv-bullets {
+        margin: 1.2mm 0 0 0;
+        padding-left: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 1mm;
+      }
+
+      .cv-bullets li {
+        font-size: 0.81rem;
+        line-height: 1.38;
+        color: #262626;
+        font-weight: 350;
+        letter-spacing: -0.005em;
+      }
+
+      /* Honors & Selected Campaigns */
+      .cv-honors-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6mm;
+        margin-top: 0.5mm;
+      }
+
+      .cv-honor-item {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-size: 0.81rem;
+        line-height: 1.36;
+      }
+
+      .cv-honor-badge {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #111111;
+        background: rgba(0, 0, 0, 0.06);
+        padding: 2px 7px;
+        border-radius: 3px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .cv-honor-desc {
+        color: #262626;
+        font-weight: 350;
+      }
+
+      .cv-honor-desc em {
+        font-style: italic;
+        font-weight: 500;
+        color: #000000;
+      }
+
       .cv-skills-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+        gap: 14px;
         margin-top: 1mm;
       }
 
       .cv-skills-col {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 5px;
+      }
+
+      .cv-skills-category {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #000000;
+        margin-bottom: 2px;
+        display: block;
       }
 
       .cv-skill-item {
@@ -428,8 +494,8 @@
             <span>rodrigo</span>
             <span>santos</span>
           </h1>
-          <p class="cv-header__role">Video Editor and Creative Coordinator</p>
-          <p class="cv-header__tagline">Creative Direction · CGI · AI Workflows</p>
+          <p class="cv-header__role">Creative Director & Visual Strategist</p>
+          <p class="cv-header__tagline">Film & Campaign Direction · CGI/3D Architecture · AI Innovation Pipelines</p>
         </div>
 
         <aside class="cv-header__contact" aria-label="Contact Information">
@@ -474,10 +540,10 @@
           <h2 class="cv-section__title">about me</h2>
           <div class="cv-section__content">
             <p class="cv-text">
-              A responsible, organized, and creative professional with the ability to generate innovative ideas quickly and efficiently. Has led multiple projects, developing both the creative vision and the management skills required to deliver successful outcomes.
+              Creative Director and visual storyteller operating at the intersection of high-concept brand strategy, cinematic filmmaking, and next-generation AI/CGI pipelines. Experienced in orchestrating cross-disciplinary teams to deliver defining brand manifestos, international festival submissions (Cannes Lions 2026, Premios Eficacia, BestIn Auto), and comprehensive studio identity relaunches.
             </p>
             <p class="cv-text">
-              Brings experience in automating creative processes, designing and optimizing workflows that enable large-scale production of high-quality content. Combines innovation with efficiency, consistently ensuring strong and distinctive results.
+              Pioneers procedural 3D and generative workflows that bridge artisanal craft with scalable, state-of-the-art production—transforming complex technological and strategic narratives into emotionally resonant audiovisual poetry.
             </p>
           </div>
         </section>
@@ -489,23 +555,48 @@
           <div class="cv-section__content">
             <article class="cv-entry">
               <div class="cv-entry__head">
-                <h3 class="cv-entry__title"><strong>Making Science</strong> — Video Editor and Creative Coordinator</h3>
+                <h3 class="cv-entry__title"><strong>Making Science / Ameba Studios</strong> — Creative Director & Visual Lead</h3>
                 <span class="cv-entry__date">2021 — PRESENT</span>
               </div>
-              <p class="cv-text">
-                Led creative and technical projects, combining innovative idea generation with efficient execution. Designed and implemented automated workflows to optimize creative processes, enabling large-scale production of high-quality content.
-              </p>
+              <ul class="cv-bullets">
+                <li>Spearhead creative direction, narrative conception, and audiovisual execution for flagship films, international campaigns, and brand summits (Cannes 2026 debut, Mazda España, Helios AI Factory, 5W of Marketing).</li>
+                <li>Directed the comprehensive studio rebranding and launch of <strong>Ameba Studios</strong>, architecting its visual universe, launch film, and positioning as an AI-driven audiovisual powerhouse.</li>
+                <li>Engineered proprietary generative AI (ComfyUI) and procedural 3D pipelines, bridging cutting-edge visual exploration with high-fidelity production velocity.</li>
+                <li>Lead and mentor multidisciplinary talent across art direction, 3D/CGI, screenwriting, sound design, and post-production.</li>
+              </ul>
             </article>
 
             <article class="cv-entry">
               <div class="cv-entry__head">
-                <h3 class="cv-entry__title"><strong>New Rule Magazine</strong> — Creative</h3>
+                <h3 class="cv-entry__title"><strong>New Rule Magazine</strong> — Creative & Editorial Direction</h3>
                 <span class="cv-entry__date">2021</span>
               </div>
               <p class="cv-text">
-                Supported creative projects while beginning to develop skills in both innovative idea generation and technical execution.
+                Directed visual culture curation and experimental editorial design, deconstructing conventional publication grids through brutalist kinetic typography and contemporary street aesthetics.
               </p>
             </article>
+          </div>
+        </section>
+
+        <!-- Honors & Selected Campaigns -->
+        <section class="cv-section">
+          <div class="cv-section__marker" aria-hidden="true"></div>
+          <h2 class="cv-section__title">honors & selected campaigns</h2>
+          <div class="cv-section__content">
+            <div class="cv-honors-grid">
+              <div class="cv-honor-item">
+                <span class="cv-honor-badge">CANNES LIONS 2026</span>
+                <span class="cv-honor-desc">Creative Direction & Manifesto for Making Science official debut campaign (<em>That's Noise</em>).</span>
+              </div>
+              <div class="cv-honor-item">
+                <span class="cv-honor-badge">PREMIOS EFICACIA & BESTIN AUTO</span>
+                <span class="cv-honor-desc">Creative Direction for Mazda España automotive case study film (<em>Mazda Exclusive Days</em>).</span>
+              </div>
+              <div class="cv-honor-item">
+                <span class="cv-honor-badge">STUDIO RELAUNCH</span>
+                <span class="cv-honor-desc">Complete brand architecture, manifesto launch film, and digital presence for Ameba Studios.</span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -516,39 +607,48 @@
           <div class="cv-section__content">
             <article class="cv-entry cv-entry--compact">
               <div class="cv-entry__head">
-                <h3 class="cv-entry__title">Motion Graphics & 3D Master</h3>
+                <h3 class="cv-entry__title"><strong>Motion Graphics & 3D Master</strong> — Honor Roll</h3>
                 <span class="cv-entry__date">2021 — 2022</span>
               </div>
-              <p class="cv-entry__institution">Trazos School</p>
+              <p class="cv-entry__institution">Trazos School · Specialization in procedural simulation, CGI lighting & look development</p>
             </article>
 
             <article class="cv-entry cv-entry--compact">
               <div class="cv-entry__head">
-                <h3 class="cv-entry__title">Cinema and Broadcasting degree</h3>
+                <h3 class="cv-entry__title"><strong>Cinema, TV & Media Degree</strong> — Honors in Narrative Direction</h3>
                 <span class="cv-entry__date">2017 — 2021</span>
               </div>
-              <p class="cv-entry__institution">Universidad Rey Juan Carlos</p>
+              <p class="cv-entry__institution">Universidad Rey Juan Carlos · Degree Thesis (TFG): Mach Fast-Food Universe (Honors)</p>
             </article>
           </div>
         </section>
 
-        <!-- Skills -->
+        <!-- Capabilities & Craft -->
         <section class="cv-section">
           <div class="cv-section__marker" aria-hidden="true"></div>
-          <h2 class="cv-section__title">skills</h2>
+          <h2 class="cv-section__title">capabilities & craft</h2>
           <div class="cv-section__content">
             <div class="cv-skills-grid">
               <div class="cv-skills-col">
-                <div class="cv-skill-item"><span>•</span> <span>After Effects</span></div>
-                <div class="cv-skill-item"><span>•</span> <span>Premiere</span></div>
+                <span class="cv-skills-category">Creative Leadership</span>
+                <div class="cv-skill-item"><span>•</span> <span>Creative Direction & Art Direction</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Film Scriptwriting & Storytelling</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Brand Universe Architecture</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Pitch Treatments & Team Leadership</span></div>
               </div>
               <div class="cv-skills-col">
-                <div class="cv-skill-item"><span>•</span> <span>Houdini</span></div>
-                <div class="cv-skill-item"><span>•</span> <span>Blender</span></div>
+                <span class="cv-skills-category">CGI, 3D & Post-Production</span>
+                <div class="cv-skill-item"><span>•</span> <span>Houdini & Blender (Procedural & 3D)</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Cinema 4D & Octane / Redshift</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>After Effects & Premiere Pro</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Advanced Optical & 2D Compositing</span></div>
               </div>
               <div class="cv-skills-col">
-                <div class="cv-skill-item"><span>•</span> <span>ComfyUI</span></div>
-                <div class="cv-skill-item"><span>•</span> <span>AI tools (Midjourney, Google Veo)</span></div>
+                <span class="cv-skills-category">AI Systems & Innovation</span>
+                <div class="cv-skill-item"><span>•</span> <span>ComfyUI Node Architecture</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Custom LoRA & Diffusion Models</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Google Veo & Runway Gen-3</span></div>
+                <div class="cv-skill-item"><span>•</span> <span>Automated Creative Pipelines</span></div>
               </div>
             </div>
           </div>

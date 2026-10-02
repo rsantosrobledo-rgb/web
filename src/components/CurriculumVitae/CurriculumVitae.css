@@ -322,18 +322,86 @@
   gap: 1px;
 }
 
+/* Bullet list for achievements & roles */
+.cv-bullets {
+  margin: 1.2mm 0 0 0;
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+}
+
+.cv-bullets li {
+  font-size: 0.81rem;
+  line-height: 1.38;
+  color: #262626;
+  font-weight: 350;
+  letter-spacing: -0.005em;
+}
+
+/* Honors & Selected Campaigns */
+.cv-honors-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6mm;
+  margin-top: 0.5mm;
+}
+
+.cv-honor-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.81rem;
+  line-height: 1.36;
+}
+
+.cv-honor-badge {
+  font-family: var(--font-display, 'Jost', 'Futura', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #111111;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cv-honor-desc {
+  color: #262626;
+  font-weight: 350;
+}
+
+.cv-honor-desc em {
+  font-style: italic;
+  font-weight: 500;
+  color: #000000;
+}
+
 /* ---------- SKILLS GRID ---------- */
 .cv-skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 14px;
   margin-top: 1mm;
 }
 
 .cv-skills-col {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
+}
+
+.cv-skills-category {
+  font-family: var(--font-display, 'Jost', 'Futura', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 2px;
+  display: block;
 }
 
 .cv-skill-item {

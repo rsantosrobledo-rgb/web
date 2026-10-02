@@ -69,8 +69,8 @@ export default function CurriculumVitae({ onBack }) {
               <span>rodrigo</span>
               <span>santos</span>
             </h1>
-            <p className="cv-header__role">Video Editor and Creative Coordinator</p>
-            <p className="cv-header__tagline">Creative Direction · CGI · AI Workflows</p>
+            <p className="cv-header__role">Creative Director & Visual Strategist</p>
+            <p className="cv-header__tagline">Film & Campaign Direction · CGI/3D Architecture · AI Innovation Pipelines</p>
           </div>
 
           <aside className="cv-header__contact" aria-label="Contact Information">
@@ -119,10 +119,10 @@ export default function CurriculumVitae({ onBack }) {
             <h2 className="cv-section__title">about me</h2>
             <div className="cv-section__content">
               <p className="cv-text">
-                A responsible, organized, and creative professional with the ability to generate innovative ideas quickly and efficiently. Has led multiple projects, developing both the creative vision and the management skills required to deliver successful outcomes.
+                Creative Director and visual storyteller operating at the intersection of high-concept brand strategy, cinematic filmmaking, and next-generation AI/CGI pipelines. Experienced in orchestrating cross-disciplinary teams to deliver defining brand manifestos, international festival submissions (Cannes Lions 2026, Premios Eficacia, BestIn Auto), and comprehensive studio identity relaunches.
               </p>
               <p className="cv-text">
-                Brings experience in automating creative processes, designing and optimizing workflows that enable large-scale production of high-quality content. Combines innovation with efficiency, consistently ensuring strong and distinctive results.
+                Pioneers procedural 3D and generative workflows that bridge artisanal craft with scalable, state-of-the-art production—transforming complex technological and strategic narratives into emotionally resonant audiovisual poetry.
               </p>
             </div>
           </section>
@@ -136,27 +136,52 @@ export default function CurriculumVitae({ onBack }) {
               <article className="cv-entry">
                 <div className="cv-entry__head">
                   <h3 className="cv-entry__title">
-                    <strong>Making Science</strong> — Video Editor and Creative Coordinator
+                    <strong>Making Science / Ameba Studios</strong> — Creative Director & Visual Lead
                   </h3>
                   <span className="cv-entry__date">2021 — PRESENT</span>
                 </div>
-                <p className="cv-text">
-                  Led creative and technical projects, combining innovative idea generation with efficient execution. Designed and implemented automated workflows to optimize creative processes, enabling large-scale production of high-quality content.
-                </p>
+                <ul className="cv-bullets">
+                  <li>Spearhead creative direction, narrative conception, and audiovisual execution for flagship films, international campaigns, and brand summits (Cannes 2026 debut, Mazda España, Helios AI Factory, 5W of Marketing).</li>
+                  <li>Directed the comprehensive studio rebranding and launch of <strong>Ameba Studios</strong>, architecting its visual universe, launch film, and positioning as an AI-driven audiovisual powerhouse.</li>
+                  <li>Engineered proprietary generative AI (ComfyUI) and procedural 3D pipelines, bridging cutting-edge visual exploration with high-fidelity production velocity.</li>
+                  <li>Lead and mentor multidisciplinary talent across art direction, 3D/CGI, screenwriting, sound design, and post-production.</li>
+                </ul>
               </article>
 
               {/* Job 2 */}
               <article className="cv-entry">
                 <div className="cv-entry__head">
                   <h3 className="cv-entry__title">
-                    <strong>New Rule Magazine</strong> — Creative
+                    <strong>New Rule Magazine</strong> — Creative & Editorial Direction
                   </h3>
                   <span className="cv-entry__date">2021</span>
                 </div>
                 <p className="cv-text">
-                  Supported creative projects while beginning to develop skills in both innovative idea generation and technical execution.
+                  Directed visual culture curation and experimental editorial design, deconstructing conventional publication grids through brutalist kinetic typography and contemporary street aesthetics.
                 </p>
               </article>
+            </div>
+          </section>
+
+          {/* SECTION: Honors & Selected Campaigns */}
+          <section className="cv-section">
+            <div className="cv-section__marker" aria-hidden="true" />
+            <h2 className="cv-section__title">honors & selected campaigns</h2>
+            <div className="cv-section__content">
+              <div className="cv-honors-grid">
+                <div className="cv-honor-item">
+                  <span className="cv-honor-badge">CANNES LIONS 2026</span>
+                  <span className="cv-honor-desc">Creative Direction & Manifesto for Making Science official debut campaign (<em>That's Noise</em>).</span>
+                </div>
+                <div className="cv-honor-item">
+                  <span className="cv-honor-badge">PREMIOS EFICACIA & BESTIN AUTO</span>
+                  <span className="cv-honor-desc">Creative Direction for Mazda España automotive case study film (<em>Mazda Exclusive Days</em>).</span>
+                </div>
+                <div className="cv-honor-item">
+                  <span className="cv-honor-badge">STUDIO RELAUNCH</span>
+                  <span className="cv-honor-desc">Complete brand architecture, manifesto launch film, and digital presence for Ameba Studios.</span>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -167,59 +192,50 @@ export default function CurriculumVitae({ onBack }) {
             <div className="cv-section__content">
               <article className="cv-entry cv-entry--compact">
                 <div className="cv-entry__head">
-                  <h3 className="cv-entry__title">Motion Graphics & 3D Master</h3>
+                  <h3 className="cv-entry__title"><strong>Motion Graphics & 3D Master</strong> — Honor Roll</h3>
                   <span className="cv-entry__date">2021 — 2022</span>
                 </div>
-                <p className="cv-entry__institution">Trazos School</p>
+                <p className="cv-entry__institution">Trazos School · Specialization in procedural simulation, CGI lighting & look development</p>
               </article>
 
               <article className="cv-entry cv-entry--compact">
                 <div className="cv-entry__head">
-                  <h3 className="cv-entry__title">Cinema and Broadcasting degree</h3>
+                  <h3 className="cv-entry__title"><strong>Cinema, TV & Media Degree</strong> — Honors in Narrative Direction</h3>
                   <span className="cv-entry__date">2017 — 2021</span>
                 </div>
-                <p className="cv-entry__institution">Universidad Rey Juan Carlos</p>
+                <p className="cv-entry__institution">Universidad Rey Juan Carlos · Degree Thesis (TFG): Mach Fast-Food Universe (Honors)</p>
               </article>
             </div>
           </section>
 
-          {/* SECTION: Skills */}
+          {/* SECTION: Capabilities & Craft */}
           <section className="cv-section cv-section--last">
             <div className="cv-section__marker" aria-hidden="true" />
-            <h2 className="cv-section__title">skills</h2>
+            <h2 className="cv-section__title">capabilities & craft</h2>
             <div className="cv-section__content">
               <div className="cv-skills-grid">
                 <div className="cv-skills-col">
-                  <div className="cv-skill-item">
-                    <span className="cv-skill-item__bullet">•</span>
-                    <span className="cv-skill-item__name">After Effects</span>
-                  </div>
-                  <div className="cv-skill-item">
-                    <span className="cv-skill-item__bullet">•</span>
-                    <span className="cv-skill-item__name">Premiere</span>
-                  </div>
+                  <span className="cv-skills-category">Creative Leadership</span>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Creative Direction & Art Direction</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Film Scriptwriting & Storytelling</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Brand Universe Architecture</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Pitch Treatments & Team Leadership</span></div>
                 </div>
 
                 <div className="cv-skills-col">
-                  <div className="cv-skill-item">
-                    <span className="cv-skill-item__bullet">•</span>
-                    <span className="cv-skill-item__name">Houdini</span>
-                  </div>
-                  <div className="cv-skill-item">
-                    <span className="cv-skill-item__bullet">•</span>
-                    <span className="cv-skill-item__name">Blender</span>
-                  </div>
+                  <span className="cv-skills-category">CGI, 3D & Post-Production</span>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Houdini & Blender (Procedural & 3D)</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Cinema 4D & Octane / Redshift</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">After Effects & Premiere Pro</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Advanced Optical & 2D Compositing</span></div>
                 </div>
 
                 <div className="cv-skills-col">
-                  <div className="cv-skill-item">
-                    <span className="cv-skill-item__bullet">•</span>
-                    <span className="cv-skill-item__name">ComfyUI</span>
-                  </div>
-                  <div className="cv-skill-item">
-                    <span className="cv-skill-item__bullet">•</span>
-                    <span className="cv-skill-item__name">AI tools (Midjourney, Google Veo)</span>
-                  </div>
+                  <span className="cv-skills-category">AI Systems & Innovation</span>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">ComfyUI Node Architecture</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Custom LoRA & Diffusion Models</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Google Veo & Runway Gen-3</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Automated Creative Pipelines</span></div>
                 </div>
               </div>
             </div>
