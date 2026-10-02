@@ -69,7 +69,7 @@ export default function CurriculumVitae({ onBack }) {
               <span>rodrigo</span>
               <span>santos</span>
             </h1>
-            <p className="cv-header__role">Creative Director & Visual Strategist</p>
+            <p className="cv-header__role">Creative Director</p>
             <p className="cv-header__tagline">Film & Campaign Direction · CGI/3D Architecture · AI Innovation Pipelines</p>
           </div>
 
@@ -82,8 +82,8 @@ export default function CurriculumVitae({ onBack }) {
             </div>
 
             <div className="cv-contact-item">
-              <a href="https://rodrisanro.com" target="_blank" rel="noopener noreferrer" className="cv-contact-item__link">
-                rodrisanro.com
+              <a href="https://rodrigosantos.es" target="_blank" rel="noopener noreferrer" className="cv-contact-item__link">
+                rodrigosantos.es
               </a>
               <svg className="cv-contact-item__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -136,7 +136,7 @@ export default function CurriculumVitae({ onBack }) {
               <article className="cv-entry">
                 <div className="cv-entry__head">
                   <h3 className="cv-entry__title">
-                    <strong>Making Science / Ameba Studios</strong> — Creative Director & Visual Lead
+                    <strong>Making Science / Ameba Studios</strong> — Audiovisual Creative Coordinator
                   </h3>
                   <span className="cv-entry__date">2021 — PRESENT</span>
                 </div>
@@ -211,31 +211,31 @@ export default function CurriculumVitae({ onBack }) {
           {/* SECTION: Capabilities & Craft */}
           <section className="cv-section cv-section--last">
             <div className="cv-section__marker" aria-hidden="true" />
-            <h2 className="cv-section__title">capabilities & craft</h2>
+            <h2 className="cv-section__title">skills & creative craft</h2>
             <div className="cv-section__content">
               <div className="cv-skills-grid">
                 <div className="cv-skills-col">
-                  <span className="cv-skills-category">Creative Leadership</span>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Creative Direction & Art Direction</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Film Scriptwriting & Storytelling</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Brand Universe Architecture</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Pitch Treatments & Team Leadership</span></div>
+                  <span className="cv-skills-category">Creative Direction & Vision</span>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Creative & Art Direction</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Visual Storytelling & Conceptualization</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Brand Universes & Narrative Worldbuilding</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Pitch Treatments & High-Concept Decks</span></div>
                 </div>
 
                 <div className="cv-skills-col">
-                  <span className="cv-skills-category">CGI, 3D & Post-Production</span>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Houdini & Blender (Procedural & 3D)</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Cinema 4D & Octane / Redshift</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">After Effects & Premiere Pro</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Advanced Optical & 2D Compositing</span></div>
+                  <span className="cv-skills-category">Audiovisual Direction & Craft</span>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Audiovisual Creative Coordination</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Film & Commercial Campaign Direction</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Paquete Adobe (After Effects, Premiere Pro)</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Herramientas de 3D (Blender, Houdini, C4D)</span></div>
                 </div>
 
                 <div className="cv-skills-col">
-                  <span className="cv-skills-category">AI Systems & Innovation</span>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">ComfyUI Node Architecture</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Custom LoRA & Diffusion Models</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Google Veo & Runway Gen-3</span></div>
-                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Automated Creative Pipelines</span></div>
+                  <span className="cv-skills-category">Leadership & AI Innovation</span>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">Multidisciplinary Team Leadership</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">AI-Driven Audiovisual Workflows</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">ComfyUI Pipelines & Generative Video</span></div>
+                  <div className="cv-skill-item"><span className="cv-skill-item__bullet">•</span> <span className="cv-skill-item__name">End-to-End Creative Production</span></div>
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function CurriculumVitae({ onBack }) {
         {/* Footer info */}
         <footer className="cv-footer">
           <span>RODRIGO SANTOS — CREATIVE DIRECTION & EDITORIAL PORTFOLIO</span>
-          <span className="cv-footer__site">RODRISANRO.COM</span>
+          <span className="cv-footer__site">RODRIGOSANTOS.ES</span>
         </footer>
       </main>
     </div>
