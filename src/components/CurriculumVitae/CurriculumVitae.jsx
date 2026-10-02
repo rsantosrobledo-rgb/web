@@ -70,7 +70,7 @@ export default function CurriculumVitae({ onBack }) {
               <span>santos</span>
             </h1>
             <p className="cv-header__role">Creative Director</p>
-            <p className="cv-header__tagline">Film & Campaign Direction · CGI/3D Architecture · AI Innovation Pipelines</p>
+            <p className="cv-header__tagline">Creative Direction | Systems and Workflows | CGI and AI</p>
           </div>
 
           <aside className="cv-header__contact" aria-label="Contact Information">
@@ -176,28 +176,6 @@ export default function CurriculumVitae({ onBack }) {
             </div>
           </section>
 
-          {/* SECTION: Honors & Selected Campaigns */}
-          <section className="cv-section">
-            <div className="cv-section__marker" aria-hidden="true" />
-            <h2 className="cv-section__title">honors & selected campaigns</h2>
-            <div className="cv-section__content">
-              <div className="cv-honors-grid">
-                <div className="cv-honor-item">
-                  <span className="cv-honor-badge">CANNES LIONS 2026</span>
-                  <span className="cv-honor-desc">Creative Direction & Manifesto for Making Science official debut campaign (<em>That's Noise</em>).</span>
-                </div>
-                <div className="cv-honor-item">
-                  <span className="cv-honor-badge">PREMIOS EFICACIA & BESTIN AUTO</span>
-                  <span className="cv-honor-desc">Creative Direction for Mazda España automotive case study film (<em>Mazda Exclusive Days</em>).</span>
-                </div>
-                <div className="cv-honor-item">
-                  <span className="cv-honor-badge">STUDIO RELAUNCH</span>
-                  <span className="cv-honor-desc">Complete brand architecture, manifesto launch film, and digital presence for Ameba Studios.</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* SECTION: Education */}
           <section className="cv-section">
             <div className="cv-section__marker" aria-hidden="true" />
@@ -205,7 +183,7 @@ export default function CurriculumVitae({ onBack }) {
             <div className="cv-section__content">
               <article className="cv-entry cv-entry--compact">
                 <div className="cv-entry__head">
-                  <h3 className="cv-entry__title"><strong>Motion Graphics & 3D Master</strong> — Honor Roll</h3>
+                  <h3 className="cv-entry__title"><strong>Motion Graphics & 3D Master</strong></h3>
                   <span className="cv-entry__date">2021 — 2022</span>
                 </div>
                 <p className="cv-entry__institution">Trazos School · Specialization in procedural simulation, CGI lighting & look development</p>
@@ -213,10 +191,10 @@ export default function CurriculumVitae({ onBack }) {
 
               <article className="cv-entry cv-entry--compact">
                 <div className="cv-entry__head">
-                  <h3 className="cv-entry__title"><strong>Cinema, TV & Media Degree</strong> — Honors in Narrative Direction</h3>
+                  <h3 className="cv-entry__title"><strong>Cinema, TV & Media Degree</strong></h3>
                   <span className="cv-entry__date">2017 — 2021</span>
                 </div>
-                <p className="cv-entry__institution">Universidad Rey Juan Carlos · Degree Thesis (TFG): Mach Fast-Food Universe (Honors)</p>
+                <p className="cv-entry__institution">Universidad Rey Juan Carlos · Degree Thesis (TFG): Mach Fast-Food Universe</p>
               </article>
             </div>
           </section>

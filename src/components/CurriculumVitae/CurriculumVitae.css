@@ -172,14 +172,14 @@
 }
 
 .cv-header__tagline {
-  margin: 0;
+  margin: 4px 0 0;
   padding: 0;
   font-family: var(--font-body, 'Jost', sans-serif);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #666666;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: #555555;
 }
 
 /* Contact block on top right */
@@ -486,7 +486,7 @@
     width: 210mm !important;
     height: 297mm !important;
     max-height: 297mm !important;
-    padding: 8mm 14mm 6mm !important;
+    padding: 11mm 15mm 9mm !important;
     margin: 0 !important;
     background-color: #FAF8F5 !important;
     -webkit-print-color-adjust: exact !important;
@@ -501,30 +501,30 @@
   }
 
   .cv-header {
-    padding-bottom: 2.8mm !important;
+    padding-bottom: 3.8mm !important;
   }
 
   .cv-timeline {
-    margin-top: 2.2mm !important;
-    gap: 2.4mm !important;
+    margin-top: 3.2mm !important;
+    gap: 3.4mm !important;
   }
 
   .cv-section__title {
-    margin: 0 0 1.2mm !important;
-    font-size: 1.24rem !important;
+    margin: 0 0 1.5mm !important;
+    font-size: 1.30rem !important;
   }
 
   .cv-section__content {
-    gap: 1.2mm !important;
+    gap: 1.6mm !important;
   }
 
   .cv-text {
-    font-size: 0.78rem !important;
-    line-height: 1.32 !important;
+    font-size: 0.80rem !important;
+    line-height: 1.36 !important;
   }
 
   .cv-entry {
-    gap: 0.8mm !important;
+    gap: 1.0mm !important;
   }
 
   .cv-entry__head {
@@ -532,53 +532,39 @@
   }
 
   .cv-entry__title {
-    font-size: 0.85rem !important;
+    font-size: 0.87rem !important;
   }
 
   .cv-bullets {
-    margin: 0.6mm 0 0 0 !important;
-    gap: 0.5mm !important;
+    margin: 0.8mm 0 0 0 !important;
+    gap: 0.6mm !important;
   }
 
   .cv-bullets li {
-    font-size: 0.76rem !important;
-    line-height: 1.30 !important;
-  }
-
-  .cv-honors-grid {
-    gap: 1.0mm !important;
-  }
-
-  .cv-honor-item {
-    font-size: 0.76rem !important;
-    line-height: 1.28 !important;
-  }
-
-  .cv-honor-badge {
-    font-size: 0.65rem !important;
-    padding: 1.5px 6px !important;
+    font-size: 0.77rem !important;
+    line-height: 1.32 !important;
   }
 
   .cv-skills-grid {
-    gap: 10px !important;
+    gap: 12px !important;
   }
 
   .cv-skills-col {
-    gap: 2.5px !important;
+    gap: 3.0px !important;
   }
 
   .cv-skills-category {
-    font-size: 0.67rem !important;
-    margin-bottom: 1px !important;
+    font-size: 0.68rem !important;
+    margin-bottom: 1.5px !important;
   }
 
   .cv-skill-item {
-    font-size: 0.75rem !important;
+    font-size: 0.77rem !important;
   }
 
   .cv-footer {
-    margin-top: 2.5mm !important;
-    padding-top: 2.0mm !important;
+    margin-top: 4.5mm !important;
+    padding-top: 2.5mm !important;
   }
 }
 
