@@ -70,7 +70,7 @@ export default function CurriculumVitae({ onBack }) {
               <span>santos</span>
             </h1>
             <p className="cv-header__role">Creative Director</p>
-            <p className="cv-header__tagline">Creative Direction | Systems and Workflows | CGI and AI</p>
+            <p className="cv-header__tagline">Creative Direction ◆ Systems and Workflows ◆ CGI and AI</p>
           </div>
 
           <aside className="cv-header__contact" aria-label="Contact Information">
