@@ -517,6 +517,26 @@ export default function ProjectDetail({
           )}
         </section>
 
+        {/* Editorial Narrative / Background Story (Debajo de las piezas) */}
+        {project.editorialNarrative && (
+          <section className="project-detail__narrative-section" aria-label="Project story and context">
+            <div className="project-detail__narrative-header">
+              <span className="project-detail__narrative-tag">INSIGHT & CONTEXT</span>
+              <h2 className="project-detail__narrative-title">Behind the Piece</h2>
+            </div>
+            <div className="project-detail__narrative-content">
+              {(Array.isArray(project.editorialNarrative)
+                ? project.editorialNarrative
+                : project.editorialNarrative.split('\n\n')
+              ).map((paragraph, pIdx) => (
+                <p key={pIdx} className="project-detail__narrative-para">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Process & Craft: Before vs After (Concept Study → Final Render) */}
         {project.processComparison && (
           <section className="project-detail__process-section" aria-label="Process and craft comparison">

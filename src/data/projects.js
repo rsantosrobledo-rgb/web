@@ -88,6 +88,12 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    editorialNarrative: [
+      "Every year, Making Science feels that urge to innovate—that need to raise its voice above the noise and claim what is rightfully theirs.",
+      "The throne of Artificial Intelligence applied to marketing has belonged to them for years, and once again, we had to make that crystal clear.",
+      "This year's concept revolved around how complexity always stems from something remarkably simple. Yet that is something you can only truly recognize through experience—something Making Science has in spades.",
+      "Combining such a potent concept with the brand’s existing aesthetic gave birth to the visual identity for this event, brought to life across key videos, large-scale posters, and diverse social media releases.",
+    ],
   },
   {
     id: 14,
@@ -111,6 +117,12 @@ const projects = [
     },
     videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
     secondaryMedia: [],
+    editorialNarrative: [
+      "This case film was crafted to compete in top-tier industry festivals: the Eficacia Awards, IAB Awards, and BestIn Auto.",
+      "Submissions for these awards tend to skew either towards comedy or overly stiff corporate presentations. We chose to break that mold.",
+      "Advocating for a more poetic visual style, we never lost sight of what matters most in this format: the data. We seamlessly united both worlds with elegance and credibility.",
+      "An elegant campaign, for an elegant brand.",
+    ],
   },
 
   // ========================================================
@@ -188,6 +200,11 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    editorialNarrative: [
+      "Rooted in a deep affinity with celestial bodies and cosmology, Awake Venture Studio launched Helios AI Factory.",
+      "The moment the name was shared with us, the core idea sparked naturally. We merged the mythological realm with high technology—two worlds that, paradoxically, seem fundamentally intertwined.",
+      "The result was a go-to-market launch defined by bold personality and visual distinction.",
+    ],
   },
   {
     id: 2,
@@ -211,6 +228,14 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    editorialNarrative: [
+      "The brand building of Ameba Studios was unexpected, but at the same time, it was an entirely necessary strategic move.",
+      "Making Science Studios was the previous name of this division. Making Science is a company with numerous branches, but what stands out about most of them is their independence from the parent company—the opportunity each has to carve out a name for itself beyond its heritage. This could be no exception.",
+      "Ameba Studios is (pardon the redundancy) a studio focused on AI-driven audiovisual creation. It serves as a creative branch dedicated to safeguarding both Making Science’s own creative standard and that of many of its clients.",
+      "The identity, color palette, and overall vibe of the brand were built entirely around this ethos.",
+      "Making Science Studios is now Ameba Studios, standing with an identity of its own.",
+      "The rollout of this brand encompassed a promotional launch film, a dedicated website, alongside the complete suite of assets that make up the visual identity.",
+    ],
   },
   {
     id: 13,
@@ -297,12 +322,17 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    editorialNarrative: [
+      "The International Women’s Day campaign is one of the most significant initiatives for Making Science each year. For a long time, these pieces focused on our industry, or even on our company. While meaningful, we felt we weren’t connecting with enough people—we were speaking to an overly narrow niche.",
+      "With this film, our aim was to talk about courage and self-worth: that holy grail everyone searches for, yet which we all inherently possess from the moment we are born. For women, this journey is particularly critical, as society often makes this search especially unforgiving.",
+      "The 8M campaign is exclusively video-based, distributed across YouTube and major social channels.",
+    ],
   },
   {
     id: 9,
     row: 4,
     order: 3,
-    name: 'Geo Sphere',
+    name: 'Geo Trace',
     category: 'Creative Direction · Motion & CGI',
     year: '2026',
     description: 'Dirección creativa y desarrollo procedural en CGI: una investigación sobre la belleza matemática de la refracción, cáusticas volumétricas de luz y física cinética aplicada a la geometría abstracta.',
@@ -320,6 +350,11 @@ const projects = [
     },
     videoEmbed: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4',
     secondaryMedia: [],
+    editorialNarrative: [
+      "GEO is on everyone's radar right now, but it is a trend that is definitively here to stay.",
+      "Adopting a playful, Gen-Z and naif aesthetic, we introduced this new tool with modern culture pulsing through its veins.",
+      "The piece took the form of a dynamic promotional film launched across YouTube and primary social platforms.",
+    ],
   },
 
   // ========================================================
@@ -430,6 +465,12 @@ const projects = [
       { id: 'hyb-3', type: 'image', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
       { id: 'hyb-4', type: 'video', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
       { id: 'hyb-5', type: 'video', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
+    ],
+    editorialNarrative: [
+      "The brief this year was straightforward: Making Science, as a pioneer in Artificial Intelligence, stands at the center of the conversation. It is admired and frequently emulated.",
+      "Yet vanity is never the answer. The path exists to be led—to guide clients and other companies toward that promised horizon.",
+      "The Hybrid Intelligence is the spiritual heir to all previous event brand identities. It serves as a reminder of what has been championed over the years, but also as a definitive statement of intent.",
+      "Out of this came a powerful concept, translated into multiple film pieces, event signage, and social media campaigns.",
     ],
   },
 ]
