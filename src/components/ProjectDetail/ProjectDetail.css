@@ -836,6 +836,306 @@
 }
 
 /* --------------------------------------------------------------------------
+   Brand System & Identity Section: Logo, Color Palette & Web Viewer
+   -------------------------------------------------------------------------- */
+.project-detail__brand-system {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2.2vw, 30px);
+  width: 100%;
+  max-width: 1480px;
+  margin: clamp(36px, 4.8vw, 64px) auto 0 auto;
+  padding-top: clamp(24px, 3.2vw, 40px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.project-detail__brand-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-detail__brand-tag {
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.project-detail__brand-title {
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: #111111;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Artifacts Row: Side-by-side or stacked container for Logo & Palette */
+.project-detail__artifacts-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(18px, 2.4vw, 32px);
+  width: 100%;
+}
+
+.project-detail__artifact-label {
+  font-family: 'Futura', 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Logo Card */
+.project-detail__logo-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  flex: 0 1 320px;
+}
+
+.project-detail__logo-box {
+  background: #0d0e12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: clamp(18px, 2.4vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-detail__logo-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.project-detail__logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Color Palette Card */
+.project-detail__palette-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 360px;
+}
+
+.project-detail__palette-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1.4vw, 16px);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: clamp(14px, 1.8vw, 20px);
+  min-height: 110px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.project-detail__swatch-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #fbf9f6;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project-detail__swatch-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.project-detail__swatch-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.project-detail__swatch-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.project-detail__swatch-name {
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.project-detail__swatch-hex {
+  font-family: 'Jost', monospace, sans-serif;
+  font-size: 0.72rem;
+  color: #777777;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Live Web Viewer / Browser Mockup */
+.project-detail__web-viewer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #14151a;
+  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.2);
+  margin-top: 6px;
+}
+
+.project-detail__browser-chrome {
+  background: #1c1d24;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-detail__browser-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.project-detail__browser-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.project-detail__browser-dot--red {
+  background: #ff5f56;
+}
+
+.project-detail__browser-dot--yellow {
+  background: #ffbd2e;
+}
+
+.project-detail__browser-dot--green {
+  background: #27c93f;
+}
+
+.project-detail__browser-url-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 16px;
+  border-radius: 8px;
+  max-width: 480px;
+  width: 100%;
+}
+
+.project-detail__browser-lock {
+  color: #27c93f;
+  flex-shrink: 0;
+}
+
+.project-detail__browser-url-text {
+  font-family: 'Jost', monospace, sans-serif;
+  font-size: 0.8rem;
+  color: #cccccc;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-detail__browser-visit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-family: 'Futura', 'Futura Bold', 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.project-detail__browser-visit-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+.project-detail__browser-screen {
+  width: 100%;
+  height: clamp(480px, 62vh, 760px);
+  position: relative;
+  background: #000000;
+}
+
+.project-detail__browser-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: #000000;
+}
+
+@media (max-width: 768px) {
+  .project-detail__artifacts-row {
+    flex-direction: column;
+  }
+
+  .project-detail__logo-card,
+  .project-detail__palette-card {
+    flex: 1 1 100%;
+  }
+
+  .project-detail__browser-url-bar {
+    max-width: 190px;
+    padding: 4px 10px;
+  }
+
+  .project-detail__browser-screen {
+    height: clamp(340px, 55vh, 480px);
+  }
+}
+
+/* --------------------------------------------------------------------------
    Process & Craft Section: Concept Exploration vs Final Execution
    -------------------------------------------------------------------------- */
 .project-detail__process-section {

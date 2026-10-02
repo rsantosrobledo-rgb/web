@@ -65,6 +65,17 @@ const projects = [
       { id: 'dec-3', type: 'image', src: '/proyectos/decoding media/JL.png' },
       { id: 'dec-4', type: 'image', src: '/proyectos/decoding media/Untitled.png' },
     ],
+    colorPalette: [
+      { name: 'Street Lime', hex: '#00FF66' },
+      { name: 'Brutalist Black', hex: '#0D0D0D' },
+      { name: 'Paper White', hex: '#F5F5F5' },
+      { name: 'Concrete Slate', hex: '#222222' },
+    ],
+    editorialNarrative: [
+      "When tech companies try to speak the language of youth or street culture, it usually feels forced—like a corporate giant trying on sneakers that don't fit.",
+      "With Decoding Culture, the ambition was never to mimic urban trends, but to truly deconstruct them. We took raw street typography, underground posters, and kinetic rhythms, colliding them against a rigid Swiss editorial framework.",
+      "The result was an event identity that felt genuine, bold, and untamed, proving that a brand can participate in contemporary culture without losing its institutional weight.",
+    ],
   },
   {
     id: 4,
@@ -88,6 +99,12 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Cobalt Blue', hex: '#0038FF' },
+      { name: 'Deep Void', hex: '#0A0B10' },
+      { name: 'Tech Cyan', hex: '#00E5FF' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+    ],
     editorialNarrative: [
       "Every year, Making Science feels that urge to innovate—that need to raise its voice above the noise and claim what is rightfully theirs.",
       "The throne of Artificial Intelligence applied to marketing has belonged to them for years, and once again, we had to make that crystal clear.",
@@ -117,6 +134,12 @@ const projects = [
     },
     videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Soul Red', hex: '#990000' },
+      { name: 'Jet Black', hex: '#111111' },
+      { name: 'Chrome Silver', hex: '#C5C5C5' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+    ],
     editorialNarrative: [
       "This case film was crafted to compete in top-tier industry festivals: the Eficacia Awards, IAB Awards, and BestIn Auto.",
       "Submissions for these awards tend to skew either towards comedy or overly stiff corporate presentations. We chose to break that mold.",
@@ -150,6 +173,11 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/zswd19kHTdU?si=n3qoIPd1om-tR7J5&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    editorialNarrative: [
+      "Holiday campaigns are a double-edged sword for creative teams. Most agencies fall into the exact same trap year after year: forced tears, cliché family dinners, and sentimental piano music that everyone forgets five minutes later.",
+      "We wanted none of that. We decided to approach Christmas through character-driven comedy, deadpan timing, and genuine internal quirks that people inside the company could actually laugh about.",
+      "Balancing warmth with self-deprecating humor turned out to be our biggest asset. It didn’t just entertain—it became an instant piece of company lore shared enthusiastically across every channel.",
+    ],
   },
   {
     id: 6,
@@ -173,6 +201,17 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Stark Black', hex: '#000000' },
+      { name: 'Paper White', hex: '#FFFFFF' },
+      { name: 'Noise Charcoal', hex: '#1A1A1A' },
+      { name: 'Signal Red', hex: '#FF2A2A' },
+    ],
+    editorialNarrative: [
+      "Landing in Cannes for the very first time with Making Science was a defining milestone, but Cannes is also the loudest room on the planet. Everyone is trying to out-shout each other with dazzling gimmicks, trendy buzzwords, and spectacle.",
+      "We quickly realized that adding more visual glitter to the noise was a losing game. The only way to command real attention was to deliver a sharp, fearless provocation: call out the industry's obsession with hype and strip everything back to pure, unvarnished substance.",
+      "That gave birth to 'That’s Noise'—an unapologetic manifesto built on stark monochrome contrasts, abrupt sonic cuts, and heavyweight typography that dared the creative world to look in the mirror.",
+    ],
   },
 
   // ========================================================
@@ -200,6 +239,12 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Solar Amber', hex: '#FFAA00' },
+      { name: 'Cosmic Black', hex: '#08090C' },
+      { name: 'Steel Slate', hex: '#1E222D' },
+      { name: 'Photon White', hex: '#FFFFFF' },
+    ],
     editorialNarrative: [
       "Rooted in a deep affinity with celestial bodies and cosmology, Awake Venture Studio launched Helios AI Factory.",
       "The moment the name was shared with us, the core idea sparked naturally. We merged the mythological realm with high technology—two worlds that, paradoxically, seem fundamentally intertwined.",
@@ -228,6 +273,17 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    logo: '/proyectos/Ameba/ameba_logo.png',
+    webPreview: {
+      url: 'https://amebastudios.com',
+      title: 'amebastudios.com',
+    },
+    colorPalette: [
+      { name: 'Electric Lime', hex: '#D4FF00' },
+      { name: 'Obsidian Black', hex: '#0A0A0A' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+      { name: 'Slate Gray', hex: '#2A2A2A' },
+    ],
     editorialNarrative: [
       "The brand building of Ameba Studios was unexpected, but at the same time, it was an entirely necessary strategic move.",
       "Making Science Studios was the previous name of this division. Making Science is a company with numerous branches, but what stands out about most of them is their independence from the parent company—the opportunity each has to carve out a name for itself beyond its heritage. This could be no exception.",
@@ -259,6 +315,11 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    editorialNarrative: [
+      "In an era where AI can generate plausible scenes in seconds, we felt an intense desire to create a story that stood for the pure, patient craft of hand-made 3D animation.",
+      "Zero generative prompts, zero procedural shortcuts. We modeled, textured, rigged, and animated a mechanical character from scratch, obsessing over the tiny imperfections: the faint scratches on the metal joints, the warm falloff of studio key lights, and the subtle hesitation in the robot's physical movement.",
+      "It was a love letter to classical animation craft, proving that true emotional warmth doesn't come from technology itself, but from the human hand directing every frame.",
+    ],
   },
 
   // ========================================================
@@ -299,6 +360,17 @@ const projects = [
     },
     videoEmbed: '/proyectos/desert/desert_final.webm',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Dune Terracotta', hex: '#C86446' },
+      { name: 'Twilight Indigo', hex: '#2B1D3A' },
+      { name: 'Golden Amber', hex: '#E09F5B' },
+      { name: 'Nocturne Black', hex: '#0E0B14' },
+    ],
+    editorialNarrative: [
+      "Everyone assumed this piece was built inside a high-end 3D physics engine. The truth is there is zero 3D simulation in the entire film.",
+      "The Desert was an uncompromising exercise in 2D digital art, multi-plane optical compositing, and atmospheric color science. We wanted to capture the heavy, contemplative solitude of vast dunes at twilight—where time slows down and silence feels palpable.",
+      "By layering hand-painted textures, optical atmospheric haze, and meditative camera drifts, we achieved a hypnotic cinematic depth that challenges the assumption that you always need heavy CGI to create immersive worlds.",
+    ],
   },
   {
     id: 8,
@@ -322,6 +394,12 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Feminist Violet', hex: '#7828C8' },
+      { name: 'Stark Black', hex: '#000000' },
+      { name: 'Slate Charcoal', hex: '#333333' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+    ],
     editorialNarrative: [
       "The International Women’s Day campaign is one of the most significant initiatives for Making Science each year. For a long time, these pieces focused on our industry, or even on our company. While meaningful, we felt we weren’t connecting with enough people—we were speaking to an overly narrow niche.",
       "With this film, our aim was to talk about courage and self-worth: that holy grail everyone searches for, yet which we all inherently possess from the moment we are born. For women, this journey is particularly critical, as society often makes this search especially unforgiving.",
@@ -350,6 +428,12 @@ const projects = [
     },
     videoEmbed: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Neon Mint', hex: '#56FFA4' },
+      { name: 'Gen-Z Lilac', hex: '#B8A9FF' },
+      { name: 'Deep Violet', hex: '#160E33' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+    ],
     editorialNarrative: [
       "GEO is on everyone's radar right now, but it is a trend that is definitively here to stay.",
       "Adopting a playful, Gen-Z and naif aesthetic, we introduced this new tool with modern culture pulsing through its veins.",
@@ -403,6 +487,17 @@ const projects = [
       { id: 'mach-7', type: 'image', src: '/proyectos/Mach/Captura de pantalla 2026-09-16 a las 10.15.11.png' },
       { id: 'mach-8', type: 'image', src: '/proyectos/Mach/Enhance_quality_eliminating_arti…_202605061106.jpeg' },
     ],
+    colorPalette: [
+      { name: 'Mustard Pop', hex: '#FFC700' },
+      { name: 'Ketchup Crimson', hex: '#E60000' },
+      { name: 'Diner Cream', hex: '#FFF8EE' },
+      { name: 'Retro Cyan', hex: '#00B4D8' },
+    ],
+    editorialNarrative: [
+      "Mach began as a Degree Thesis project in Communication, but we treated it from day one as if it were a multi-million-dollar rebellious brand ready to hit the streets.",
+      "Traditional fast food has grown dull and overly corporate. We took inspiration from 90s retrofuturism, hyperbolic Japanese packaging, and surrealist editorial fashion photography to build an unashamed, high-octane food universe.",
+      "Spanning everything from physical box prototypes and saturated product photography to provocative ad layouts, Mach showed how fearlessness in art direction can turn a commodity product into a coveted subculture icon.",
+    ],
   },
   {
     id: 11,
@@ -426,6 +521,17 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1',
     secondaryMedia: [],
+    colorPalette: [
+      { name: 'Venture Blue', hex: '#0055FF' },
+      { name: 'Architectural Black', hex: '#141414' },
+      { name: 'Concrete Gray', hex: '#8E8E93' },
+      { name: 'Pure White', hex: '#FFFFFF' },
+    ],
+    editorialNarrative: [
+      "Venture studios often struggle to communicate their soul on film. They either produce dry corporate interviews behind glass desks or fast-paced promo reels with zero emotional resonance.",
+      "With Awake, we wanted to capture the invisible electricity that happens when founders meet: the obsessive energy, the intense debates, and the shared vision of building companies from nothing.",
+      "We paired clean, modern architectural framing with intimate, spontaneous moments, letting the natural rhythm of the space and the people tell the story without artificial hype.",
+    ],
   },
   {
     id: 12,
@@ -465,6 +571,12 @@ const projects = [
       { id: 'hyb-3', type: 'image', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
       { id: 'hyb-4', type: 'video', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
       { id: 'hyb-5', type: 'video', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
+    ],
+    colorPalette: [
+      { name: 'Bio Cyan', hex: '#00F5D4' },
+      { name: 'Neural Magenta', hex: '#7B2CBF' },
+      { name: 'Deep Void', hex: '#060709' },
+      { name: 'Synthetic White', hex: '#F0F4F8' },
     ],
     editorialNarrative: [
       "The brief this year was straightforward: Making Science, as a pioneer in Artificial Intelligence, stands at the center of the conversation. It is admired and frequently emulated.",

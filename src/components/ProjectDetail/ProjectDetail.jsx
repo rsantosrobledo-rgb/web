@@ -537,6 +537,104 @@ export default function ProjectDetail({
           </section>
         )}
 
+        {/* Brand System & Identity: Logo, Color Palette & Live Web Viewer */}
+        {(project.colorPalette || project.logo || project.webPreview) && (
+          <section className="project-detail__brand-system" aria-label="Brand visual identity system">
+            <div className="project-detail__brand-header">
+              <span className="project-detail__brand-tag">IDENTITY & DESIGN SYSTEM</span>
+              <h2 className="project-detail__brand-title">Brand Assets & Palette</h2>
+            </div>
+
+            {/* Brand Artifacts Row: Logo Badge & Color Swatches */}
+            {(project.logo || project.colorPalette) && (
+              <div className="project-detail__artifacts-row">
+                {/* Official Brand Logomark */}
+                {project.logo && (
+                  <div className="project-detail__logo-card">
+                    <span className="project-detail__artifact-label">BRAND LOGOMARK</span>
+                    <div className="project-detail__logo-box">
+                      <img
+                        src={project.logo}
+                        alt={`${project.name} Logo`}
+                        className="project-detail__logo-img"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Curated Color Palette */}
+                {Array.isArray(project.colorPalette) && project.colorPalette.length > 0 && (
+                  <div className="project-detail__palette-card">
+                    <span className="project-detail__artifact-label">CURATED COLOR PALETTE</span>
+                    <div className="project-detail__palette-swatches">
+                      {project.colorPalette.map((color, cIdx) => (
+                        <div key={cIdx} className="project-detail__swatch-item" title={`${color.name}: ${color.hex}`}>
+                          <div
+                            className="project-detail__swatch-circle"
+                            style={{ backgroundColor: color.hex }}
+                          />
+                          <div className="project-detail__swatch-meta">
+                            <span className="project-detail__swatch-name">{color.name}</span>
+                            <span className="project-detail__swatch-hex">{color.hex}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Live Interactive Web Viewer / Browser Mockup */}
+            {project.webPreview && (
+              <div className="project-detail__web-viewer-container">
+                <div className="project-detail__browser-chrome">
+                  <div className="project-detail__browser-controls">
+                    <span className="project-detail__browser-dot project-detail__browser-dot--red" />
+                    <span className="project-detail__browser-dot project-detail__browser-dot--yellow" />
+                    <span className="project-detail__browser-dot project-detail__browser-dot--green" />
+                  </div>
+                  <div className="project-detail__browser-url-bar">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="project-detail__browser-lock">
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <span className="project-detail__browser-url-text">
+                      {project.webPreview.url.replace(/^https?:\/\//, '')}
+                    </span>
+                  </div>
+                  <a
+                    href={project.webPreview.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-detail__browser-visit-btn"
+                    title="Open live website in new tab"
+                    aria-label={`Open ${project.webPreview.url} in new tab`}
+                  >
+                    <span>VISIT SITE</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                </div>
+
+                <div className="project-detail__browser-screen">
+                  <iframe
+                    src={project.webPreview.url}
+                    title={`${project.name} Live Web Experience`}
+                    className="project-detail__browser-iframe"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin allow-popups"
+                  />
+                </div>
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Process & Craft: Before vs After (Concept Study → Final Render) */}
         {project.processComparison && (
           <section className="project-detail__process-section" aria-label="Process and craft comparison">
