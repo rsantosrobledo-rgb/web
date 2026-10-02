@@ -73,14 +73,36 @@ export default function ProjectDetail({
   const isCoverYouTube = isYouTubeUrl(project.videoEmbed)
 
   const brandAssetsList = useMemo(() => {
-    if (Array.isArray(project.brandAssets) && project.brandAssets.length > 0) {
-      return project.brandAssets
+    const list = []
+
+    // 1. Primary asset: whatever is featured in principal (videoEmbed or coverImage)
+    const primarySrc = project.videoEmbed || project.coverImage
+    if (primarySrc) {
+      const isVideo = Boolean(project.videoEmbed)
+      list.push({
+        id: `${project.id}-primary-hero`,
+        type: isVideo ? 'video' : 'image',
+        title: isVideo ? `${project.name} · Hero Film` : `${project.name} · Official Logo / Main Asset`,
+        src: primarySrc,
+      })
     }
-    if (Array.isArray(project.secondaryMedia) && project.secondaryMedia.length > 0) {
-      return project.secondaryMedia
-    }
-    return []
-  }, [project.brandAssets, project.secondaryMedia])
+
+    // 2. All other brandAssets (or secondaryMedia), deduplicated by src
+    const rawList = Array.isArray(project.brandAssets) && project.brandAssets.length > 0
+      ? project.brandAssets
+      : (Array.isArray(project.secondaryMedia) ? project.secondaryMedia : [])
+
+    rawList.forEach((asset) => {
+      const existingIdx = list.findIndex((it) => it.src === asset.src)
+      if (existingIdx !== -1) {
+        if (asset.title) list[existingIdx] = asset
+      } else {
+        list.push(asset)
+      }
+    })
+
+    return list
+  }, [project])
 
   const categoryParts = useMemo(() => {
     if (!project?.category) return []
@@ -536,7 +558,7 @@ export default function ProjectDetail({
                               />
                             ) : (
                               <video
-                                src={asset.src}
+                                src={typeof asset.src === 'string' && !asset.src.includes('#t=') ? `${asset.src}#t=0.001` : asset.src}
                                 className="project-detail__brand-asset-video"
                                 muted
                                 playsInline

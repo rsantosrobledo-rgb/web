@@ -60,6 +60,7 @@ const projects = [
     },
     videoEmbed: '/proyectos/decoding media/Teaser_presentacion_soft.mp4',
     brandAssets: [
+      { id: 'dec-vid', type: 'video', title: 'Teaser Presentación (Primary Film)', src: '/proyectos/decoding media/Teaser_presentacion_soft.mp4' },
       { id: 'dec-1', type: 'image', title: 'Official Event Poster', src: '/proyectos/decoding media/cartel.png' },
       { id: 'dec-2', type: 'image', title: 'Event Logomark', src: '/proyectos/decoding media/logo evento.png' },
       { id: 'dec-3', type: 'image', title: 'JL Graphic Element', src: '/proyectos/decoding media/JL.png' },
@@ -98,7 +99,9 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: '5w-vid', type: 'video', title: '5W of Marketing · Stage Keynote Film', src: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1' },
+    ],
     colorPalette: [
       { name: 'Electric Orchid', hex: '#A942B4' },
       { name: 'Deep Violet', hex: '#452162' },
@@ -133,7 +136,9 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'mazda-vid', type: 'video', title: 'Mazda Exclusive Days · Eficacia Case Study Film', src: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4' },
+    ],
     colorPalette: [
       { name: 'Jet Black', hex: '#08080A' },
       { name: 'Titanium Silver', hex: '#8C8C94' },
@@ -172,7 +177,9 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/zswd19kHTdU?si=n3qoIPd1om-tR7J5&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'xmas-vid', type: 'video', title: 'Christmas Chronicles · Holiday Campaign Film', src: 'https://www.youtube.com/embed/zswd19kHTdU?si=n3qoIPd1om-tR7J5&autoplay=1&playsinline=1' },
+    ],
     editorialNarrative: [
       "Holiday campaigns are a double-edged sword for creative teams. Most agencies fall into the exact same trap year after year: forced tears, cliché family dinners, and sentimental piano music that everyone forgets five minutes later.",
       "We wanted none of that. We decided to approach Christmas through character-driven comedy, deadpan timing, and genuine internal quirks that people inside the company could actually laugh about.",
@@ -200,7 +207,9 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'noise-vid', type: 'video', title: "That's Noise · Cannes 2026 Manifesto Film", src: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1' },
+    ],
     colorPalette: [
       { name: 'Stark Black', hex: '#000000' },
       { name: 'Newsprint White', hex: '#F8F8F8' },
@@ -238,7 +247,9 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'helios-vid', type: 'video', title: 'Helios AI Factory · Launch Film', src: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1' },
+    ],
     colorPalette: [
       { name: 'Solar Amber', hex: '#E7BE7D' },
       { name: 'Molten Bronze', hex: '#6F3518' },
@@ -272,7 +283,10 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'ameba-vid', type: 'video', title: 'Ameba Studios · Relaunch Manifesto Film', src: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk&autoplay=1&playsinline=1' },
+      { id: 'ameba-logo', type: 'image', title: 'Official Studio Logomark', src: '/proyectos/Ameba/ameba_logo.png' },
+    ],
     logo: '/proyectos/Ameba/ameba_logo.png',
     webPreview: {
       url: 'https://amebastudios.com',
@@ -315,6 +329,7 @@ const projects = [
     },
     videoEmbed: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr&autoplay=1&playsinline=1',
     brandAssets: [
+      { id: 'robot-vid', type: 'video', title: 'Robot Christmas · Full 3D Short Film', src: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr&autoplay=1&playsinline=1' },
       { id: 'robot-1', type: 'image', title: 'Full 3D Character Model', src: '/proyectos/Robot Christmas/robot.png' },
     ],
     editorialNarrative: [
@@ -361,7 +376,9 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: '/proyectos/desert/desert_final.webm',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'desert-vid', type: 'video', title: 'The Desert · 2D Compositing Film', src: '/proyectos/desert/desert_final.webm' },
+    ],
 
     editorialNarrative: [
       "Everyone assumed this piece was built inside a high-end 3D physics engine. The truth is there is zero 3D simulation in the entire film.",
@@ -390,7 +407,9 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: '8m-vid', type: 'video', title: '8M Equal Voice · Manifesto Film', src: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1' },
+    ],
     colorPalette: [
       { name: 'Feminist Purple', hex: '#782078' },
       { name: 'Skin Terracotta', hex: '#DA7B79' },
@@ -424,7 +443,9 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'geo-vid', type: 'video', title: 'Geo Trace · Procedural CGI Film', src: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4' },
+    ],
 
     editorialNarrative: [
       "GEO is on everyone's radar right now, but it is a trend that is definitively here to stay.",
@@ -471,6 +492,7 @@ const projects = [
     videoEmbed: null,
     coverImage: '/proyectos/Mach/logo_mach.jpg',
     brandAssets: [
+      { id: 'mach-logo', type: 'image', title: 'Official Mach Logomark (Primary Asset)', src: '/proyectos/Mach/logo_mach.jpg' },
       { id: 'mach-1', type: 'image', title: 'Campaign Hero Print Ad', src: '/proyectos/Mach/ad prod.png' },
       { id: 'mach-2', type: 'image', title: 'Abuela Ad Campaign Poster', src: '/proyectos/Mach/abuela ad 2.png' },
       { id: 'mach-3', type: 'image', title: 'Dutch Angle Editorial Shot', src: '/proyectos/Mach/ameba-Dutch_angle_close_up.jpg' },
@@ -512,7 +534,9 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1',
-    brandAssets: [],
+    brandAssets: [
+      { id: 'awake-vid', type: 'video', title: 'Awake Venture Studio · Documentary Film', src: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1' },
+    ],
     colorPalette: [
       { name: 'Venture Cyan', hex: '#00A6DD' },
       { name: 'Midnight Navy', hex: '#002850' },
@@ -558,6 +582,7 @@ const projects = [
     },
     videoEmbed: '/proyectos/Hybrid intelligence/INTRO_Flagship2026.webm',
     brandAssets: [
+      { id: 'hyb-intro', type: 'video', title: 'Intro Flagship 2026 (Primary Film)', src: '/proyectos/Hybrid intelligence/INTRO_Flagship2026.webm' },
       { id: 'hyb-1', type: 'image', title: 'Key Visual Frame 01', src: '/proyectos/Hybrid intelligence/FS_2026_01.jpeg' },
       { id: 'hyb-2', type: 'image', title: 'Key Visual Frame 02', src: '/proyectos/Hybrid intelligence/FS_2026_02.png' },
       { id: 'hyb-3', type: 'image', title: 'Key Visual Frame 03', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
