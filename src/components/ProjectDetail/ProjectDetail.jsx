@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo, Fragment } from 'react'
+import { createPortal } from 'react-dom'
 import './ProjectDetail.css'
 
 function formatYouTubeUrl(url) {
@@ -51,6 +52,25 @@ export default function ProjectDetail({
       detailRef.current.scrollTop = 0
     }
   }, [project.id])
+
+  // Lock background scroll on document.body and detail container when lightbox is open
+  useEffect(() => {
+    if (!lightboxAsset) return
+    const prevBodyOverflow = document.body.style.overflow
+    const prevDetailOverflow = detailRef.current ? detailRef.current.style.overflowY : ''
+
+    document.body.style.overflow = 'hidden'
+    if (detailRef.current) {
+      detailRef.current.style.overflowY = 'hidden'
+    }
+
+    return () => {
+      document.body.style.overflow = prevBodyOverflow || ''
+      if (detailRef.current) {
+        detailRef.current.style.overflowY = prevDetailOverflow || ''
+      }
+    }
+  }, [lightboxAsset])
 
   const cycleMoodboardTop = useCallback(() => {
     const mb = project?.processComparison?.moodboard
@@ -150,8 +170,8 @@ export default function ProjectDetail({
   const touchStartYRef = useRef(null)
 
   const handleTouchStart = (e) => {
+    if (isClosing || lightboxAsset) return
     e.stopPropagation()
-    if (isClosing) return
     const touch = e.touches[0]
     touchStartXRef.current = touch.clientX
     touchStartYRef.current = touch.clientY
@@ -162,8 +182,8 @@ export default function ProjectDetail({
   }
 
   const handleTouchEnd = (e) => {
+    if (isClosing || lightboxAsset || touchStartXRef.current === null) return
     e.stopPropagation()
-    if (isClosing || touchStartXRef.current === null) return
 
     const touch = e.changedTouches[0]
     const dx = touch.clientX - touchStartXRef.current
@@ -185,8 +205,8 @@ export default function ProjectDetail({
 
   // Wheel / Trackpad handling for desktop horizontal swipe between projects
   const handleDetailWheel = (e) => {
+    if (isClosing || lightboxAsset) return
     e.stopPropagation()
-    if (isClosing) return
 
     // Track active wheel momentum stream from trackpad (requires 180ms quiet window to settle)
     if (projectWheelTimer) clearTimeout(projectWheelTimer)
@@ -728,11 +748,17 @@ export default function ProjectDetail({
         </button>
       </footer>
 
-      {/* High-Resolution Lightbox Modal for Brand Assets */}
-      {lightboxAsset && (
+      {/* High-Resolution Lightbox Modal for Brand Assets rendered via Portal on body */}
+      {lightboxAsset && typeof document !== 'undefined' && createPortal(
         <div
           className="project-detail__lightbox"
           onClick={() => setLightboxAsset(null)}
+          onWheel={(e) => {
+            e.stopPropagation()
+          }}
+          onTouchMove={(e) => {
+            e.stopPropagation()
+          }}
           role="dialog"
           aria-modal="true"
         >
@@ -796,7 +822,8 @@ export default function ProjectDetail({
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </article>
   )
