@@ -378,6 +378,14 @@ const projects = [
     videoEmbed: '/proyectos/desert/desert_final.webm',
     brandAssets: [
       { id: 'desert-vid', type: 'video', title: 'The Desert · 2D Compositing Film', src: '/proyectos/desert/desert_final.webm' },
+      { id: 'desert-key', type: 'image', title: 'The Desert · Creatividad General Key Visual', src: '/proyectos/desert/Creatividad general.jpg' },
+      { id: 'desert-promo', type: 'image', title: 'The Desert · YouTube Promo Release', src: '/proyectos/desert/youtube_promo.png' },
+    ],
+    colorPalette: [
+      { name: 'Twilight Indigo', hex: '#0D0E68' },
+      { name: 'Nocturne Void', hex: '#050614' },
+      { name: 'Deep Amethyst', hex: '#2A1846' },
+      { name: 'Dune Mist', hex: '#FAF0FB' },
     ],
 
     editorialNarrative: [
@@ -586,6 +594,8 @@ const projects = [
       { id: 'hyb-1', type: 'image', title: 'Key Visual Frame 01', src: '/proyectos/Hybrid intelligence/FS_2026_01.jpeg' },
       { id: 'hyb-2', type: 'image', title: 'Key Visual Frame 02', src: '/proyectos/Hybrid intelligence/FS_2026_02.png' },
       { id: 'hyb-3', type: 'image', title: 'Key Visual Frame 03', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
+      { id: 'hyb-signage-1', type: 'image', title: 'Event Window Graphics 01 (176x233cm)', src: '/proyectos/Hybrid intelligence/MS_FS_VENTANAS_SOLUCIONES_176x233cm-01.jpg' },
+      { id: 'hyb-signage-2', type: 'image', title: 'Event Window Graphics 02 (176x233cm)', src: '/proyectos/Hybrid intelligence/MS_FS_VENTANAS_SOLUCIONES_176x233cm -2-01.jpg' },
       { id: 'hyb-4', type: 'video', title: 'Teaser 2 Motion Cut', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
       { id: 'hyb-5', type: 'video', title: 'Keynote Film (YouTube)', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
     ],
