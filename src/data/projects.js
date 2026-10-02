@@ -64,10 +64,6 @@ const projects = [
       { id: 'dec-2', type: 'image', title: 'Event Logomark', src: '/proyectos/decoding media/logo evento.png' },
       { id: 'dec-3', type: 'image', title: 'JL Graphic Element', src: '/proyectos/decoding media/JL.png' },
       { id: 'dec-4', type: 'image', title: 'Abstract Artwork Graphic', src: '/proyectos/decoding media/Untitled.png' },
-      { id: 'dec-5', type: 'image', title: 'Street Moodboard 01', src: '/proyectos/decoding media/Moodboard/descarga (6).png' },
-      { id: 'dec-6', type: 'image', title: 'Street Moodboard 02', src: '/proyectos/decoding media/Moodboard/3433584c5f02a685e612a63d9ad3ad9b.jpg' },
-      { id: 'dec-7', type: 'image', title: 'Street Moodboard 03', src: '/proyectos/decoding media/Moodboard/1518ecf132a48225b8cc50ee61c90a91.jpg' },
-      { id: 'dec-8', type: 'image', title: 'Official Die-cut Sticker', src: stickerDecoding },
     ],
     colorPalette: [
       { name: 'Cyber Magenta', hex: '#FF00DC' },
@@ -102,9 +98,7 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: 'https://www.youtube.com/embed/QScPYHLlSbA?si=kO0wBLo_6vtEyLaR&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: '5w-1', type: 'image', title: 'Official 5W Brand Sticker', src: sticker5w },
-    ],
+    brandAssets: [],
     colorPalette: [
       { name: 'Electric Orchid', hex: '#A942B4' },
       { name: 'Deep Violet', hex: '#452162' },
@@ -139,10 +133,7 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: '/proyectos/Mazda/5. Mazda Exclusive Days - Eficacia_VF.mp4',
-    brandAssets: [
-      { id: 'mazda-1', type: 'image', title: 'Exclusive Days Badge Graphic', src: '/proyectos/Mazda/mazda sticker.png' },
-      { id: 'mazda-2', type: 'image', title: 'Official Die-cut Sticker', src: stickerMazda },
-    ],
+    brandAssets: [],
     colorPalette: [
       { name: 'Jet Black', hex: '#08080A' },
       { name: 'Titanium Silver', hex: '#8C8C94' },
@@ -181,9 +172,7 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/zswd19kHTdU?si=n3qoIPd1om-tR7J5&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: 'xmas-1', type: 'image', title: 'Official Holiday Sticker', src: stickerChristmas },
-    ],
+    brandAssets: [],
     editorialNarrative: [
       "Holiday campaigns are a double-edged sword for creative teams. Most agencies fall into the exact same trap year after year: forced tears, cliché family dinners, and sentimental piano music that everyone forgets five minutes later.",
       "We wanted none of that. We decided to approach Christmas through character-driven comedy, deadpan timing, and genuine internal quirks that people inside the company could actually laugh about.",
@@ -211,9 +200,7 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/niXm3XkXzk4?si=zfVG_CWhNCEuEU2l&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: 'noise-1', type: 'image', title: 'Cannes Manifesto Sticker', src: stickerThatsNoise },
-    ],
+    brandAssets: [],
     colorPalette: [
       { name: 'Stark Black', hex: '#000000' },
       { name: 'Newsprint White', hex: '#F8F8F8' },
@@ -251,9 +238,7 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/R5YrakYxFjw?si=an-bG28bkL58kxwn&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: 'helios-1', type: 'image', title: 'Partner Identity Sticker', src: stickerHelios },
-    ],
+    brandAssets: [],
     colorPalette: [
       { name: 'Solar Amber', hex: '#E7BE7D' },
       { name: 'Molten Bronze', hex: '#6F3518' },
@@ -287,10 +272,7 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: 'https://www.youtube.com/embed/rP8g-CrPobo?si=D6gHJHT0hezx2NQk&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: 'ameba-1', type: 'image', title: 'Official Ameba Studios Logo', src: '/proyectos/Ameba/ameba_logo.png' },
-      { id: 'ameba-2', type: 'image', title: 'Official Die-cut Brand Sticker', src: stickerAmeba },
-    ],
+    brandAssets: [],
     logo: '/proyectos/Ameba/ameba_logo.png',
     webPreview: {
       url: 'https://amebastudios.com',
@@ -334,7 +316,6 @@ const projects = [
     videoEmbed: 'https://www.youtube.com/embed/1PqZWPiJ-SQ?si=N3Ww2ItvlCXpTPgr&autoplay=1&playsinline=1',
     brandAssets: [
       { id: 'robot-1', type: 'image', title: 'Full 3D Character Model', src: '/proyectos/Robot Christmas/robot.png' },
-      { id: 'robot-2', type: 'image', title: 'Official Die-cut Sticker', src: stickerRobot },
     ],
     editorialNarrative: [
       "In an era where AI can generate plausible scenes in seconds, we felt an intense desire to create a story that stood for the pure, patient craft of hand-made 3D animation.",
@@ -380,14 +361,7 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: '/proyectos/desert/desert_final.webm',
-    brandAssets: [
-      { id: 'desert-1', type: 'image', title: 'Atmospheric Moodboard 01', src: '/proyectos/desert/Inspiration and moodboard/678d1cdf88e31a63e48b17118fab32ea.jpg' },
-      { id: 'desert-2', type: 'image', title: 'Atmospheric Moodboard 02', src: '/proyectos/desert/Inspiration and moodboard/44cd992faca7dfaae0ed15c6bfccfd80.jpg' },
-      { id: 'desert-3', type: 'image', title: 'Atmospheric Moodboard 03', src: '/proyectos/desert/Inspiration and moodboard/8134f2a0a1d2a250447e6124a2ec1ea7.jpg' },
-      { id: 'desert-4', type: 'image', title: 'Atmospheric Moodboard 04', src: '/proyectos/desert/Inspiration and moodboard/ae495e8fb7fcd8f91ece04bd2495abc2.jpg' },
-      { id: 'desert-5', type: 'image', title: 'Atmospheric Moodboard 05', src: '/proyectos/desert/Inspiration and moodboard/ee194b8145d36c995cb27a83a9de4e1d.jpg' },
-      { id: 'desert-6', type: 'image', title: 'Official Die-cut Sticker', src: stickerDesert },
-    ],
+    brandAssets: [],
 
     editorialNarrative: [
       "Everyone assumed this piece was built inside a high-end 3D physics engine. The truth is there is zero 3D simulation in the entire film.",
@@ -416,9 +390,7 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: 'https://www.youtube.com/embed/u42Nvr0U9y0?si=nl7jbAgi6vl8BQ4F&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: '8m-1', type: 'image', title: 'Official Campaign Sticker', src: sticker8M },
-    ],
+    brandAssets: [],
     colorPalette: [
       { name: 'Feminist Purple', hex: '#782078' },
       { name: 'Skin Terracotta', hex: '#DA7B79' },
@@ -452,10 +424,7 @@ const projects = [
       overlap: '-14px',
     },
     videoEmbed: '/proyectos/Geo Sphere/compressed-Geo-sphere-v12.mp4',
-    brandAssets: [
-      { id: 'geo-1', type: 'image', title: 'Procedural Geometry Badge', src: '/proyectos/Geo Sphere/sticker_geosphere.png' },
-      { id: 'geo-2', type: 'image', title: 'Official Die-cut Sticker', src: stickerGeosphere },
-    ],
+    brandAssets: [],
 
     editorialNarrative: [
       "GEO is on everyone's radar right now, but it is a trend that is definitively here to stay.",
@@ -500,22 +469,15 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: null,
-    coverImage: '/proyectos/Mach/ad prod.png',
+    coverImage: '/proyectos/Mach/logo_mach.jpg',
     brandAssets: [
-      { id: 'mach-1', type: 'image', title: 'Official Mach Logomark', src: '/proyectos/Mach/logo_mach.jpg' },
-      { id: 'mach-2', type: 'image', title: 'Campaign Hero Print Ad', src: '/proyectos/Mach/ad prod.png' },
-      { id: 'mach-3', type: 'image', title: 'Abuela Ad Campaign Poster', src: '/proyectos/Mach/abuela ad 2.png' },
-      { id: 'mach-4', type: 'image', title: 'Dutch Angle Editorial Shot', src: '/proyectos/Mach/ameba-Dutch_angle_close_up.jpg' },
-      { id: 'mach-5', type: 'image', title: 'Eye Level Medium Shot', src: '/proyectos/Mach/ameba-eye_level_medium_shot.jpg' },
-      { id: 'mach-6', type: 'image', title: 'Physical Packaging Prototype', src: '/proyectos/Mach/1000029087.jpg' },
-      { id: 'mach-7', type: 'image', title: 'Graphic Artwork Screenshot', src: '/proyectos/Mach/Captura de pantalla 2026-09-16 a las 10.15.11.png' },
-      { id: 'mach-8', type: 'image', title: 'Enhanced Quality Detail Render', src: '/proyectos/Mach/Enhance_quality_eliminating_arti…_202605061106.jpeg' },
-      { id: 'mach-9', type: 'image', title: 'Pop Inspiration Moodboard 01', src: '/proyectos/Mach/Moodboard/descarga (7).png' },
-      { id: 'mach-10', type: 'image', title: 'Pop Inspiration Moodboard 02', src: '/proyectos/Mach/Moodboard/98e9d41f65d2901bb78d311fe01aa962.jpg' },
-      { id: 'mach-11', type: 'image', title: 'Pop Inspiration Moodboard 03', src: '/proyectos/Mach/Moodboard/8ea78aeb28f4d8d038b1c10650511928.jpg' },
-      { id: 'mach-12', type: 'image', title: 'Pop Inspiration Moodboard 04', src: '/proyectos/Mach/Moodboard/f9d5de69ce98aa808df05127af0f90c8.jpg' },
-      { id: 'mach-13', type: 'image', title: 'Pop Inspiration Moodboard 05', src: '/proyectos/Mach/Moodboard/6df288397f8c77ddc22445efc00cfbab.jpg' },
-      { id: 'mach-14', type: 'image', title: 'Official Die-cut Sticker', src: stickerMach },
+      { id: 'mach-1', type: 'image', title: 'Campaign Hero Print Ad', src: '/proyectos/Mach/ad prod.png' },
+      { id: 'mach-2', type: 'image', title: 'Abuela Ad Campaign Poster', src: '/proyectos/Mach/abuela ad 2.png' },
+      { id: 'mach-3', type: 'image', title: 'Dutch Angle Editorial Shot', src: '/proyectos/Mach/ameba-Dutch_angle_close_up.jpg' },
+      { id: 'mach-4', type: 'image', title: 'Eye Level Medium Shot', src: '/proyectos/Mach/ameba-eye_level_medium_shot.jpg' },
+      { id: 'mach-5', type: 'image', title: 'Physical Packaging Prototype', src: '/proyectos/Mach/1000029087.jpg' },
+      { id: 'mach-6', type: 'image', title: 'Graphic Artwork Screenshot', src: '/proyectos/Mach/Captura de pantalla 2026-09-16 a las 10.15.11.png' },
+      { id: 'mach-7', type: 'image', title: 'Enhanced Quality Detail Render', src: '/proyectos/Mach/Enhance_quality_eliminating_arti…_202605061106.jpeg' },
     ],
     colorPalette: [
       { name: 'Mach Fiery Orange', hex: '#D24A00' },
@@ -550,9 +512,7 @@ const projects = [
       overlap: '-12px',
     },
     videoEmbed: 'https://www.youtube.com/embed/yOK8O5pV8bQ?si=yyDovq7dmFql6oHU&autoplay=1&playsinline=1',
-    brandAssets: [
-      { id: 'awake-1', type: 'image', title: 'Official Studio Sticker', src: stickerAwake },
-    ],
+    brandAssets: [],
     colorPalette: [
       { name: 'Venture Cyan', hex: '#00A6DD' },
       { name: 'Midnight Navy', hex: '#002850' },
@@ -603,11 +563,6 @@ const projects = [
       { id: 'hyb-3', type: 'image', title: 'Key Visual Frame 03', src: '/proyectos/Hybrid intelligence/FS_2026_06 (1).jpeg' },
       { id: 'hyb-4', type: 'video', title: 'Teaser 2 Motion Cut', src: '/proyectos/Hybrid intelligence/Teaser2_Flagship_2026_v01.webm' },
       { id: 'hyb-5', type: 'video', title: 'Keynote Film (YouTube)', src: 'https://www.youtube.com/embed/lgGXCguwf1U?si=gvX4rzRekyO_QM2p&autoplay=1&playsinline=1' },
-      { id: 'hyb-6', type: 'image', title: 'Visual R&D Concept 01', src: '/proyectos/Hybrid intelligence/Inspiration and moodboard /90a9de1aebc125f5907f6615fdff6504.jpg' },
-      { id: 'hyb-7', type: 'image', title: 'Visual R&D Concept 02', src: '/proyectos/Hybrid intelligence/Inspiration and moodboard /1eb1b3dc1a910df5efdac7bb8d86cce6.jpg' },
-      { id: 'hyb-8', type: 'image', title: 'Visual R&D Concept 03', src: '/proyectos/Hybrid intelligence/Inspiration and moodboard /3c2d4f929430b36d4c2a45af1a0450ca.jpg' },
-      { id: 'hyb-9', type: 'image', title: 'Visual R&D Concept 04', src: '/proyectos/Hybrid intelligence/Inspiration and moodboard /Captura de pantalla 2026-09-16 a las 13.19.33.png' },
-      { id: 'hyb-10', type: 'image', title: 'Official Die-cut Sticker', src: stickerHybrid },
     ],
     colorPalette: [
       { name: 'Technical Cyan', hex: '#00ADEA' },

@@ -1153,11 +1153,11 @@
   display: flex;
   flex-direction: column;
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
   position: relative;
   text-align: left;
@@ -1165,19 +1165,22 @@
 
 .project-detail__brand-asset-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.12);
-  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.18);
 }
 
 .project-detail__brand-asset-media-box {
   width: 100%;
   aspect-ratio: 4 / 3;
   position: relative;
-  background: #0d0e12;
+  background: #f6f6f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .project-detail__brand-asset-img,
@@ -1186,7 +1189,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  transition: transform 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-detail__brand-asset-card:hover .project-detail__brand-asset-img,
@@ -1197,7 +1200,7 @@
 .project-detail__brand-asset-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  background: rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -1215,25 +1218,25 @@
   font-family: 'Futura', 'Jost', sans-serif;
   font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.08em;
+  color: #111111;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  padding: 3px 7px;
+  padding: 3px 8px;
   text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .project-detail__brand-asset-zoom-icon {
-  color: #ffffff;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  color: #111111;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9));
 }
 
 .project-detail__brand-asset-footer {
   padding: 10px 14px;
   background: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .project-detail__brand-asset-title {
