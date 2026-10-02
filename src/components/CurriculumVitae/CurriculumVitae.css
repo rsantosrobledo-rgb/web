@@ -486,17 +486,82 @@
     width: 210mm !important;
     height: 297mm !important;
     max-height: 297mm !important;
-    padding: 14mm 16mm 12mm !important;
+    padding: 10mm 15mm 8mm !important;
     margin: 0 !important;
     background-color: #FAF8F5 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+    overflow: hidden !important;
   }
 
   .cv-sheet::before {
     display: none !important;
+  }
+
+  .cv-header {
+    padding-bottom: 3.5mm !important;
+  }
+
+  .cv-timeline {
+    margin-top: 3mm !important;
+    gap: 3.5mm !important;
+  }
+
+  .cv-section__title {
+    margin: 0 0 1.8mm !important;
+    font-size: 1.35rem !important;
+  }
+
+  .cv-section__content {
+    gap: 1.8mm !important;
+  }
+
+  .cv-text {
+    font-size: 0.81rem !important;
+    line-height: 1.38 !important;
+  }
+
+  .cv-bullets {
+    margin: 1mm 0 0 0 !important;
+    gap: 0.8mm !important;
+  }
+
+  .cv-bullets li {
+    font-size: 0.79rem !important;
+    line-height: 1.34 !important;
+  }
+
+  .cv-honors-grid {
+    gap: 1.2mm !important;
+  }
+
+  .cv-honor-item {
+    font-size: 0.79rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .cv-skills-grid {
+    gap: 12px !important;
+  }
+
+  .cv-skills-col {
+    gap: 3.5px !important;
+  }
+
+  .cv-skills-category {
+    font-size: 0.69rem !important;
+    margin-bottom: 1px !important;
+  }
+
+  .cv-skill-item {
+    font-size: 0.78rem !important;
+  }
+
+  .cv-footer {
+    margin-top: 3.5mm !important;
+    padding-top: 2.5mm !important;
   }
 }
 
