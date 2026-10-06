@@ -114,7 +114,7 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  border: 1.4px solid #221F20;
+  border: none;
   border-radius: 0;
   box-shadow: 0 16px 42px rgba(34, 31, 32, 0.16), 0 3px 10px rgba(34, 31, 32, 0.08);
   backface-visibility: hidden;
