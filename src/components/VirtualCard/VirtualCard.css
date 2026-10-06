@@ -122,6 +122,26 @@
   overflow: hidden;
 }
 
+/* Subtle organic paper texture overlay across both card faces (front and back) */
+.vcard-face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/paper-grain.png');
+  background-size: 256px 256px;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vcard-face--front::before {
+  opacity: 0.22;
+}
+
+.vcard-face--back::before {
+  opacity: 0.25;
+}
+
 @media (min-width: 521px) {
   .vcard-face {
     box-shadow: 0 28px 64px rgba(34, 31, 32, 0.20), 0 6px 16px rgba(34, 31, 32, 0.10);
@@ -318,6 +338,8 @@
   gap: clamp(7px, 1.2vh, 10px);
   margin-top: 4px;
   margin-bottom: clamp(6px, 1.2vh, 12px);
+  position: relative;
+  z-index: 3;
 }
 
 .vcard-action-btn {

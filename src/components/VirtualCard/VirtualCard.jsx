@@ -3,7 +3,7 @@ import './VirtualCard.css'
 
 const translations = {
   es: {
-    badge: 'DIRECTOR CREATIVO',
+    badge: 'DIRECCIÓN CREATIVA',
     services: [
       { text: 'Diseño de marca', diamond: true },
       { text: 'Contenido audiovisual', diamond: true },
@@ -17,11 +17,11 @@ const translations = {
     ],
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
-    vcardTitle: 'Director Creativo',
-    vcardNote: 'Director Creativo enfocado en diseño de marca, contenido audiovisual y diseño web.',
+    vcardTitle: 'Dirección Creativa',
+    vcardNote: 'Dirección Creativa enfocada en diseño de marca, contenido audiovisual y diseño web.',
   },
   en: {
-    badge: 'CREATIVE DIRECTOR',
+    badge: 'CREATIVE DIRECTION',
     services: [
       { text: 'Brand Design', diamond: true },
       { text: 'Audiovisual Content', diamond: true },
@@ -35,8 +35,8 @@ const translations = {
     ],
     saveContact: 'SAVE CONTACT',
     whatsappMessage: 'Hello Rodrigo',
-    vcardTitle: 'Creative Director',
-    vcardNote: 'Creative Director focused on brand design, audiovisual content and web design.',
+    vcardTitle: 'Creative Direction',
+    vcardNote: 'Creative Direction focused on brand design, audiovisual content and web design.',
   },
 }
 
