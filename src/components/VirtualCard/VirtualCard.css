@@ -1,6 +1,6 @@
 /* =======================================================
    Virtual Business Card — Rodrigo Santos (/hola & /hello)
-   Compact rounded physical card with rich, readable type
+   Solid editorial layout: bold type & tight section spacing
    ======================================================= */
 
 .vcard-page {
@@ -20,16 +20,16 @@
   font-family: 'Jost', 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: clamp(10px, 2vh, 20px) clamp(10px, 3vw, 20px);
+  padding: clamp(8px, 1.8vh, 18px) clamp(10px, 3vw, 20px);
   box-sizing: border-box;
 }
 
-/* Card Container — rounded, comfortable card frame */
+/* Card Container — rounded, compact, content-focused */
 .vcard-container {
   width: 100%;
-  max-width: 388px;
-  height: 100%;
-  max-height: min(660px, calc(100dvh - clamp(16px, 3vh, 32px)));
+  max-width: 400px;
+  height: auto;
+  max-height: min(690px, calc(100dvh - clamp(16px, 2.5vh, 28px)));
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(13px, 2vh, 20px) clamp(16px, 4.2vw, 22px);
+  padding: clamp(14px, 2.1vh, 22px) clamp(18px, 4.8vw, 24px);
   background-color: #ffffff;
   border-radius: 18px;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -52,6 +52,7 @@
 /* ---------- Header ---------- */
 .vcard-header {
   flex-shrink: 0;
+  margin-bottom: clamp(6px, 1vh, 10px);
 }
 
 .vcard-brand {
@@ -61,9 +62,9 @@
 
 .vcard-name {
   font-family: 'Jost', 'Futura', sans-serif;
-  font-size: clamp(28px, 4vh, 36px);
+  font-size: clamp(32px, 4.4vh, 42px);
   font-weight: 800;
-  line-height: 0.90;
+  line-height: 0.88;
   letter-spacing: -0.04em;
   text-transform: lowercase;
   color: #000000;
@@ -78,7 +79,7 @@
 
 .vcard-role {
   font-family: 'Jost', 'Futura', sans-serif;
-  font-size: clamp(14.5px, 1.9vh, 17.5px);
+  font-size: clamp(16px, 2.1vh, 19.5px);
   font-weight: 700;
   color: #111111;
   margin: 0 0 clamp(1px, 0.25vh, 3px) 0;
@@ -86,7 +87,7 @@
 }
 
 .vcard-tags {
-  font-size: clamp(11px, 1.4vh, 12.5px);
+  font-size: clamp(12px, 1.55vh, 13.8px);
   font-weight: 500;
   color: #333333;
   margin: 0;
@@ -95,9 +96,9 @@
 
 .vcard-divider {
   border: none;
-  height: 1px;
+  height: 1.2px;
   background-color: #1a1a1a;
-  margin: clamp(6px, 0.9vh, 9px) 0 clamp(5px, 0.7vh, 8px) 0;
+  margin: clamp(7px, 1.1vh, 11px) 0 0 0;
 }
 
 /* ---------- Content Body ---------- */
@@ -105,8 +106,8 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  gap: clamp(4px, 0.8vh, 8px);
+  justify-content: flex-start;
+  gap: clamp(7px, 1.2vh, 12px);
   min-height: 0;
 }
 
@@ -117,16 +118,16 @@
 
 .vcard-section__title {
   font-family: 'Jost', 'Futura', sans-serif;
-  font-size: clamp(13.5px, 1.75vh, 16.5px);
+  font-size: clamp(15px, 2vh, 18px);
   font-weight: 800;
   text-transform: lowercase;
   color: #111111;
-  margin: 0 0 clamp(1px, 0.25vh, 3px) 0;
+  margin: 0 0 clamp(1px, 0.2vh, 3px) 0;
   letter-spacing: -0.02em;
 }
 
 .vcard-section__text {
-  font-size: clamp(11px, 1.4vh, 12.5px);
+  font-size: clamp(12px, 1.55vh, 13.8px);
   line-height: 1.34;
   color: #2b2b2b;
   font-weight: 500;
@@ -134,32 +135,32 @@
 }
 
 .vcard-section__text--budget {
-  color: #3a3a3a;
+  color: #383838;
 }
 
 /* ---------- Services List ---------- */
 .vcard-services-list {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5px, 0.3vh, 3.5px);
+  gap: clamp(2px, 0.35vh, 4px);
 }
 
 .vcard-service-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 10px;
+  gap: 12px;
 }
 
 .vcard-service-name {
-  font-size: clamp(11.5px, 1.45vh, 13px);
+  font-size: clamp(12.5px, 1.65vh, 14.5px);
   font-weight: 700;
   color: #111111;
   white-space: nowrap;
 }
 
 .vcard-service-desc {
-  font-size: clamp(10.5px, 1.35vh, 12px);
+  font-size: clamp(11.8px, 1.5vh, 13.5px);
   font-weight: 450;
   color: #3f3f3f;
   text-align: right;
@@ -168,9 +169,9 @@
 
 /* ---------- Work Card ---------- */
 .vcard-work-card {
-  border: 1.2px solid #111111;
+  border: 1.5px solid #111111;
   background-color: #ffffff;
-  padding: clamp(5px, 0.8vh, 8px) clamp(10px, 2.5vw, 14px);
+  padding: clamp(6px, 0.9vh, 9px) clamp(11px, 2.8vw, 15px);
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -190,12 +191,12 @@
 }
 
 .vcard-work-card__top {
-  font-size: clamp(8px, 1.05vh, 9.5px);
+  font-size: clamp(8.5px, 1.15vh, 10px);
   font-weight: 600;
   letter-spacing: 0.12em;
   color: #555555;
   text-transform: uppercase;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 
 .vcard-work-card__main {
@@ -206,7 +207,7 @@
 
 .vcard-work-card__domain {
   font-family: 'Jost', 'Futura', sans-serif;
-  font-size: clamp(16px, 2.1vh, 19.5px);
+  font-size: clamp(17.5px, 2.3vh, 21.5px);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #111111;
@@ -223,10 +224,10 @@
 }
 
 .vcard-work-credits {
-  font-size: clamp(9.5px, 1.2vh, 11px);
+  font-size: clamp(10.5px, 1.35vh, 12px);
   font-weight: 500;
   color: #333333;
-  margin: clamp(2px, 0.4vh, 4px) 0 0 0;
+  margin: clamp(3px, 0.45vh, 5px) 0 0 0;
 }
 
 /* ---------- Action Buttons ---------- */
@@ -234,8 +235,8 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 0.7vh, 7px);
-  margin-top: clamp(5px, 0.8vh, 9px);
+  gap: clamp(5px, 0.8vh, 8px);
+  margin-top: clamp(7px, 1.1vh, 12px);
 }
 
 .vcard-btn {
@@ -257,11 +258,11 @@
 
 .vcard-btn--primary {
   width: 100%;
-  height: clamp(36px, 4.4vh, 42px);
+  height: clamp(38px, 4.8vh, 45px);
   background-color: #000000;
   color: #ffffff;
   border: none;
-  font-size: clamp(11.5px, 1.4vh, 13px);
+  font-size: clamp(12.5px, 1.55vh, 14px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -279,13 +280,13 @@
 }
 
 .vcard-btn--secondary {
-  height: clamp(33px, 3.9vh, 38px);
+  height: clamp(35px, 4.3vh, 41px);
   background-color: #ffffff;
   color: #111111;
-  border: 1.2px solid #111111;
-  font-size: clamp(11.5px, 1.4vh, 13px);
+  border: 1.5px solid #111111;
+  font-size: clamp(12.5px, 1.55vh, 14px);
   font-weight: 600;
-  gap: 7px;
+  gap: 8px;
 }
 
 .vcard-btn--secondary:hover {
@@ -299,14 +300,14 @@
 /* ---------- Footer ---------- */
 .vcard-footer {
   flex-shrink: 0;
-  margin-top: clamp(2px, 0.5vh, 5px);
+  margin-top: clamp(4px, 0.7vh, 8px);
 }
 
 .vcard-footer-divider {
   border: none;
   height: 1px;
   background-color: #e2e2e2;
-  margin: 0 0 clamp(3px, 0.5vh, 5px) 0;
+  margin: 0 0 clamp(4px, 0.6vh, 6px) 0;
 }
 
 .vcard-footer-content {
@@ -316,7 +317,7 @@
 }
 
 .vcard-footer-author {
-  font-size: clamp(7.5px, 0.9vh, 8.8px);
+  font-size: clamp(8px, 1.05vh, 9.5px);
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #666666;
@@ -324,7 +325,7 @@
 }
 
 .vcard-footer-location {
-  font-size: clamp(8px, 1vh, 9.5px);
+  font-size: clamp(9px, 1.15vh, 10.5px);
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #000000;
