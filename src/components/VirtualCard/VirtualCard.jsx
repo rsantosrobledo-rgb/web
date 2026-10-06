@@ -166,11 +166,11 @@ END:VCARD`
             {/* Background artboard warm paper */}
             <rect width="155.91" height="240.94" fill="#FFFEF7" />
 
-            {/* 1. DIRECCIÓN CREATIVA (translate 2.2 31.5, font-size 4.2px with breathing space) */}
+            {/* 1. DIRECCIÓN CREATIVA */}
             <text
               className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '4.2px', letterSpacing: '0.05em' }}
-              transform="translate(2.2 31.5)"
+              style={{ fontSize: '3.5px', letterSpacing: '0.04em' }}
+              transform="translate(2.2 39.29)"
             >
               {t.badge}
             </text>
