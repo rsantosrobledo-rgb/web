@@ -6,8 +6,8 @@ const translations = {
     badge: 'DIRECTOR CREATIVO',
     services: [
       { text: 'Diseño de marca', diamond: true },
-      { text: 'Web', diamond: true },
-      { text: 'Piezas visuales', diamond: true },
+      { text: 'Piezas audiovisuales', diamond: true },
+      { text: 'Diseño web', diamond: true },
     ],
     workLabel: 'TRABAJOS',
     workDomain: 'rodrigosantos.es',
@@ -18,14 +18,14 @@ const translations = {
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
     vcardTitle: 'Director Creativo',
-    vcardNote: 'Director Creativo enfocado en diseño de marca, web y piezas visuales.',
+    vcardNote: 'Director Creativo enfocado en diseño de marca, piezas audiovisuales y diseño web.',
   },
   en: {
     badge: 'CREATIVE DIRECTOR',
     services: [
       { text: 'Brand Design', diamond: true },
-      { text: 'Web', diamond: true },
-      { text: 'Visual Pieces', diamond: true },
+      { text: 'Audiovisual Pieces', diamond: true },
+      { text: 'Web Design', diamond: true },
     ],
     workLabel: 'WORK',
     workDomain: 'rodrigosantos.es',
@@ -36,7 +36,7 @@ const translations = {
     saveContact: 'SAVE CONTACT',
     whatsappMessage: 'Hello Rodrigo',
     vcardTitle: 'Creative Director',
-    vcardNote: 'Creative Director focused on brand design, web and visual pieces.',
+    vcardNote: 'Creative Director focused on brand design, audiovisual pieces and web design.',
   },
 }
 
