@@ -143,33 +143,32 @@
   stroke-miterlimit: 10;
 }
 
-/* Calm, smooth horizontal movement of the entire eye across the 'o' without hiding under the glyph */
-@keyframes calmSvgEyeDrift {
-  0% {
-    transform: translateX(0.75px);
+/* Dynamic eye movement exploring the hole of the 'o' with swift velocity curves */
+@keyframes dynamicSvgEyeDrift {
+  0%, 14% {
+    transform: translate(0.95px, -0.2px);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
   }
-  24% {
-    transform: translateX(0.75px);
+  24%, 42% {
+    transform: translate(-1.05px, 0.25px);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
   }
-  50% {
-    transform: translateX(-0.75px);
+  50%, 64% {
+    transform: translate(0.65px, -0.6px);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
   }
-  74% {
-    transform: translateX(-0.75px);
+  72%, 84% {
+    transform: translate(-0.35px, 0.5px);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
   }
-  86% {
-    transform: translate(0.15px, -0.2px);
-  }
-  92% {
-    transform: translate(0.15px, -0.2px);
-  }
-  100% {
-    transform: translateX(0.75px);
+  92%, 100% {
+    transform: translate(0.95px, -0.2px);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
   }
 }
 
 .vcard-eye-drift {
-  animation: calmSvgEyeDrift 6.8s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
+  animation: dynamicSvgEyeDrift 4.2s infinite;
   transform-origin: 132.12px 49.67px;
   will-change: transform;
 }
