@@ -6,7 +6,7 @@ const translations = {
     badge: 'DIRECTOR CREATIVO',
     services: [
       { text: 'Diseño de marca', diamond: true },
-      { text: 'Piezas audiovisuales', diamond: true },
+      { text: 'Contenido audiovisual', diamond: true },
       { text: 'Diseño web', diamond: true },
     ],
     workLabel: 'TRABAJOS',
@@ -18,13 +18,13 @@ const translations = {
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
     vcardTitle: 'Director Creativo',
-    vcardNote: 'Director Creativo enfocado en diseño de marca, piezas audiovisuales y diseño web.',
+    vcardNote: 'Director Creativo enfocado en diseño de marca, contenido audiovisual y diseño web.',
   },
   en: {
     badge: 'CREATIVE DIRECTOR',
     services: [
       { text: 'Brand Design', diamond: true },
-      { text: 'Audiovisual Pieces', diamond: true },
+      { text: 'Audiovisual Content', diamond: true },
       { text: 'Web Design', diamond: true },
     ],
     workLabel: 'WORK',
@@ -36,7 +36,7 @@ const translations = {
     saveContact: 'SAVE CONTACT',
     whatsappMessage: 'Hello Rodrigo',
     vcardTitle: 'Creative Director',
-    vcardNote: 'Creative Director focused on brand design, audiovisual pieces and web design.',
+    vcardNote: 'Creative Director focused on brand design, audiovisual content and web design.',
   },
 }
 
