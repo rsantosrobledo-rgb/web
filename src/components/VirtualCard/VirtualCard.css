@@ -139,12 +139,13 @@
 
 .vcard-section__title {
   font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
-  font-size: clamp(15px, 2vh, 18px);
+  font-size: clamp(18.5px, 2.5vh, 23.5px);
   font-weight: 800;
+  line-height: 0.96;
   text-transform: lowercase;
   color: #111111;
-  margin: 0 0 clamp(1px, 0.2vh, 3px) 0;
-  letter-spacing: -0.02em;
+  margin: 0 0 clamp(2px, 0.3vh, 4px) 0;
+  letter-spacing: -0.03em;
 }
 
 .vcard-section__text {
