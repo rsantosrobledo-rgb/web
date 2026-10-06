@@ -94,7 +94,7 @@ END:VCARD`
           >
             <defs>
               <clipPath id="vcard-eye-hole-clip">
-                <circle cx="132.12" cy="49.67" r="5.6" />
+                <circle cx="129.12" cy="49.67" r="6.0" />
               </clipPath>
             </defs>
 
@@ -110,21 +110,21 @@ END:VCARD`
               {t.badge}
             </text>
 
-            {/* 2. Animated Eye Unit (sits behind the o, moving smoothly along its hole) */}
+            {/* 2. Animated Eye Unit (sits centered in the o, moving smoothly across both extremes) */}
             <g className="vcard-eye-drift" clipPath="url(#vcard-eye-hole-clip)">
               {/* White sclera base */}
-              <circle cx="132.12" cy="49.67" r="2.79" fill="#FFFEF7" />
+              <circle cx="129.12" cy="49.67" r="2.79" fill="#FFFEF7" />
               {/* Fine black eye border stroke */}
               <circle
                 className="vcard-cls-eye-stroke"
-                cx="132.12"
+                cx="129.12"
                 cy="49.67"
                 r="2.79"
               />
               {/* Dark pupil */}
-              <circle cx="132.12" cy="49.67" r="1.45" fill="#221F20" />
+              <circle cx="129.12" cy="49.67" r="1.45" fill="#221F20" />
               {/* Specular highlight */}
-              <circle cx="131.45" cy="48.95" r="0.45" fill="#FFFFFF" />
+              <circle cx="128.45" cy="48.95" r="0.45" fill="#FFFFFF" />
             </g>
 
             {/* 3. rodrigo santos display title (exact translate 0 60.72) */}
