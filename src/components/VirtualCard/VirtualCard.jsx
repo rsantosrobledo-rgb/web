@@ -4,12 +4,12 @@ import './VirtualCard.css'
 const translations = {
   es: {
     role: 'Dirección creativa',
-    tags: 'Branding • Web • Piezas visuales',
+    tags: 'Diseño de marca • Web • Piezas visuales',
     aboutTitle: 'sobre mí',
     aboutText: 'Dirección creativa independiente. Diseño identidades de marca, plataformas web y narrativa audiovisual con visión estratégica y acabado de agencia.',
     servicesTitle: 'servicios',
     services: [
-      { name: 'Branding', desc: 'Identidad y rebranding' },
+      { name: 'Diseño de marca', desc: 'Identidad y rebranding' },
       { name: 'Web', desc: 'Diseño y desarrollo' },
       { name: 'Contenido', desc: 'Piezas visuales para campañas' },
     ],
@@ -23,7 +23,7 @@ const translations = {
     footerAuthor: 'RODRIGO SANTOS — DIRECCIÓN CREATIVA',
     footerLocation: 'MADRID',
     vcardTitle: 'Dirección creativa',
-    vcardNote: 'Dirección creativa independiente enfocada en branding, web y contenido con calidad de agencia.',
+    vcardNote: 'Dirección creativa independiente enfocada en diseño de marca, web y contenido con calidad de agencia.',
   },
   en: {
     role: 'Creative direction',
