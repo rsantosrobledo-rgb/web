@@ -2,27 +2,46 @@ import { useState, useCallback, useEffect } from 'react'
 import IntroSequence from './components/IntroSequence/IntroSequence.jsx'
 import StickerBoard from './components/StickerBoard/StickerBoard.jsx'
 import CurriculumVitae from './components/CurriculumVitae/CurriculumVitae.jsx'
+import VirtualCard from './components/VirtualCard/VirtualCard.jsx'
 import projects from './data/projects.js'
 
 export default function App() {
-  const [showCV, setShowCV] = useState(() => window.location.hash === '#cv')
-  const [introComplete, setIntroComplete] = useState(() => window.location.hash === '#cv')
-  const [showIntro, setShowIntro] = useState(() => window.location.hash !== '#cv')
+  const isInitialHola = () => {
+    const path = window.location.pathname.replace(/\/$/, '')
+    return path === '/hola' || window.location.hash === '#hola'
+  }
+  const isInitialCV = () => {
+    const path = window.location.pathname.replace(/\/$/, '')
+    return path === '/cv' || window.location.hash === '#cv'
+  }
+
+  const [showHola, setShowHola] = useState(isInitialHola)
+  const [showCV, setShowCV] = useState(isInitialCV)
+  const [introComplete, setIntroComplete] = useState(() => isInitialCV() || isInitialHola())
+  const [showIntro, setShowIntro] = useState(() => !isInitialCV() && !isInitialHola())
   const [introKey, setIntroKey] = useState(0)
   const [selectedProject, setSelectedProject] = useState(null)
 
-  // Listen to hash changes (#cv <-> default)
+  // Listen to hash and location changes
   useEffect(() => {
-    const handleHash = () => {
-      const isCV = window.location.hash === '#cv'
+    const handleLocationChange = () => {
+      const path = window.location.pathname.replace(/\/$/, '')
+      const isHola = path === '/hola' || window.location.hash === '#hola'
+      const isCV = path === '/cv' || window.location.hash === '#cv'
+
+      setShowHola(isHola)
       setShowCV(isCV)
-      if (isCV) {
+      if (isHola || isCV) {
         setIntroComplete(true)
         setShowIntro(false)
       }
     }
-    window.addEventListener('hashchange', handleHash)
-    return () => window.removeEventListener('hashchange', handleHash)
+    window.addEventListener('hashchange', handleLocationChange)
+    window.addEventListener('popstate', handleLocationChange)
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange)
+      window.removeEventListener('popstate', handleLocationChange)
+    }
   }, [])
 
   // Preload project stickers in background while intro is playing
@@ -58,6 +77,10 @@ export default function App() {
     setIntroComplete(true)
     setShowIntro(false)
   }, [])
+
+  if (showHola) {
+    return <VirtualCard />
+  }
 
   if (showCV) {
     return <CurriculumVitae onBack={handleBackFromCV} />
