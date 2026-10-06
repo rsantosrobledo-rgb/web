@@ -4,8 +4,6 @@ import './VirtualCard.css'
 const translations = {
   es: {
     badge: 'DIRECTOR CREATIVO',
-    nameLead: 'rodrig',
-    nameSecond: 'santos',
     services: [
       { text: 'Diseño de marca', diamond: true },
       { text: 'Web', diamond: true },
@@ -24,8 +22,6 @@ const translations = {
   },
   en: {
     badge: 'CREATIVE DIRECTOR',
-    nameLead: 'rodrig',
-    nameSecond: 'santos',
     services: [
       { text: 'Brand Design', diamond: true },
       { text: 'Web', diamond: true },
@@ -87,84 +83,105 @@ END:VCARD`
   return (
     <div className="vcard-page" id="vcard-page">
       <main className="vcard-container" id="vcard-container">
-        <div className="vcard-content">
-          {/* DIRECTOR CREATIVO */}
-          <div className="vcard-badge">{t.badge}</div>
+        {/* Exact Vector Artboard from Illustrator (viewBox: 0 0 155.91 240.94) */}
+        <div className="vcard-svg-wrapper">
+          <svg
+            id="vcard-artboard"
+            viewBox="0 0 155.91 240.94"
+            className="vcard-artwork-svg"
+            role="img"
+            aria-label={`Rodrigo Santos — ${t.badge}`}
+          >
+            <defs>
+              <clipPath id="vcard-eye-hole-clip">
+                <circle cx="132.12" cy="49.67" r="5.6" />
+              </clipPath>
+            </defs>
 
-          {/* Title: rodrigo santos with integrated 'o' eye */}
-          <h1 className="vcard-title">
-            <span className="vcard-name-line vcard-name-line--rodrigo">
-              {t.nameLead}
-              <span className="vcard-eye-letter" aria-label="o">
-                <svg viewBox="0 0 100 100" className="vcard-eye-svg" aria-hidden="true">
-                  <defs>
-                    <clipPath id="vcard-o-hole">
-                      <circle cx="50" cy="50" r="26" />
-                    </clipPath>
-                  </defs>
-                  {/* Outer geometric black ring of 'o' */}
-                  <circle cx="50" cy="50" r="48" fill="#221F20" />
-                  {/* Warm paper background for inner hole */}
-                  <circle cx="50" cy="50" r="26" fill="#FFFEF7" />
-                  {/* ENTIRE Eye unit gliding horizontally across the 'o' */}
-                  <g className="vcard-eye-unit" clipPath="url(#vcard-o-hole)">
-                    {/* Eyeball base */}
-                    <circle cx="50" cy="50" r="13" fill="#FFFEF7" />
-                    {/* Fine black border circle */}
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="13"
-                      fill="none"
-                      stroke="#221F20"
-                      strokeWidth="1.4"
-                    />
-                    {/* Dark pupil */}
-                    <circle cx="50" cy="50" r="6.8" fill="#221F20" />
-                    {/* Specular highlight */}
-                    <circle cx="47.2" cy="46.8" r="2.2" fill="#FFFFFF" />
-                  </g>
-                </svg>
-              </span>
-            </span>
-            <span className="vcard-name-line vcard-name-line--santos">
-              {t.nameSecond}
-            </span>
-          </h1>
+            {/* Background artboard warm paper */}
+            <rect width="155.91" height="240.94" fill="#FFFEF7" />
 
-          {/* Services Block */}
-          <section className="vcard-services-block" aria-label="Servicios">
-            {t.services.map((item, idx) => (
-              <p className="vcard-service-item" key={idx}>
-                <span>{item.text}</span>
-                {item.diamond && <span className="vcard-diamond">◆</span>}
-              </p>
-            ))}
-          </section>
-
-          {/* Work / Trabajos Block */}
-          <section className="vcard-work-block" aria-label="Trabajos">
-            <span className="vcard-work-label">{t.workLabel}</span>
-            <a
-              href="/"
-              className="vcard-work-domain"
-              id="vcard-work-link"
-              aria-label={lang === 'en' ? 'Go to rodrigosantos.es' : 'Ir a rodrigosantos.es'}
+            {/* 1. DIRECTOR CREATIVO (exact translate 2.2 39.29, font-size 5px) */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '5px', letterSpacing: '0.04em' }}
+              transform="translate(2.2 39.29)"
             >
-              {t.workDomain}
-            </a>
-          </section>
+              {t.badge}
+            </text>
 
-          {/* Budget note */}
-          <section className="vcard-budget-block" aria-label="Presupuesto">
-            <p className="vcard-budget-text">
-              <span>{t.budgetText[0]}</span>
-              <span>{t.budgetText[1]}</span>
-            </p>
-          </section>
+            {/* 2. Animated Eye Unit (sits behind the o, moving smoothly along its hole) */}
+            <g className="vcard-eye-drift" clipPath="url(#vcard-eye-hole-clip)">
+              {/* White sclera base */}
+              <circle cx="132.12" cy="49.67" r="2.79" fill="#FFFEF7" />
+              {/* Fine black eye border stroke */}
+              <circle
+                className="vcard-cls-eye-stroke"
+                cx="132.12"
+                cy="49.67"
+                r="2.79"
+              />
+              {/* Dark pupil */}
+              <circle cx="132.12" cy="49.67" r="1.45" fill="#221F20" />
+              {/* Specular highlight */}
+              <circle cx="131.45" cy="48.95" r="0.45" fill="#FFFFFF" />
+            </g>
+
+            {/* 3. rodrigo santos display title (exact translate 0 60.72) */}
+            <text className="vcard-cls-title vcard-cls-fill" transform="translate(0 60.72)">
+              <tspan x="0" y="0">r</tspan>
+              <tspan x="16.45" y="0">od</tspan>
+              <tspan x="65.48" y="0">r</tspan>
+              <tspan x="81.79" y="0">igo </tspan>
+              <tspan x="0" y="27">san</tspan>
+              <tspan x="65.59" y="27">t</tspan>
+              <tspan x="78.96" y="27">os</tspan>
+            </text>
+
+            {/* 4. Services with diamonds (exact translate .63 117.04, font-size 11px) */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '11px' }}
+              transform="translate(.63 117.04)"
+            >
+              <tspan x="0" y="0">{t.services[0].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
+              <tspan x="0" y="13">{t.services[1].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
+              <tspan x="0" y="26">{t.services[2].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
+            </text>
+
+            {/* 5. TRABAJOS (exact translate 2.38 165.6, font-size 5px) */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '5px', letterSpacing: '0.04em' }}
+              transform="translate(2.38 165.6)"
+            >
+              {t.workLabel}
+            </text>
+
+            {/* 6. rodrigosantos.es domain link (exact translate 2.38 180.38, font-size 16px) */}
+            <a href="/" className="vcard-domain-link" aria-label="rodrigosantos.es">
+              <text
+                className="vcard-cls-sans vcard-cls-fill vcard-domain-text"
+                style={{ fontSize: '16px' }}
+                transform="translate(2.38 180.38)"
+              >
+                {t.workDomain}
+              </text>
+            </a>
+
+            {/* 7. Presupuesto note (exact translate 6.86 227.36, font-size 4px) */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '4px' }}
+              transform="translate(6.86 227.36)"
+            >
+              <tspan x="0" y="0">{t.budgetText[0]}</tspan>
+              <tspan x="0" y="6">{t.budgetText[1]}</tspan>
+            </text>
+          </svg>
         </div>
 
-        {/* Action Buttons in White at Bottom */}
+        {/* 8. White Capsule Action Buttons at Bottom */}
         <footer className="vcard-actions-block" aria-label="Contacto">
           <button
             type="button"
@@ -226,4 +243,3 @@ END:VCARD`
     </div>
   )
 }
-
