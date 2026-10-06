@@ -88,6 +88,23 @@
   animation: vcardInitialFlip 2.0s cubic-bezier(0.25, 1, 0.35, 1) forwards;
 }
 
+/* Once entrance flip finishes, drop 3D context so SVG vectors and fonts render with 100% crisp native antialiasing */
+.vcard-flipper:not(.vcard-flipper--autoflip) {
+  transform: none;
+  transform-style: flat;
+  -webkit-transform-style: flat;
+}
+
+.vcard-flipper:not(.vcard-flipper--autoflip) .vcard-face--front {
+  transform: none;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+}
+
+.vcard-flipper:not(.vcard-flipper--autoflip) .vcard-face--back {
+  display: none;
+}
+
 
 /* Shared Card Face Styling */
 .vcard-face {
@@ -271,10 +288,24 @@
   }
 }
 
+/* Eye Units inside each 'o': hidden by default, crossfades smoothly when active */
+.vcard-eye-unit {
+  opacity: 0;
+  transition: opacity 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+/* First appearance once card flip completes: elegant 0.5s fade-in */
+.vcard-eye-unit.is-initial-fade {
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.vcard-eye-unit.is-active {
+  opacity: 1;
+}
+
 .vcard-eye-drift {
   animation: dynamicSvgEyeDrift 4.8s infinite;
-  transform-origin: 129.12px 49.67px;
-  will-change: transform;
 }
 
 /* ---------- Action Buttons at Bottom (Black Primary & Larger) ---------- */
