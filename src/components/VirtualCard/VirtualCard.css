@@ -126,33 +126,33 @@
   stroke-miterlimit: 10;
 }
 
-/* Calm, smooth side-to-side drift of the eye pupil */
-@keyframes calmSvgPupilDrift {
+/* Calm, smooth horizontal movement of the entire eye across the 'o' */
+@keyframes calmSvgEyeDrift {
   0% {
-    transform: translateX(-0.95px);
+    transform: translateX(0);
   }
-  20% {
-    transform: translateX(-0.95px);
+  24% {
+    transform: translateX(0);
   }
   50% {
-    transform: translateX(0.95px);
+    transform: translateX(-5.4px);
   }
-  70% {
-    transform: translateX(0.95px);
+  74% {
+    transform: translateX(-5.4px);
   }
-  85% {
-    transform: translate(0.12px, -0.35px);
+  88% {
+    transform: translate(-2.2px, -0.25px);
   }
-  92% {
-    transform: translate(0.12px, -0.35px);
+  94% {
+    transform: translate(-2.2px, -0.25px);
   }
   100% {
-    transform: translateX(-0.95px);
+    transform: translateX(0);
   }
 }
 
 .vcard-eye-drift {
-  animation: calmSvgPupilDrift 6.4s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
+  animation: calmSvgEyeDrift 6.6s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
   transform-origin: 132.12px 49.67px;
   will-change: transform;
 }

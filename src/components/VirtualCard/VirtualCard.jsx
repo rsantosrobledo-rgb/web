@@ -94,22 +94,21 @@ END:VCARD`
               )}
             </text>
 
-            {/* Animated Eye in the 'o' (Center: cx=132.12, cy=49.67, r=2.79) */}
-            <g className="vcard-eye-layer">
+            {/* Animated Eye in the 'o' — the ENTIRE eye moves along the 'o' */}
+            <g className="vcard-eye-drift">
               {/* White sclera base */}
               <circle cx="132.12" cy="49.67" r="2.79" fill="#fffef7" />
-              {/* Blue iris circle from Illustrator */}
+              {/* Black fine border circle */}
               <circle
                 className="vcard-cls-eye-stroke"
                 cx="132.12"
                 cy="49.67"
                 r="2.79"
               />
-              {/* Calm, relaxed pupil drifting horizontally */}
-              <g className="vcard-eye-drift">
-                <circle cx="132.12" cy="49.67" r="1.45" fill="#221f20" />
-                <circle cx="131.5" cy="49.1" r="0.45" fill="#ffffff" />
-              </g>
+              {/* Inner pupil */}
+              <circle cx="132.12" cy="49.67" r="1.4" fill="#221f20" />
+              {/* Specular highlight */}
+              <circle cx="131.45" cy="49.05" r="0.45" fill="#ffffff" />
             </g>
 
             {/* rodrigo santos display title */}
