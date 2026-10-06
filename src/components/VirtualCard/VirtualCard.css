@@ -88,14 +88,6 @@
   animation: vcardInitialFlip 2.0s cubic-bezier(0.25, 1, 0.35, 1) forwards;
 }
 
-/* Interactive transitions once initial auto-flip finishes */
-.vcard-flipper--interactive {
-  transition: transform 0.95s cubic-bezier(0.25, 1, 0.35, 1);
-}
-
-.vcard-flipper--interactive.is-flipped {
-  transform: rotateY(180deg);
-}
 
 /* Shared Card Face Styling */
 .vcard-face {
@@ -146,8 +138,8 @@
   align-items: center;
   transform: rotateY(180deg);
   z-index: 1;
-  cursor: pointer;
   user-select: none;
+  pointer-events: none;
 }
 
 .vcard-back-content {
@@ -162,57 +154,16 @@
 }
 
 .vcard-back-logo {
-  width: clamp(130px, 38vw, 160px);
+  width: clamp(65px, 19vw, 80px);
   height: auto;
   object-fit: contain;
   display: block;
   user-select: none;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
-  transition: transform 0.3s cubic-bezier(0.2, 0.85, 0.3, 1);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
 }
 
-.vcard-face--back:hover .vcard-back-logo {
-  transform: scale(1.03);
-}
-
-/* Subtle Flip Button on Front Face */
-.vcard-flip-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid rgba(34, 31, 32, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #221F20;
-  opacity: 0.35;
-  transition: all 0.2s ease;
-  z-index: 10;
-  padding: 0;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.vcard-flip-btn:hover {
-  opacity: 0.9;
-  background: rgba(34, 31, 32, 0.06);
-  border-color: rgba(34, 31, 32, 0.3);
-  transform: rotate(45deg);
-}
-
-/* Pointer events safety during animation and states */
+/* Pointer events safety during animation */
 .vcard-flipper--autoflip .vcard-face--front {
-  pointer-events: none;
-}
-.vcard-flipper--interactive:not(.is-flipped) .vcard-face--back {
-  pointer-events: none;
-}
-.vcard-flipper--interactive.is-flipped .vcard-face--front {
   pointer-events: none;
 }
 

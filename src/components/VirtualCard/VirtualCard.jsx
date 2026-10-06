@@ -50,7 +50,6 @@ export default function VirtualCard({ lang: propLang }) {
   const lang = propLang || (isEnUrl ? 'en' : 'es')
   const t = translations[lang] || translations.es
 
-  const [isFlipped, setIsFlipped] = React.useState(false)
   const [isAnimating, setIsAnimating] = React.useState(true)
 
   React.useEffect(() => {
@@ -60,12 +59,6 @@ export default function VirtualCard({ lang: propLang }) {
     }, 2000)
     return () => clearTimeout(timer)
   }, [])
-
-  const toggleFlip = (e) => {
-    if (e && e.stopPropagation) e.stopPropagation()
-    if (isAnimating) return
-    setIsFlipped((prev) => !prev)
-  }
 
   const handleSaveContact = (e) => {
     e.preventDefault()
@@ -103,40 +96,12 @@ END:VCARD`
       <div className="vcard-perspective-viewport">
         <main
           className={`vcard-flipper ${
-            isAnimating
-              ? 'vcard-flipper--autoflip'
-              : `vcard-flipper--interactive ${isFlipped ? 'is-flipped' : ''}`
+            isAnimating ? 'vcard-flipper--autoflip' : ''
           }`}
           id="vcard-container"
         >
           {/* Front Face (White warm artboard paper) */}
           <div className="vcard-face vcard-face--front">
-            {/* Subtle Flip Button */}
-            <button
-              type="button"
-              className="vcard-flip-btn"
-              onClick={toggleFlip}
-              aria-label={lang === 'en' ? 'Flip card' : 'Girar tarjeta'}
-              title={lang === 'en' ? 'Flip card' : 'Girar tarjeta'}
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                <path d="M3 3v5h5" />
-                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-                <path d="M16 21h5v-5" />
-              </svg>
-            </button>
-
             {/* Exact Vector Artboard from Illustrator (viewBox: 0 0 155.91 240.94) */}
             <div className="vcard-svg-wrapper">
           <svg
@@ -299,10 +264,7 @@ END:VCARD`
       {/* Back Face (Deep Black with White Textured Eye Logo) */}
       <div
         className="vcard-face vcard-face--back"
-        onClick={toggleFlip}
-        role="button"
-        tabIndex={0}
-        aria-label={lang === 'en' ? 'Flip card to front' : 'Girar tarjeta'}
+        aria-hidden={!isAnimating}
       >
         <div className="vcard-back-content">
           <img
