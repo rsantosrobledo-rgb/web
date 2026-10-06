@@ -6,13 +6,15 @@ const translations = {
     role: 'Dirección creativa',
     tags: 'Branding • Web • Piezas visuales',
     aboutTitle: 'sobre mí',
-    aboutText: 'Dirección creativa enfocada en branding, web y contenido con calidad de agencia.',
+    aboutText: 'Dirección creativa independiente. Diseño identidades de marca, plataformas web y narrativa audiovisual con visión estratégica y acabado de agencia.',
     servicesTitle: 'servicios',
     services: [
       { name: 'Branding', desc: 'Identidad y rebranding' },
       { name: 'Web', desc: 'Diseño y desarrollo' },
       { name: 'Contenido', desc: 'Piezas visuales para campañas' },
     ],
+    budgetTitle: 'presupuesto',
+    budgetText: 'Presupuesto por proyecto según escala y envergadura. Consultas y primeras conversaciones libres y sin compromiso.',
     workTitle: 'trabajos',
     viewProjects: 'VER PROYECTOS',
     credits: 'Mazda España • Ameba Studios • Cannes Lions 2026',
@@ -21,19 +23,21 @@ const translations = {
     footerAuthor: 'RODRIGO SANTOS — DIRECCIÓN CREATIVA',
     footerLocation: 'MADRID',
     vcardTitle: 'Dirección creativa',
-    vcardNote: 'Dirección creativa enfocada en branding, web y contenido con calidad de agencia.',
+    vcardNote: 'Dirección creativa independiente enfocada en branding, web y contenido con calidad de agencia.',
   },
   en: {
     role: 'Creative direction',
     tags: 'Branding • Web • Visual pieces',
     aboutTitle: 'about me',
-    aboutText: 'Creative direction focused on branding, web and content with agency caliber.',
+    aboutText: 'Independent creative direction. Crafting brand identities, digital platforms, and visual storytelling with strategic vision and agency-grade finish.',
     servicesTitle: 'services',
     services: [
       { name: 'Branding', desc: 'Identity and rebranding' },
       { name: 'Web', desc: 'Design and development' },
       { name: 'Content', desc: 'Visual pieces for campaigns' },
     ],
+    budgetTitle: 'budget & scope',
+    budgetText: 'Project-based pricing tailored to scale and scope. Initial inquiries and consultations are always free of charge.',
     workTitle: 'work',
     viewProjects: 'VIEW PROJECTS',
     credits: 'Mazda Spain • Ameba Studios • Cannes Lions 2026',
@@ -42,7 +46,7 @@ const translations = {
     footerAuthor: 'RODRIGO SANTOS — CREATIVE DIRECTION',
     footerLocation: 'MADRID',
     vcardTitle: 'Creative Director',
-    vcardNote: 'Creative direction focused on branding, web and content with agency caliber.',
+    vcardNote: 'Independent creative direction focused on branding, web and content with agency caliber.',
   },
 }
 
@@ -125,6 +129,12 @@ END:VCARD`
             </div>
           </section>
 
+          {/* Section: budget / presupuesto */}
+          <section className="vcard-section vcard-section--budget">
+            <h3 className="vcard-section__title">{t.budgetTitle}</h3>
+            <p className="vcard-section__text vcard-section__text--budget">{t.budgetText}</p>
+          </section>
+
           {/* Section: work / trabajos */}
           <section className="vcard-section vcard-section--work">
             <h3 className="vcard-section__title">{t.workTitle}</h3>
@@ -139,8 +149,8 @@ END:VCARD`
                 <span className="vcard-work-card__domain">rodrigosantos.es</span>
                 <svg
                   className="vcard-work-card__arrow"
-                  width="22"
-                  height="22"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -178,8 +188,8 @@ END:VCARD`
               id="vcard-btn-whatsapp"
             >
               <svg
-                width="17"
-                height="17"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -199,8 +209,8 @@ END:VCARD`
               id="vcard-btn-email"
             >
               <svg
-                width="17"
-                height="17"
+                width="16"
+                height="16"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
