@@ -118,9 +118,9 @@ END:VCARD`
               <tspan x="16.45" y="0">od</tspan>
               <tspan style={{ letterSpacing: '0em' }} x="65.48" y="0">r</tspan>
               <tspan x="81.79" y="0">igo </tspan>
-              <tspan x="0" y="25">san</tspan>
-              <tspan style={{ letterSpacing: '0em' }} x="65.59" y="25">t</tspan>
-              <tspan x="78.96" y="25">os</tspan>
+              <tspan x="0" y="27">san</tspan>
+              <tspan style={{ letterSpacing: '0em' }} x="65.59" y="27">t</tspan>
+              <tspan x="78.96" y="27">os</tspan>
             </text>
 
             {/* Services with diamonds */}
