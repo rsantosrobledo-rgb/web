@@ -10,15 +10,20 @@ export default function App() {
     const path = window.location.pathname.replace(/\/$/, '')
     return path === '/hola' || window.location.hash === '#hola'
   }
+  const isInitialHello = () => {
+    const path = window.location.pathname.replace(/\/$/, '')
+    return path === '/hello' || window.location.hash === '#hello'
+  }
   const isInitialCV = () => {
     const path = window.location.pathname.replace(/\/$/, '')
     return path === '/cv' || window.location.hash === '#cv'
   }
 
   const [showHola, setShowHola] = useState(isInitialHola)
+  const [showHello, setShowHello] = useState(isInitialHello)
   const [showCV, setShowCV] = useState(isInitialCV)
-  const [introComplete, setIntroComplete] = useState(() => isInitialCV() || isInitialHola())
-  const [showIntro, setShowIntro] = useState(() => !isInitialCV() && !isInitialHola())
+  const [introComplete, setIntroComplete] = useState(() => isInitialCV() || isInitialHola() || isInitialHello())
+  const [showIntro, setShowIntro] = useState(() => !isInitialCV() && !isInitialHola() && !isInitialHello())
   const [introKey, setIntroKey] = useState(0)
   const [selectedProject, setSelectedProject] = useState(null)
 
@@ -27,11 +32,13 @@ export default function App() {
     const handleLocationChange = () => {
       const path = window.location.pathname.replace(/\/$/, '')
       const isHola = path === '/hola' || window.location.hash === '#hola'
+      const isHello = path === '/hello' || window.location.hash === '#hello'
       const isCV = path === '/cv' || window.location.hash === '#cv'
 
       setShowHola(isHola)
+      setShowHello(isHello)
       setShowCV(isCV)
-      if (isHola || isCV) {
+      if (isHola || isHello || isCV) {
         setIntroComplete(true)
         setShowIntro(false)
       }
@@ -79,7 +86,11 @@ export default function App() {
   }, [])
 
   if (showHola) {
-    return <VirtualCard />
+    return <VirtualCard lang="es" />
+  }
+
+  if (showHello) {
+    return <VirtualCard lang="en" />
   }
 
   if (showCV) {

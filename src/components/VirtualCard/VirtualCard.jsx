@@ -1,7 +1,61 @@
 import React from 'react'
 import './VirtualCard.css'
 
-export default function VirtualCard() {
+const translations = {
+  es: {
+    role: 'Dirección creativa',
+    tags: 'Branding • Web • Piezas visuales',
+    aboutTitle: 'sobre mí',
+    aboutText: 'Dirección creativa enfocada en branding, web y contenido con calidad de agencia.',
+    servicesTitle: 'servicios',
+    services: [
+      { name: 'Branding', desc: 'Identidad y rebranding' },
+      { name: 'Web', desc: 'Diseño y desarrollo' },
+      { name: 'Contenido', desc: 'Piezas visuales para campañas' },
+    ],
+    workTitle: 'trabajos',
+    viewProjects: 'VER PROYECTOS',
+    credits: 'Mazda España • Ameba Studios • Cannes Lions 2026',
+    saveContact: 'GUARDAR CONTACTO',
+    whatsappMessage: 'Hola Rodrigo',
+    footerAuthor: 'RODRIGO SANTOS — DIRECCIÓN CREATIVA',
+    footerLocation: 'MADRID',
+    vcardTitle: 'Dirección creativa',
+    vcardNote: 'Dirección creativa enfocada en branding, web y contenido con calidad de agencia.',
+  },
+  en: {
+    role: 'Creative direction',
+    tags: 'Branding • Web • Visual pieces',
+    aboutTitle: 'about me',
+    aboutText: 'Creative direction focused on branding, web and content with agency caliber.',
+    servicesTitle: 'services',
+    services: [
+      { name: 'Branding', desc: 'Identity and rebranding' },
+      { name: 'Web', desc: 'Design and development' },
+      { name: 'Content', desc: 'Visual pieces for campaigns' },
+    ],
+    workTitle: 'work',
+    viewProjects: 'VIEW PROJECTS',
+    credits: 'Mazda Spain • Ameba Studios • Cannes Lions 2026',
+    saveContact: 'SAVE CONTACT',
+    whatsappMessage: 'Hello Rodrigo',
+    footerAuthor: 'RODRIGO SANTOS — CREATIVE DIRECTION',
+    footerLocation: 'MADRID',
+    vcardTitle: 'Creative Director',
+    vcardNote: 'Creative direction focused on branding, web and content with agency caliber.',
+  },
+}
+
+export default function VirtualCard({ lang: propLang }) {
+  // Determine language: prop > current URL (/hello or #hello -> 'en') > default 'es'
+  const isEnUrl =
+    typeof window !== 'undefined' &&
+    (window.location.pathname.replace(/\/$/, '') === '/hello' ||
+      window.location.hash === '#hello')
+
+  const lang = propLang || (isEnUrl ? 'en' : 'es')
+  const t = translations[lang] || translations.es
+
   const handleSaveContact = (e) => {
     e.preventDefault()
     // Trigger download of the vCard file
@@ -9,13 +63,13 @@ export default function VirtualCard() {
 VERSION:3.0
 N:Santos;Rodrigo;;;
 FN:Rodrigo Santos
-TITLE:Dirección creativa
+TITLE:${t.vcardTitle}
 ORG:Rodrigo Santos
-TEL;TYPE=CELL,VOICE:+34649185386
+TEL;TYPE=CELL,VOICE;VALUE=uri:tel:+34649185386
 EMAIL;TYPE=INTERNET,PREF:r.santosrobledo@gmail.com
 URL:https://rodrigosantos.es
 ADR;TYPE=WORK:;;;Madrid;;;Spain
-NOTE:Dirección creativa enfocada en branding, web y contenido con calidad de agencia.
+NOTE:${t.vcardNote}
 END:VCARD`
 
     try {
@@ -44,51 +98,43 @@ END:VCARD`
               <span>rodrigo</span>
               <span>santos</span>
             </h1>
-            <h2 className="vcard-role">Dirección creativa</h2>
-            <p className="vcard-tags">Branding • Web • Piezas visuales</p>
+            <h2 className="vcard-role">{t.role}</h2>
+            <p className="vcard-tags">{t.tags}</p>
           </div>
           <hr className="vcard-divider" />
         </header>
 
         {/* Content Body */}
         <div className="vcard-body">
-          {/* Section: sobre mí */}
+          {/* Section: about me / sobre mí */}
           <section className="vcard-section vcard-section--about">
-            <h3 className="vcard-section__title">sobre mí</h3>
-            <p className="vcard-section__text">
-              Dirección creativa enfocada en branding, web y contenido con calidad de agencia.
-            </p>
+            <h3 className="vcard-section__title">{t.aboutTitle}</h3>
+            <p className="vcard-section__text">{t.aboutText}</p>
           </section>
 
-          {/* Section: servicios */}
+          {/* Section: services / servicios */}
           <section className="vcard-section vcard-section--services">
-            <h3 className="vcard-section__title">servicios</h3>
+            <h3 className="vcard-section__title">{t.servicesTitle}</h3>
             <div className="vcard-services-list">
-              <div className="vcard-service-row">
-                <span className="vcard-service-name">Branding</span>
-                <span className="vcard-service-desc">Identidad y rebranding</span>
-              </div>
-              <div className="vcard-service-row">
-                <span className="vcard-service-name">Web</span>
-                <span className="vcard-service-desc">Diseño y desarrollo</span>
-              </div>
-              <div className="vcard-service-row">
-                <span className="vcard-service-name">Contenido</span>
-                <span className="vcard-service-desc">Piezas visuales para campañas</span>
-              </div>
+              {t.services.map((item) => (
+                <div className="vcard-service-row" key={item.name}>
+                  <span className="vcard-service-name">{item.name}</span>
+                  <span className="vcard-service-desc">{item.desc}</span>
+                </div>
+              ))}
             </div>
           </section>
 
-          {/* Section: trabajos */}
+          {/* Section: work / trabajos */}
           <section className="vcard-section vcard-section--work">
-            <h3 className="vcard-section__title">trabajos</h3>
+            <h3 className="vcard-section__title">{t.workTitle}</h3>
             <a
               href="/"
               className="vcard-work-card"
               id="vcard-work-link"
-              aria-label="Ver proyectos en rodrigosantos.es"
+              aria-label={lang === 'en' ? 'View projects on rodrigosantos.es' : 'Ver proyectos en rodrigosantos.es'}
             >
-              <div className="vcard-work-card__top">VER PROYECTOS</div>
+              <div className="vcard-work-card__top">{t.viewProjects}</div>
               <div className="vcard-work-card__main">
                 <span className="vcard-work-card__domain">rodrigosantos.es</span>
                 <svg
@@ -108,26 +154,24 @@ END:VCARD`
                 </svg>
               </div>
             </a>
-            <p className="vcard-work-credits">
-              Mazda España • Ameba Studios • Cannes Lions 2026
-            </p>
+            <p className="vcard-work-credits">{t.credits}</p>
           </section>
         </div>
 
         {/* Action Buttons */}
-        <section className="vcard-actions" aria-label="Acciones de contacto">
+        <section className="vcard-actions" aria-label={lang === 'en' ? 'Contact actions' : 'Acciones de contacto'}>
           <button
             type="button"
             className="vcard-btn vcard-btn--primary"
             onClick={handleSaveContact}
             id="vcard-btn-save"
           >
-            GUARDAR CONTACTO
+            {t.saveContact}
           </button>
 
           <div className="vcard-btn-group">
             <a
-              href="https://wa.me/34649185386?text=Hola%20Rodrigo"
+              href={`https://wa.me/34649185386?text=${encodeURIComponent(t.whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="vcard-btn vcard-btn--secondary"
@@ -177,8 +221,8 @@ END:VCARD`
         <footer className="vcard-footer">
           <hr className="vcard-footer-divider" />
           <div className="vcard-footer-content">
-            <span className="vcard-footer-author">RODRIGO SANTOS — DIRECCIÓN CREATIVA</span>
-            <span className="vcard-footer-location">MADRID</span>
+            <span className="vcard-footer-author">{t.footerAuthor}</span>
+            <span className="vcard-footer-location">{t.footerLocation}</span>
           </div>
         </footer>
       </main>
