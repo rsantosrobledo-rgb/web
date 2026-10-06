@@ -1,6 +1,10 @@
 /* =======================================================
    Virtual Business Card — Rodrigo Santos (/hola & /hello)
-   Solid editorial layout: bold type & tight section spacing
+   Matches the exact design language of rodrigosantos.es:
+   - Ivory paper sheet (#FAF8F5) on studio dot grid (#ECE7DE)
+   - Pill / capsule action buttons (border-radius: 999px)
+   - Exclusively Futura / Jost typography with tight line-height
+   - Subtle paper grain & tactile micro-interactions
    ======================================================= */
 
 .vcard-page {
@@ -12,19 +16,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Warm subtle studio paper background */
-  background-color: #EDE8E1;
-  background-image: radial-gradient(#dcd5ca 0.75px, transparent 0.75px);
-  background-size: 20px 20px;
+  /* Studio canvas backdrop matching CurriculumVitae.css & index.css */
+  background-color: #ECE7DE;
+  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
   color: #111111;
-  font-family: 'Jost', 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: clamp(8px, 1.8vh, 18px) clamp(10px, 3vw, 20px);
   box-sizing: border-box;
 }
 
-/* Card Container — rounded, compact, content-focused */
+/* Card Sheet — Luxury ivory paper with subtle grain & rounded corners */
 .vcard-container {
   width: 100%;
   max-width: 400px;
@@ -38,11 +42,24 @@
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(14px, 2.1vh, 22px) clamp(18px, 4.8vw, 24px);
-  background-color: #ffffff;
-  border-radius: 18px;
+  background-color: #FAF8F5;
+  border-radius: 22px;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
+  position: relative;
+}
+
+/* Delicate subtle paper grain matching the portfolio sheet */
+.vcard-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .vcard-container::-webkit-scrollbar {
@@ -53,6 +70,8 @@
 .vcard-header {
   flex-shrink: 0;
   margin-bottom: clamp(6px, 1vh, 10px);
+  position: relative;
+  z-index: 2;
 }
 
 .vcard-brand {
@@ -61,13 +80,13 @@
 }
 
 .vcard-name {
-  font-family: 'Jost', 'Futura', sans-serif;
+  font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
   font-size: clamp(32px, 4.4vh, 42px);
   font-weight: 800;
   line-height: 0.88;
   letter-spacing: -0.04em;
   text-transform: lowercase;
-  color: #000000;
+  color: #111111;
   margin: 0 0 clamp(4px, 0.7vh, 8px) 0;
   display: flex;
   flex-direction: column;
@@ -78,7 +97,7 @@
 }
 
 .vcard-role {
-  font-family: 'Jost', 'Futura', sans-serif;
+  font-family: var(--font-display, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
   font-size: clamp(16px, 2.1vh, 19.5px);
   font-weight: 700;
   color: #111111;
@@ -89,7 +108,7 @@
 .vcard-tags {
   font-size: clamp(12px, 1.55vh, 13.8px);
   font-weight: 500;
-  color: #333333;
+  color: #444444;
   margin: 0;
   letter-spacing: 0.01em;
 }
@@ -97,7 +116,7 @@
 .vcard-divider {
   border: none;
   height: 1.2px;
-  background-color: #1a1a1a;
+  background-color: #111111;
   margin: clamp(7px, 1.1vh, 11px) 0 0 0;
 }
 
@@ -109,6 +128,8 @@
   justify-content: flex-start;
   gap: clamp(7px, 1.2vh, 12px);
   min-height: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .vcard-section {
@@ -117,7 +138,7 @@
 }
 
 .vcard-section__title {
-  font-family: 'Jost', 'Futura', sans-serif;
+  font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
   font-size: clamp(15px, 2vh, 18px);
   font-weight: 800;
   text-transform: lowercase;
@@ -135,7 +156,7 @@
 }
 
 .vcard-section__text--budget {
-  color: #383838;
+  color: #444444;
 }
 
 /* ---------- Services List ---------- */
@@ -162,7 +183,7 @@
 .vcard-service-desc {
   font-size: clamp(11.8px, 1.5vh, 13.5px);
   font-weight: 450;
-  color: #3f3f3f;
+  color: #555555;
   text-align: right;
   white-space: nowrap;
 }
@@ -170,31 +191,33 @@
 /* ---------- Work Card ---------- */
 .vcard-work-card {
   border: 1.5px solid #111111;
-  background-color: #ffffff;
-  padding: clamp(6px, 0.9vh, 9px) clamp(11px, 2.8vw, 15px);
+  background-color: #FFFFFF;
+  padding: clamp(6px, 0.9vh, 9px) clamp(12px, 2.8vw, 16px);
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: background-color 0.15s ease, transform 0.1s ease;
-  border-radius: 10px;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 12px;
   cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .vcard-work-card:hover {
-  background-color: #f7f7f7;
+  background-color: #F4EFEB;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
 }
 
 .vcard-work-card:active {
-  background-color: #eeeeee;
-  transform: scale(0.995);
+  transform: scale(0.99);
 }
 
 .vcard-work-card__top {
   font-size: clamp(8.5px, 1.15vh, 10px);
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: #555555;
+  color: #666666;
   text-transform: uppercase;
   margin-bottom: 2px;
 }
@@ -206,7 +229,7 @@
 }
 
 .vcard-work-card__domain {
-  font-family: 'Jost', 'Futura', sans-serif;
+  font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
   font-size: clamp(17.5px, 2.3vh, 21.5px);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -216,62 +239,70 @@
 .vcard-work-card__arrow {
   color: #111111;
   flex-shrink: 0;
-  transition: transform 0.15s ease;
+  transition: transform 0.2s ease;
 }
 
 .vcard-work-card:hover .vcard-work-card__arrow {
-  transform: translate(2px, -2px);
+  transform: translate(2.5px, -2.5px);
 }
 
 .vcard-work-credits {
   font-size: clamp(10.5px, 1.35vh, 12px);
   font-weight: 500;
-  color: #333333;
+  color: #444444;
   margin: clamp(3px, 0.45vh, 5px) 0 0 0;
 }
 
-/* ---------- Action Buttons ---------- */
+/* ---------- Action Buttons (Pill / Capsule Style) ---------- */
 .vcard-actions {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: clamp(5px, 0.8vh, 8px);
   margin-top: clamp(7px, 1.1vh, 12px);
+  position: relative;
+  z-index: 2;
 }
 
 .vcard-btn {
-  font-family: 'Jost', 'Futura', sans-serif;
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 9px;
+  border-radius: 999px;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.15s ease, opacity 0.15s ease, transform 0.1s ease;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
 .vcard-btn:active {
-  transform: scale(0.99);
+  transform: scale(0.985);
 }
 
+/* Primary Button: Solid Dark Capsule with Hover Lift */
 .vcard-btn--primary {
   width: 100%;
   height: clamp(38px, 4.8vh, 45px);
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #111111;
+  color: #FAF8F5;
   border: none;
   font-size: clamp(12.5px, 1.55vh, 14px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
 }
 
 .vcard-btn--primary:hover {
-  background-color: #222222;
+  background-color: #000000;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24);
 }
 
+/* Secondary Buttons Row */
 .vcard-btn-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -281,16 +312,19 @@
 
 .vcard-btn--secondary {
   height: clamp(35px, 4.3vh, 41px);
-  background-color: #ffffff;
+  background-color: #FAF8F5;
   color: #111111;
-  border: 1.5px solid #111111;
+  border: 1.4px solid #111111;
   font-size: clamp(12.5px, 1.55vh, 14px);
   font-weight: 600;
   gap: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .vcard-btn--secondary:hover {
-  background-color: #f7f7f7;
+  background-color: #ECE7DE;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .vcard-btn--secondary svg {
@@ -301,12 +335,14 @@
 .vcard-footer {
   flex-shrink: 0;
   margin-top: clamp(4px, 0.7vh, 8px);
+  position: relative;
+  z-index: 2;
 }
 
 .vcard-footer-divider {
   border: none;
   height: 1px;
-  background-color: #e2e2e2;
+  background-color: rgba(0, 0, 0, 0.10);
   margin: 0 0 clamp(4px, 0.6vh, 6px) 0;
 }
 
@@ -328,6 +364,6 @@
   font-size: clamp(9px, 1.15vh, 10.5px);
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #000000;
+  color: #111111;
   text-transform: uppercase;
 }
