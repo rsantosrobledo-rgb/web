@@ -3,50 +3,44 @@ import './VirtualCard.css'
 
 const translations = {
   es: {
-    role: 'Dirección creativa',
-    tags: 'Diseño de marca ◆ Web ◆ Piezas visuales',
-    aboutTitle: 'sobre mí',
-    aboutText: 'Dirección creativa independiente. Diseño identidades de marca, plataformas web y narrativa audiovisual con visión estratégica y acabado de agencia.',
-    servicesTitle: 'servicios',
+    badge: 'DIRECTOR CREATIVO',
+    nameLead: 'rodrig',
+    nameSecond: 'santos',
     services: [
-      { name: 'Diseño de marca', desc: 'Identidad y rebranding' },
-      { name: 'Web', desc: 'Diseño y desarrollo' },
-      { name: 'Contenido', desc: 'Piezas visuales para campañas' },
+      'Diseño de marca ◆',
+      'Web ◆',
+      'Piezas visuales◆',
     ],
-    budgetTitle: 'presupuesto',
-    budgetText: 'Presupuesto por proyecto según escala y envergadura. Consultas y primeras conversaciones libres y sin compromiso.',
-    workTitle: 'trabajos',
-    viewProjects: 'VER PROYECTOS',
-    credits: 'Mazda España ◆ Ameba Studios ◆ Cannes Lions 2026',
+    workLabel: 'TRABAJOS',
+    workDomain: 'rodrigosantos.es',
+    budgetText: [
+      'Presupuesto por proyecto según escala y envergadura.',
+      'Consultas y primeras conversaciones libres y sin compromiso.',
+    ],
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
-    footerAuthor: 'RODRIGO SANTOS ◆ DIRECCIÓN CREATIVA',
-    footerLocation: 'MADRID',
-    vcardTitle: 'Dirección creativa',
-    vcardNote: 'Dirección creativa independiente enfocada en diseño de marca, web y contenido con calidad de agencia.',
+    vcardTitle: 'Director Creativo',
+    vcardNote: 'Director Creativo enfocado en diseño de marca, web y piezas visuales.',
   },
   en: {
-    role: 'Creative direction',
-    tags: 'Brand Design ◆ Web ◆ Visual Pieces',
-    aboutTitle: 'about me',
-    aboutText: 'Independent creative direction. Crafting brand identities, digital platforms, and visual storytelling with strategic vision and agency-grade finish.',
-    servicesTitle: 'services',
+    badge: 'CREATIVE DIRECTOR',
+    nameLead: 'rodrig',
+    nameSecond: 'santos',
     services: [
-      { name: 'Brand Design', desc: 'Identity & rebranding' },
-      { name: 'Web', desc: 'Design & development' },
-      { name: 'Content', desc: 'Visual pieces for campaigns' },
+      'Brand Design ◆',
+      'Web ◆',
+      'Visual Pieces◆',
     ],
-    budgetTitle: 'budget & scope',
-    budgetText: 'Project-based pricing tailored to scale and scope. Initial inquiries and consultations are always free of charge.',
-    workTitle: 'work',
-    viewProjects: 'VIEW PROJECTS',
-    credits: 'Mazda Spain ◆ Ameba Studios ◆ Cannes Lions 2026',
+    workLabel: 'WORK',
+    workDomain: 'rodrigosantos.es',
+    budgetText: [
+      'Project-based pricing tailored to scale and scope.',
+      'Initial inquiries and consultations are always free of charge.',
+    ],
     saveContact: 'SAVE CONTACT',
     whatsappMessage: 'Hello Rodrigo',
-    footerAuthor: 'RODRIGO SANTOS ◆ CREATIVE DIRECTION',
-    footerLocation: 'MADRID',
     vcardTitle: 'Creative Director',
-    vcardNote: 'Independent creative direction focused on brand design, web and content with agency caliber.',
+    vcardNote: 'Creative Director focused on brand design, web and visual pieces.',
   },
 }
 
@@ -95,96 +89,90 @@ END:VCARD`
   return (
     <div className="vcard-page" id="vcard-page">
       <main className="vcard-container" id="vcard-container">
-        {/* Header Section */}
+        {/* Top Header: DIRECTOR CREATIVO + rodrigo santos (with animated eye) */}
         <header className="vcard-header">
-          <div className="vcard-brand">
-            <h1 className="vcard-name">
-              <span>rodrigo</span>
-              <span>santos</span>
-            </h1>
-            <h2 className="vcard-role">{t.role}</h2>
-            <p className="vcard-tags">{t.tags}</p>
-          </div>
-          <hr className="vcard-divider" />
-        </header>
-
-        {/* Content Body */}
-        <div className="vcard-body">
-          {/* Section: about me / sobre mí */}
-          <section className="vcard-section vcard-section--about">
-            <h3 className="vcard-section__title">{t.aboutTitle}</h3>
-            <p className="vcard-section__text">{t.aboutText}</p>
-          </section>
-
-          {/* Section: services / servicios */}
-          <section className="vcard-section vcard-section--services">
-            <h3 className="vcard-section__title">{t.servicesTitle}</h3>
-            <div className="vcard-services-list">
-              {t.services.map((item) => (
-                <div className="vcard-service-row" key={item.name}>
-                  <span className="vcard-service-name">{item.name}</span>
-                  <span className="vcard-service-desc">{item.desc}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Section: budget / presupuesto */}
-          <section className="vcard-section vcard-section--budget">
-            <h3 className="vcard-section__title">{t.budgetTitle}</h3>
-            <p className="vcard-section__text vcard-section__text--budget">{t.budgetText}</p>
-          </section>
-
-          {/* Section: work / trabajos */}
-          <section className="vcard-section vcard-section--work">
-            <h3 className="vcard-section__title">{t.workTitle}</h3>
-            <a
-              href="/"
-              className="vcard-work-card"
-              id="vcard-work-link"
-              aria-label={lang === 'en' ? 'View projects on rodrigosantos.es' : 'Ver proyectos en rodrigosantos.es'}
-            >
-              <div className="vcard-work-card__top">{t.viewProjects}</div>
-              <div className="vcard-work-card__main">
-                <span className="vcard-work-card__domain">rodrigosantos.es</span>
+          <span className="vcard-badge">{t.badge}</span>
+          <h1 className="vcard-title">
+            <span className="vcard-name-line vcard-name-line--rodrigo">
+              {t.nameLead}
+              <span className="vcard-eye-letter" aria-label="o">
                 <svg
-                  className="vcard-work-card__arrow"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  viewBox="0 0 100 100"
+                  className="vcard-eye-svg"
                   aria-hidden="true"
                 >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
+                  <defs>
+                    <clipPath id="eye-sclera-clip">
+                      <circle cx="50" cy="50" r="26" />
+                    </clipPath>
+                  </defs>
+                  {/* Outer geometric black 'o' */}
+                  <circle cx="50" cy="50" r="48" fill="#000000" />
+                  {/* White sclera / eyeball */}
+                  <circle cx="50" cy="50" r="26" fill="#FFFFFF" />
+                  {/* Pupil & Iris drifting calmly from side to side */}
+                  <g className="vcard-eye-pupil" clipPath="url(#eye-sclera-clip)">
+                    {/* Sky blue iris matching the artwork */}
+                    <circle cx="50" cy="50" r="14" fill="#7FAEDB" />
+                    {/* Dark inner pupil */}
+                    <circle cx="50" cy="50" r="7.5" fill="#111111" />
+                    {/* White specular catchlight */}
+                    <circle cx="47" cy="46" r="2.8" fill="#FFFFFF" />
+                  </g>
                 </svg>
-              </div>
-            </a>
-            <p className="vcard-work-credits">{t.credits}</p>
-          </section>
-        </div>
+              </span>
+            </span>
+            <span className="vcard-name-line">{t.nameSecond}</span>
+          </h1>
+        </header>
 
-        {/* Action Buttons */}
-        <section className="vcard-actions" aria-label={lang === 'en' ? 'Contact actions' : 'Acciones de contacto'}>
+        {/* Services List: Lightweight typography with trailing diamond */}
+        <section className="vcard-services-block" aria-label="Servicios">
+          {t.services.map((service, index) => (
+            <p className="vcard-service-item" key={index}>
+              {service}
+            </p>
+          ))}
+        </section>
+
+        {/* Work / Trabajos link to rodrigosantos.es */}
+        <section className="vcard-work-block" aria-label="Trabajos">
+          <span className="vcard-work-label">{t.workLabel}</span>
+          <a
+            href="/"
+            className="vcard-work-domain"
+            id="vcard-work-link"
+            aria-label={lang === 'en' ? 'Go to rodrigosantos.es' : 'Ir a rodrigosantos.es'}
+          >
+            {t.workDomain}
+          </a>
+        </section>
+
+        {/* Budget note */}
+        <section className="vcard-budget-block" aria-label="Presupuesto">
+          <p className="vcard-budget-text">
+            <span>{t.budgetText[0]}</span>
+            <span>{t.budgetText[1]}</span>
+          </p>
+        </section>
+
+        {/* Action Buttons in White */}
+        <footer className="vcard-actions-block" aria-label="Contacto">
           <button
             type="button"
-            className="vcard-btn vcard-btn--primary"
+            className="vcard-action-btn vcard-action-btn--primary"
             onClick={handleSaveContact}
             id="vcard-btn-save"
           >
             {t.saveContact}
           </button>
 
-          <div className="vcard-btn-group">
+          <div className="vcard-action-grid">
             <a
               href={`https://wa.me/34649185386?text=${encodeURIComponent(t.whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="vcard-btn vcard-btn--secondary"
+              className="vcard-action-btn vcard-action-btn--secondary"
               id="vcard-btn-whatsapp"
             >
               <svg
@@ -205,7 +193,7 @@ END:VCARD`
 
             <a
               href="mailto:r.santosrobledo@gmail.com"
-              className="vcard-btn vcard-btn--secondary"
+              className="vcard-action-btn vcard-action-btn--secondary"
               id="vcard-btn-email"
             >
               <svg
@@ -224,15 +212,6 @@ END:VCARD`
               </svg>
               <span>Email</span>
             </a>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="vcard-footer">
-          <hr className="vcard-footer-divider" />
-          <div className="vcard-footer-content">
-            <span className="vcard-footer-author">{t.footerAuthor}</span>
-            <span className="vcard-footer-location">{t.footerLocation}</span>
           </div>
         </footer>
       </main>

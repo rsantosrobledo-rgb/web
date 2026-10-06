@@ -1,10 +1,11 @@
 /* =======================================================
    Virtual Business Card — Rodrigo Santos (/hola & /hello)
-   Matches the exact design language of rodrigosantos.es:
-   - Ivory paper sheet (#FAF8F5) on studio dot grid (#ECE7DE)
-   - Pill / capsule action buttons (border-radius: 999px)
-   - Exclusively Futura / Jost typography with tight line-height
-   - Subtle paper grain & tactile micro-interactions
+   New Graphic Design:
+   - Charcoal artboard canvas (#4E4E4E)
+   - Crisp white card (#FFFFFF) with solid black border
+   - Animated calm eye inside the 'o' of 'rodrigo'
+   - Clean lightweight typography with trailing diamonds
+   - Action buttons in white at the bottom
    ======================================================= */
 
 .vcard-page {
@@ -16,24 +17,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Studio canvas backdrop matching CurriculumVitae.css & index.css */
-  background-color: #ECE7DE;
-  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
+  /* Dark neutral artboard gray canvas matching the mockup */
+  background-color: #4E4E4E;
   color: #111111;
   font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: clamp(8px, 1.8vh, 18px) clamp(10px, 3vw, 20px);
+  padding: clamp(10px, 2.5vh, 24px) clamp(12px, 3.5vw, 24px);
   box-sizing: border-box;
 }
 
-/* Card Sheet — Luxury ivory paper with subtle grain & rounded corners */
+/* White Artboard Card */
 .vcard-container {
   width: 100%;
-  max-width: 400px;
-  height: auto;
-  max-height: min(690px, calc(100dvh - clamp(16px, 2.5vh, 28px)));
+  max-width: 390px;
+  height: 100%;
+  max-height: min(720px, calc(100dvh - clamp(20px, 3.5vh, 36px)));
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -41,235 +40,202 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(14px, 2.1vh, 22px) clamp(18px, 4.8vw, 24px);
-  background-color: #FAF8F5;
-  border-radius: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: clamp(20px, 3.2vh, 32px) clamp(22px, 5.8vw, 32px) clamp(18px, 2.8vh, 26px);
+  background-color: #FFFFFF;
+  border: 1.5px solid #111111;
+  border-radius: 4px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32), 0 2px 8px rgba(0, 0, 0, 0.16);
   box-sizing: border-box;
-  position: relative;
-}
-
-/* Delicate subtle paper grain matching the portfolio sheet */
-.vcard-container::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  background-image: radial-gradient(#d3cbbe 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
-  opacity: 0.15;
-  pointer-events: none;
 }
 
 .vcard-container::-webkit-scrollbar {
   display: none;
 }
 
-/* ---------- Header ---------- */
+/* ---------- Header Section ---------- */
 .vcard-header {
   flex-shrink: 0;
-  margin-bottom: clamp(6px, 1vh, 10px);
-  position: relative;
-  z-index: 2;
-}
-
-.vcard-brand {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: clamp(6px, 1.2vh, 12px);
 }
 
-.vcard-name {
+.vcard-badge {
+  font-family: var(--font-display, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(10px, 1.35vh, 12.5px);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111111;
+  margin: 0 0 clamp(2px, 0.4vh, 4px) 0;
+}
+
+.vcard-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
-  font-size: clamp(32px, 4.4vh, 42px);
+  font-size: clamp(38px, 5.4vh, 52px);
   font-weight: 800;
-  line-height: 0.88;
+  line-height: 0.85;
   letter-spacing: -0.04em;
   text-transform: lowercase;
-  color: #111111;
-  margin: 0 0 clamp(4px, 0.7vh, 8px) 0;
+  color: #000000;
+}
+
+.vcard-name-line {
   display: flex;
-  flex-direction: column;
-}
-
-.vcard-name span {
-  display: block;
-}
-
-.vcard-role {
-  font-family: var(--font-display, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
-  font-size: clamp(16px, 2.1vh, 19.5px);
-  font-weight: 700;
-  color: #111111;
-  margin: 0 0 clamp(1px, 0.25vh, 3px) 0;
-  letter-spacing: -0.01em;
-}
-
-.vcard-tags {
-  font-size: clamp(12px, 1.55vh, 13.8px);
-  font-weight: 500;
-  color: #444444;
-  margin: 0;
-  letter-spacing: 0.01em;
-}
-
-.vcard-divider {
-  border: none;
-  height: 1.2px;
-  background-color: #111111;
-  margin: clamp(7px, 1.1vh, 11px) 0 0 0;
-}
-
-/* ---------- Content Body ---------- */
-.vcard-body {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: clamp(7px, 1.2vh, 12px);
-  min-height: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.vcard-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.vcard-section__title {
-  font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
-  font-size: clamp(18.5px, 2.5vh, 23.5px);
-  font-weight: 800;
-  line-height: 0.96;
-  text-transform: lowercase;
-  color: #111111;
-  margin: 0 0 clamp(2px, 0.3vh, 4px) 0;
-  letter-spacing: -0.03em;
-}
-
-.vcard-section__text {
-  font-size: clamp(12px, 1.55vh, 13.8px);
-  line-height: 1.34;
-  color: #2b2b2b;
-  font-weight: 500;
-  margin: 0;
-}
-
-.vcard-section__text--budget {
-  color: #444444;
-}
-
-/* ---------- Services List ---------- */
-.vcard-services-list {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(2px, 0.35vh, 4px);
-}
-
-.vcard-service-row {
-  display: flex;
-  justify-content: space-between;
   align-items: baseline;
-  gap: 12px;
 }
 
-.vcard-service-name {
-  font-size: clamp(12.5px, 1.65vh, 14.5px);
-  font-weight: 700;
-  color: #111111;
-  white-space: nowrap;
+.vcard-name-line--rodrigo {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
 }
 
-.vcard-service-desc {
-  font-size: clamp(11.8px, 1.5vh, 13.5px);
-  font-weight: 450;
-  color: #555555;
-  text-align: right;
-  white-space: nowrap;
+/* Animated Eye inside the letter 'o' */
+.vcard-eye-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.78em;
+  height: 0.78em;
+  margin-left: -0.02em;
+  position: relative;
+  vertical-align: middle;
+  transform: translateY(-0.02em);
 }
 
-/* ---------- Work Card ---------- */
-.vcard-work-card {
-  border: 1.5px solid #111111;
-  background-color: #FFFFFF;
-  padding: clamp(6px, 0.9vh, 9px) clamp(12px, 2.8vw, 16px);
+.vcard-eye-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Calm, lifelike, relaxed drifting motion for the pupil */
+@keyframes calmEyeDrift {
+  0% {
+    transform: translate(-7.5px, 0);
+  }
+  18% {
+    transform: translate(-7.5px, 0);
+  }
+  45% {
+    transform: translate(7.5px, 0);
+  }
+  65% {
+    transform: translate(7.5px, 0);
+  }
+  80% {
+    transform: translate(2px, -3.5px);
+  }
+  88% {
+    transform: translate(2px, -3.5px);
+  }
+  100% {
+    transform: translate(-7.5px, 0);
+  }
+}
+
+.vcard-eye-pupil {
+  animation: calmEyeDrift 5.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* ---------- Services Block ---------- */
+.vcard-services-block {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  gap: clamp(1px, 0.3vh, 3px);
+  margin-top: clamp(6px, 1.2vh, 14px);
 }
 
-.vcard-work-card:hover {
-  background-color: #F4EFEB;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
-}
-
-.vcard-work-card:active {
-  transform: scale(0.99);
-}
-
-.vcard-work-card__top {
-  font-size: clamp(8.5px, 1.15vh, 10px);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #666666;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.vcard-work-card__main {
+.vcard-service-item {
+  margin: 0;
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(20px, 2.7vh, 25px);
+  font-weight: 350;
+  line-height: 1.24;
+  letter-spacing: -0.01em;
+  color: #111111;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  gap: 8px;
 }
 
-.vcard-work-card__domain {
-  font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
-  font-size: clamp(17.5px, 2.3vh, 21.5px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #111111;
-}
-
-.vcard-work-card__arrow {
-  color: #111111;
+/* ---------- Work / Trabajos Block ---------- */
+.vcard-work-block {
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: clamp(8px, 1.5vh, 16px);
 }
 
-.vcard-work-card:hover .vcard-work-card__arrow {
-  transform: translate(2.5px, -2.5px);
-}
-
-.vcard-work-credits {
-  font-size: clamp(10.5px, 1.35vh, 12px);
+.vcard-work-label {
+  font-family: var(--font-display, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(9.5px, 1.3vh, 11.5px);
   font-weight: 500;
-  color: #444444;
-  margin: clamp(3px, 0.45vh, 5px) 0 0 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #222222;
+  margin-bottom: 1px;
 }
 
-/* ---------- Action Buttons (Pill / Capsule Style) ---------- */
-.vcard-actions {
+.vcard-work-domain {
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(21px, 2.9vh, 26px);
+  font-weight: 350;
+  letter-spacing: -0.01em;
+  color: #111111;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.vcard-work-domain:hover {
+  opacity: 0.7;
+  transform: translateX(2px);
+}
+
+/* ---------- Budget Block ---------- */
+.vcard-budget-block {
+  flex-shrink: 0;
+  margin-top: clamp(8px, 1.4vh, 16px);
+}
+
+.vcard-budget-text {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(10px, 1.25vh, 11.8px);
+  line-height: 1.36;
+  color: #2b2b2b;
+  font-weight: 400;
+}
+
+/* ---------- Action Buttons in White ---------- */
+.vcard-actions-block {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: clamp(5px, 0.8vh, 8px);
-  margin-top: clamp(7px, 1.1vh, 12px);
-  position: relative;
-  z-index: 2;
+  margin-top: clamp(10px, 1.8vh, 18px);
 }
 
-.vcard-btn {
+.vcard-action-btn {
   font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #FFFFFF;
+  color: #111111;
+  border: 1.5px solid #111111;
   border-radius: 999px;
   cursor: pointer;
   text-decoration: none;
@@ -279,92 +245,51 @@
   outline: none;
 }
 
-.vcard-btn:active {
+.vcard-action-btn:active {
   transform: scale(0.985);
 }
 
-/* Primary Button: Solid Dark Capsule with Hover Lift */
-.vcard-btn--primary {
+/* Primary Button in White */
+.vcard-action-btn--primary {
   width: 100%;
-  height: clamp(38px, 4.8vh, 45px);
-  background-color: #111111;
-  color: #FAF8F5;
-  border: none;
-  font-size: clamp(12.5px, 1.55vh, 14px);
+  height: clamp(38px, 4.8vh, 44px);
+  font-size: clamp(11.5px, 1.45vh, 13px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.vcard-btn--primary:hover {
-  background-color: #000000;
+.vcard-action-btn--primary:hover {
+  background-color: #111111;
+  color: #FFFFFF;
   transform: translateY(-1.5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
 }
 
-/* Secondary Buttons Row */
-.vcard-btn-group {
+/* Secondary Buttons Grid */
+.vcard-action-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(7px, 2vw, 10px);
   width: 100%;
 }
 
-.vcard-btn--secondary {
-  height: clamp(35px, 4.3vh, 41px);
-  background-color: #FAF8F5;
-  color: #111111;
-  border: 1.4px solid #111111;
-  font-size: clamp(12.5px, 1.55vh, 14px);
+.vcard-action-btn--secondary {
+  height: clamp(34px, 4.2vh, 39px);
+  font-size: clamp(11.5px, 1.45vh, 13px);
   font-weight: 600;
-  gap: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  gap: 7px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
-.vcard-btn--secondary:hover {
-  background-color: #ECE7DE;
+.vcard-action-btn--secondary:hover {
+  background-color: #F6F6F6;
+  border-color: #000000;
   transform: translateY(-1.5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.vcard-btn--secondary svg {
+.vcard-action-btn--secondary svg {
   flex-shrink: 0;
-}
-
-/* ---------- Footer ---------- */
-.vcard-footer {
-  flex-shrink: 0;
-  margin-top: clamp(4px, 0.7vh, 8px);
-  position: relative;
-  z-index: 2;
-}
-
-.vcard-footer-divider {
-  border: none;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.10);
-  margin: 0 0 clamp(4px, 0.6vh, 6px) 0;
-}
-
-.vcard-footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.vcard-footer-author {
-  font-size: clamp(8px, 1.05vh, 9.5px);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #666666;
-  text-transform: uppercase;
-}
-
-.vcard-footer-location {
-  font-size: clamp(9px, 1.15vh, 10.5px);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #111111;
-  text-transform: uppercase;
 }
