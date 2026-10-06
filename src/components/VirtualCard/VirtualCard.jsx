@@ -170,14 +170,14 @@ END:VCARD`
               </text>
             </a>
 
-            {/* 7. Presupuesto note — pegada justo debajo del enlace */}
+            {/* 7. Presupuesto note — tamaño aumentado x1.3 */}
             <text
               className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '4.2px' }}
+              style={{ fontSize: '5.5px', letterSpacing: '-0.025em' }}
               transform="translate(2.38 193)"
             >
               <tspan x="0" y="0">{t.budgetText[0]}</tspan>
-              <tspan x="0" y="6">{t.budgetText[1]}</tspan>
+              <tspan x="0" y="7.8">{t.budgetText[1]}</tspan>
             </text>
           </svg>
         </div>
