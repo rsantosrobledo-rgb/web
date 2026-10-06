@@ -1,11 +1,14 @@
 /* =======================================================
    Virtual Business Card — Rodrigo Santos (/hola & /hello)
-   New Graphic Design:
-   - Charcoal artboard canvas (#4E4E4E)
-   - Crisp white card (#FFFFFF) with solid black border
-   - Animated calm eye inside the 'o' of 'rodrigo'
-   - Clean lightweight typography with trailing diamonds
-   - Action buttons in white at the bottom
+   Strict Artboard Fidelity:
+   - Canvas: Neutral dark gray (#525252)
+   - Artboard: Crisp white rectangle (#FFFFFF) with 1px black border
+   - Top generous whitespace before 'DIRECTOR CREATIVO'
+   - Heavy display 'rodrigo santos' with animated calm eye
+   - Large lightweight services (24-28px) with diamond
+   - Large lightweight 'rodrigosantos.es' (28-34px)
+   - Clean proportional vertical spacing throughout
+   - White capsule action buttons at bottom
    ======================================================= */
 
 .vcard-page {
@@ -17,22 +20,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Dark neutral artboard gray canvas matching the mockup */
-  background-color: #4E4E4E;
+  /* Dark gray artboard background matching the user's mockup */
+  background-color: #525252;
   color: #111111;
   font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: clamp(10px, 2.5vh, 24px) clamp(12px, 3.5vw, 24px);
+  padding: clamp(10px, 2vh, 24px) clamp(10px, 3vw, 20px);
   box-sizing: border-box;
 }
 
 /* White Artboard Card */
 .vcard-container {
   width: 100%;
-  max-width: 390px;
+  max-width: 395px;
   height: 100%;
-  max-height: min(720px, calc(100dvh - clamp(20px, 3.5vh, 36px)));
+  max-height: min(710px, calc(100dvh - clamp(16px, 3vh, 32px)));
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -40,11 +43,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(20px, 3.2vh, 32px) clamp(22px, 5.8vw, 32px) clamp(18px, 2.8vh, 26px);
+  /* Top generous whitespace matching the artboard mockup */
+  padding: clamp(30px, 4.8vh, 46px) clamp(22px, 6vw, 32px) clamp(16px, 2.5vh, 24px);
   background-color: #FFFFFF;
-  border: 1.5px solid #111111;
-  border-radius: 4px;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32), 0 2px 8px rgba(0, 0, 0, 0.16);
+  border: 1px solid #000000;
+  border-radius: 0;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.40);
   box-sizing: border-box;
 }
 
@@ -58,17 +62,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: clamp(6px, 1.2vh, 12px);
+  margin-bottom: clamp(20px, 3.6vh, 32px);
 }
 
 .vcard-badge {
-  font-family: var(--font-display, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
-  font-size: clamp(10px, 1.35vh, 12.5px);
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(11.5px, 1.5vh, 13px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #111111;
-  margin: 0 0 clamp(2px, 0.4vh, 4px) 0;
+  margin: 0 0 3px 0;
+  line-height: 1;
 }
 
 .vcard-title {
@@ -76,9 +81,9 @@
   display: flex;
   flex-direction: column;
   font-family: var(--font-display, 'Futura', 'Futura-Bold', 'Jost', sans-serif);
-  font-size: clamp(38px, 5.4vh, 52px);
+  font-size: clamp(46px, 6.8vh, 60px);
   font-weight: 800;
-  line-height: 0.85;
+  line-height: 0.84;
   letter-spacing: -0.04em;
   text-transform: lowercase;
   color: #000000;
@@ -91,7 +96,7 @@
 
 .vcard-name-line--rodrigo {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   position: relative;
 }
 
@@ -100,12 +105,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 0.78em;
-  height: 0.78em;
-  margin-left: -0.02em;
+  width: 0.56em;
+  height: 0.56em;
+  margin-left: 0.02em;
   position: relative;
-  vertical-align: middle;
-  transform: translateY(-0.02em);
+  vertical-align: baseline;
+  transform: translateY(0.04em);
 }
 
 .vcard-eye-svg {
@@ -115,7 +120,7 @@
   overflow: visible;
 }
 
-/* Calm, lifelike, relaxed drifting motion for the pupil */
+/* Calm, relaxed, smooth side-to-side eye drift */
 @keyframes calmEyeDrift {
   0% {
     transform: translate(-7.5px, 0);
@@ -151,21 +156,21 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(1px, 0.3vh, 3px);
-  margin-top: clamp(6px, 1.2vh, 14px);
+  gap: 0;
+  margin-bottom: clamp(18px, 3.4vh, 30px);
 }
 
 .vcard-service-item {
   margin: 0;
   font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
-  font-size: clamp(20px, 2.7vh, 25px);
+  font-size: clamp(22px, 3.2vh, 27px);
   font-weight: 350;
-  line-height: 1.24;
-  letter-spacing: -0.01em;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: #111111;
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 6px;
 }
 
 /* ---------- Work / Trabajos Block ---------- */
@@ -174,26 +179,28 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: clamp(8px, 1.5vh, 16px);
+  margin-bottom: clamp(24px, 4.2vh, 38px);
 }
 
 .vcard-work-label {
-  font-family: var(--font-display, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
-  font-size: clamp(9.5px, 1.3vh, 11.5px);
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(11px, 1.45vh, 12.5px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #222222;
-  margin-bottom: 1px;
+  color: #111111;
+  margin-bottom: 2px;
+  line-height: 1;
 }
 
 .vcard-work-domain {
   font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
-  font-size: clamp(21px, 2.9vh, 26px);
+  font-size: clamp(26px, 3.8vh, 33px);
   font-weight: 350;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: #111111;
   text-decoration: none;
+  line-height: 1.1;
   transition: opacity 0.2s ease, transform 0.2s ease;
   display: inline-block;
 }
@@ -206,16 +213,17 @@
 /* ---------- Budget Block ---------- */
 .vcard-budget-block {
   flex-shrink: 0;
-  margin-top: clamp(8px, 1.4vh, 16px);
+  margin-bottom: clamp(12px, 2vh, 18px);
 }
 
 .vcard-budget-text {
   margin: 0;
   display: flex;
   flex-direction: column;
-  font-size: clamp(10px, 1.25vh, 11.8px);
-  line-height: 1.36;
-  color: #2b2b2b;
+  font-family: var(--font-body, 'Futura', 'Futura-Medium', 'Jost', sans-serif);
+  font-size: clamp(10.5px, 1.35vh, 11.8px);
+  line-height: 1.38;
+  color: #111111;
   font-weight: 400;
 }
 
@@ -225,7 +233,7 @@
   display: flex;
   flex-direction: column;
   gap: clamp(5px, 0.8vh, 8px);
-  margin-top: clamp(10px, 1.8vh, 18px);
+  margin-top: auto;
 }
 
 .vcard-action-btn {
@@ -253,7 +261,7 @@
 .vcard-action-btn--primary {
   width: 100%;
   height: clamp(38px, 4.8vh, 44px);
-  font-size: clamp(11.5px, 1.45vh, 13px);
+  font-size: clamp(11.5px, 1.45vh, 12.8px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -277,7 +285,7 @@
 
 .vcard-action-btn--secondary {
   height: clamp(34px, 4.2vh, 39px);
-  font-size: clamp(11.5px, 1.45vh, 13px);
+  font-size: clamp(11.5px, 1.45vh, 12.8px);
   font-weight: 600;
   gap: 7px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
