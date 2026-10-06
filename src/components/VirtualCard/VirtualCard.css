@@ -1,19 +1,13 @@
 /* =======================================================
    Virtual Business Card — Rodrigo Santos (/hola & /hello)
-   Strict Artboard Fidelity:
-   - Canvas: Minimal white aesthetic
-   - Exact proportions from blueprint artboard:
-     * Top generous white space: ~13%
-     * DIRECTOR CREATIVO directly above rodrigo
-     * Heavy display 'rodrigo' (800) with animated calm eye
-     * 'santos' (800) kissing the baseline of 'rodrigo'
-     * Generous gap to services: ~9.6%
-     * Lightweight services (300) with solid diamond
-     * Gap to works: ~7.9%
-     * TRABAJOS directly above large lightweight rodrigosantos.es (300)
-     * Generous breathing gap: ~16.8%
-     * Indented budget note (2 lines, 400)
-     * White capsule action buttons at bottom
+   Exact Illustrator Vector Engine:
+   - ViewBox: 0 0 155.91 240.94 (exact artboard coordinates)
+   - Background: #fffef7 (warm artboard paper)
+   - Fill: #221f20 (deep editorial tone)
+   - Title: Futura-Bold (35px, leading: 25px)
+   - Text: Plus Jakarta Sans Light 300
+   - Calm Eye animation drifting horizontally in the second 'o'
+   - Responsive zero-scroll mobile container + white capsule buttons
    ======================================================= */
 
 .vcard-page {
@@ -25,256 +19,163 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F7F7F7;
-  color: #000000;
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F4F3ED;
+  color: #221F20;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* On mobile viewports (<= 520px), the card takes 100% full screen with pure white background */
 @media (max-width: 520px) {
   .vcard-page {
-    background-color: #FFFFFF;
+    background-color: #FFFEF7;
   }
 }
 
-/* The Artboard Card */
+/* Container hosting the SVG Artboard and Actions */
 .vcard-container {
   width: 100%;
-  max-width: 440px;
+  max-width: 430px;
   height: 100%;
   max-height: 100dvh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* Proportional padding: top ~13% of artboard height, strict left alignment */
-  padding-top: clamp(48px, 12.5vh, 90px);
-  padding-bottom: clamp(12px, 2.2vh, 18px);
-  padding-left: clamp(16px, 4.8vw, 24px);
-  padding-right: clamp(16px, 4.8vw, 24px);
-  background-color: #FFFFFF;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFEF7;
+  padding: clamp(8px, 1.8vh, 18px) clamp(10px, 3.5vw, 18px) clamp(12px, 2.2vh, 18px);
   box-sizing: border-box;
 }
 
 @media (min-width: 521px) {
   .vcard-container {
-    height: min(920px, calc(100dvh - 32px));
-    border: 1px solid #111111;
+    height: min(920px, calc(100dvh - 36px));
+    border: 1px solid rgba(34, 31, 32, 0.18);
     border-radius: 4px;
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
   }
 }
 
-.vcard-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* ---------- Header Section ---------- */
-.vcard-header {
-  flex-shrink: 0;
+/* Wrapper preserving exact SVG artboard aspect-ratio */
+.vcard-svg-wrapper {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* Gap to services: ~9.6% */
-  margin-bottom: clamp(22px, 7.5vh, 54px);
-}
-
-.vcard-badge {
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(11.5px, 1.5vh, 14px);
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #000000;
-  margin: 0 0 1px 0;
-  line-height: 1.1;
-  padding-left: 1px;
-}
-
-.vcard-title {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(56px, 8.6vh, 80px);
-  font-weight: 800;
-  line-height: 0.86;
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
-  color: #000000;
-}
-
-.vcard-name-line {
-  display: flex;
-  align-items: baseline;
-  white-space: nowrap;
-}
-
-.vcard-name-line--rodrigo {
-  display: inline-flex;
-  align-items: baseline;
-  position: relative;
-}
-
-.vcard-name-line--santos {
-  display: block;
-  /* Top of 'santos' touches the baseline of 'rodrigo' (Guideline 1 in blueprint) */
-  margin-top: -0.035em;
-}
-
-/* Animated Eye inside the second 'o' */
-.vcard-eye-letter {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  width: 0.74em;
-  height: 0.74em;
-  margin-left: 0.01em;
-  position: relative;
-  vertical-align: baseline;
-  transform: translateY(0.06em);
+  align-items: center;
 }
 
-.vcard-eye-svg {
+.vcard-artwork-svg {
   width: 100%;
   height: 100%;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
-  overflow: visible;
+  user-select: none;
 }
 
-/* Calm, relaxed, smooth side-to-side eye drift */
-@keyframes calmEyeDrift {
+/* SVG Typography & Styles matching Illustrator defs */
+.vcard-cls-fill {
+  fill: #221F20;
+}
+
+.vcard-cls-bg {
+  fill: #FFFEF7;
+}
+
+.vcard-cls-diamond {
+  fill: #414042;
+  font-size: 8px;
+}
+
+.vcard-cls-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  font-variation-settings: 'wght' 300;
+}
+
+.vcard-cls-title {
+  font-family: 'Futura-Bold', 'Futura Bold', 'Futura', 'Jost', sans-serif;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+/* Domain Link */
+.vcard-domain-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vcard-domain-text {
+  transition: opacity 0.2s ease;
+}
+
+.vcard-domain-link:hover .vcard-domain-text {
+  opacity: 0.65;
+}
+
+/* Blue Eye Circle Stroke from Illustrator */
+.vcard-cls-eye-stroke {
+  fill: #FFFEF7;
+  stroke: #90A9D5;
+  stroke-width: 1.8px;
+  stroke-miterlimit: 10;
+}
+
+/* Calm, smooth side-to-side drift of the eye pupil */
+@keyframes calmSvgPupilDrift {
   0% {
-    transform: translate(-6.5px, 0);
+    transform: translateX(-0.95px);
   }
   20% {
-    transform: translate(-6.5px, 0);
+    transform: translateX(-0.95px);
   }
   50% {
-    transform: translate(6.5px, 0);
+    transform: translateX(0.95px);
   }
   70% {
-    transform: translate(6.5px, 0);
+    transform: translateX(0.95px);
   }
   85% {
-    transform: translate(1px, -2px);
+    transform: translate(0.12px, -0.35px);
   }
   92% {
-    transform: translate(1px, -2px);
+    transform: translate(0.12px, -0.35px);
   }
   100% {
-    transform: translate(-6.5px, 0);
+    transform: translateX(-0.95px);
   }
 }
 
-.vcard-eye-pupil {
-  animation: calmEyeDrift 6.2s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
-  transform-origin: 50% 50%;
+.vcard-eye-drift {
+  animation: calmSvgPupilDrift 6.4s cubic-bezier(0.42, 0.05, 0.58, 0.95) infinite;
+  transform-origin: 132.12px 49.67px;
   will-change: transform;
-}
-
-/* ---------- Services Block ---------- */
-.vcard-services-block {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1px, 0.5vh, 5px);
-  /* Gap to TRABAJOS: ~7.9% */
-  margin-bottom: clamp(18px, 6.2vh, 46px);
-}
-
-.vcard-service-item {
-  margin: 0;
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(23px, 3.6vh, 32px);
-  font-weight: 300;
-  line-height: 1.28;
-  letter-spacing: -0.02em;
-  color: #000000;
-  display: flex;
-  align-items: baseline;
-}
-
-/* ---------- Work / Trabajos Block ---------- */
-.vcard-work-block {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* Large generous breathing gap to budget note: ~16.8% */
-  margin-bottom: clamp(28px, 11vh, 80px);
-}
-
-.vcard-work-label {
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(11px, 1.4vh, 13px);
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #000000;
-  margin-bottom: 2px;
-  line-height: 1;
-  padding-left: 1px;
-}
-
-.vcard-work-domain {
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(29px, 4.5vh, 41px);
-  font-weight: 300;
-  letter-spacing: -0.028em;
-  color: #000000;
-  text-decoration: none;
-  line-height: 1.06;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  display: inline-block;
-}
-
-.vcard-work-domain:hover {
-  opacity: 0.7;
-  transform: translateX(2px);
-}
-
-/* ---------- Budget Block (Indented ~4.7% per artwork) ---------- */
-.vcard-budget-block {
-  flex-shrink: 0;
-  margin-bottom: clamp(10px, 1.8vh, 18px);
-  padding-left: clamp(12px, 3.2vw, 18px);
-}
-
-.vcard-budget-text {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(10.5px, 1.3vh, 12px);
-  line-height: 1.36;
-  color: #111111;
-  font-weight: 400;
 }
 
 /* ---------- Action Buttons in White at Bottom ---------- */
 .vcard-actions-block {
+  width: 100%;
+  max-width: 370px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: clamp(5px, 0.9vh, 8px);
-  margin-top: auto;
+  margin-top: 6px;
 }
 
 .vcard-action-btn {
-  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #FFFFFF;
-  color: #000000;
-  border: 1.5px solid #000000;
+  color: #221F20;
+  border: 1.4px solid #221F20;
   border-radius: 999px;
   cursor: pointer;
   text-decoration: none;
@@ -291,36 +192,44 @@
 /* Primary Button in White */
 .vcard-action-btn--primary {
   width: 100%;
-  height: clamp(36px, 4.5vh, 44px);
-  font-size: clamp(11px, 1.4vh, 13px);
+  height: clamp(35px, 4.4vh, 42px);
+  font-size: clamp(11px, 1.35vh, 12.5px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(34, 31, 32, 0.05);
 }
 
 .vcard-action-btn--primary:hover {
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: #221F20;
+  color: #FFFEF7;
   transform: translateY(-1.5px);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 14px rgba(34, 31, 32, 0.15);
 }
 
 /* Secondary Buttons Grid */
 .vcard-action-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(6px, 1.8vw, 10px);
+  gap: clamp(6px, 1.8vw, 9px);
   width: 100%;
 }
 
 .vcard-action-btn--secondary {
-  height: clamp(32px, 4vh, 40px);
-  font-size: clamp(11px, 1.4vh, 13px);
+  height: clamp(32px, 4vh, 38px);
+  font-size: clamp(11px, 1.35vh, 12.5px);
   font-weight: 600;
-  gap: 7px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(34, 31, 32, 0.04);
 }
+
+.vcard-action-btn--secondary:hover {
+  background-color: #F8F7F0;
+  border-color: #221F20;
+  transform: translateY(-1.5px);
+  box-shadow: 0 3px 10px rgba(34, 31, 32, 0.08);
+}
+
 .vcard-action-btn--secondary svg {
   flex-shrink: 0;
 }

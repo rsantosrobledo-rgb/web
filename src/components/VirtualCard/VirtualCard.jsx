@@ -3,40 +3,12 @@ import './VirtualCard.css'
 
 const translations = {
   es: {
-    badge: 'DIRECTOR CREATIVO',
-    nameLead: 'rodrig',
-    nameSecond: 'santos',
-    services: [
-      'Diseño de marca ◆',
-      'Web ◆',
-      'Piezas visuales◆',
-    ],
-    workLabel: 'TRABAJOS',
-    workDomain: 'rodrigosantos.es',
-    budgetText: [
-      'Presupuesto por proyecto según escala y envergadura.',
-      'Consultas y primeras conversaciones libres y sin compromiso.',
-    ],
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
     vcardTitle: 'Director Creativo',
     vcardNote: 'Director Creativo enfocado en diseño de marca, web y piezas visuales.',
   },
   en: {
-    badge: 'CREATIVE DIRECTOR',
-    nameLead: 'rodrig',
-    nameSecond: 'santos',
-    services: [
-      'Brand Design ◆',
-      'Web ◆',
-      'Visual Pieces◆',
-    ],
-    workLabel: 'WORK',
-    workDomain: 'rodrigosantos.es',
-    budgetText: [
-      'Project-based pricing tailored to scale and scope.',
-      'Initial inquiries and consultations are always free of charge.',
-    ],
     saveContact: 'SAVE CONTACT',
     whatsappMessage: 'Hello Rodrigo',
     vcardTitle: 'Creative Director',
@@ -56,7 +28,6 @@ export default function VirtualCard({ lang: propLang }) {
 
   const handleSaveContact = (e) => {
     e.preventDefault()
-    // Trigger download of the vCard file
     const vcardContent = `BEGIN:VCARD
 VERSION:3.0
 N:Santos;Rodrigo;;;
@@ -81,7 +52,6 @@ END:VCARD`
       document.body.removeChild(link)
       URL.revokeObjectURL(url)
     } catch {
-      // Fallback direct navigation
       window.location.href = '/rodrigo-santos.vcf'
     }
   }
@@ -89,74 +59,165 @@ END:VCARD`
   return (
     <div className="vcard-page" id="vcard-page">
       <main className="vcard-container" id="vcard-container">
-        {/* Top Header: DIRECTOR CREATIVO + rodrigo santos (with animated eye) */}
-        <header className="vcard-header">
-          <span className="vcard-badge">{t.badge}</span>
-          <h1 className="vcard-title">
-            <span className="vcard-name-line vcard-name-line--rodrigo">
-              {t.nameLead}
-              <span className="vcard-eye-letter" aria-label="o">
-                <svg
-                  viewBox="0 0 100 100"
-                  className="vcard-eye-svg"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <clipPath id="eye-sclera-clip">
-                      <circle cx="50" cy="50" r="26" />
-                    </clipPath>
-                  </defs>
-                  {/* Outer geometric black 'o' */}
-                  <circle cx="50" cy="50" r="48" fill="#000000" />
-                  {/* White sclera / eyeball */}
-                  <circle cx="50" cy="50" r="26" fill="#FFFFFF" />
-                  {/* Pupil & Iris drifting calmly from side to side */}
-                  <g className="vcard-eye-pupil" clipPath="url(#eye-sclera-clip)">
-                    {/* Sky blue iris matching the artwork */}
-                    <circle cx="50" cy="50" r="14" fill="#7FAEDB" />
-                    {/* Dark inner pupil */}
-                    <circle cx="50" cy="50" r="7.5" fill="#111111" />
-                    {/* White specular catchlight */}
-                    <circle cx="47" cy="46" r="2.8" fill="#FFFFFF" />
-                  </g>
-                </svg>
-              </span>
-            </span>
-            <span className="vcard-name-line vcard-name-line--santos">{t.nameSecond}</span>
-          </h1>
-        </header>
-
-        {/* Services List: Lightweight typography with trailing diamond */}
-        <section className="vcard-services-block" aria-label="Servicios">
-          {t.services.map((service, index) => (
-            <p className="vcard-service-item" key={index}>
-              {service}
-            </p>
-          ))}
-        </section>
-
-        {/* Work / Trabajos link to rodrigosantos.es */}
-        <section className="vcard-work-block" aria-label="Trabajos">
-          <span className="vcard-work-label">{t.workLabel}</span>
-          <a
-            href="/"
-            className="vcard-work-domain"
-            id="vcard-work-link"
-            aria-label={lang === 'en' ? 'Go to rodrigosantos.es' : 'Ir a rodrigosantos.es'}
+        {/* Vector Card Artwork — Exact Illustrator Geometry (viewBox: 0 0 155.91 240.94) */}
+        <div className="vcard-svg-wrapper">
+          <svg
+            id="Capa_1"
+            data-name="Capa 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 155.91 240.94"
+            className="vcard-artwork-svg"
+            role="img"
+            aria-label="Rodrigo Santos — Director Creativo"
           >
-            {t.workDomain}
-          </a>
-        </section>
+            {/* Card Background */}
+            <rect className="vcard-cls-bg" width="155.91" height="240.94" />
 
-        {/* Budget note */}
-        <section className="vcard-budget-block" aria-label="Presupuesto">
-          <p className="vcard-budget-text">
-            <span>{t.budgetText[0]}</span>
-            <span>{t.budgetText[1]}</span>
-          </p>
-        </section>
+            {/* DIRECTOR CREATIVO */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '5px' }}
+              transform="translate(2.2 39.29)"
+            >
+              {lang === 'en' ? (
+                <tspan x="0" y="0">CREATIVE DIRECTOR</tspan>
+              ) : (
+                <>
+                  <tspan x="0" y="0">DIREC</tspan>
+                  <tspan style={{ letterSpacing: '-.03em' }} x="15.15" y="0">T</tspan>
+                  <tspan x="17.57" y="0">OR CRE</tspan>
+                  <tspan style={{ letterSpacing: '-.05em' }} x="36.17" y="0">A</tspan>
+                  <tspan x="39.16" y="0">TI</tspan>
+                  <tspan style={{ letterSpacing: '-.02em' }} x="42.98" y="0">V</tspan>
+                  <tspan x="46.15" y="0">O</tspan>
+                </>
+              )}
+            </text>
 
-        {/* Action Buttons in White */}
+            {/* Animated Eye in the 'o' (Center: cx=132.12, cy=49.67, r=2.79) */}
+            <g className="vcard-eye-layer">
+              {/* White sclera base */}
+              <circle cx="132.12" cy="49.67" r="2.79" fill="#fffef7" />
+              {/* Blue iris circle from Illustrator */}
+              <circle
+                className="vcard-cls-eye-stroke"
+                cx="132.12"
+                cy="49.67"
+                r="2.79"
+              />
+              {/* Calm, relaxed pupil drifting horizontally */}
+              <g className="vcard-eye-drift">
+                <circle cx="132.12" cy="49.67" r="1.45" fill="#221f20" />
+                <circle cx="131.5" cy="49.1" r="0.45" fill="#ffffff" />
+              </g>
+            </g>
+
+            {/* rodrigo santos display title */}
+            <text className="vcard-cls-title vcard-cls-fill" transform="translate(0 60.72)">
+              <tspan style={{ letterSpacing: '0em' }} x="0" y="0">r</tspan>
+              <tspan x="16.45" y="0">od</tspan>
+              <tspan style={{ letterSpacing: '0em' }} x="65.48" y="0">r</tspan>
+              <tspan x="81.79" y="0">igo </tspan>
+              <tspan x="0" y="25">san</tspan>
+              <tspan style={{ letterSpacing: '0em' }} x="65.59" y="25">t</tspan>
+              <tspan x="78.96" y="25">os</tspan>
+            </text>
+
+            {/* Services with diamonds */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '11px' }}
+              transform="translate(.63 117.04)"
+            >
+              {lang === 'en' ? (
+                <>
+                  <tspan x="0" y="0">Brand Design </tspan>
+                  <tspan className="vcard-cls-diamond" x="80.0" y="0">◆ </tspan>
+                  <tspan style={{ letterSpacing: '-.04em' }} x="0" y="13">W</tspan>
+                  <tspan x="10.41" y="13">eb </tspan>
+                  <tspan className="vcard-cls-diamond" x="26.43" y="13">◆</tspan>
+                  <tspan x="0" y="26">Visual Pieces</tspan>
+                  <tspan className="vcard-cls-diamond" x="72.0" y="26">◆</tspan>
+                </>
+              ) : (
+                <>
+                  <tspan x="0" y="0">Diseño de mar</tspan>
+                  <tspan style={{ letterSpacing: '-.01em' }} x="74.46" y="0">c</tspan>
+                  <tspan x="80.99" y="0">a </tspan>
+                  <tspan className="vcard-cls-diamond" x="89.11" y="0">◆ </tspan>
+                  <tspan style={{ letterSpacing: '-.04em' }} x="0" y="13">W</tspan>
+                  <tspan x="10.41" y="13">eb </tspan>
+                  <tspan className="vcard-cls-diamond" x="26.43" y="13">◆</tspan>
+                  <tspan x="33.18" y="13"> </tspan>
+                  <tspan x="0" y="26">Piezas visuales</tspan>
+                  <tspan className="vcard-cls-diamond" x="76.16" y="26">◆</tspan>
+                </>
+              )}
+            </text>
+
+            {/* TRABAJOS label */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '5px' }}
+              transform="translate(2.38 165.6)"
+            >
+              <tspan x="0" y="0">{lang === 'en' ? 'WORK ' : 'TRABAJOS '}</tspan>
+            </text>
+
+            {/* rodrigosantos.es domain link */}
+            <a href="/" className="vcard-domain-link" aria-label="rodrigosantos.es">
+              <text
+                className="vcard-cls-sans vcard-cls-fill vcard-domain-text"
+                style={{ fontSize: '16px' }}
+                transform="translate(2.38 180.38)"
+              >
+                <tspan x="0" y="0">rodrigo</tspan>
+                <tspan style={{ letterSpacing: '0em' }} x="56.88" y="0">s</tspan>
+                <tspan x="64.91" y="0">an</tspan>
+                <tspan style={{ letterSpacing: '-.02em' }} x="83.21" y="0">t</tspan>
+                <tspan x="89.02" y="0">os.es</tspan>
+              </text>
+            </a>
+
+            {/* Presupuesto note */}
+            <text
+              className="vcard-cls-sans vcard-cls-fill"
+              style={{ fontSize: '4px' }}
+              transform="translate(6.86 227.36)"
+            >
+              {lang === 'en' ? (
+                <>
+                  <tspan x="0" y="0">Project-based pricing tailored to scale and scope.</tspan>
+                  <tspan x="0" y="6">Initial inquiries and consultations are always free of charge.</tspan>
+                </>
+              ) : (
+                <>
+                  <tspan x="0" y="0">Presupues</tspan>
+                  <tspan style={{ letterSpacing: '-.02em' }} x="20.21" y="0">t</tspan>
+                  <tspan x="21.66" y="0">o por pr</tspan>
+                  <tspan style={{ letterSpacing: '-.01em' }} x="36.33" y="0">oy</tspan>
+                  <tspan style={{ letterSpacing: '0em' }} x="41.02" y="0">ec</tspan>
+                  <tspan style={{ letterSpacing: '-.02em' }} x="45.92" y="0">t</tspan>
+                  <tspan x="47.37" y="0">o según es</tspan>
+                  <tspan style={{ letterSpacing: '-.01em' }} x="67.57" y="0">c</tspan>
+                  <tspan x="69.94" y="0">ala y e</tspan>
+                  <tspan style={{ letterSpacing: '0em' }} x="81.36" y="0">nv</tspan>
+                  <tspan x="85.64" y="0">ergadura. </tspan>
+                  <tspan style={{ letterSpacing: '-.01em' }} x="0" y="6">C</tspan>
+                  <tspan x="3.1" y="6">onsul</tspan>
+                  <tspan style={{ letterSpacing: '-.02em' }} x="13.23" y="6">t</tspan>
+                  <tspan x="14.7" y="6">as y primeras co</tspan>
+                  <tspan style={{ letterSpacing: '-.01em' }} x="44.92" y="6">nv</tspan>
+                  <tspan style={{ letterSpacing: '0em' }} x="49.2" y="6">er</tspan>
+                  <tspan style={{ letterSpacing: '0em' }} x="53.04" y="6">s</tspan>
+                  <tspan x="55.04" y="6">aciones libres y sin compromiso.</tspan>
+                </>
+              )}
+            </text>
+          </svg>
+        </div>
+
+        {/* Action Buttons in White at Bottom */}
         <footer className="vcard-actions-block" aria-label="Contacto">
           <button
             type="button"
@@ -176,8 +237,8 @@ END:VCARD`
               id="vcard-btn-whatsapp"
             >
               <svg
-                width="16"
-                height="16"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -197,8 +258,8 @@ END:VCARD`
               id="vcard-btn-email"
             >
               <svg
-                width="16"
-                height="16"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -218,3 +279,4 @@ END:VCARD`
     </div>
   )
 }
+
