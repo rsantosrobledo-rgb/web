@@ -122,7 +122,7 @@ END:VCARD`
                 </svg>
               </span>
             </span>
-            <span className="vcard-name-line">{t.nameSecond}</span>
+            <span className="vcard-name-line vcard-name-line--santos">{t.nameSecond}</span>
           </h1>
         </header>
 
