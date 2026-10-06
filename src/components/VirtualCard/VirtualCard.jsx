@@ -158,7 +158,7 @@ END:VCARD`
               {t.workLabel}
             </text>
 
-            {/* 6. rodrigosantos.es domain link — bigger, clearly clickable with arrow and underline */}
+            {/* 6. rodrigosantos.es domain link — bigger, clearly clickable with arrow */}
             <a href="/" className="vcard-domain-link" aria-label="rodrigosantos.es">
               <text
                 className="vcard-cls-sans vcard-cls-fill vcard-domain-text"
@@ -168,15 +168,6 @@ END:VCARD`
                 {t.workDomain}
                 <tspan className="vcard-link-arrow" dx="2" dy="-2" style={{ fontSize: '12px' }}>↗</tspan>
               </text>
-              <line
-                x1="2.38"
-                y1="182"
-                x2="133"
-                y2="182"
-                stroke="#221F20"
-                strokeWidth="0.8"
-                className="vcard-domain-line"
-              />
             </a>
 
             {/* 7. Presupuesto note — pegada justo debajo del enlace */}
