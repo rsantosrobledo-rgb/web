@@ -12,8 +12,8 @@ const translations = {
     workLabel: 'TRABAJOS',
     workDomain: 'rodrigosantos.es',
     budgetText: [
-      'Presupuesto por proyecto según escala y envergadura.',
-      'Consultas y primeras conversaciones libres y sin compromiso.',
+      'Presupuesto por proyecto según envergadura y duración.',
+      'Consultas y primeras conversaciones sin compromiso.',
     ],
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
@@ -30,8 +30,8 @@ const translations = {
     workLabel: 'WORK',
     workDomain: 'rodrigosantos.es',
     budgetText: [
-      'Project-based pricing tailored to scale and scope.',
-      'Initial inquiries and consultations are always free of charge.',
+      'Project-based pricing tailored to scope and duration.',
+      'Initial inquiries and conversations without commitment.',
     ],
     saveContact: 'SAVE CONTACT',
     whatsappMessage: 'Hello Rodrigo',
