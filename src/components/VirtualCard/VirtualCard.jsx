@@ -12,8 +12,8 @@ const translations = {
     workLabel: 'TRABAJOS',
     workDomain: 'rodrigosantos.es',
     budgetText: [
-      'Presupuesto por proyecto según envergadura y duración.',
-      'Consultas y primeras conversaciones sin compromiso.',
+      'Proyectos con presupuesto cerrado o colaboración continua',
+      'con fee mensual. Primeras conversaciones sin compromiso.',
     ],
     saveContact: 'GUARDAR CONTACTO',
     whatsappMessage: 'Hola Rodrigo',
@@ -30,7 +30,7 @@ const translations = {
     workLabel: 'WORK',
     workDomain: 'rodrigosantos.es',
     budgetText: [
-      'Project-based pricing tailored to scope and duration.',
+      'Fixed-fee projects or ongoing monthly retainer.',
       'Initial inquiries and conversations without commitment.',
     ],
     saveContact: 'SAVE CONTACT',
@@ -170,14 +170,14 @@ END:VCARD`
               </text>
             </a>
 
-            {/* 7. Presupuesto note — tamaño aumentado x1.3 */}
+            {/* 7. Presupuesto note */}
             <text
               className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '5.5px', letterSpacing: '-0.025em' }}
+              style={{ fontSize: '5.2px', letterSpacing: '-0.025em' }}
               transform="translate(2.38 193)"
             >
               <tspan x="0" y="0">{t.budgetText[0]}</tspan>
-              <tspan x="0" y="7.8">{t.budgetText[1]}</tspan>
+              <tspan x="0" y="7.4">{t.budgetText[1]}</tspan>
             </text>
           </svg>
         </div>
