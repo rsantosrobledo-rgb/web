@@ -149,31 +149,41 @@ END:VCARD`
               <tspan x="0" y="26">{t.services[2].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
             </text>
 
-            {/* 5. TRABAJOS (exact translate 2.38 165.6, font-size 5px) */}
+            {/* 5. TRABAJOS (translate 2.38 163, font-size 5px) */}
             <text
               className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '5px', letterSpacing: '0.04em' }}
-              transform="translate(2.38 165.6)"
+              style={{ fontSize: '5px', letterSpacing: '0.05em' }}
+              transform="translate(2.38 163)"
             >
               {t.workLabel}
             </text>
 
-            {/* 6. rodrigosantos.es domain link (exact translate 2.38 180.38, font-size 16px) */}
+            {/* 6. rodrigosantos.es domain link — bigger, clearly clickable with arrow and underline */}
             <a href="/" className="vcard-domain-link" aria-label="rodrigosantos.es">
               <text
                 className="vcard-cls-sans vcard-cls-fill vcard-domain-text"
-                style={{ fontSize: '16px' }}
-                transform="translate(2.38 180.38)"
+                style={{ fontSize: '18px', letterSpacing: '-0.025em' }}
+                transform="translate(2.38 179)"
               >
                 {t.workDomain}
+                <tspan className="vcard-link-arrow" dx="2" dy="-2" style={{ fontSize: '12px' }}>↗</tspan>
               </text>
+              <line
+                x1="2.38"
+                y1="182"
+                x2="133"
+                y2="182"
+                stroke="#221F20"
+                strokeWidth="0.8"
+                className="vcard-domain-line"
+              />
             </a>
 
-            {/* 7. Presupuesto note (exact translate 6.86 227.36, font-size 4px) */}
+            {/* 7. Presupuesto note — pegada justo debajo del enlace */}
             <text
               className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '4px' }}
-              transform="translate(6.86 227.36)"
+              style={{ fontSize: '4.2px' }}
+              transform="translate(2.38 193)"
             >
               <tspan x="0" y="0">{t.budgetText[0]}</tspan>
               <tspan x="0" y="6">{t.budgetText[1]}</tspan>
@@ -181,7 +191,7 @@ END:VCARD`
           </svg>
         </div>
 
-        {/* 8. White Capsule Action Buttons at Bottom */}
+        {/* 8. Action Buttons at Bottom */}
         <footer className="vcard-actions-block" aria-label="Contacto">
           <button
             type="button"
@@ -201,8 +211,8 @@ END:VCARD`
               id="vcard-btn-whatsapp"
             >
               <svg
-                width="15"
-                height="15"
+                width="17"
+                height="17"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -222,8 +232,8 @@ END:VCARD`
               id="vcard-btn-email"
             >
               <svg
-                width="15"
-                height="15"
+                width="17"
+                height="17"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"

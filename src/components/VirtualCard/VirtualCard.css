@@ -124,8 +124,17 @@
   transition: opacity 0.2s ease;
 }
 
-.vcard-domain-link:hover .vcard-domain-text {
+.vcard-domain-line {
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
+}
+
+.vcard-domain-link:hover .vcard-domain-text,
+.vcard-domain-link:hover .vcard-domain-line {
   opacity: 0.65;
+}
+
+.vcard-domain-link:active {
+  opacity: 0.8;
 }
 
 /* Black fine eye circle border stroke */
@@ -167,15 +176,15 @@
   will-change: transform;
 }
 
-/* ---------- Action Buttons in White at Bottom ---------- */
+/* ---------- Action Buttons at Bottom (Black Primary & Larger) ---------- */
 .vcard-actions-block {
   width: 100%;
-  max-width: 370px;
+  max-width: 380px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(5px, 0.9vh, 8px);
-  margin-top: 6px;
+  gap: clamp(8px, 1.3vh, 12px);
+  margin-top: 8px;
 }
 
 .vcard-action-btn {
@@ -183,9 +192,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FFFFFF;
-  color: #221F20;
-  border: 1.4px solid #221F20;
   border-radius: 999px;
   cursor: pointer;
   text-decoration: none;
@@ -199,45 +205,50 @@
   transform: scale(0.985);
 }
 
-/* Primary Button in White */
+/* Primary Button in Black (Guardar Contacto) */
 .vcard-action-btn--primary {
   width: 100%;
-  height: clamp(35px, 4.4vh, 42px);
-  font-size: clamp(11px, 1.35vh, 12.5px);
+  height: clamp(46px, 5.8vh, 52px);
+  background-color: #221F20;
+  color: #FFFEF7;
+  border: 1.5px solid #221F20;
+  font-size: clamp(13px, 1.6vh, 14.5px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 1px 3px rgba(34, 31, 32, 0.05);
+  box-shadow: 0 4px 14px rgba(34, 31, 32, 0.18);
 }
 
 .vcard-action-btn--primary:hover {
-  background-color: #221F20;
-  color: #FFFEF7;
+  background-color: #000000;
+  border-color: #000000;
   transform: translateY(-1.5px);
-  box-shadow: 0 4px 14px rgba(34, 31, 32, 0.15);
+  box-shadow: 0 6px 20px rgba(34, 31, 32, 0.26);
 }
 
 /* Secondary Buttons Grid */
 .vcard-action-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(6px, 1.8vw, 9px);
+  gap: clamp(8px, 2.2vw, 12px);
   width: 100%;
 }
 
 .vcard-action-btn--secondary {
-  height: clamp(32px, 4vh, 38px);
-  font-size: clamp(11px, 1.35vh, 12.5px);
+  height: clamp(42px, 5.2vh, 48px);
+  background-color: #FFFFFF;
+  color: #221F20;
+  border: 1.5px solid #221F20;
+  font-size: clamp(12.5px, 1.5vh, 14px);
   font-weight: 600;
-  gap: 6px;
-  box-shadow: 0 1px 3px rgba(34, 31, 32, 0.04);
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(34, 31, 32, 0.06);
 }
 
 .vcard-action-btn--secondary:hover {
   background-color: #F8F7F0;
-  border-color: #221F20;
   transform: translateY(-1.5px);
-  box-shadow: 0 3px 10px rgba(34, 31, 32, 0.08);
+  box-shadow: 0 4px 12px rgba(34, 31, 32, 0.12);
 }
 
 .vcard-action-btn--secondary svg {
