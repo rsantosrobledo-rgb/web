@@ -249,6 +249,24 @@
   font-weight: 700;
 }
 
+/* Services Link (Especializaciones) */
+.vcard-services-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vcard-services-text {
+  transition: opacity 0.2s ease;
+}
+
+.vcard-services-link:hover .vcard-services-text {
+  opacity: 0.65;
+}
+
+.vcard-services-link:active .vcard-services-text {
+  opacity: 0.8;
+}
+
 /* Domain Link */
 .vcard-domain-link {
   cursor: pointer;

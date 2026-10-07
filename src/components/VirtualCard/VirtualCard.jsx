@@ -9,7 +9,7 @@ const translations = {
       { text: 'Contenido audiovisual', diamond: true },
       { text: 'Diseño web', diamond: true },
     ],
-    workLabel: 'TRABAJOS',
+    workLabel: 'TRABAJOS EN',
     workDomain: 'rodrigosantos.es',
     budgetText: [
       'Proyectos con presupuesto cerrado o colaboración continua',
@@ -27,7 +27,7 @@ const translations = {
       { text: 'Audiovisual Content', diamond: true },
       { text: 'Web Design', diamond: true },
     ],
-    workLabel: 'WORK',
+    workLabel: 'WORK AT',
     workDomain: 'rodrigosantos.es',
     budgetText: [
       'Fixed-fee projects or ongoing monthly retainer.',
@@ -230,28 +230,30 @@ END:VCARD`
               <tspan x="78.96" y="27">os</tspan>
             </text>
 
-            {/* 4. Services with diamonds (exact translate .63 117.04, font-size 11px) */}
-            <text
-              className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '11px' }}
-              transform="translate(.63 117.04)"
-            >
-              <tspan x="0" y="0">{t.services[0].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
-              <tspan x="0" y="13">{t.services[1].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
-              <tspan x="0" y="26">{t.services[2].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
-            </text>
+            {/* 4. Especializaciones / Services with diamonds — linked to website */}
+            <a href="/" className="vcard-services-link" aria-label="Ver proyectos en rodrigosantos.es">
+              <rect x="0" y="106" width="155.91" height="42" fill="transparent" pointerEvents="all" />
+              <text
+                className="vcard-cls-sans vcard-cls-fill vcard-services-text"
+                style={{ fontSize: '11px' }}
+                transform="translate(.63 117.04)"
+              >
+                <tspan x="0" y="0">{t.services[0].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
+                <tspan x="0" y="13">{t.services[1].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
+                <tspan x="0" y="26">{t.services[2].text} <tspan className="vcard-cls-diamond">◆</tspan></tspan>
+              </text>
+            </a>
 
-            {/* 5. TRABAJOS (translate 2.38 163, font-size 5px) */}
-            <text
-              className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '5px', letterSpacing: '0.05em' }}
-              transform="translate(2.38 163)"
-            >
-              {t.workLabel}
-            </text>
-
-            {/* 6. rodrigosantos.es domain link — bigger, clearly clickable with arrow */}
-            <a href="/" className="vcard-domain-link" aria-label="rodrigosantos.es">
+            {/* 5 & 6. TRABAJOS EN + rodrigosantos.es domain link */}
+            <a href="/" className="vcard-domain-link" aria-label={`Trabajos en ${t.workDomain}`}>
+              <rect x="0" y="156" width="155.91" height="28" fill="transparent" pointerEvents="all" />
+              <text
+                className="vcard-cls-sans vcard-cls-fill"
+                style={{ fontSize: '5px', letterSpacing: '0.05em' }}
+                transform="translate(2.38 163)"
+              >
+                {t.workLabel}
+              </text>
               <text
                 className="vcard-cls-sans vcard-cls-fill vcard-domain-text"
                 style={{ fontSize: '18px', letterSpacing: '-0.025em' }}
