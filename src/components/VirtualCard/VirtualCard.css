@@ -135,11 +135,11 @@
 }
 
 .vcard-face--front::before {
-  opacity: 0.22;
+  opacity: 0.36;
 }
 
 .vcard-face--back::before {
-  opacity: 0.25;
+  opacity: 0.40;
 }
 
 @media (min-width: 521px) {
