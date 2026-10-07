@@ -169,7 +169,7 @@ END:VCARD`
             {/* 1. DIRECCIÓN CREATIVA */}
             <text
               className="vcard-cls-sans vcard-cls-fill"
-              style={{ fontSize: '5.46px', letterSpacing: '0.01em' }}
+              style={{ fontSize: '4.91px', letterSpacing: '0.01em' }}
               transform="translate(2.2 39.29)"
             >
               {t.badge}
